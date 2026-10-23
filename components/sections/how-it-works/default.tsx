@@ -64,7 +64,7 @@ export default function HowItWorks({
   className,
 }: HowItWorksProps) {
   return (
-    <Section id="como-funciona" className={cn("overflow-hidden", className)}>
+    <Section id="como-funciona" className={cn("overflow-x-clip", className)}>
       <div className="max-w-container mx-auto flex flex-col gap-16 sm:gap-24">
         <div className="flex flex-col items-center gap-4 text-center sm:gap-6">
           <h2 className="max-w-[720px] text-3xl leading-tight font-semibold text-balance sm:text-5xl sm:leading-tight">

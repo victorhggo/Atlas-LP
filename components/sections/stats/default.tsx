@@ -55,18 +55,18 @@ export default function Stats({
 }: StatsProps) {
   return (
     <Section className={className}>
-      <div className="container mx-auto flex max-w-[960px] flex-col gap-12 sm:gap-16">
+      <div className="container mx-auto flex max-w-[1040px] flex-col gap-12 sm:gap-16">
         {title && (
           <h2 className="text-center text-2xl leading-tight font-semibold sm:text-4xl">
             {title}
           </h2>
         )}
         {items !== false && items.length > 0 && (
-          <div className="grid grid-cols-2 gap-12 sm:grid-cols-4">
+          <div className="border-border/15 bg-border/15 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border shadow-xl sm:grid-cols-4">
             {items.map((item) => (
               <div
                 key={`${item.label}-${item.value}`}
-                className="flex flex-col items-start gap-3 text-left"
+                className="bg-background flex flex-col items-start gap-3 p-5 text-left sm:p-7"
               >
                 {item.label && (
                   <div className="text-muted-foreground text-sm font-semibold">

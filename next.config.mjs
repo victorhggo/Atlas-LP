@@ -8,6 +8,12 @@ const nextConfig = {
   turbopack: {
     root,
   },
+  // Site estático em out/ para publicar no Netlify (arrastar e soltar)
+  output: "export",
+  images: {
+    loader: "custom",
+    loaderFile: "./lib/image-loader.ts",
+  },
 };
 
 export default nextConfig;

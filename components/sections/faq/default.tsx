@@ -1,4 +1,7 @@
+import { MessageCircleQuestionIcon } from "lucide-react";
 import { ReactNode } from "react";
+
+import { siteConfig } from "@/config/site";
 
 import {
   Accordion,
@@ -7,6 +10,7 @@ import {
   AccordionTrigger,
 } from "../../ui/accordion";
 import { Good } from "../../ui/highlight";
+import { LinkButton } from "../../ui/link-button";
 import { Section } from "../../ui/section";
 
 interface FAQItemProps {
@@ -98,18 +102,38 @@ export default function FAQ({
 }: FAQProps) {
   return (
     <Section id="duvidas" className={className}>
-      <div className="max-w-container mx-auto flex flex-col items-center gap-8">
-        <h2 className="text-center text-3xl font-semibold sm:text-5xl">
-          {title}
-        </h2>
+      <div className="max-w-container mx-auto grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+        <div className="flex flex-col items-center gap-6 text-center lg:sticky lg:top-28 lg:items-start lg:self-start lg:text-left">
+          <h2 className="text-3xl font-semibold sm:text-5xl">{title}</h2>
+          <p className="text-muted-foreground max-w-[420px] text-balance">
+            As respostas vêm direto da central de dúvidas do Atlas.
+          </p>
+          <div className="glass-1 dark:glass-2 flex w-full max-w-[420px] flex-col gap-3 rounded-2xl p-5 text-left shadow-xl">
+            <span className="flex items-center gap-2 font-semibold">
+              <MessageCircleQuestionIcon
+                className="text-brand size-5"
+                aria-hidden="true"
+              />
+              Ficou alguma dúvida?
+            </span>
+            <span className="text-muted-foreground text-sm">
+              Fale com a equipe e veja o Atlas rodando no seu nicho.
+            </span>
+            <LinkButton variant="glow" size="default" href={siteConfig.links.sales}>
+              Falar com vendas
+            </LinkButton>
+          </div>
+        </div>
         {items !== false && items.length > 0 && (
-          <Accordion type="single" collapsible className="w-full max-w-[800px]">
+          <Accordion type="single" collapsible className="w-full">
             {items.map((item, index) => (
               <AccordionItem
                 key={item.value ?? item.question}
                 value={item.value || `item-${index + 1}`}
               >
-                <AccordionTrigger>{item.question}</AccordionTrigger>
+                <AccordionTrigger className="text-base sm:text-lg">
+                  {item.question}
+                </AccordionTrigger>
                 <AccordionContent>{item.answer}</AccordionContent>
               </AccordionItem>
             ))}
