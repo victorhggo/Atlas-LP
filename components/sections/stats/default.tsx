@@ -74,7 +74,7 @@ export default function Stats({
                   </div>
                 )}
                 <div className="flex items-baseline gap-2">
-                  <div className="from-foreground to-foreground dark:to-brand bg-linear-to-r bg-clip-text text-4xl font-medium text-transparent drop-shadow-[2px_1px_24px_var(--brand-foreground)] sm:text-5xl md:text-6xl">
+                  <div className="from-foreground to-foreground dark:to-brand bg-linear-to-r bg-clip-text text-4xl font-medium text-transparent sm:text-5xl md:text-6xl">
                     <CountUp value={item.value} />
                   </div>
                   {item.suffix && (

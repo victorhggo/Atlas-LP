@@ -1,6 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { CheckIcon, ShieldCheckIcon, SparklesIcon } from "lucide-react";
-import Link from "next/link";
+import { CheckIcon, ShieldCheckIcon } from "lucide-react";
 import { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
@@ -13,9 +12,9 @@ const pricingColumnVariants = cva(
     variants: {
       variant: {
         default: "glass-1 to-transparent dark:glass-3",
-        glow: "glass-2 to-transparent dark:glass-3 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] dark:after:bg-foreground/30 after:blur-[72px]",
+        glow: "glass-2 to-transparent dark:glass-3 after:content-[''] after:absolute after:-top-[160px] after:left-1/2 after:h-[256px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:bg-[radial-gradient(closest-side,var(--foreground),transparent)] after:opacity-10 dark:after:opacity-25",
         "glow-brand":
-          "glass-3 from-card/100 to-card/100 dark:glass-4 ring-brand/60 ring-1 shadow-brand/20 shadow-2xl lg:-my-4 lg:py-12 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] after:bg-brand-foreground/70 after:blur-[72px]",
+          "glass-3 from-card/100 to-card/100 dark:glass-4 ring-brand/60 ring-1 shadow-brand/20 shadow-2xl lg:-my-4 lg:py-12 after:content-[''] after:absolute after:-top-[160px] after:left-1/2 after:h-[256px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:bg-[radial-gradient(closest-side,var(--brand-foreground),transparent)] after:opacity-70",
       },
     },
     defaultVariants: {
@@ -29,46 +28,53 @@ export interface PricingColumnProps
     Omit<React.HTMLAttributes<HTMLDivElement>, "title">,
     VariantProps<typeof pricingColumnVariants> {
   name: string;
-  icon?: ReactNode;
-  // Selo no topo do card, ex.: "Mais escolhido"
   badge?: string;
+  tag?: string;
+  tags?: string[];
+  variantNote?: ReactNode;
   description: string;
   price: number;
+  priceDisplay?: ReactNode;
   pricePrefix?: string;
   pricePeriod?: string;
-  // Destaque verde abaixo do preço, ex.: créditos inclusos
   priceDetail?: string;
-  // Linha de segurança com cadeado verde, ex.: "Cancele quando quiser"
   guarantee?: string;
-  priceNote: string;
+  priceNote: ReactNode;
   cta: {
     variant: "glow" | "default";
     label: string;
     href: string;
   };
-  // Primeiro item pode ser um rótulo como "Tudo do Essencial, mais:"
+  interactiveContent?: ReactNode;
   featuresLabel?: string;
   features: ReactNode[];
 }
 
 export function PricingColumn({
   name,
-  icon,
   badge,
+  tag,
+  tags,
+  variantNote,
   description,
   price,
+  priceDisplay,
   pricePrefix,
   pricePeriod = "/mês",
   priceDetail,
   guarantee,
   priceNote,
   cta,
+  interactiveContent,
   featuresLabel,
   features,
   variant,
   className,
   ...props
 }: PricingColumnProps) {
+  const isExternal = cta.href.startsWith("http://") || cta.href.startsWith("https://");
+  const allTags = tags && tags.length > 0 ? tags : tag ? [tag] : [];
+
   return (
     <div
       className={cn(pricingColumnVariants({ variant, className }))}
@@ -81,54 +87,83 @@ export function PricingColumn({
         )}
       />
       <div className="flex flex-col gap-6">
-        <header className="flex flex-col gap-2">
+        <header className="flex flex-col gap-2.5">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h3 className="flex items-center gap-2 text-lg font-bold">
-              {icon && (
-                <span className="text-muted-foreground flex items-center">
-                  {icon}
-                </span>
-              )}
-              {name}
-            </h3>
+            <h3 className="text-xl font-bold sm:text-2xl">{name}</h3>
             {badge && (
-              <span className="bg-brand text-background flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold tracking-wide uppercase shadow-lg">
-                <SparklesIcon className="size-3.5" aria-hidden="true" />
+              <span className="bg-brand text-background rounded-full px-3 py-1 text-xs font-bold tracking-wide uppercase shadow-lg">
                 {badge}
               </span>
             )}
           </div>
-          <p className="text-muted-foreground text-sm text-pretty">
+          <p className="text-muted-foreground text-base text-pretty">
             {description}
           </p>
+          {allTags.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {allTags.map((t) => {
+                const isAgent = t === "Agente Atlas";
+                return (
+                  <span
+                    key={t}
+                    className={cn(
+                      "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold",
+                      isAgent
+                        ? "border-brand/35 bg-brand/12 text-brand"
+                        : "border-border/20 bg-foreground/[0.04] text-foreground/85 font-medium",
+                    )}
+                  >
+                    {isAgent && (
+                      <span className="size-2 rounded-full bg-emerald-500 motion-safe:animate-pulse" />
+                    )}
+                    {t}
+                  </span>
+                );
+              })}
+            </div>
+          )}
         </header>
+
         <section className="flex flex-col gap-2">
           {pricePrefix && (
-            <span className="text-muted-foreground text-sm">{pricePrefix}</span>
+            <span className="text-muted-foreground text-sm font-medium">{pricePrefix}</span>
           )}
           <div className="flex items-baseline gap-1">
             <span className="text-muted-foreground text-xl font-bold">R$</span>
             <span className="text-5xl font-bold tracking-tight tabular-nums sm:text-6xl">
-              {price.toLocaleString("pt-BR")}
+              {priceDisplay ?? price.toLocaleString("pt-BR")}
             </span>
-            {price > 0 && (
+            {price > 0 && pricePeriod && (
               <span className="text-muted-foreground text-base font-medium">
                 {pricePeriod}
               </span>
             )}
           </div>
+          {variantNote && (
+            <span className="text-muted-foreground text-sm sm:text-base">{variantNote}</span>
+          )}
           {priceDetail && (
             <span className="w-fit rounded-full bg-emerald-500/12 px-3 py-1 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
               {priceDetail}
             </span>
           )}
         </section>
+
+        {interactiveContent}
+
         <Button variant={cta.variant} size="lg" asChild>
-          <Link href={cta.href}>{cta.label}</Link>
+          <a
+            href={cta.href}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
+          >
+            {cta.label}
+          </a>
         </Button>
+
         <div className="flex flex-col gap-1.5">
           {guarantee && (
-            <p className="flex items-center gap-1.5 text-sm font-medium text-emerald-600 dark:text-emerald-400">
+            <p className="flex items-center gap-1.5 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
               <ShieldCheckIcon className="size-4 shrink-0" aria-hidden="true" />
               {guarantee}
             </p>
@@ -139,14 +174,15 @@ export function PricingColumn({
         </div>
         <hr className="border-input" />
       </div>
+
       <div className="flex flex-col gap-3">
         {featuresLabel && (
-          <p className="text-brand text-sm font-semibold">{featuresLabel}</p>
+          <p className="text-brand text-sm font-semibold sm:text-base">{featuresLabel}</p>
         )}
         <ul className="flex flex-col gap-2.5">
           {features.map((feature, index) => (
-            <li key={index} className="flex items-start gap-2.5 text-sm">
-              <span className="mt-0.5 flex size-4.5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+            <li key={index} className="flex items-start gap-2.5 text-sm leading-snug sm:text-base">
+              <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
                 <CheckIcon className="size-3" strokeWidth={3} aria-hidden="true" />
               </span>
               <span>{feature}</span>

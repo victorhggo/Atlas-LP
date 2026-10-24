@@ -3,15 +3,19 @@ export const siteConfig = {
   // Endereço público da LP (usado na imagem de compartilhamento do WhatsApp).
   // Padrão: Netlify. Para o domínio próprio: npm run build:dominio
   url: process.env.SITE_URL ?? "https://atlas-system.netlify.app",
-  // TODO: trocar pelo link de cadastro quando estiver definido
-  getStartedUrl: "#planos",
+  getStartedUrl: "https://atlas.escolhidospro.com.br/criar-conta",
   loginUrl: "https://atlas.escolhidospro.com.br/entrar",
   ogImage: "/og.jpg",
   description:
-    "Gere listas de qualquer nicho, qualifique cada empresa com o número do decisor e ligue pela fila do dia com o CRM integrado. A prospecção inteira num lugar só.",
+    "O CRM preguiçoso que faz o trabalho do seu SDR: monta a lista, acha o decisor, confere cada dado, te diz o que falar e avisa quem está pronto para comprar. Você só liga.",
   links: {
-    // TODO: trocar pelo WhatsApp de vendas
-    sales: "#planos",
+    sales: "https://wa.me/5515996979750",
+    demo: "https://wa.me/5515996979750",
+    // ID do vídeo de demonstração no YouTube (ex.: "dQw4w9WgXcQ").
+    // Suporta ID direto ou exibição de player embed/modal
+    demoVideo: "dQw4w9WgXcQ",
+    matte: "https://www.matteline.com.br/",
+    whatsappCommunity: "https://wa.me/5515996979750?text=Quero%20entrar%20no%20grupo%20do%20Suporte%20Atlas",
   },
 };
 

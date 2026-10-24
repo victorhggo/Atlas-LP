@@ -15,6 +15,7 @@ import {
   NavbarRight,
 } from "../../ui/navbar";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../../ui/sheet";
+import { ThemeToggle } from "../../ui/theme-toggle";
 
 interface NavbarLink {
   text: string;
@@ -46,8 +47,9 @@ export default function Navbar({
   name = "ATLAS",
   homeUrl = "#",
   mobileLinks = [
-    { text: "Funcionalidades", href: "#funcionalidades" },
     { text: "Como funciona", href: "#como-funciona" },
+    { text: "Agente Atlas", href: "#agente" },
+    { text: "Para quem é", href: "#para-quem" },
     { text: "Planos", href: "#planos" },
     { text: "Dúvidas", href: "#duvidas" },
     { text: "Entrar", href: siteConfig.loginUrl },
@@ -80,14 +82,14 @@ export default function Navbar({
             </a>
             {showNavigation &&
               (customNavigation || (
-                <nav aria-label="Seções" className="hidden items-center md:flex">
+                <nav aria-label="Seções" className="hidden items-center lg:flex">
                   {mobileLinks
                     .filter((link) => link.href.startsWith("#"))
                     .map((link) => (
                       <a
                         key={link.href}
                         href={link.href}
-                        className="hover:bg-foreground/10 focus-visible:ring-ring/50 rounded-md px-4 py-2 text-sm font-medium transition-colors outline-none focus-visible:ring-[3px]"
+                        className="hover:bg-foreground/10 focus-visible:ring-ring/50 rounded-md px-3 py-2 text-sm font-medium xl:px-4 transition-colors outline-none focus-visible:ring-[3px]"
                       >
                         {link.text}
                       </a>
@@ -96,6 +98,7 @@ export default function Navbar({
               ))}
           </NavbarLeft>
           <NavbarRight>
+            <ThemeToggle />
             {actions.map((action) =>
               action.isButton ? (
                 <Button
@@ -124,7 +127,7 @@ export default function Navbar({
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="shrink-0 md:hidden"
+                  className="shrink-0 lg:hidden"
                 >
                   <Menu className="size-5" />
                   <span className="sr-only">Abrir menu</span>

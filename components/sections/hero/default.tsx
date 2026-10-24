@@ -1,131 +1,52 @@
-import { ArrowRightIcon } from "lucide-react";
-import { ReactNode } from "react";
+import { ArrowRightIcon, PlayIcon } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
 
 import { Announcement } from "../../ui/announcement";
 import Glow from "../../ui/glow";
-import { Bad, Good } from "../../ui/highlight";
-import { LinkButton, type LinkButtonProps } from "../../ui/link-button";
-import { Mockup, MockupFrame } from "../../ui/mockup";
-import Screenshot from "../../ui/screenshot";
+import { Good } from "../../ui/highlight";
+import { LinkButton } from "../../ui/link-button";
 import { Section } from "../../ui/section";
+import { HeroFlow } from "./flow";
 
-interface HeroButtonProps extends Omit<LinkButtonProps, "children"> {
-  text: string;
-}
-
-interface HeroProps {
-  title?: string;
-  description?: ReactNode;
-  mockup?: ReactNode | false;
-  badge?: ReactNode | false;
-  buttons?: HeroButtonProps[] | false;
-  className?: string;
-}
-
-const DEFAULT_HERO_BUTTONS: HeroButtonProps[] = [
-  {
-    href: siteConfig.getStartedUrl,
-    text: "Testar grátis sem cartão",
-    variant: "default",
-    iconRight: <ArrowRightIcon className="ml-2 size-4" />,
-  },
-  {
-    href: "#planos",
-    text: "Ver planos",
-    variant: "glow",
-  },
-];
-
-const DEFAULT_HERO_BADGE = (
-  <Announcement href="#funcionalidades" className="animate-appear" />
-);
-
-const DEFAULT_HERO_MOCKUP = (
-  <Screenshot
-    srcLight="/atlas/hero-lista.png"
-    alt="Lista de clínicas qualificada no Atlas, em ordem de prioridade P1, P2, P3, com os ativos digitais e o contato do decisor"
-    width={2560}
-    height={1520}
-    preload
-    className="w-full"
-  />
-);
-
-export default function Hero({
-  title = "Da lista ao contrato, sem sair do Atlas.",
-  description = (
-    <>
-      Gere listas de qualquer nicho, qualifique cada empresa com site,
-      Instagram, Google e <Good>o número de quem decide</Good>, e ligue pela
-      fila do dia com o CRM integrado. <Bad>Planilha</Bad> e{" "}
-      <Bad>ligação para a recepção</Bad> ficam para trás.
-    </>
-  ),
-  mockup = DEFAULT_HERO_MOCKUP,
-  badge = DEFAULT_HERO_BADGE,
-  buttons = DEFAULT_HERO_BUTTONS,
-  className,
-}: HeroProps) {
+export default function Hero() {
   return (
-    <Section
-      className={cn(
-        "fade-bottom overflow-hidden pb-0 sm:pb-0 md:pb-0",
-        className,
-      )}
-    >
-      <div className="max-w-container mx-auto flex flex-col gap-12 pt-16 sm:gap-24">
-        <div className="flex flex-col items-center gap-6 text-center sm:gap-12">
-          {badge !== false && badge}
-          <h1 className="animate-appear from-foreground to-foreground dark:to-muted-foreground relative z-10 inline-block bg-linear-to-r bg-clip-text text-4xl leading-tight font-semibold text-balance text-transparent drop-shadow-2xl sm:text-6xl sm:leading-tight md:text-8xl md:leading-tight">
-            {title}
+    <Section className="relative overflow-hidden pb-16 sm:pb-24">
+      <div className="max-w-container relative z-10 mx-auto grid grid-cols-1 items-center gap-12 pt-10 lg:grid-cols-[1.08fr_1fr] lg:gap-14 lg:pt-16 [&>*]:min-w-0">
+        <div className="flex flex-col items-center gap-6 text-center sm:gap-7 lg:items-start lg:text-left">
+          <Announcement href="#agente" className="animate-appear" />
+          <h1 className="from-foreground to-foreground dark:to-muted-foreground relative inline-block bg-linear-to-r bg-clip-text text-4xl leading-[1.06] font-semibold tracking-tight text-balance text-transparent sm:text-6xl lg:text-[62px]">
+            O CRM preguiçoso que faz o trabalho do SDR.
           </h1>
-          <p className="text-md text-muted-foreground relative z-10 max-w-[740px] font-medium text-balance sm:text-xl">
-            {description}
+          <p className="text-muted-foreground max-w-[560px] text-lg leading-relaxed font-medium text-balance sm:text-xl">
+            Escolha o nicho. O Atlas monta a lista, acha o sócio que decide, te
+            dá o roteiro e move quem está pronto no CRM.{" "}
+            <Good>Você só liga.</Good>
           </p>
-          {buttons !== false && buttons.length > 0 && (
-            <div className="animate-appear relative z-10 flex flex-wrap justify-center gap-4 opacity-0 delay-300">
-              {buttons.map((button) => (
-                <LinkButton
-                  key={`${button.href}-${button.text}`}
-                  variant={button.variant || "default"}
-                  size="lg"
-                  href={button.href}
-                  icon={button.icon}
-                  iconRight={button.iconRight}
-                >
-                  {button.text}
-                </LinkButton>
-              ))}
-            </div>
-          )}
-          {buttons !== false && (
-            <p className="animate-appear text-muted-foreground relative z-10 -mt-2 text-sm opacity-0 delay-300 sm:-mt-6">
-              <Good>25 decisores grátis</Good> para testar · sem cartão de
-              crédito
-            </p>
-          )}
-          {mockup !== false && (
-            <div className="relative w-full pt-12">
-              {/* Sem fade de entrada: o print é o LCP da página */}
-              <MockupFrame size="small">
-                <Mockup
-                  type="responsive"
-                  className="bg-background/90 w-full rounded-xl border-0"
-                >
-                  {mockup}
-                </Mockup>
-              </MockupFrame>
-              <Glow
-                variant="top"
-                className="animate-appear-zoom opacity-0 delay-1000"
-              />
-            </div>
-          )}
+          <div className="flex flex-wrap justify-center gap-3.5 lg:justify-start">
+            <LinkButton
+              href={siteConfig.getStartedUrl}
+              size="lg"
+              iconRight={<ArrowRightIcon className="ml-2 size-4" />}
+            >
+              Testar grátis com 25 créditos
+            </LinkButton>
+            <LinkButton
+              href="#demo"
+              variant="glow"
+              size="lg"
+              icon={<PlayIcon className="mr-2 size-4" />}
+            >
+              Ver funcionando
+            </LinkButton>
+          </div>
+          <p className="text-muted-foreground -mt-1 text-sm sm:text-base">
+            <Good>Sem cartão.</Good> 25 créditos com a pesquisa completa do Pro.
+          </p>
         </div>
+        <HeroFlow className="animate-appear mx-auto max-w-[560px] lg:max-w-none" />
       </div>
+      <Glow variant="top" className="opacity-60" />
     </Section>
   );
 }

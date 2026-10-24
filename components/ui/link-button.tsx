@@ -10,6 +10,8 @@ export interface LinkButtonProps {
   icon?: ReactNode;
   iconRight?: ReactNode;
   size?: ComponentProps<typeof Button>["size"];
+  target?: string;
+  rel?: string;
 }
 
 export function LinkButton({
@@ -19,10 +21,16 @@ export function LinkButton({
   icon,
   iconRight,
   size = "lg",
+  target,
+  rel,
 }: LinkButtonProps) {
+  const isExternal = href.startsWith("http://") || href.startsWith("https://");
+  const linkTarget = target ?? (isExternal ? "_blank" : undefined);
+  const linkRel = rel ?? (isExternal ? "noopener noreferrer" : undefined);
+
   return (
     <Button variant={variant} size={size} asChild>
-      <a href={href}>
+      <a href={href} target={linkTarget} rel={linkRel}>
         {icon}
         {children}
         {iconRight}

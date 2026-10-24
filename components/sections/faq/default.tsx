@@ -46,6 +46,16 @@ export default function FAQ({
       ),
     },
     {
+      question: "Vejo o telefone antes de qualificar?",
+      answer: (
+        <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
+          <Good>Não.</Good> O telefone, o decisor e os sócios aparecem depois de
+          qualificar, e só é cobrado se trouxer dado novo:{" "}
+          <Good>você só vê e paga pelo contato que vai usar.</Good>
+        </p>
+      ),
+    },
+    {
       question: "O que a qualificação encontra?",
       answer: (
         <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
@@ -60,6 +70,17 @@ export default function FAQ({
           1 crédito por empresa. Se a qualificação falhar por erro técnico,{" "}
           <Good>o crédito volta sozinho</Good>. Empresa já qualificada{" "}
           <Good>não é cobrada de novo</Good>.
+        </p>
+      ),
+    },
+    {
+      question: "O Agente move meus leads sem eu saber?",
+      answer: (
+        <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
+          Por padrão ele só sugere. Para mover para{" "}
+          <Good>Lead qualificado</Good> ou <Good>É decisor</Good>, precisa da
+          autorização do líder, e tudo fica no histórico, com{" "}
+          <Good>desfazer</Good>.
         </p>
       ),
     },
@@ -80,11 +101,38 @@ export default function FAQ({
       ),
     },
     {
+      question: "Posso fazer upgrade no meio do mês?",
+      answer: (
+        <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
+          <Good>Sim.</Good> No upgrade você paga só a diferença e os créditos
+          extras <Good>entram na hora</Good>.
+        </p>
+      ),
+    },
+    {
+      question: "Posso trocar o número do WhatsApp?",
+      answer: (
+        <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
+          <Good>Sim.</Good> Você desconecta e conecta outro número sem perder o
+          CRM.
+        </p>
+      ),
+    },
+    {
+      question: "Funciona no celular?",
+      answer: (
+        <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
+          <Good>Sim.</Good> O Atlas abre direto no navegador do celular para você
+          checar a agenda, ligar com 1 toque e acompanhar o funil.
+        </p>
+      ),
+    },
+    {
       question: "Preciso de cartão para testar?",
       answer: (
         <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-          <Good>Não.</Good> O plano Grátis vem com 25 créditos para você testar
-          a qualificação, sem cartão.
+          <Good>Não.</Good> O plano Grátis vem com 25 créditos com a pesquisa
+          completa do Pro para você testar hoje, sem cartão.
         </p>
       ),
     },

@@ -19,21 +19,21 @@ interface CTAProps {
 const DEFAULT_CTA_BUTTONS: CTAButtonProps[] = [
   {
     href: siteConfig.getStartedUrl,
-    text: "Testar grátis com 25 decisores",
+    text: "Testar grátis com 25 créditos",
     variant: "default",
   },
 ];
 
 export default function CTA({
-  title = "Sua próxima reunião está numa lista que você ainda não montou.",
+  title = "Sua próxima reunião já está na base do Atlas.",
   buttons = DEFAULT_CTA_BUTTONS,
   className,
 }: CTAProps) {
   return (
     <Section className={cn("group relative overflow-hidden", className)}>
-      <div className="max-w-container relative z-10 mx-auto grid items-center gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
-        <div className="flex flex-col items-center gap-6 text-center sm:gap-8 lg:items-start lg:text-left">
-          <h2 className="max-w-[720px] text-3xl leading-tight font-semibold text-balance sm:text-5xl sm:leading-tight">
+      <div className="max-w-container relative z-10 mx-auto grid items-center gap-10 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
+        <div className="flex flex-col items-center gap-6 text-center sm:gap-7 lg:items-start lg:text-left">
+          <h2 className="max-w-[640px] text-3xl leading-tight font-semibold text-balance sm:text-5xl sm:leading-tight">
             {title}
           </h2>
           {buttons !== false && buttons.length > 0 && (
@@ -52,8 +52,16 @@ export default function CTA({
               ))}
             </div>
           )}
-          <p className="text-muted-foreground text-sm">
-            <Good>Sem cartão.</Good> Monte a primeira lista agora.
+          <p className="text-muted-foreground text-sm sm:text-base">
+            <Good>Sem cartão.</Good>{" "}
+            <a
+              href={siteConfig.links.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand font-semibold hover:underline"
+            >
+              Prefere agendar uma demonstração?
+            </a>
           </p>
         </div>
         <DayWidget />
@@ -65,8 +73,6 @@ export default function CTA({
   );
 }
 
-// Réplica do card "Trabalho do dia" do Painel do Atlas: é o que a pessoa vê
-// no primeiro dia depois de montar a lista.
 function DayWidget() {
   const radius = 42;
   const circumference = 2 * Math.PI * radius;
@@ -75,8 +81,8 @@ function DayWidget() {
       aria-hidden="true"
       className="glass-2 dark:glass-3 mx-auto flex w-full max-w-[420px] flex-col gap-5 rounded-2xl p-6 shadow-2xl"
     >
-      <span className="text-muted-foreground text-[11px] font-semibold tracking-[0.16em] uppercase">
-        Trabalho do dia
+      <span className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
+        Trabalho do dia · Painel
       </span>
       <div className="flex items-center gap-5">
         <div className="relative size-24 shrink-0">
@@ -103,21 +109,19 @@ function DayWidget() {
           </svg>
           <span className="absolute inset-0 flex flex-col items-center justify-center">
             <span className="text-xl font-bold tabular-nums">7/20</span>
-            <span className="text-muted-foreground text-[10px] tracking-wider uppercase">
-              hoje
-            </span>
+            <span className="text-muted-foreground text-xs uppercase">hoje</span>
           </span>
         </div>
         <div className="flex flex-col gap-2">
           <span className="text-lg leading-snug font-semibold">
             Faltam 13 ligações hoje.
           </span>
-          <span className="w-fit rounded-full bg-emerald-500/12 px-2.5 py-1 text-xs font-semibold text-emerald-500">
+          <span className="w-fit rounded-full bg-emerald-500/12 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-500">
             2 reuniões agendadas
           </span>
         </div>
       </div>
-      <div className="border-border/15 flex items-center justify-between border-t pt-4 text-sm">
+      <div className="border-border/15 flex items-center justify-between border-t pt-4 text-sm sm:text-base">
         <span className="text-muted-foreground">Meta de hoje: 20 ligações</span>
         <span className="text-brand font-semibold">Ligar agora</span>
       </div>

@@ -39,31 +39,38 @@ export default function FooterSection({
     {
       title: "Produto",
       links: [
-        { text: "Funcionalidades", href: "#funcionalidades" },
         { text: "Como funciona", href: "#como-funciona" },
-        { text: "Planos", href: "#planos" },
-        { text: "Dúvidas", href: "#duvidas" },
+        { text: "Agente Atlas", href: "#agente" },
+        { text: "CRM & Funil", href: "#crm" },
+        { text: "Integrações", href: "#integracoes" },
+        { text: "Planos & Preços", href: "#planos" },
+        { text: "Dúvidas frequentes", href: "#duvidas" },
       ],
     },
     {
-      title: "Conta",
+      title: "Conta & Recursos",
       links: [
-        { text: "Entrar", href: siteConfig.loginUrl },
-        { text: "Testar grátis", href: siteConfig.getStartedUrl },
+        { text: "Entrar na conta", href: siteConfig.loginUrl },
+        { text: "Testar grátis (25 créditos)", href: siteConfig.getStartedUrl },
+        { text: "Indique e Ganhe", href: "#indique-e-ganhe" },
+        { text: "Suporte e Comunidade", href: "#comunidade" },
       ],
     },
     {
-      title: "Contato",
-      links: [{ text: "Falar com vendas", href: siteConfig.links.sales }],
+      title: "Contato & Demonstração",
+      links: [
+        { text: "Falar com vendas", href: siteConfig.links.sales },
+        { text: "Agendar demonstração", href: siteConfig.links.demo },
+        { text: "Matteline VoIP", href: siteConfig.links.matte },
+      ],
     },
   ],
   copyright = "© 2026 Atlas. Todos os direitos reservados.",
-  // TODO: links das páginas de termos e privacidade
   policies = [
-    { text: "Privacidade", href: "#" },
-    { text: "Termos de uso", href: "#" },
+    { text: "Segurança e LGPD", href: "#seguranca" },
+    { text: "Privacidade", href: "#seguranca" },
+    { text: "Termos de uso", href: "#seguranca" },
   ],
-  // O seletor de tema do template é em inglês e a LP é pensada no escuro
   showModeToggle = false,
   className,
 }: FooterProps) {
@@ -77,6 +84,9 @@ export default function FooterSection({
                 {logo}
                 <h3 className="text-xl font-bold tracking-[0.18em]">{name}</h3>
               </div>
+              <p className="text-muted-foreground text-xs mt-3 max-w-[260px] leading-relaxed">
+                A central de prospecção inteligente que acha o decisor, confere cada canal e coloca você para ligar e fechar.
+              </p>
             </FooterColumn>
             {columns.map((column) => (
               <FooterColumn key={column.title}>
@@ -85,7 +95,7 @@ export default function FooterSection({
                   <a
                     key={`${link.href}-${link.text}`}
                     href={link.href}
-                    className="text-muted-foreground text-sm"
+                    className="text-muted-foreground hover:text-foreground text-sm transition-colors"
                   >
                     {link.text}
                   </a>
@@ -97,7 +107,11 @@ export default function FooterSection({
             <div>{copyright}</div>
             <div className="flex items-center gap-4">
               {policies.map((policy) => (
-                <a key={`${policy.href}-${policy.text}`} href={policy.href}>
+                <a
+                  key={`${policy.href}-${policy.text}`}
+                  href={policy.href}
+                  className="hover:text-foreground transition-colors"
+                >
                   {policy.text}
                 </a>
               ))}

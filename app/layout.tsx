@@ -8,14 +8,16 @@ import { inter } from "@/lib/fonts";
 import { siteConfig } from "../config/site";
 
 export const viewport: Viewport = {
-  themeColor: "#09090b",
-  colorScheme: "dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7f7f8" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
+  ],
 };
 
 // Favicon e apple-touch-icon vêm de app/icon.png e app/apple-icon.png (logo do Atlas)
 export const metadata: Metadata = {
   title: {
-    default: `${siteConfig.name} | Da lista ao contrato, sem sair do Atlas`,
+    default: `${siteConfig.name} | O CRM preguiçoso que faz o trabalho do seu SDR`,
     template: `%s - ${siteConfig.name}`,
   },
   metadataBase: new URL(siteConfig.url),
@@ -29,6 +31,7 @@ export const metadata: Metadata = {
     "prospecção ativa",
     "SDR",
     "vendas B2B",
+    "agente de IA para vendas",
   ],
   openGraph: {
     type: "website",
@@ -62,15 +65,13 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className="dark"
-      style={{ colorScheme: "dark" }}
       suppressHydrationWarning
     >
       <body className={`${inter.variable} bg-background font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <a

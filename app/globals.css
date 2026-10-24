@@ -67,8 +67,8 @@
   /* Animations */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
-  --animate-appear: appear 0.6s forwards ease-out;
-  --animate-appear-zoom: appear-zoom 0.6s forwards ease-out;
+  --animate-appear: appear 0.6s forwards cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-appear-zoom: appear-zoom 0.6s forwards cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Breakpoints */
   --breakpoint-xs: 30rem;
@@ -93,21 +93,16 @@
     0% {
       opacity: 0;
       transform: translateY(1rem);
-      filter: blur(0.5rem);
-    }
-    50% {
-      filter: blur(0);
     }
     100% {
       opacity: 1;
       transform: translateY(0);
-      filter: blur(0);
     }
   }
   @keyframes appear-zoom {
     0% {
       opacity: 0;
-      transform: scale(0.5);
+      transform: scale(0.92);
     }
     100% {
       opacity: 1;
@@ -117,9 +112,9 @@
 }
 
 :root {
-  /* Accent colors */
-  --brand: oklch(62% 0.19 254);
-  --brand-foreground: oklch(70% 0.15 245);
+  /* Accent colors — contraste >= 4.8:1 sobre fundo claro para PageSpeed / WCAG AA */
+  --brand: oklch(52% 0.21 254);
+  --brand-foreground: oklch(62% 0.18 245);
 
   /* Customized shadcn/ui colors */
   --background: oklch(97.65% 0.001 17.18);
@@ -128,12 +123,12 @@
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(62% 0.19 254);
+  --primary: oklch(52% 0.21 254);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
+  --muted-foreground: oklch(0.46 0.016 285.938);
   --accent: oklch(0.927 0.001 286.375);
   --accent-foreground: oklch(0.21 0.006 285.885);
   --destructive: oklch(0.577 0.245 27.325);
@@ -182,7 +177,7 @@
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
+  --muted-foreground: oklch(0.72 0.015 286.067);
   --accent: oklch(0.274 0.006 286.033);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.396 0.141 25.723);
@@ -220,9 +215,11 @@
   body {
     @apply bg-background text-foreground;
     touch-action: manipulation;
+    overflow-x: clip;
   }
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
   @media (prefers-reduced-motion: reduce) {
     html {
@@ -231,34 +228,211 @@
   }
 }
 
-/* Entrada dos blocos na rolagem (componente Reveal), sem JavaScript */
+/* Entrada dos blocos na rolagem (componente Reveal) com feature detection completa */
 @keyframes reveal-in {
   from {
     opacity: 0;
+    scale: 0.98;
     translate: var(--reveal-x, 0) var(--reveal-y, 0);
   }
   to {
     opacity: 1;
+    scale: 1;
     translate: 0 0;
   }
 }
 
-@supports (animation-timeline: view()) {
+@supports ((animation-timeline: view()) and (animation-range: entry)) {
   @media (prefers-reduced-motion: no-preference) {
     .reveal {
-      animation: reveal-in linear both;
+      animation: reveal-in cubic-bezier(0.16, 1, 0.3, 1) both;
       animation-timeline: view();
       animation-range: entry var(--reveal-start, 0%)
-        entry calc(var(--reveal-start, 0%) + 70%);
+        entry calc(var(--reveal-start, 0%) + 48%);
     }
     .reveal-left {
-      --reveal-x: -2.5rem;
+      --reveal-x: -2rem;
     }
     .reveal-right {
-      --reveal-x: 2.5rem;
+      --reveal-x: 2rem;
     }
     .reveal-bottom {
-      --reveal-y: 2.5rem;
+      --reveal-y: 2rem;
     }
+  }
+}
+
+/* Visual do hero (HeroFlow): 4 quadros acendem em sequência, ciclo de 12s.
+   Só opacity e transform (rodam na GPU, sem repintar a página a cada quadro). */
+.flow-step::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow:
+    0 0 0 1px var(--brand),
+    0 12px 32px -12px var(--brand);
+}
+/* sem animação (movimento reduzido), só a versão nítida aparece */
+.flow-reveal-blur {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .flow-step {
+    animation: flow-dim 12s ease-in-out infinite both;
+  }
+  .flow-step::after {
+    animation: flow-ring 12s ease-in-out infinite both;
+    animation-delay: inherit;
+  }
+  .flow-reveal {
+    animation: flow-reveal 12s ease-in-out infinite both;
+  }
+  .flow-reveal-blur {
+    animation: flow-unblur 12s ease-in-out infinite both;
+  }
+  .flow-drop {
+    animation: flow-drop 12s ease-out infinite both;
+  }
+}
+
+@keyframes flow-dim {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  4%,
+  22% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes flow-ring {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  4%,
+  22% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+}
+
+/* decisor: a versão nítida aparece por cima da borrada quando o quadro 3 acende (6s) */
+@keyframes flow-reveal {
+  0%,
+  50% {
+    opacity: 0;
+  }
+  58%,
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes flow-unblur {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  58%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* card entra na coluna do CRM quando o quadro 4 acende (9s) */
+@keyframes flow-drop {
+  0%,
+  74% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  80%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Micro-animações contínuas das mini-telas (GPU: apenas transform e opacity) */
+@keyframes float-badge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes wave-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes bar-breathe {
+  0%,
+  100% {
+    transform: scaleX(0.96);
+    opacity: 0.88;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  60%,
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-float-badge {
+    animation: float-badge 3.6s ease-in-out infinite;
+  }
+  .animate-wave-bar {
+    animation: wave-pulse 1.3s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .animate-score-bar {
+    animation: bar-breathe 3.2s ease-in-out infinite;
+    transform-origin: left center;
+  }
+  .animate-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .animate-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 45%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--brand) 16%, transparent),
+      transparent
+    );
+    animation: shimmer-sweep 5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    pointer-events: none;
   }
 }
