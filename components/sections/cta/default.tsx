@@ -82,7 +82,7 @@ function DayWidget() {
       className="glass-2 dark:glass-3 mx-auto flex w-full max-w-[420px] flex-col gap-5 rounded-2xl p-6 shadow-2xl"
     >
       <span className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
-        Trabalho do dia · Painel
+        Ritmo do mês
       </span>
       <div className="flex items-center gap-5">
         <div className="relative size-24 shrink-0">
@@ -104,25 +104,25 @@ function DayWidget() {
               strokeLinecap="round"
               className="stroke-brand"
               strokeDasharray={circumference}
-              strokeDashoffset={circumference * 0.65}
+              strokeDashoffset={circumference * 0}
             />
           </svg>
           <span className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-xl font-bold tabular-nums">7/20</span>
-            <span className="text-muted-foreground text-xs uppercase">hoje</span>
+            <span className="text-xl font-bold tabular-nums">105%</span>
+            <span className="text-muted-foreground text-xs uppercase">da meta</span>
           </span>
         </div>
         <div className="flex flex-col gap-2">
           <span className="text-lg leading-snug font-semibold">
-            Faltam 13 ligações hoje.
+            No ritmo atual, você bate a meta.
           </span>
           <span className="w-fit rounded-full bg-emerald-500/12 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-500">
-            2 reuniões agendadas
+            21 de 20 reuniões previstas
           </span>
         </div>
       </div>
       <div className="border-border/15 flex items-center justify-between border-t pt-4 text-sm sm:text-base">
-        <span className="text-muted-foreground">Meta de hoje: 20 ligações</span>
+        <span className="text-muted-foreground">Próximo bloco: 14:00 · ligação</span>
         <span className="text-brand font-semibold">Ligar agora</span>
       </div>
     </div>

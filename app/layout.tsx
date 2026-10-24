@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "prospecção ativa",
     "SDR",
     "vendas B2B",
-    "agente de IA para vendas",
+    "agente de qualificação de leads",
   ],
   openGraph: {
     type: "website",

@@ -7,15 +7,15 @@ import Glow from "../../ui/glow";
 import { Good } from "../../ui/highlight";
 import { LinkButton } from "../../ui/link-button";
 import { Section } from "../../ui/section";
-import { HeroFlow } from "./flow";
+import { HeroVideo } from "./video";
 
 export default function Hero() {
   return (
     <Section className="relative overflow-hidden pb-16 sm:pb-24">
-      <div className="max-w-container relative z-10 mx-auto grid grid-cols-1 items-center gap-12 pt-10 lg:grid-cols-[1.08fr_1fr] lg:gap-14 lg:pt-16 [&>*]:min-w-0">
+      <div className="max-w-container relative z-10 mx-auto grid grid-cols-1 items-center gap-12 pt-10 lg:grid-cols-[0.92fr_1.18fr] lg:gap-14 lg:pt-16 [&>*]:min-w-0">
         <div className="flex flex-col items-center gap-6 text-center sm:gap-7 lg:items-start lg:text-left">
           <Announcement href="#agente" className="animate-appear" />
-          <h1 className="from-foreground to-foreground dark:to-muted-foreground relative inline-block bg-linear-to-r bg-clip-text text-4xl leading-[1.06] font-semibold tracking-tight text-balance text-transparent sm:text-6xl lg:text-[62px]">
+          <h1 className="from-foreground to-foreground dark:to-muted-foreground relative inline-block bg-linear-to-r bg-clip-text text-4xl leading-[1.06] font-semibold tracking-tight text-balance text-transparent sm:text-6xl lg:text-[56px]">
             O CRM preguiçoso que faz o trabalho do SDR.
           </h1>
           <p className="text-muted-foreground max-w-[560px] text-lg leading-relaxed font-medium text-balance sm:text-xl">
@@ -44,7 +44,7 @@ export default function Hero() {
             <Good>Sem cartão.</Good> 25 créditos com a pesquisa completa do Pro.
           </p>
         </div>
-        <HeroFlow className="animate-appear mx-auto max-w-[560px] lg:max-w-none" />
+        <HeroVideo className="animate-appear mx-auto max-w-[640px] lg:max-w-none" />
       </div>
       <Glow variant="top" className="opacity-60" />
     </Section>

@@ -5,7 +5,14 @@ import { siteConfig } from "@/config/site";
 import { LinkButton } from "../../ui/link-button";
 import { Section } from "../../ui/section";
 
-const SEGMENTS = ["SaaS", "Imobiliárias", "Concessionárias", "Times com 20+ vendedores"];
+const SEGMENTS = ["SaaS", "Imobiliárias", "Concessionárias", "Indústrias", "Times grandes"];
+const ENTREGAS = [
+  "Créditos e usuários sob medida",
+  "Mais fontes de dados e algoritmo dedicado ao seu nicho",
+  "Implementação e treinamento do time",
+  "Integração com o seu CRM e API",
+  "Gerente de conta dedicado",
+];
 
 export default function Enterprise() {
   return (
@@ -17,14 +24,23 @@ export default function Enterprise() {
         />
         <div className="relative flex flex-col gap-5">
           <span className="text-brand text-xs font-semibold tracking-[0.16em] uppercase">
-            Operações maiores
+            Atlas Enterprise
           </span>
           <h2 className="text-3xl leading-tight font-semibold text-balance sm:text-4xl">
-            Mais de 20 vendedores? Veja o Atlas rodando no seu cenário.
+            O plano feito sob medida para a sua operação.
           </h2>
           <p className="text-muted-foreground max-w-[520px] text-base sm:text-lg">
-            Demonstração de 20 minutos e proposta sob medida para a sua operação.
+            Para empresas que precisam de mais volume, dados exclusivos e um time
+            inteiro prospectando. Orçamento em uma demonstração de 20 minutos.
           </p>
+          <ul className="grid gap-2 sm:grid-cols-2">
+            {ENTREGAS.map((t) => (
+              <li key={t} className="flex items-start gap-2 text-sm">
+                <span className="bg-brand mt-1.5 size-1.5 shrink-0 rounded-full" />
+                {t}
+              </li>
+            ))}
+          </ul>
           <div className="flex flex-wrap gap-2">
             {SEGMENTS.map((label) => (
               <span
@@ -41,7 +57,7 @@ export default function Enterprise() {
             href={siteConfig.links.demo}
             icon={<CalendarClockIcon className="mr-2 size-4" />}
           >
-            Agendar demonstração
+            Montar meu plano Enterprise
           </LinkButton>
           <span className="text-muted-foreground text-sm">
             Atendimento direto com o comercial.

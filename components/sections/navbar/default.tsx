@@ -47,7 +47,7 @@ export default function Navbar({
   name = "ATLAS",
   homeUrl = "#",
   mobileLinks = [
-    { text: "Como funciona", href: "#como-funciona" },
+    { text: "Método ATLAS", href: "#metodo" },
     { text: "Agente Atlas", href: "#agente" },
     { text: "Para quem é", href: "#para-quem" },
     { text: "Planos", href: "#planos" },
