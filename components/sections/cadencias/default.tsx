@@ -22,7 +22,15 @@ export default function Cadencias() {
     <Section id="cadencias">
       <div className="max-w-container mx-auto flex flex-col gap-12">
         <div className="flex max-w-[760px] flex-col gap-4">
-          <span className="text-brand flex items-center gap-2 text-xs font-semibold tracking-[0.16em] uppercase"><RouteIcon className="size-4" /> Cadências inteligentes</span>
+          <div className="flex items-center gap-4">
+            <span className="cad-logo" aria-hidden="true">
+              <span className="mt-anel" /><span className="mt-anel r" />
+              <img src="/logo-atlas.png" alt="" />
+              <i className="cad-orbita"><b /></i>
+              <i className="mt-bola b1" /><i className="mt-bola b3" />
+            </span>
+            <span className="text-brand flex items-center gap-2 text-xs font-semibold tracking-[0.16em] uppercase"><RouteIcon className="size-4" /> Cadências inteligentes</span>
+          </div>
           <h2 className="text-3xl leading-tight font-semibold tracking-tight text-balance sm:text-5xl">O follow-up que ninguém faz, o Atlas faz por você.</h2>
           <p className="text-muted-foreground text-base leading-relaxed sm:text-lg">A maioria das vendas pede vários contatos, e quase todo mundo desiste no segundo. Escolha a rota, coloque os leads e deixe o Atlas lembrar, enviar e pausar na hora certa.</p>
         </div>

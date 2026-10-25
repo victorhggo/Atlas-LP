@@ -164,7 +164,7 @@ function Cartao({ p, anual }: { p: Plano; anual: boolean }) {
 /** Grátis, Essencial, Pro e Equipe, como no sistema. O Enterprise tem a sua própria seção logo abaixo. */
 export function AtlasPlanos({ anual }: { anual: boolean }) {
   return (
-    <div className="atlas-planos">
+    <div className="atlas-planos atlas-planos-raiz">
       {PLANOS.filter((p) => p.nome !== "Enterprise").map((p) => <Cartao key={p.nome} p={p} anual={anual} />)}
     </div>
   );
@@ -245,7 +245,7 @@ const POR_QUE: { I: LucideIcon; t: string; d: string; c: string }[] = [
 /** Enterprise, Por que o Pro, Compare os planos e Recargas: iguais à página de planos do sistema. */
 export function AtlasPlanosExtras({ anual }: { anual: boolean }) {
   return (
-    <div className="atlas-planos-extras atlas-planos">
+    <div className="atlas-planos-extras atlas-planos-raiz">
       <section className="enterprise" onMouseMove={luz}>
         <div className="enterprise-txt">
           <span className="enterprise-selo"><GemIcon /> Enterprise · sob medida</span>
@@ -310,7 +310,7 @@ export function AtlasPlanosExtras({ anual }: { anual: boolean }) {
 }
 
 function CartaoRecarga({ p, sub }: { p: Plano; sub: string }) {
-  const [aberto, setAberto] = useState(true);
+  const [aberto, setAberto] = useState(false);
   return (
     <article className={`plano cor-${p.cor}${p.destaque ? " destaque" : ""}`} onMouseMove={luz}>
       {p.destaque && <span className="plano-selo">{p.selo}</span>}
