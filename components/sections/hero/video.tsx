@@ -7,7 +7,8 @@ import { cn } from "@/lib/utils";
 export function HeroVideo({ className }: { className?: string }) {
   // O React não escreve "muted" no HTML; sem ele alguns navegadores não deixam o vídeo tocar sozinho.
   const ref = useRef<HTMLVideoElement>(null);
-  useEffect(() => { const v = ref.current; if (!v) return; v.muted = true; v.play().catch(() => {}); }, []);
+  const ref2 = useRef<HTMLVideoElement>(null);
+  useEffect(() => { for (const v of [ref.current, ref2.current]) { if (!v) continue; v.muted = true; v.play().catch(() => {}); } }, []);
   return (
     <figure className={cn("relative m-0 w-full", className)}>
       <div className="border-border/70 bg-background/80 shadow-[0_30px_80px_-30px_rgba(37,99,235,0.45)] overflow-hidden rounded-2xl border backdrop-blur">
@@ -23,20 +24,24 @@ export function HeroVideo({ className }: { className?: string }) {
             Sistema real
           </span>
         </div>
-        <video
-          ref={ref}
-          className="block aspect-[1600/1024] w-full bg-[#0B1220] object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/atlas/video/crm-demo-poster.jpg"
-          aria-label="Demonstração do CRM do Atlas: abrindo um lead no quadro, os canais encontrados e a Ficha Atlas"
-        >
-          <source src="/atlas/video/crm-demo.webm" type="video/webm" />
-          <source src="/atlas/video/crm-demo.mp4" type="video/mp4" />
-        </video>
+        {/* claro (padrão) e escuro: cada um toca no tema da página */}
+        {(["light", "dark"] as const).map((t) => (
+          <video
+            key={t}
+            ref={t === "light" ? ref : ref2}
+            className={`aspect-[1600/1024] w-full object-cover ${t === "light" ? "block bg-white dark:hidden" : "hidden bg-[#0B1220] dark:block"}`}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={`/atlas/video/crm-demo${t === "light" ? "-light" : ""}-poster.jpg`}
+            aria-label="Demonstração do CRM do Atlas: abrindo um lead no quadro, os canais encontrados e a Ficha Atlas"
+          >
+            <source src={`/atlas/video/crm-demo${t === "light" ? "-light" : ""}.webm`} type="video/webm" />
+            <source src={`/atlas/video/crm-demo${t === "light" ? "-light" : ""}.mp4`} type="video/mp4" />
+          </video>
+        ))}
       </div>
       <figcaption className="text-muted-foreground mt-3 text-center text-sm">
         O CRM do Atlas por dentro: o lead no quadro, os canais encontrados e a Ficha Atlas completa.
