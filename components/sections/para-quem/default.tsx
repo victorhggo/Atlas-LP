@@ -1,25 +1,25 @@
-import { BriefcaseIcon, BuildingIcon, CarIcon, CodeIcon } from "lucide-react";
+import { LayersIcon, PhoneCallIcon, TimerIcon, UserCheckIcon } from "lucide-react";
 
 import { Section } from "../../ui/section";
 
-const PUBLICOS = [
-  { I: BriefcaseIcon, t: "Prestadores de serviço e agências", d: "Contabilidade, marketing, consultoria, energia solar. Você vende bem, só não tem tempo de procurar cliente." },
-  { I: BuildingIcon, t: "Imobiliárias e corretoras", d: "Ticket alto, muita concorrência. Chegue no dono antes do concorrente, com o roteiro do nicho na tela." },
-  { I: CarIcon, t: "Concessionárias e revendas", d: "Frotas, locadoras e empresas que compram em volume. Lista pronta por região e porte." },
-  { I: CodeIcon, t: "SaaS e software B2B", d: "Encontre empresas pela tecnologia que usam no site e ligue para quem decide a compra." },
+const BENEFICIOS = [
+  { I: UserCheckIcon, t: "O número de quem decide", d: "Celular do sócio e do responsável na ficha. Sem passar pela recepção nem pedir para falar com o dono." },
+  { I: TimerIcon, t: "Lista pronta em minutos", d: "Escolha o nicho e a região. Em menos de 5 minutos a lista está qualificada e ordenada por quem ligar primeiro." },
+  { I: LayersIcon, t: "Todos os canais da empresa", d: "Site, Instagram, Google Maps, WhatsApp, e-mail e LinkedIn conferidos para você abordar em todos." },
+  { I: PhoneCallIcon, t: "Prospecção multicanal", d: "Ligação, WhatsApp e cadência no mesmo lugar, com o roteiro na tela e o follow-up no horário certo." },
 ];
 
 export default function ParaQuem() {
   return (
     <Section id="para-quem">
       <div className="max-w-container mx-auto flex flex-col gap-10">
-        <div className="flex max-w-[680px] flex-col gap-3">
-          <span className="text-brand text-xs font-semibold tracking-[0.16em] uppercase">Para quem é</span>
-          <h2 className="text-3xl leading-tight font-semibold tracking-tight text-balance sm:text-4xl">Feito para quem vive de prospecção ativa e não quer viver de planilha.</h2>
-          <p className="text-muted-foreground text-base sm:text-lg">PMEs e prestadores de serviço que precisam de reunião na agenda toda semana, sem contratar um time de SDR para isso.</p>
+        <div className="flex max-w-[760px] flex-col gap-3">
+          <span className="text-brand text-xs font-semibold tracking-[0.16em] uppercase">Por que o Atlas</span>
+          <h2 className="text-3xl leading-tight font-semibold tracking-tight text-balance sm:text-4xl">Você perde horas por dia caçando o número do decisor.</h2>
+          <p className="text-muted-foreground text-base sm:text-lg">E normalmente só chega nele depois de 2 a 4 ligações. Com o Atlas, você qualifica uma lista inteira em menos de 5 minutos e já começa a prospectar em todos os canais.</p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {PUBLICOS.map(({ I, t, d }) => (
+          {BENEFICIOS.map(({ I, t, d }) => (
             <div key={t} className="cad-pilar flex-col !items-start">
               <span className="cad-pilar-ico"><I /></span>
               <div><b>{t}</b><p>{d}</p></div>

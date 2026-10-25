@@ -49,7 +49,7 @@ export default function Navbar({
   mobileLinks = [
     { text: "Método ATLAS", href: "#metodo" },
     { text: "Cadências", href: "#cadencias" },
-    { text: "Para quem é", href: "#para-quem" },
+    { text: "Benefícios", href: "#para-quem" },
     { text: "Planos", href: "#planos" },
     { text: "Dúvidas", href: "#duvidas" },
     { text: "Entrar", href: siteConfig.loginUrl },
