@@ -47,7 +47,7 @@ interface NavigationProps {
 
 export default function Navigation({
   menuItems = [
-    { title: "Funcionalidades", isLink: true, href: "#funcionalidades" },
+    { title: "Cadências", isLink: true, href: "#cadencias" },
     { title: "Método ATLAS", isLink: true, href: "#metodo" },
     { title: "Planos", isLink: true, href: "#planos" },
     { title: "Dúvidas", isLink: true, href: "#duvidas" },

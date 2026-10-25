@@ -9,7 +9,7 @@ import { Section } from "../../ui/section";
 const ITEMS = [
   {
     title: "Dados protegidos e isolados",
-    detail: "Listas e conversas isoladas. No Equipe, cada vendedor vê só os próprios leads.",
+    detail: "Listas e conversas isoladas. No plano Equipe, cada vendedor vê apenas os próprios leads.",
     badge: "Criptografado",
   },
   {
@@ -24,7 +24,7 @@ const ITEMS = [
   },
   {
     title: "Pagamentos pelo Asaas",
-    detail: "Assinaturas e recargas via Pix ou cartão de crédito, sem fidelidade.",
+    detail: "Assinaturas processadas com segurança via Pix ou cartão de crédito, sem fidelidade.",
     badge: "Pix e Cartão",
   },
 ];
@@ -40,7 +40,7 @@ export default function Security() {
                 Segurança e LGPD
               </span>
               <h2 className="text-3xl leading-tight font-semibold text-balance sm:text-4xl">
-                Dados protegidos, LGPD e pagamento pelo Asaas.
+                Dados protegidos, conformidade com a LGPD e pagamento pelo Asaas.
               </h2>
               <p className="text-muted-foreground text-base leading-relaxed sm:text-lg">
                 Base pública conferida, <Good>remoção imediata a pedido do titular</Good>{" "}

@@ -140,8 +140,8 @@ export default function FAQ({
       question: "Posso cancelar quando quiser?",
       answer: (
         <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-          <Good>Sim.</Good> Os créditos do plano renovam todo mês, e a recarga
-          avulsa <Good>não expira</Good>: ela soma no saldo.
+          <Good>Sim.</Good> Os créditos do plano renovam todo mês e você pode
+          cancelar quando quiser direto pelo painel, sem fidelidade.
         </p>
       ),
     },

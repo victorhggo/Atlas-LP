@@ -1,6 +1,6 @@
 "use client";
 
-import { BotIcon, BrainIcon, CalendarCheckIcon, CheckIcon, DatabaseIcon, MessageSquareTextIcon, PhoneIcon, SparklesIcon, TargetIcon } from "lucide-react";
+import { BotIcon, BrainIcon, CheckIcon, DatabaseIcon, MessageSquareTextIcon, PhoneIcon, SparklesIcon, TargetIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 // Animações do Método ATLAS feitas em código: leves, nítidas e no tema da página (claro ou escuro).

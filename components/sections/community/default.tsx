@@ -16,7 +16,7 @@ export default function Community() {
             Você nunca prospecta sozinho.
           </h2>
           <p className="text-muted-foreground max-w-[540px] text-base text-balance sm:text-lg">
-            Grupo no WhatsApp, onboarding no Pro e Atlas Academy no Equipe.
+            Grupo no WhatsApp, onboarding no Pro e Atlas Academy no plano Equipe.
           </p>
         </div>
 
@@ -29,7 +29,7 @@ export default function Community() {
                 className="panel border-border/15 bg-background/65 flex flex-col gap-2.5 rounded-xl border p-4 text-xs motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:-translate-y-1 sm:text-sm"
               >
                 <div className="flex items-center justify-between gap-2">
-                  <span className="font-semibold">Suporte Atlas · WhatsApp</span>
+                  <span className="font-semibold">Suporte Atlas: WhatsApp</span>
                   <span className="flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
                     <span className="size-2 rounded-full bg-emerald-500 motion-safe:animate-pulse" />
                     Assinantes

@@ -1,10 +1,10 @@
 "use client";
 import "./atlas-planos.css";
 
-// Cartões de planos iguais aos do sistema (atlas.escolhidospro.com.br/planos). Dados copiados de web/components/planos.tsx.
-import { useState, type MouseEvent } from "react";
 import type { LucideIcon } from "lucide-react";
 import { BotIcon, CalendarCheckIcon, ChevronDownIcon, CoinsIcon, FileSpreadsheetIcon, GlobeIcon, InfinityIcon, KanbanIcon, LayersIcon, ListOrderedIcon, MegaphoneIcon, MessageSquareTextIcon, PhoneIcon, TargetIcon, UsersIcon, WalletIcon, WebhookIcon, ZapIcon } from "lucide-react";
+// Cartões de planos iguais aos do sistema (atlas.escolhidospro.com.br/planos). Dados copiados de web/components/planos.tsx.
+import { createElement, type MouseEvent, useState } from "react";
 
 import { siteConfig } from "@/config/site";
 
@@ -70,8 +70,8 @@ const ICONES: [RegExp, LucideIcon][] = [
 const iconeDe = (t: string) => ICONES.find(([re]) => re.test(t))?.[1] ?? BotIcon;
 const Item = ({ t }: { t: string }) => {
   const [txt, det] = t.split("|");
-  const I = iconeDe(txt);
-  return <li><span className="plano-ico"><I /></span><span>{txt}{det && <em className="plano-det">{det}</em>}</span></li>;
+  const icon = createElement(iconeDe(txt));
+  return <li><span className="plano-ico">{icon}</span><span>{txt}{det && <em className="plano-det">{det}</em>}</span></li>;
 };
 const luz = (e: MouseEvent<HTMLElement>) => {
   const r = e.currentTarget.getBoundingClientRect();

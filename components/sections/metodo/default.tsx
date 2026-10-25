@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 import { Section } from "../../ui/section";
@@ -18,21 +19,27 @@ const ETAPAS = [
 function useNaTela<T extends Element>() {
   const ref = useRef<T>(null);
   const [na, setNa] = useState(false);
+  const [visto, setVisto] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => setNa(e.isIntersecting), { threshold: 0.3 });
+    const io = new IntersectionObserver(([e]) => {
+      setNa(e.isIntersecting);
+      if (e.isIntersecting) {
+        setVisto(true);
+      }
+    }, { threshold: 0.3 });
     io.observe(el);
     return () => io.disconnect();
   }, []);
-  return [ref, na] as const;
+  return [ref, na, visto] as const;
 }
 
 function Visual({ i, ativo }: { i: number; ativo: boolean }) {
   if (i === 0) return (
     <figure className="metodo-print m-0">
-      <img src="/atlas/metodo/a-light.webp" alt="Canais encontrados de uma empresa no Atlas" loading="lazy" className="block w-full dark:hidden" />
-      <img src="/atlas/metodo/a-dark.webp" alt="Canais encontrados de uma empresa no Atlas" loading="lazy" className="hidden w-full dark:block" />
+      <Image src="/atlas/metodo/a-light.webp" alt="Canais encontrados de uma empresa no Atlas" width={1040} height={600} loading="lazy" className="block w-full dark:hidden rounded-xl" />
+      <Image src="/atlas/metodo/a-dark.webp" alt="Canais encontrados de uma empresa no Atlas" width={1040} height={600} loading="lazy" className="hidden w-full dark:block rounded-xl" />
     </figure>
   );
   if (i === 1) return <VisualTecnologia ativo={ativo} />;
@@ -42,9 +49,7 @@ function Visual({ i, ativo }: { i: number; ativo: boolean }) {
 }
 
 function Bloco({ e, i }: { e: (typeof ETAPAS)[number]; i: number }) {
-  const [ref, na] = useNaTela<HTMLDivElement>();
-  const [visto, setVisto] = useState(false);
-  useEffect(() => { if (na) setVisto(true); }, [na]);
+  const [ref, na, visto] = useNaTela<HTMLDivElement>();
   const inverte = i % 2 === 1;
   return (
     <div id={`metodo-${i}`} ref={ref} className={`metodo-bloco${visto ? " visto" : ""} grid items-center gap-8 lg:grid-cols-[0.85fr_1fr] lg:gap-16`}>
