@@ -8,9 +8,7 @@ import Cadencias from "../components/sections/cadencias/default";
 import Calculator from "../components/sections/calculator/default";
 import CTA from "../components/sections/cta/default";
 import FAQ from "../components/sections/faq/default";
-import {
-  TeamsSection,
-} from "../components/sections/features/default";
+import Equipe from "../components/sections/equipe/default";
 import Footer from "../components/sections/footer/default";
 import Hero from "../components/sections/hero/default";
 import Metodo from "../components/sections/metodo/default";
@@ -42,7 +40,7 @@ export default function Home() {
       {/* Destaque: CRM e Funil */}
       <CrmDemo />
       {/* Gestão de Equipes */}
-      <TeamsSection />
+      <Equipe />
       {/* Calculadora de ROI */}
       <Calculator />
       {/* Planos com Enterprise integrado (sem recargas avulsas) */}

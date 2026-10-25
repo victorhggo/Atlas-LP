@@ -15,6 +15,7 @@ const NICHOS = {
       Perguntas: ["Quantas avaliações por mês?", "Quantas viram tratamento?", "Quem apresenta o orçamento: o dentista ou a recepção?"],
       Objeções: ["“Já temos agência” → Ótimo. Quantos pacientes particulares ela trouxe no mês?", "“Agora não é o momento” → Vamos só ver o custo das avaliações perdidas."],
       "O que convence": ["Número de avaliações que viraram tratamento em clínicas parecidas", "Agenda cheia sem depender de convênio"],
+      Palavras: ["Use: tratamento, avaliação, agenda, particular", "Evite: marketing, seguidores, curtidas"],
     },
   },
   Imobiliárias: {
@@ -25,13 +26,14 @@ const NICHOS = {
       Perguntas: ["Quantos leads chegam por mês?", "Quanto tempo leva o primeiro contato?", "Quem faz o follow-up depois da visita?"],
       Objeções: ["“Já usamos CRM” → Ele te diz quem ligar agora ou só guarda o contato?", "“Os portais já trazem lead” → E quantos viram visita?"],
       "O que convence": ["Visitas agendadas a mais por corretor", "Follow-up que sai sozinho no WhatsApp"],
+      Palavras: ["Use: visita, captação, carteira, VGV", "Evite: anúncio, impulsionar, engajamento"],
     },
   },
 } as const;
 
 type Nicho = keyof typeof NICHOS;
 type Aba = keyof (typeof NICHOS)[Nicho]["abas"];
-const ICONE_ABA = { Perguntas: MessageCircleQuestionIcon, Objeções: ShieldCheckIcon, "O que convence": LightbulbIcon } as const;
+const ICONE_ABA = { Perguntas: MessageCircleQuestionIcon, Objeções: ShieldCheckIcon, "O que convence": LightbulbIcon, Palavras: SpellCheck2Icon } as const;
 
 const BENEFICIOS = [
   { I: FlameIcon, t: "As dores de cada segmento", d: "O que tira o sono do dono, antes de você ligar." },
@@ -82,7 +84,6 @@ export default function Inteligencia() {
                 {(Object.keys(n.abas) as Aba[]).map((k) => { const I = ICONE_ABA[k]; return (
                   <button key={k} type="button" className={aba === k ? "on" : ""} onClick={() => setAba(k)}><I />{k}</button>
                 ); })}
-                <span className="ic-aba-x"><SpellCheck2Icon />Palavras</span>
               </div>
               <ol className="ic-lista">{n.abas[aba].map((t) => <li key={t}>{t}</li>)}</ol>
             </div>

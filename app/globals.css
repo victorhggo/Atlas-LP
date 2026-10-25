@@ -762,3 +762,8 @@
 .ic-lista { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; min-height: 84px; }
 @media (max-width: 560px) { .ic-dores { grid-template-columns: 1fr; } .ic-aba-x { display: none; } }
 .ic-lista { list-style: decimal; } .ic-lista li::marker { color: var(--muted-foreground); }
+.eq-txt, .eq-prints { animation: eq-in .45s ease both; }
+@keyframes eq-in { from { opacity: 0; transform: translateY(8px); } }
+.eq-prints { display: grid; gap: 14px; max-width: 760px; width: 100%; margin: 0 auto; }
+.eq-prints.duplo { grid-template-columns: 1fr 1fr; max-width: 640px; align-items: start; }
+.eq-print { margin: 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 24px 60px -30px rgb(0 0 0 / 40%); background: var(--background); }
