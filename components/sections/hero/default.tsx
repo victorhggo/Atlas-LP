@@ -1,4 +1,4 @@
-import { ArrowRightIcon, PlayIcon } from "lucide-react";
+import { ArrowRightIcon, CalendarCheckIcon } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 
@@ -36,9 +36,9 @@ export default function Hero() {
               href={siteConfig.links.demo}
               variant="glow"
               size="lg"
-              icon={<PlayIcon className="mr-2 size-4" />}
+              icon={<CalendarCheckIcon className="mr-2 size-4" />}
             >
-              Ver demonstração ao vivo
+              Agendar demonstração
             </LinkButton>
           </div>
           <p className="text-muted-foreground -mt-1 text-sm sm:text-base">
