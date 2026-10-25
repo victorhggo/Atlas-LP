@@ -617,3 +617,27 @@
 .cd-bolha { max-width: 88%; padding: 9px 12px; border-radius: 14px 14px 4px 14px; margin-left: auto; background: color-mix(in oklab, #22c55e 14%, var(--background)); border: 1px solid rgb(34 197 94 / 30%); }
 .cd-bolha small { font-size: 10.5px; font-weight: 700; color: #16a34a; } .cd-bolha p { margin: 2px 0 0; line-height: 1.45; }
 @media (max-width: 640px) { .cd-kpis { grid-template-columns: repeat(2, 1fr); } .cd-grade { grid-template-columns: 1fr; } .cd-lead { grid-template-columns: 1fr; } }
+/* letra com autoridade: peso forte, desenho geométrico, sem brincadeira */
+.metodo-letra-g { font-weight: 800 !important; font-size: 92px !important; letter-spacing: -.045em !important; line-height: .82 !important;
+  background: linear-gradient(170deg, var(--foreground) 30%, color-mix(in oklab, var(--brand) 85%, var(--foreground)) 100%) !important;
+  -webkit-background-clip: text !important; background-clip: text !important; }
+.metodo-sigla a { font-weight: 700 !important; font-size: 26px !important; letter-spacing: -.01em !important; color: var(--foreground) !important; opacity: .55; }
+.metodo-sigla a:hover { opacity: 1; color: var(--brand) !important; }
+/* ícone animado de cada letra */
+.metodo-cab { align-items: center; gap: 18px; }
+.metodo-ico { position: relative; flex: none; display: grid; place-items: center; width: 54px; height: 54px; border-radius: 16px;
+  background: color-mix(in oklab, var(--brand) 12%, transparent); border: 2px solid color-mix(in oklab, var(--brand) 40%, transparent); box-shadow: 0 10px 26px -12px var(--brand); animation: mt-pulso 2.6s ease-in-out infinite; }
+.metodo-ico .mt-anel { border-radius: 16px; }
+.metodo-ico .mt-bola.b1 { width: 8px; height: 8px; } .metodo-ico .mt-bola.b2 { width: 10px; height: 10px; }
+.metodo-ico-i { position: relative; width: 24px; height: 24px; color: var(--brand); }
+.metodo-ico.m0 { overflow: hidden; }
+.metodo-radar { position: absolute; inset: 0; background: conic-gradient(from 0deg, color-mix(in oklab, var(--brand) 45%, transparent), transparent 30%); animation: mt-gira 2.4s linear infinite; }
+.metodo-ico.m1 .metodo-ico-i { animation: m-pensa 2.2s ease-in-out infinite; }
+@keyframes m-pensa { 50% { transform: scale(1.12); filter: drop-shadow(0 0 6px var(--brand)); } }
+.metodo-ico.m2 .metodo-ico-i { animation: m-check 2.4s ease-in-out infinite; }
+@keyframes m-check { 0%, 60%, 100% { transform: none; } 70% { transform: translateY(-3px) rotate(-6deg); } 80% { transform: none; } }
+.metodo-ico.m3 .metodo-ico-i { animation: m-cal 1.8s steps(1) infinite; }
+@keyframes m-cal { 50% { color: #16a34a; } }
+.metodo-ico.m4 .metodo-ico-i { animation: m-trofeu 2.6s ease-in-out infinite; color: #d97706; }
+@keyframes m-trofeu { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); filter: drop-shadow(0 0 8px rgb(217 119 6 / 70%)); } }
+@media (prefers-reduced-motion: reduce) { .metodo-ico, .metodo-ico * { animation: none !important; } }

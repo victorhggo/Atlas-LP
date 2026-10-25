@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { BrainIcon, CalendarCheckIcon, RadarIcon, TrophyIcon, UserCheckIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { Section } from "../../ui/section";
 import { VisualAgenda, VisualLead, VisualSucesso, VisualTecnologia } from "./visuais";
+
+const ICONES = [RadarIcon, BrainIcon, UserCheckIcon, CalendarCheckIcon, TrophyIcon];
 
 // Método ATLAS: cada letra explica, em uma linha, o que o sistema faz por você, com uma demonstração ao lado.
 const ETAPAS = [
@@ -56,6 +59,14 @@ function Bloco({ e, i }: { e: (typeof ETAPAS)[number]; i: number }) {
       <div className={`flex flex-col gap-4 ${inverte ? "lg:order-2" : ""}`}>
         <div className="metodo-cab">
           <span className="metodo-letra-g" aria-hidden="true">{e.letra}</span>
+          {(() => { const I = ICONES[i]; return (
+            <span className={`metodo-ico m${i}`} aria-hidden="true">
+              <span className="mt-anel" /><span className="mt-anel r" />
+              {i === 0 && <span className="metodo-radar" />}
+              <I className="metodo-ico-i" />
+              <i className="mt-bola b1" /><i className="mt-bola b2" />
+            </span>
+          ); })()}
           <span className="metodo-num">0{i + 1}<i /></span>
         </div>
         <h3 className="-mt-2 text-2xl font-semibold tracking-tight sm:text-[34px]">{e.nome}</h3>
