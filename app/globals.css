@@ -725,3 +725,8 @@
 .qualif-credito { display: flex; gap: 14px; align-items: flex-start; margin-top: 6px; padding: 16px; border-radius: 16px; border: 1px solid rgb(245 158 11 / 35%); background: linear-gradient(135deg, rgb(245 158 11 / 10%), transparent); }
 .qualif-credito b { font-size: 16px; } .qualif-credito p { margin: 2px 0 0; font-size: 14px; color: var(--muted-foreground); }
 .qualif-credito-ico { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; color: #fff; background: linear-gradient(135deg, #F59E0B, #F97316); } .qualif-credito-ico svg { width: 20px; height: 20px; }
+#whatsapp .vs-ico { color: #fff !important; background: linear-gradient(135deg, #25d366, #128c7e) !important; border-color: transparent !important; box-shadow: 0 10px 30px -8px rgb(37 211 102 / 60%) !important; }
+#whatsapp .vs-ico svg { width: 30px; height: 30px; }
+#whatsapp .vs-ico .mt-anel { border-color: rgb(37 211 102 / 45%) !important; }
+#whatsapp .vs-ico + span { color: #128c7e; }
+.dark #whatsapp .vs-ico + span { color: #25d366; }
