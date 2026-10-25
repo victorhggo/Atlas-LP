@@ -85,45 +85,11 @@ export default function FAQ({
       ),
     },
     {
-      question: "O que significa P1, P2, P3?",
-      answer: (
-        <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-          É a ordem sugerida de abordagem, pelo score cadastral: telefone próprio, celular, e-mail próprio, sócio, idade e porte da empresa. Você sempre sabe por onde começar.
-        </p>
-      ),
-    },
-    {
-      question: "Como a meta do dia é calculada?",
-      answer: (
-        <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-          Você informa quanto quer faturar, o ticket médio e o prazo. O Atlas calcula as ligações por dia pelas suas taxas de conversão e pelos dias úteis de prospecção, sem contar feriados.
-        </p>
-      ),
-    },
-    {
       question: "Posso fazer upgrade no meio do mês?",
       answer: (
         <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
           <Good>Sim.</Good> No upgrade você paga só a diferença e os créditos
           extras <Good>entram na hora</Good>.
-        </p>
-      ),
-    },
-    {
-      question: "Posso trocar o número do WhatsApp?",
-      answer: (
-        <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-          <Good>Sim.</Good> Você desconecta e conecta outro número sem perder o
-          CRM.
-        </p>
-      ),
-    },
-    {
-      question: "Funciona no celular?",
-      answer: (
-        <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-          <Good>Sim.</Good> O Atlas abre direto no navegador do celular para você
-          checar a agenda, ligar com 1 toque e acompanhar o funil.
         </p>
       ),
     },

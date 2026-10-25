@@ -18,8 +18,12 @@ export default function Qualificar() {
           <p className="text-muted-foreground text-base leading-relaxed">Gravado no Atlas: imobiliárias de Minas Gerais, lista com nota de fit, 1 crédito e a ficha volta com site, Instagram, Google Maps, WhatsApp e o celular do sócio.</p>
           <ul className="flex flex-col gap-2 text-sm">
             {["Lista montada na hora, sem planilha", "Todos os canais de venda da empresa", "Número de quem decide, não da recepção"].map((t) => <li key={t} className="flex items-center gap-2"><CheckIcon className="text-brand size-4" />{t}</li>)}
-            <li className="flex items-center gap-2"><CoinsIcon className="size-4 text-amber-500" />1 crédito por empresa, cobrado só se trouxer dado novo</li>
+            
           </ul>
+          <div className="qualif-credito">
+            <span className="qualif-credito-ico"><CoinsIcon /></span>
+            <div><b>1 crédito = 1 empresa qualificada</b><p>Vários canais ativos (site, Instagram, Maps, WhatsApp, e-mail) e o número do responsável. Sem dado novo, o crédito volta.</p></div>
+          </div>
         </div>
         <figure className="cad-video m-0">
           <div className="cad-barra"><span /><span /><span /><em>atlas.escolhidospro.com.br/busca</em><b><i /> Sistema real</b></div>

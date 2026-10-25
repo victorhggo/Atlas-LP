@@ -1,6 +1,4 @@
-import { ArrowRightIcon, BriefcaseIcon, BuildingIcon, CarIcon, CodeIcon, LayersIcon } from "lucide-react";
-
-import { siteConfig } from "@/config/site";
+import { BriefcaseIcon, BuildingIcon, CarIcon, CodeIcon } from "lucide-react";
 
 import { Section } from "../../ui/section";
 
@@ -28,11 +26,6 @@ export default function ParaQuem() {
             </div>
           ))}
         </div>
-        <a href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer" className="para-quem-ent">
-          <span className="para-quem-ent-ico"><LayersIcon /></span>
-          <span className="flex flex-col"><b>Operação grande? Conheça o Atlas Enterprise.</b><span>Mais fontes de dados, algoritmo próprio para o seu mercado, implementação e treinamento do time.</span></span>
-          <span className="para-quem-ent-cta">Falar com especialista <ArrowRightIcon /></span>
-        </a>
       </div>
     </Section>
   );

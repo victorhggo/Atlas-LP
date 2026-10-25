@@ -38,7 +38,7 @@ export default function CrmDemo() {
             <span className="crm-demo-dica"><MousePointerClickIcon /> Clique para trocar de visão</span>
           </div>
           <div className="crm-demo-legenda" key={v.id}><b>{v.titulo}</b><span>{v.texto}</span></div>
-          <figure className="cad-video m-0">
+          <figure className="cad-video mx-auto m-0 w-full max-w-[880px]">
             <div className="cad-barra"><span /><span /><span /><em>atlas.escolhidospro.com.br/crm · {v.nome}</em><b><i /> Sistema real</b></div>
             <div className="crm-demo-tela">
               {VISOES.map((x, k) => (

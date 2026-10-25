@@ -9,7 +9,6 @@ import { useState } from "react";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import { Good } from "../../ui/highlight";
 import { LinkButton } from "../../ui/link-button";
 import { Reveal } from "../../ui/reveal";
 import { Section } from "../../ui/section";
@@ -94,11 +93,6 @@ export default function Pricing() {
         {/* Plano Enterprise em destaque abaixo dos 4 planos */}
         <AtlasPlanosExtras anual={isAnnual} />
 
-        <p className="text-muted-foreground text-center text-sm sm:text-base">
-          Pix ou cartão pelo Asaas: Qualificar custa 1 crédito e{" "}
-          <Good>só é cobrado se trouxer dado novo</Good>. No upgrade você paga
-          apenas a diferença.
-        </p>
       </div>
     </Section>
   );

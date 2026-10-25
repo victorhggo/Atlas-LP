@@ -56,7 +56,7 @@ const PLANOS: Plano[] = [
     cor: "sky", selo: "Sob medida", nome: "Enterprise", para: "Para operações grandes, com contrato e integração sob medida", tags: [{ t: "Personalizado" }, { t: "Volume", tipo: "ouro" }], preco: "Sob consulta",
     itens: ["Créditos e usuários sob medida", "Integração com o seu CRM e sistemas", "API e relatórios dedicados", "Gerente de conta dedicado"],
     mais: ["Condições de contrato e faturamento próprias"],
-    botao: "Falar com a equipe", contato: true,
+    botao: "Falar com especialista", contato: true,
   },
 ];
 
@@ -255,24 +255,8 @@ export function AtlasPlanosExtras({ anual }: { anual: boolean }) {
         </div>
         <div className="enterprise-cta">
           <b>Sob consulta</b><span>Resposta em até 1 dia útil</span>
-          <a className="plano-btn enterprise-btn" href={`https://wa.me/${WHATS}?text=${encodeURIComponent("Olá! Quero conhecer o plano Enterprise do Atlas.")}`} target="_blank" rel="noreferrer">Falar com a equipe</a>
+          <a className="plano-btn enterprise-btn" href="https://calendar.app.google/yzHEbZEVptG9PYw29" target="_blank" rel="noreferrer">Falar com especialista</a>
         </div>
-      </section>
-
-      <section className="planos-sec por-que">
-        <div className="por-que-cab">
-          <span className="pt-selo"><CrownIcon /> Mais escolhido</span>
-          <h2 className="planos-h2">Por que escolher o Pro?</h2>
-          <p className="planos-intro">O plano para transformar lista em conversa e conversa em venda.</p>
-        </div>
-        <div className="por-que-grid">
-          {POR_QUE.map(({ I, t, d, c }) => (
-            <article key={t} className="por-que-item" style={{ ["--c" as string]: c }} onMouseMove={luz}>
-              <span className="por-que-ico"><I /></span><h3>{t}</h3><p>{d}</p>
-            </article>
-          ))}
-        </div>
-        <div className="por-que-cta"><a href={assinar(anual ? "plano_pro_v2_anual" : "plano_pro_v2")} className="plano-btn primario">Quero o Pro</a><span className="muted small">4x mais créditos que o Essencial · cancele quando quiser</span></div>
       </section>
 
       <section className="planos-sec">
@@ -299,12 +283,6 @@ export function AtlasPlanosExtras({ anual }: { anual: boolean }) {
         </div>
       </section>
       <p className="planos-rodape">Pix ou cartão (crédito ou débito) · Qualificar custa 1 crédito e só é cobrado se achar dados reais · O crédito do plano renova todo mês</p>
-
-      <section className="planos-sec">
-        <h2 className="planos-h2">Recarga de créditos</h2>
-        <p className="planos-intro">Acabou no meio do mês? A recarga não expira e soma no saldo.</p>
-        <div className="planos-grid tres">{RECARGAS.map((p, i) => <CartaoRecarga key={p.nome} p={p} sub={CREDITOS[i]} />)}</div>
-      </section>
     </div>
   );
 }
