@@ -12,7 +12,6 @@ import {
 } from "../components/sections/features/default";
 import Footer from "../components/sections/footer/default";
 import Hero from "../components/sections/hero/default";
-import Integrations from "../components/sections/integrations/default";
 import Metodo from "../components/sections/metodo/default";
 import Navbar from "../components/sections/navbar/default";
 import Pricing from "../components/sections/pricing/default";
@@ -42,8 +41,6 @@ export default function Home() {
       <CrmDemo />
       {/* Gestão de Equipes */}
       <TeamsSection />
-      {/* Canais e Integrações */}
-      <Integrations />
       {/* Calculadora de ROI */}
       <Calculator />
       {/* Planos com Enterprise integrado (sem recargas avulsas) */}
