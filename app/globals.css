@@ -730,3 +730,4 @@
 #whatsapp .vs-ico .mt-anel { border-color: rgb(37 211 102 / 45%) !important; }
 #whatsapp .vs-ico + span { color: #128c7e; }
 .dark #whatsapp .vs-ico + span { color: #25d366; }
+#whatsapp .vs-ico svg, html:not(.dark) #whatsapp .vs-ico svg { color: #fff !important; fill: #fff !important; stroke: none !important; }
