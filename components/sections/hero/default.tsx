@@ -14,7 +14,7 @@ export default function Hero() {
     <Section className="relative overflow-hidden pb-16 sm:pb-24">
       <div className="max-w-container relative z-10 mx-auto grid grid-cols-1 items-center gap-12 pt-10 lg:grid-cols-[0.92fr_1.18fr] lg:gap-14 lg:pt-16 [&>*]:min-w-0">
         <div className="flex flex-col items-center gap-6 text-center sm:gap-7 lg:items-start lg:text-left">
-          <Announcement href="#agente" className="animate-appear" />
+          <Announcement href="#metodo-2" className="animate-appear" />
           <h1 className="from-foreground to-foreground dark:to-muted-foreground relative inline-block bg-linear-to-r bg-clip-text text-4xl leading-[1.06] font-semibold tracking-tight text-balance text-transparent sm:text-6xl lg:text-[56px]">
             O CRM preguiçoso que faz o trabalho do SDR.
           </h1>

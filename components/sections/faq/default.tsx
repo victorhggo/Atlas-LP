@@ -131,10 +131,10 @@ export default function FAQ({
               Ficou alguma dúvida?
             </span>
             <span className="text-muted-foreground text-sm">
-              Fale com a equipe e veja o Atlas rodando no seu nicho.
+              Em 30 minutos um especialista mostra o Atlas rodando no seu nicho.
             </span>
-            <LinkButton variant="glow" size="default" href={siteConfig.links.sales}>
-              Falar com vendas
+            <LinkButton variant="glow" size="default" href={siteConfig.links.demo}>
+              Agendar demonstração
             </LinkButton>
           </div>
         </div>

@@ -39,10 +39,10 @@ export default function FooterSection({
     {
       title: "Produto",
       links: [
-        { text: "Como funciona", href: "#como-funciona" },
-        { text: "Agente Atlas", href: "#agente" },
+        { text: "Método ATLAS", href: "#metodo" },
+        { text: "WhatsApp e Cadências", href: "#cadencias" },
         { text: "CRM & Funil", href: "#crm" },
-        { text: "Integrações", href: "#integracoes" },
+        { text: "Calculadora", href: "#calculadora" },
         { text: "Planos & Preços", href: "#planos" },
         { text: "Dúvidas frequentes", href: "#duvidas" },
       ],
@@ -52,14 +52,12 @@ export default function FooterSection({
       links: [
         { text: "Entrar na conta", href: siteConfig.loginUrl },
         { text: "Testar grátis (25 créditos)", href: siteConfig.getStartedUrl },
-        { text: "Indique e Ganhe", href: "#indique-e-ganhe" },
-        { text: "Suporte e Comunidade", href: "#comunidade" },
       ],
     },
     {
       title: "Contato & Demonstração",
       links: [
-        { text: "Falar com vendas", href: siteConfig.links.sales },
+        { text: "Falar no WhatsApp", href: siteConfig.links.sales },
         { text: "Agendar demonstração", href: siteConfig.links.demo },
         { text: "Matteline VoIP", href: siteConfig.links.matte },
       ],
@@ -85,7 +83,7 @@ export default function FooterSection({
                 <h3 className="text-xl font-bold tracking-[0.18em]">{name}</h3>
               </div>
               <p className="text-muted-foreground text-xs mt-3 max-w-[260px] leading-relaxed">
-                A central de prospecção inteligente que acha o decisor, confere cada canal e coloca você para ligar e fechar.
+                O CRM preguiçoso para PMEs e prestadores de serviço: acha o decisor, organiza o funil e lembra o follow-up. Você só liga.
               </p>
             </FooterColumn>
             {columns.map((column) => (

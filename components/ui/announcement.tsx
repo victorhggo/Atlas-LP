@@ -30,7 +30,7 @@ export function Announcement({ href, className }: AnnouncementProps) {
           Novo · Agente Atlas
         </span>
         <span className="text-foreground text-sm leading-snug font-semibold sm:text-base">
-          Qualifica e move o lead no CRM com trecho que prova
+          Qualifica e move seus leads no CRM sozinho
         </span>
       </span>
       <span className="border-border/60 text-muted-foreground group-hover:border-brand/50 group-hover:text-brand flex size-8 shrink-0 items-center justify-center rounded-full border transition-colors">

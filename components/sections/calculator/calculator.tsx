@@ -82,6 +82,10 @@ export function SdrCalculator() {
         <Field label="Salário de quem prospecta" hint="Seu vendedor, SDR ou você mesmo" value={salario} onChange={setSalario} min={1500} max={15000} step={250} prefix="R$ " />
         <Field label="Horas por dia montando lista" hint="Google, Instagram, site, descobrir quem decide" value={horas} onChange={setHoras} min={1} max={8} step={0.5} />
         <Field label="Quanto vale uma venda sua" hint="Ticket médio de um cliente fechado" value={ticket} onChange={setTicket} min={300} max={50000} step={100} prefix="R$ " />
+        <div className="border-border/60 mt-auto flex flex-col gap-3 border-t pt-6">
+          <p className="text-base font-semibold leading-snug">Pare de pagar alguém para copiar e colar do Google.</p>
+          <a href="https://atlas.escolhidospro.com.br/criar-conta" className="bg-brand inline-flex w-fit items-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold text-white dark:text-slate-950 shadow-lg transition-transform hover:-translate-y-0.5">Testar grátis com 25 créditos</a>
+        </div>
       </div>
       <div className="flex flex-col gap-4" aria-live="polite">
         <div className="flex flex-col gap-2 rounded-2xl border border-red-500/25 bg-red-500/[0.06] p-6">
