@@ -677,3 +677,25 @@
 .crm-demo-tela { position: relative; aspect-ratio: 1440 / 860; overflow: hidden; }
 .crm-demo-img { position: absolute; inset: 0; opacity: 0; transform: scale(1.01); transition: opacity .45s ease, transform .45s ease; }
 .crm-demo-img.on { opacity: 1; transform: none; }
+.lgpd { position: relative; display: grid; grid-template-columns: 120px 1fr 1.2fr; gap: 32px; align-items: center; padding: 36px; border-radius: 24px; border: 1px solid color-mix(in oklab, #16a34a 25%, var(--border)); background: radial-gradient(60% 120% at 0% 50%, rgb(34 197 94 / 10%), transparent 60%), var(--background); }
+@media (max-width: 1000px) { .lgpd { grid-template-columns: 1fr; } }
+.lgpd-selo { position: relative; display: grid; place-items: center; width: 110px; height: 110px; border-radius: 30px; color: #16a34a; background: rgb(34 197 94 / 12%); border: 2px solid rgb(34 197 94 / 35%); }
+.lgpd-selo svg { width: 46px; height: 46px; } .lgpd-selo span { position: absolute; bottom: -10px; padding: 2px 10px; border-radius: 99px; font-size: 12px; font-weight: 800; letter-spacing: .1em; color: #fff; background: #16a34a; }
+.lgpd-txt { display: flex; flex-direction: column; gap: 10px; }
+.lgpd-itens { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.lgpd-itens li { display: flex; gap: 12px; padding: 14px; border-radius: 14px; border: 1px solid var(--border); background: var(--background); }
+.lgpd-itens li > span { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; color: #16a34a; background: rgb(34 197 94 / 12%); } .lgpd-itens svg { width: 18px; height: 18px; }
+.lgpd-itens b { font-size: 15px; } .lgpd-itens p { margin: 2px 0 0; font-size: 13.5px; color: var(--muted-foreground); }
+.cta-demo { display: grid; gap: 48px; align-items: center; grid-template-columns: 1.2fr 1fr; padding: 48px; border-radius: 28px; border: 1px solid color-mix(in oklab, var(--brand) 30%, var(--border)); background: radial-gradient(70% 90% at 100% 0%, color-mix(in oklab, var(--brand) 16%, transparent), transparent 70%), var(--background); box-shadow: 0 30px 80px -40px color-mix(in oklab, var(--brand) 60%, transparent); }
+@media (max-width: 1000px) { .cta-demo { grid-template-columns: 1fr; padding: 28px 20px; } }
+.cta-demo-tag { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 99px; font-size: 13px; font-weight: 600; color: #16a34a; background: rgb(34 197 94 / 12%); }
+.cta-demo-tag i { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; animation: cta-pulso 1.6s infinite; }
+@keyframes cta-pulso { 0% { box-shadow: 0 0 0 0 rgb(34 197 94 / 60%); } 100% { box-shadow: 0 0 0 10px rgb(34 197 94 / 0%); } }
+.cta-demo-card { display: flex; flex-direction: column; gap: 16px; padding: 22px; border-radius: 20px; border: 1px solid var(--border); background: var(--background); box-shadow: 0 20px 50px -25px rgb(0 0 0 / 35%); }
+.cta-demo-topo { display: flex; gap: 12px; align-items: center; } .cta-demo-topo p { margin: 0; font-size: 13px; color: var(--muted-foreground); }
+.cta-demo-ava { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: #fff; background: var(--brand); } .cta-demo-ava svg { width: 22px; height: 22px; }
+.cta-demo-card ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.cta-demo-card li { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; font-size: 14.5px; font-weight: 500; background: color-mix(in oklab, var(--brand) 6%, transparent); }
+.cta-demo-card li > span { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; color: var(--brand); background: color-mix(in oklab, var(--brand) 14%, transparent); } .cta-demo-card li svg { width: 17px; height: 17px; }
+.cta-demo-ok { margin-left: auto; flex: none; color: #16a34a; }
+.cta-demo-rodape { display: flex; gap: 8px; align-items: center; justify-content: center; padding-top: 14px; border-top: 1px solid var(--border); font-size: 13.5px; font-weight: 600; color: var(--brand); } .cta-demo-rodape svg { width: 16px; height: 16px; }
