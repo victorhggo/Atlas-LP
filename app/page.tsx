@@ -1,4 +1,6 @@
 import Qualificar from "../components/sections/qualificar/default";
+import Ligar from "../components/sections/ligar/default";
+import WhatsApp from "../components/sections/whatsapp/default";
 import Cadencias from "../components/sections/cadencias/default";
 import Calculator from "../components/sections/calculator/default";
 import Community from "../components/sections/community/default";
@@ -6,10 +8,7 @@ import CTA from "../components/sections/cta/default";
 import FAQ from "../components/sections/faq/default";
 import {
   CrmSection,
-  FitScoreSection,
-  ScriptSection,
   TeamsSection,
-  WhatsAppSection,
 } from "../components/sections/features/default";
 import Footer from "../components/sections/footer/default";
 import Hero from "../components/sections/hero/default";
@@ -33,14 +32,12 @@ export default function Home() {
       <Metodo />
       {/* Super Destaque: Agente Atlas */}
       {/* Triagem e Dado Conferido */}
-      <FitScoreSection />
+      <WhatsApp />
       <Qualificar />
       {/* Cadências Inteligentes */}
       <Cadencias />
       {/* Destaque: Roteiro na tela */}
-      <ScriptSection />
-      {/* Destaque: WhatsApp no CRM */}
-      <WhatsAppSection />
+      <Ligar />
       {/* Destaque: CRM e Funil */}
       <CrmSection />
       {/* Gestão de Equipes */}

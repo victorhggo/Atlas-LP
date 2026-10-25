@@ -665,3 +665,4 @@
 .gcal-leg { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; font-size: 11px; color: var(--muted-foreground); }
 .gcal-leg span { display: flex; align-items: center; gap: 5px; } .gcal-leg span::before { content: ""; width: 9px; height: 9px; border-radius: 3px; }
 .gcal-leg .lig::before { background: #0ea5e9; } .gcal-leg .reu::before { background: #4285F4; } .gcal-leg .demo::before { background: #8E63CE; } .gcal-leg .fu::before { background: #F4511E; } .gcal-leg .venda::before { background: #0B8043; }
+.vs-ico svg { width: 26px; height: 26px; color: var(--brand); position: relative; }
