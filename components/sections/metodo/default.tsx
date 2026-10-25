@@ -59,17 +59,18 @@ function Bloco({ e, i }: { e: (typeof ETAPAS)[number]; i: number }) {
       <div className={`flex flex-col gap-4 ${inverte ? "lg:order-2" : ""}`}>
         <div className="metodo-cab">
           <span className="metodo-letra-g" aria-hidden="true">{e.letra}</span>
-          {(() => { const I = ICONES[i]; return (
-            <span className={`metodo-ico m${i}`} aria-hidden="true">
-              <span className="mt-anel" /><span className="mt-anel r" />
-              {i === 0 && <span className="metodo-radar" />}
-              <I className="metodo-ico-i" />
-              <i className="mt-bola b1" /><i className="mt-bola b2" />
-            </span>
-          ); })()}
           <span className="metodo-num">0{i + 1}<i /></span>
         </div>
-        <h3 className="-mt-2 text-2xl font-semibold tracking-tight sm:text-[34px]">{e.nome}</h3>
+        <h3 className="-mt-2 flex items-center gap-3 text-2xl font-semibold tracking-tight sm:text-[34px]">
+          {(() => { const I = ICONES[i]; return (
+            <span className={`metodo-ico pequeno m${i}`} aria-hidden="true">
+              <span className="mt-anel" />
+              {i === 0 && <span className="metodo-radar" />}
+              <I className="metodo-ico-i" />
+            </span>
+          ); })()}
+          {e.nome}
+        </h3>
         <p className="text-muted-foreground max-w-[420px] text-base leading-relaxed">{e.texto}</p>
         <ul className="flex flex-wrap gap-2">
           {e.selos.map((s) => <li key={s} className="bg-brand/10 text-brand rounded-full px-3 py-1 text-[13px] font-semibold">{s}</li>)}

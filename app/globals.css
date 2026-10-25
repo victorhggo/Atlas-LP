@@ -656,3 +656,12 @@
 .cad-orbita { position: absolute; inset: -10px; border-radius: 99px; animation: mt-gira 3.2s linear infinite; }
 .cad-orbita b { position: absolute; top: 0; left: 50%; width: 9px; height: 9px; margin-left: -4px; border-radius: 99px; background: #22c55e; box-shadow: 0 0 10px #22c55e; }
 @media (prefers-reduced-motion: reduce) { .cad-logo, .cad-orbita { animation: none; } }
+.metodo-ico.pequeno { width: 40px; height: 40px; border-radius: 12px; border-width: 1.5px; }
+.metodo-ico.pequeno .mt-anel { border-radius: 12px; } .metodo-ico.pequeno .metodo-ico-i { width: 19px; height: 19px; }
+.gcal-ev.lig { background: #0ea5e9; } .gcal-ev.reu { background: #4285F4; } .gcal-ev.demo { background: #8E63CE; } .gcal-ev.fu { background: #F4511E; }
+.gcal-ev.virou { animation: gcal-virou .6s ease; }
+@keyframes gcal-virou { 0% { transform: scale(1); } 40% { transform: scale(1.12); box-shadow: 0 0 0 4px rgb(11 128 67 / 35%); } 100% { transform: scale(1); } }
+.gcal-ev { font-size: 9px; white-space: nowrap; text-overflow: ellipsis; align-items: center; }
+.gcal-leg { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; font-size: 11px; color: var(--muted-foreground); }
+.gcal-leg span { display: flex; align-items: center; gap: 5px; } .gcal-leg span::before { content: ""; width: 9px; height: 9px; border-radius: 3px; }
+.gcal-leg .lig::before { background: #0ea5e9; } .gcal-leg .reu::before { background: #4285F4; } .gcal-leg .demo::before { background: #8E63CE; } .gcal-leg .fu::before { background: #F4511E; } .gcal-leg .venda::before { background: #0B8043; }

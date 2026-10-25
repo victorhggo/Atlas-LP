@@ -97,40 +97,58 @@ export function VisualLead({ ativo }: { ativo: boolean }) {
   );
 }
 
-// ---------- A: semana estilo Google Agenda, com vendas em verde ----------
+// ---------- A: semana lotada (ligação, follow-up, reunião) e depois reuniões virando venda ----------
 const DIAS = ["SEG 26", "TER 27", "QUA 28", "QUI 29", "SEX 30"];
-type Ev = [number, number, number, string, "azul" | "roxo" | "laranja" | "ciano" | "venda"];
-const EVENTOS: Ev[] = [
-  [0, 8, 1, "Reunião · Clínica Sorrir", "azul"], [0, 10, 1.5, "Demo · Imob. Prime", "roxo"], [0, 13, 1, "Venda fechada · Agência Norte", "venda"], [0, 15, 1, "Reunião · Indústria Vale", "laranja"], [0, 18, 1, "Follow-up · Studio Lis", "ciano"],
-  [1, 9, 1, "Reunião · Eccos Gestão", "azul"], [1, 11, 1, "Demo · Contábil Max", "roxo"], [1, 14, 1.5, "Venda fechada · Orto Prime", "venda"], [1, 16.5, 1, "Reunião · Saúde Mais", "laranja"], [1, 19, 1, "Reunião · Construtora RX", "azul"],
-  [2, 8, 1, "Demo · Clínica Bela", "roxo"], [2, 10, 1, "Reunião · SaaS Fluxo", "azul"], [2, 13, 1, "Follow-up · Imob. Centro", "ciano"], [2, 15, 1, "Venda fechada · Pet Care", "venda"], [2, 20, 1, "Reunião · Odonto Vida", "laranja"],
-  [3, 9, 1.5, "Reunião · Agile Med", "azul"], [3, 11, 1, "Demo · Bozelli", "roxo"], [3, 14, 1, "Reunião · Rede Farma", "laranja"], [3, 16, 1, "Venda fechada · Escola Up", "venda"], [3, 18.5, 1, "Follow-up · Estética Pura", "ciano"],
-  [4, 8, 1, "Reunião · Lab Center", "azul"], [4, 10, 1, "Venda fechada · Concession. Sul", "venda"], [4, 13, 1.5, "Demo · Imob. Vista", "roxo"], [4, 16, 1, "Reunião · Clínica Dr. Ana", "laranja"], [4, 19, 1, "Reunião · Academia Fit", "azul"],
-];
+type Tipo = "lig" | "fu" | "reu" | "demo";
+const NOMES = ["Clínica Sorrir", "Imob. Prime", "Agência Norte", "Indústria Vale", "Studio Lis", "Eccos Gestão", "Contábil Max", "Orto Prime", "Saúde Mais", "Construtora RX", "Clínica Bela", "SaaS Fluxo", "Imob. Centro", "Pet Care", "Odonto Vida", "Agile Med", "Bozelli", "Rede Farma", "Escola Up", "Estética Pura", "Lab Center", "Concession. Sul", "Imob. Vista", "Clínica Dr. Ana", "Academia Fit"];
+// grade cheia: 8h às 21h, blocos de 1h, sem buraco
+const EVENTOS: { d: number; h: number; tipo: Tipo; nome: string; venda?: boolean }[] = [];
+(() => {
+  const ciclo: Tipo[] = ["lig", "reu", "fu", "demo", "reu", "lig", "reu", "fu", "reu", "demo", "lig", "reu", "fu"];
+  let k = 0;
+  for (let h = 8; h < 21; h++) for (let d = 0; d < 5; d++) {
+    const tipo = ciclo[(h - 8 + d * 3) % ciclo.length];
+    EVENTOS.push({ d, h, tipo, nome: tipo === "lig" ? "Bloco de ligação" : tipo === "fu" ? `Follow-up · ${NOMES[k++ % NOMES.length]}` : `${tipo === "demo" ? "Demo" : "Reunião"} · ${NOMES[k++ % NOMES.length]}` });
+  }
+  // algumas reuniões espalhadas viram venda
+  const reunioes = EVENTOS.map((e, i) => [e, i] as const).filter(([e]) => e.tipo === "reu" || e.tipo === "demo");
+  reunioes.filter((_, i) => i % 3 === 1).slice(0, 9).forEach(([e]) => { e.venda = true; });
+})();
+const ORDEM = EVENTOS.map((_, i) => i).sort((a, b) => ((a * 37) % 65) - ((b * 37) % 65));
 export function VisualAgenda({ ativo }: { ativo: boolean }) {
-  const p = usePasso(EVENTOS.length + 8, 200, ativo);
-  const ini = 8, fim = 21, alt = 27; // px por hora
-  const vendas = EVENTOS.slice(0, p).filter((e) => e[4] === "venda").length;
+  const total = EVENTOS.length;
+  const encher = Math.ceil(total / 3);
+  const p = usePasso(encher + 8 + 9 * 3 + 30, 180, ativo); // enche, pausa, vira venda (uma a cada 3 passos), pausa longa
+  const cheios = Math.min(total, p * 3);
+  const vendasIdx = EVENTOS.map((e, i) => (e.venda ? i : -1)).filter((i) => i >= 0);
+  const fase2 = p - (encher + 8);
+  const viraram = Math.max(0, Math.min(vendasIdx.length, Math.floor(fase2 / 3)));
+  const visivel = new Set(ORDEM.slice(0, cheios));
+  const ini = 8, fim = 21, alt = 26;
   return (
     <div className="gcal">
       <div className="gcal-topo">
         <span className="gcal-logo"><i /><i /><i /><i /></span><b>Agenda</b><span className="gcal-mes">Outubro 2026 · semana</span>
-        <span className="gcal-resumo"><em>{Math.min(p, EVENTOS.length)}</em> reuniões · <em className="v">{vendas}</em> vendas</span>
+        <span className="gcal-resumo"><em>{cheios}</em> compromissos · <em className="v">{viraram}</em> vendas</span>
       </div>
       <div className="gcal-cab"><span />{DIAS.map((d) => <span key={d}><small>{d.split(" ")[0]}</small><b>{d.split(" ")[1]}</b></span>)}</div>
       <div className="gcal-corpo" style={{ height: (fim - ini) * alt }}>
         <div className="gcal-horas">{Array.from({ length: fim - ini }, (_, k) => <span key={k} style={{ top: k * alt }}>{ini + k}h</span>)}</div>
         {DIAS.map((_, d) => (
           <div key={d} className="gcal-col" style={{ backgroundSize: `100% ${alt}px` }}>
-            {EVENTOS.map((e, k) => e[0] === d && (
-              <span key={k} className={`gcal-ev ${e[4]}${k < p ? " on" : ""}`} style={{ top: (e[1] - ini) * alt + 1, height: e[2] * alt - 2 }}>
-                {e[4] === "venda" && <CheckIcon />}{e[3]}
-              </span>
-            ))}
+            {EVENTOS.map((e, k) => {
+              if (e.d !== d) return null;
+              const venda = e.venda && vendasIdx.indexOf(k) < viraram;
+              return (
+                <span key={k} className={`gcal-ev ${venda ? "venda virou" : e.tipo}${visivel.has(k) ? " on" : ""}`} style={{ top: (e.h - ini) * alt + 1, height: alt - 2 }}>
+                  {venda ? <><CheckIcon />Venda fechada</> : e.nome}
+                </span>
+              );
+            })}
           </div>
         ))}
       </div>
-      <div className="mt-agora"><span className="mt-agora-ico"><PhoneIcon /></span><div><small>O que fazer agora</small><b>Rotina do dia: ligações, respostas e follow-ups no horário certo</b></div></div>
+      <div className="gcal-leg"><span className="lig">Bloco de ligação</span><span className="reu">Reunião</span><span className="demo">Demo</span><span className="fu">Follow-up</span><span className="venda">Venda fechada</span></div>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import Qualificar from "../components/sections/qualificar/default";
 import Cadencias from "../components/sections/cadencias/default";
 import Calculator from "../components/sections/calculator/default";
 import Community from "../components/sections/community/default";
@@ -5,7 +6,6 @@ import CTA from "../components/sections/cta/default";
 import FAQ from "../components/sections/faq/default";
 import {
   CrmSection,
-  DataCheckSection,
   FitScoreSection,
   ScriptSection,
   TeamsSection,
@@ -34,7 +34,7 @@ export default function Home() {
       {/* Super Destaque: Agente Atlas */}
       {/* Triagem e Dado Conferido */}
       <FitScoreSection />
-      <DataCheckSection />
+      <Qualificar />
       {/* Cadências Inteligentes */}
       <Cadencias />
       {/* Destaque: Roteiro na tela */}
