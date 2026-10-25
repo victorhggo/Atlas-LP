@@ -244,6 +244,7 @@ const POR_QUE: { I: LucideIcon; t: string; d: string; c: string }[] = [
 
 /** Enterprise, Por que o Pro, Compare os planos e Recargas: iguais à página de planos do sistema. */
 export function AtlasPlanosExtras({ anual }: { anual: boolean }) {
+  const [cmp, setCmp] = useState(false);
   return (
     <div className="atlas-planos-extras atlas-planos-raiz">
       <section className="enterprise" onMouseMove={luz}>
@@ -261,6 +262,7 @@ export function AtlasPlanosExtras({ anual }: { anual: boolean }) {
 
       <section className="planos-sec">
         <h2 className="planos-h2">Compare os planos</h2>
+        <div className={`cmp-wrap${cmp ? " aberto" : ""}`}>
         <div className="planos-tabela">
           <table>
             <thead><tr><th />{COLS.map((n, i) => (
@@ -281,6 +283,10 @@ export function AtlasPlanosExtras({ anual }: { anual: boolean }) {
             ))}</tr></tfoot>
           </table>
         </div>
+        </div>
+        <button type="button" className="cmp-btn" onClick={() => { if (cmp) document.getElementById("planos")?.scrollIntoView({ behavior: "smooth" }); setCmp(!cmp); }} aria-expanded={cmp}>
+          {cmp ? "Recolher comparação" : "Ver comparação completa"} <ChevronDownIcon />
+        </button>
       </section>
       <p className="planos-rodape">Pix ou cartão (crédito ou débito) · Qualificar custa 1 crédito e só é cobrado se achar dados reais · O crédito do plano renova todo mês</p>
     </div>

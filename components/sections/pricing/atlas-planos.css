@@ -235,3 +235,11 @@ html:not(.dark) .atlas-planos-raiz .pt-selo svg { color: #6d28d9; }
 html:not(.dark) .atlas-planos-raiz .planos-tabela th.destaque, html:not(.dark) .atlas-planos-raiz .planos-tabela th.topo { color: #4c1d95; }
 html:not(.dark) .atlas-planos-raiz .planos-tabela th, html:not(.dark) .atlas-planos-raiz .planos-tabela td { color: #0f172a; }
 html:not(.dark) .atlas-planos-raiz .planos-tabela td.destaque .sim { color: #fff; }
+.atlas-planos-raiz .cmp-wrap { position: relative; max-height: 340px; overflow: hidden; transition: max-height .8s cubic-bezier(.2,.8,.2,1); }
+.atlas-planos-raiz .cmp-wrap.aberto { max-height: 4000px; }
+.atlas-planos-raiz .cmp-wrap::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 160px; pointer-events: none; background: linear-gradient(transparent, var(--background)); transition: opacity .4s ease; }
+.atlas-planos-raiz .cmp-wrap.aberto::after { opacity: 0; }
+.atlas-planos-raiz .cmp-btn { display: flex; align-items: center; gap: 8px; margin: 14px auto 0; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 15px; cursor: pointer; color: #fff; background: linear-gradient(135deg, #8B5CF6, #6D28D9); border: 0; box-shadow: 0 8px 22px -8px rgb(124 58 237 / 60%); transition: transform .25s ease, box-shadow .25s ease; }
+.atlas-planos-raiz .cmp-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgb(124 58 237 / 70%); }
+.atlas-planos-raiz .cmp-btn svg { width: 18px; height: 18px; transition: transform .4s ease; }
+.atlas-planos-raiz .cmp-wrap.aberto + .cmp-btn svg { transform: rotate(180deg); }
