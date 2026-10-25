@@ -1,3 +1,4 @@
+import ParaQuem from "../components/sections/para-quem/default";
 import Qualificar from "../components/sections/qualificar/default";
 import Ligar from "../components/sections/ligar/default";
 import WhatsApp from "../components/sections/whatsapp/default";
@@ -26,6 +27,7 @@ export default function Home() {
       <Navbar />
       <div id="conteudo" />
       <Hero />
+      <ParaQuem />
       <Metodo />
       {/* Super Destaque: Agente Atlas */}
       {/* Triagem e Dado Conferido */}

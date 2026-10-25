@@ -53,31 +53,29 @@ function Visual({ i, ativo }: { i: number; ativo: boolean }) {
 
 function Bloco({ e, i }: { e: (typeof ETAPAS)[number]; i: number }) {
   const [ref, na, visto] = useNaTela<HTMLDivElement>();
-  const inverte = i % 2 === 1;
+  const I = ICONES[i];
   return (
-    <div id={`metodo-${i}`} ref={ref} className={`metodo-bloco${visto ? " visto" : ""} grid items-center gap-8 lg:grid-cols-[0.85fr_1fr] lg:gap-16`}>
-      <div className={`flex flex-col gap-4 ${inverte ? "lg:order-2" : ""}`}>
-        <div className="metodo-cab">
-          <span className="metodo-letra-g" aria-hidden="true">{e.letra}</span>
-          <span className="metodo-num">0{i + 1}<i /></span>
-        </div>
-        <h3 className="-mt-2 flex items-center gap-3 text-2xl font-semibold tracking-tight sm:text-[34px]">
-          {(() => { const I = ICONES[i]; return (
+    <div id={`metodo-${i}`} ref={ref} className={`metodo-passo${visto ? " visto" : ""}${i === ETAPAS.length - 1 ? " ultimo" : ""}`}>
+      <div className="metodo-trilho" aria-hidden="true"><span className="metodo-no">{e.letra}</span></div>
+      <div className="metodo-bloco grid items-center gap-8 pb-16 lg:grid-cols-[0.85fr_1fr] lg:gap-14 sm:pb-24">
+        <div className="flex flex-col gap-4">
+          <span className="metodo-num">Passo 0{i + 1}<i /></span>
+          <h3 className="flex items-center gap-3 text-2xl font-semibold tracking-tight sm:text-[34px]">
             <span className={`metodo-ico pequeno m${i}`} aria-hidden="true">
               <span className="mt-anel" />
               {i === 0 && <span className="metodo-radar" />}
               <I className="metodo-ico-i" />
             </span>
-          ); })()}
-          {e.nome}
-        </h3>
-        <p className="text-muted-foreground max-w-[420px] text-base leading-relaxed">{e.texto}</p>
-        <ul className="flex flex-wrap gap-2">
-          {e.selos.map((s) => <li key={s} className="bg-brand/10 text-brand rounded-full px-3 py-1 text-[13px] font-semibold">{s}</li>)}
-        </ul>
-      </div>
-      <div className={`mx-auto w-full max-w-[520px] ${inverte ? "lg:order-1" : ""}`}>
-        <Visual i={i} ativo={na} />
+            {e.nome}
+          </h3>
+          <p className="text-muted-foreground max-w-[420px] text-base leading-relaxed">{e.texto}</p>
+          <ul className="flex flex-wrap gap-2">
+            {e.selos.map((s) => <li key={s} className="bg-brand/10 text-brand rounded-full px-3 py-1 text-[13px] font-semibold">{s}</li>)}
+          </ul>
+        </div>
+        <div className="mx-auto w-full max-w-[520px]">
+          <Visual i={i} ativo={na} />
+        </div>
       </div>
     </div>
   );
@@ -91,13 +89,13 @@ export default function Metodo() {
           <div className="flex max-w-[560px] flex-col gap-3">
             <span className="text-brand text-xs font-semibold tracking-[0.16em] uppercase">Método ATLAS</span>
             <h2 className="text-3xl leading-tight font-semibold tracking-tight text-balance sm:text-4xl">Do primeiro dado à venda fechada.</h2>
-            <p className="text-muted-foreground text-base">Cinco passos que o Atlas faz por você, todos os dias.</p>
+            <p className="text-muted-foreground text-base">Cinco passos que o Atlas faz sozinho, todos os dias. Você só aparece para a conversa.</p>
           </div>
           <nav className="metodo-sigla" aria-label="Passos do método">
             {ETAPAS.map((e, i) => <a key={i} href={`#metodo-${i}`} title={e.nome}>{e.letra}</a>)}
           </nav>
         </div>
-        {ETAPAS.map((e, i) => <Bloco key={i} e={e} i={i} />)}
+        <div className="metodo-tl">{ETAPAS.map((e, i) => <Bloco key={i} e={e} i={i} />)}</div>
       </div>
     </Section>
   );

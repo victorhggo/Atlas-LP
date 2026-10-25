@@ -230,3 +230,8 @@ html:not(.dark) .atlas-planos-raiz .plano-tag.ciano { background: rgb(13 148 136
 html:not(.dark) .atlas-planos-raiz .plano-tag.vermelho { background: rgb(220 38 38 / 10%); color: #991B1B; }
 .atlas-planos-raiz .plano-tags .plano-tag.agente-atlas { grid-column: 1 / -1; display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%; color: var(--accent-ink); background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent); font-weight: 600; }
 .atlas-planos-raiz .plano-tags .plano-tag.agente-atlas svg { width: 14px; height: 14px; flex-shrink: 0; }
+html:not(.dark) .atlas-planos-raiz .pt-selo { color: #2e1065; background: #ede9fe; border: 1px solid #c4b5fd; box-shadow: none; }
+html:not(.dark) .atlas-planos-raiz .pt-selo svg { color: #6d28d9; }
+html:not(.dark) .atlas-planos-raiz .planos-tabela th.destaque, html:not(.dark) .atlas-planos-raiz .planos-tabela th.topo { color: #4c1d95; }
+html:not(.dark) .atlas-planos-raiz .planos-tabela th, html:not(.dark) .atlas-planos-raiz .planos-tabela td { color: #0f172a; }
+html:not(.dark) .atlas-planos-raiz .planos-tabela td.destaque .sim { color: #fff; }

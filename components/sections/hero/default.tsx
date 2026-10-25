@@ -19,8 +19,9 @@ export default function Hero() {
             O CRM preguiçoso que faz o trabalho do SDR.
           </h1>
           <p className="text-muted-foreground max-w-[560px] text-lg leading-relaxed font-medium text-balance sm:text-xl">
-            Escolha o nicho. O Atlas monta a lista, acha o sócio que decide, te
-            dá o roteiro e move quem está pronto no CRM.{" "}
+            Para PMEs e prestadores de serviço: escolha o nicho e o Atlas monta a
+            lista, acha o sócio que decide, te dá o roteiro e move quem está
+            pronto no CRM.{" "}
             <Good>Você só liga.</Good>
           </p>
           <div className="flex flex-wrap justify-center gap-3.5 lg:justify-start">
@@ -32,12 +33,12 @@ export default function Hero() {
               Testar grátis com 25 créditos
             </LinkButton>
             <LinkButton
-              href="#demo"
+              href={siteConfig.links.demo}
               variant="glow"
               size="lg"
               icon={<PlayIcon className="mr-2 size-4" />}
             >
-              Ver funcionando
+              Ver demonstração ao vivo
             </LinkButton>
           </div>
           <p className="text-muted-foreground -mt-1 text-sm sm:text-base">
