@@ -1,13 +1,13 @@
 import Qualificar from "../components/sections/qualificar/default";
 import Ligar from "../components/sections/ligar/default";
 import WhatsApp from "../components/sections/whatsapp/default";
+import CrmDemo from "../components/sections/crm-demo/default";
 import Cadencias from "../components/sections/cadencias/default";
 import Calculator from "../components/sections/calculator/default";
 import Community from "../components/sections/community/default";
 import CTA from "../components/sections/cta/default";
 import FAQ from "../components/sections/faq/default";
 import {
-  CrmSection,
   TeamsSection,
 } from "../components/sections/features/default";
 import Footer from "../components/sections/footer/default";
@@ -39,7 +39,7 @@ export default function Home() {
       {/* Destaque: Roteiro na tela */}
       <Ligar />
       {/* Destaque: CRM e Funil */}
-      <CrmSection />
+      <CrmDemo />
       {/* Gestão de Equipes */}
       <TeamsSection />
       {/* Canais e Integrações */}

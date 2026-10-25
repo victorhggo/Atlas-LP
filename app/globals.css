@@ -666,3 +666,14 @@
 .gcal-leg span { display: flex; align-items: center; gap: 5px; } .gcal-leg span::before { content: ""; width: 9px; height: 9px; border-radius: 3px; }
 .gcal-leg .lig::before { background: #0ea5e9; } .gcal-leg .reu::before { background: #4285F4; } .gcal-leg .demo::before { background: #8E63CE; } .gcal-leg .fu::before { background: #F4511E; } .gcal-leg .venda::before { background: #0B8043; }
 .vs-ico svg { width: 26px; height: 26px; color: var(--brand); position: relative; }
+.crm-demo { display: flex; flex-direction: column; gap: 14px; }
+.crm-demo-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.crm-demo-abas { display: inline-flex; gap: 4px; padding: 5px; border-radius: 14px; border: 1px solid var(--border); background: var(--background); box-shadow: 0 10px 30px -20px var(--brand); }
+.crm-demo-abas button { display: inline-flex; align-items: center; gap: 7px; padding: 9px 16px; border: 0; border-radius: 10px; background: none; font: inherit; font-size: 14px; font-weight: 600; color: var(--muted-foreground); cursor: pointer; transition: all .2s; }
+.crm-demo-abas button svg { width: 16px; height: 16px; }
+.crm-demo-abas button.on { color: #fff; background: var(--brand); box-shadow: 0 6px 18px -8px var(--brand); }
+.crm-demo-dica { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted-foreground); } .crm-demo-dica svg { width: 15px; height: 15px; color: var(--brand); }
+.crm-demo-legenda { display: flex; flex-direction: column; gap: 2px; animation: mt-entra .4s ease; } .crm-demo-legenda b { font-size: 17px; } .crm-demo-legenda span { color: var(--muted-foreground); }
+.crm-demo-tela { position: relative; aspect-ratio: 1440 / 860; overflow: hidden; }
+.crm-demo-img { position: absolute; inset: 0; opacity: 0; transform: scale(1.01); transition: opacity .45s ease, transform .45s ease; }
+.crm-demo-img.on { opacity: 1; transform: none; }
