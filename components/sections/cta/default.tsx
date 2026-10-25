@@ -42,7 +42,7 @@ export default function CTA() {
           <ul>
             {GANHOS.map(({ I, t }) => <li key={t}><span><I /></span>{t}<CheckIcon className="cta-demo-ok" /></li>)}
           </ul>
-          <div className="cta-demo-rodape"><CalendarCheckIcon /> Escolha o melhor horário no WhatsApp</div>
+          <div className="cta-demo-rodape"><CalendarCheckIcon /> Escolha o melhor horário na agenda</div>
         </div>
       </div>
       <div className="absolute top-0 left-0 h-full w-full translate-y-[1rem] opacity-80 transition-[transform,opacity] duration-500 group-hover:opacity-100 motion-safe:group-hover:translate-y-[-2rem]">

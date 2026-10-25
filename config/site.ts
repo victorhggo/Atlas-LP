@@ -10,7 +10,7 @@ export const siteConfig = {
     "O CRM preguiçoso que faz o trabalho do seu SDR: monta a lista, acha o decisor, confere cada dado, te diz o que falar e avisa quem está pronto para comprar. Você só liga.",
   links: {
     sales: "https://wa.me/5515996979750",
-    demo: "https://wa.me/5515996979750",
+    demo: "https://calendar.app.google/yzHEbZEVptG9PYw29",
     // ID do vídeo de demonstração no YouTube (ex.: "dQw4w9WgXcQ").
     // Suporta ID direto ou exibição de player embed/modal
     demoVideo: "", // vazio até existir o vídeo real do Atlas (o botão do tour some sozinho)
