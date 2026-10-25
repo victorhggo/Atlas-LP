@@ -1,3 +1,4 @@
+import Inteligencia from "../components/sections/inteligencia/default";
 import ParaQuem from "../components/sections/para-quem/default";
 import Qualificar from "../components/sections/qualificar/default";
 import Ligar from "../components/sections/ligar/default";
@@ -34,6 +35,7 @@ export default function Home() {
       <WhatsApp />
       <Qualificar />
       {/* Cadências Inteligentes */}
+      <Inteligencia />
       <Cadencias />
       {/* Destaque: Roteiro na tela */}
       <Ligar />

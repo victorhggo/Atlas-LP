@@ -731,3 +731,34 @@
 #whatsapp .vs-ico + span { color: #128c7e; }
 .dark #whatsapp .vs-ico + span { color: #25d366; }
 #whatsapp .vs-ico svg, html:not(.dark) #whatsapp .vs-ico svg { color: #fff !important; fill: #fff !important; stroke: none !important; }
+/* Inteligência comercial do nicho */
+.ic-ico { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; color: #F59E0B; background: rgb(245 158 11 / 14%); border: 1px solid rgb(245 158 11 / 30%); box-shadow: 0 10px 28px -10px rgb(245 158 11 / 60%); animation: ic-pulso 3s ease-in-out infinite; }
+.ic-ico svg { width: 26px; height: 26px; }
+.ic-ico.peq { width: 38px; height: 38px; border-radius: 11px; box-shadow: none; animation: none; } .ic-ico.peq svg { width: 20px; height: 20px; }
+@keyframes ic-pulso { 50% { box-shadow: 0 10px 34px -6px rgb(245 158 11 / 85%); transform: translateY(-2px); } }
+.ic-pilar .cad-pilar-ico { color: #D97706; background: rgb(245 158 11 / 14%); }
+.ic-nichos { display: flex; gap: 6px; margin-bottom: 10px; }
+.ic-nichos button { padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; border: 1px solid var(--border); color: var(--muted-foreground); background: var(--background); cursor: pointer; transition: all .25s ease; }
+.ic-nichos button.on { color: #92400E; border-color: rgb(245 158 11 / 50%); background: rgb(245 158 11 / 14%); }
+.dark .ic-nichos button.on { color: #FCD34D; }
+.ic-card { border-radius: 18px; border: 1px solid rgb(245 158 11 / 40%); background: linear-gradient(180deg, rgb(245 158 11 / 7%), transparent 35%), var(--background); box-shadow: 0 24px 60px -30px rgb(0 0 0 / 35%); overflow: hidden; font-size: 13.5px; }
+.ic-topo { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+.ic-topo small { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #D97706; } .ic-topo b { font-size: 15px; }
+.ic-selo { padding: 3px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 600; color: var(--muted-foreground); background: color-mix(in oklab, var(--brand) 8%, transparent); border: 1px solid var(--border); }
+.ic-corpo { display: flex; flex-direction: column; gap: 12px; padding: 14px 16px 16px; }
+.ic-decide { display: flex; gap: 8px; margin: 0; color: var(--muted-foreground); } .ic-decide b { color: var(--foreground); } .ic-decide svg { flex: none; width: 16px; height: 16px; color: #F59E0B; margin-top: 2px; }
+.ic-rot { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-foreground); } .ic-rot svg { width: 14px; height: 14px; color: #F97316; }
+.ic-dores { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.ic-dores div { display: flex; gap: 8px; padding: 10px; border-radius: 10px; font-weight: 600; font-size: 12.5px; line-height: 1.35; border: 1px solid var(--border); background: color-mix(in oklab, var(--brand) 4%, transparent); }
+.ic-dores i { flex: none; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; font-style: normal; font-size: 11px; color: #EA580C; background: rgb(249 115 22 / 14%); }
+.ic-pergunta { display: flex; gap: 10px; padding: 10px 12px; border-radius: 10px; border-left: 3px solid var(--brand); background: color-mix(in oklab, var(--brand) 9%, transparent); }
+.ic-pergunta svg { flex: none; width: 18px; height: 18px; color: var(--brand); margin-top: 2px; }
+.ic-pergunta small { font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--brand); } .ic-pergunta p { margin: 2px 0 0; font-weight: 500; }
+.ic-abas { display: flex; gap: 4px; padding: 4px; border-radius: 10px; background: color-mix(in oklab, var(--brand) 7%, transparent); }
+.ic-abas button, .ic-aba-x { flex: 1; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 7px 6px; border-radius: 8px; font-size: 12px; font-weight: 600; color: var(--muted-foreground); background: none; border: 0; cursor: pointer; transition: all .2s ease; white-space: nowrap; }
+.ic-aba-x { cursor: default; opacity: .7; }
+.ic-abas svg { width: 14px; height: 14px; }
+.ic-abas button.on { color: var(--foreground); background: var(--background); box-shadow: 0 2px 8px rgb(0 0 0 / 10%); }
+.ic-lista { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; min-height: 84px; }
+@media (max-width: 560px) { .ic-dores { grid-template-columns: 1fr; } .ic-aba-x { display: none; } }
+.ic-lista { list-style: decimal; } .ic-lista li::marker { color: var(--muted-foreground); }

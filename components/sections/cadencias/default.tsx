@@ -31,11 +31,11 @@ export default function Cadencias() {
             </span>
             <span className="text-brand flex items-center gap-2 text-xs font-semibold tracking-[0.16em] uppercase"><RouteIcon className="size-4" /> Cadências inteligentes</span>
           </div>
-          <h2 className="text-3xl leading-tight font-semibold tracking-tight text-balance sm:text-5xl">O follow-up que ninguém faz, o Atlas faz por você.</h2>
+          <h2 className="text-3xl leading-tight font-semibold tracking-tight text-balance sm:text-4xl">O follow-up que ninguém faz, o Atlas faz por você.</h2>
           <p className="text-muted-foreground text-base leading-relaxed sm:text-lg">A maioria das vendas pede vários contatos, e quase todo mundo desiste no segundo. Escolha a rota, coloque os leads e deixe o Atlas lembrar, enviar e pausar na hora certa.</p>
         </div>
-        <div className="grid items-start gap-10 lg:grid-cols-[1.25fr_0.75fr]">
-          <figure className="cad-video m-0">
+        <div className="grid items-start gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+          <figure className="cad-video m-0 mx-auto w-full max-w-[760px]">
             <div className="cad-barra"><span /><span /><span /><em>atlas.escolhidospro.com.br/cadencias</em><b><i /> Sistema real</b></div>
             {(["light", "dark"] as const).map((t) => (
               <video key={t} ref={t === "light" ? a : b} className={`block w-full ${t === "light" ? "dark:hidden" : "hidden dark:block"}`} autoPlay muted loop playsInline preload="metadata"

@@ -41,7 +41,7 @@ function Field({
         <label htmlFor={id} className="text-base font-semibold">
           {label}
         </label>
-        <span className="text-brand text-lg font-bold tabular-nums sm:text-xl">
+        <span className="text-brand text-base font-bold tabular-nums sm:text-lg">
           {prefix}
           {value.toLocaleString("pt-BR")}
         </span>
@@ -77,7 +77,7 @@ export function SdrCalculator() {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[0.9fr_1.2fr]">
-      <div className="glass-1 dark:glass-2 flex flex-col gap-7 rounded-2xl p-6 shadow-xl sm:p-8">
+      <div className="glass-1 dark:glass-2 flex flex-col gap-6 rounded-2xl p-6 shadow-xl sm:p-7">
         <span className="text-muted-foreground text-sm font-semibold tracking-wider uppercase">Sua operação hoje</span>
         <Field label="Salário de quem prospecta" hint="Seu vendedor, SDR ou você mesmo" value={salario} onChange={setSalario} min={1500} max={15000} step={250} prefix="R$ " />
         <Field label="Horas por dia montando lista" hint="Google, Instagram, site, descobrir quem decide" value={horas} onChange={setHoras} min={1} max={8} step={0.5} />
@@ -88,19 +88,19 @@ export function SdrCalculator() {
         </div>
       </div>
       <div className="flex flex-col gap-4" aria-live="polite">
-        <div className="flex flex-col gap-2 rounded-2xl border border-red-500/25 bg-red-500/[0.06] p-6">
+        <div className="flex flex-col gap-2 rounded-2xl border border-red-500/25 bg-red-500/[0.06] p-5">
           <span className="text-sm font-semibold text-red-600 dark:text-red-400">O que você perde hoje, todo mês</span>
           <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1">
-            <span className="text-3xl font-bold tabular-nums sm:text-4xl">{horasMes.toLocaleString("pt-BR")}h</span>
-            <span className="text-3xl font-bold tabular-nums sm:text-4xl">{brl(dinheiroPerdido)}</span>
+            <span className="text-2xl font-bold tabular-nums sm:text-3xl">{horasMes.toLocaleString("pt-BR")}h</span>
+            <span className="text-2xl font-bold tabular-nums sm:text-3xl">{brl(dinheiroPerdido)}</span>
           </div>
           <p className="text-muted-foreground text-sm sm:text-base">Pagos para copiar e colar dado do Google, em vez de ligar para quem compra.</p>
         </div>
-        <div className="flex flex-col gap-2 rounded-2xl border border-emerald-500/30 bg-emerald-500/[0.07] p-6">
+        <div className="flex flex-col gap-2 rounded-2xl border border-emerald-500/30 bg-emerald-500/[0.07] p-5">
           <span className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Com o Atlas fazendo a parte chata</span>
           <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1">
-            <span className="text-3xl font-bold tabular-nums sm:text-4xl">+{horasMes.toLocaleString("pt-BR")}h livres</span>
-            <span className="text-3xl font-bold tabular-nums sm:text-4xl">{brl(economia)} a menos</span>
+            <span className="text-2xl font-bold tabular-nums sm:text-3xl">+{horasMes.toLocaleString("pt-BR")}h livres</span>
+            <span className="text-2xl font-bold tabular-nums sm:text-3xl">{brl(economia)} a menos</span>
           </div>
           <p className="text-muted-foreground text-sm sm:text-base">Os mesmos {leadsMes.toLocaleString("pt-BR")} leads prontos em minutos, por cerca de {brl(custoAtlas)} no mês.</p>
         </div>
@@ -109,7 +109,7 @@ export function SdrCalculator() {
           <div className="grid grid-cols-3 gap-3 text-center">
             {[[ligacoes, "ligações"], [reunioes, "reuniões"], [vendas, "vendas"]].map(([n, t]) => (
               <div key={t} className="rounded-xl bg-[color-mix(in_oklab,var(--brand)_7%,transparent)] p-3">
-                <div className="text-2xl font-bold tabular-nums sm:text-3xl">{Number(n).toLocaleString("pt-BR")}</div>
+                <div className="text-xl font-bold tabular-nums sm:text-2xl">{Number(n).toLocaleString("pt-BR")}</div>
                 <div className="text-muted-foreground text-sm">{t} a mais/mês</div>
               </div>
             ))}
