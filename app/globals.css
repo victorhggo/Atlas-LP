@@ -699,3 +699,6 @@
 .cta-demo-card li > span { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; color: var(--brand); background: color-mix(in oklab, var(--brand) 14%, transparent); } .cta-demo-card li svg { width: 17px; height: 17px; }
 .cta-demo-ok { margin-left: auto; flex: none; color: #16a34a; }
 .cta-demo-rodape { display: flex; gap: 8px; align-items: center; justify-content: center; padding-top: 14px; border-top: 1px solid var(--border); font-size: 13.5px; font-weight: 600; color: var(--brand); } .cta-demo-rodape svg { width: 16px; height: 16px; }
+#whatsapp .cad-pilar, #whatsapp .cad-pilar-ico { transition: background .35s ease, border-color .35s ease, color .35s ease, transform .35s ease, box-shadow .35s ease; }
+#whatsapp .cad-pilar:hover { border-color: rgb(37 211 102 / 55%); background: rgb(37 211 102 / 8%); transform: translateY(-2px); box-shadow: 0 14px 30px -18px rgb(37 211 102 / 70%); }
+#whatsapp .cad-pilar:hover .cad-pilar-ico { color: #fff; background: #25d366; transform: scale(1.06); }
