@@ -4,7 +4,6 @@ import Community from "../components/sections/community/default";
 import CTA from "../components/sections/cta/default";
 import FAQ from "../components/sections/faq/default";
 import {
-  AgentSection,
   CrmSection,
   DataCheckSection,
   FitScoreSection,
@@ -33,7 +32,6 @@ export default function Home() {
       <Hero />
       <Metodo />
       {/* Super Destaque: Agente Atlas */}
-      <AgentSection />
       {/* Triagem e Dado Conferido */}
       <FitScoreSection />
       <DataCheckSection />

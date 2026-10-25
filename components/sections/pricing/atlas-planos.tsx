@@ -2,6 +2,7 @@
 import "./atlas-planos.css";
 
 import type { LucideIcon } from "lucide-react";
+import { CheckIcon, CrownIcon, GemIcon, MinusIcon, MessageCircleIcon } from "lucide-react";
 import { BotIcon, CalendarCheckIcon, ChevronDownIcon, CoinsIcon, FileSpreadsheetIcon, GlobeIcon, InfinityIcon, KanbanIcon, LayersIcon, ListOrderedIcon, MegaphoneIcon, MessageSquareTextIcon, PhoneIcon, TargetIcon, UsersIcon, WalletIcon, WebhookIcon, ZapIcon } from "lucide-react";
 // Cartões de planos iguais aos do sistema (atlas.escolhidospro.com.br/planos). Dados copiados de web/components/planos.tsx.
 import { createElement, type MouseEvent, useState } from "react";
@@ -166,5 +167,162 @@ export function AtlasPlanos({ anual }: { anual: boolean }) {
     <div className="atlas-planos">
       {PLANOS.filter((p) => p.nome !== "Enterprise").map((p) => <Cartao key={p.nome} p={p} anual={anual} />)}
     </div>
+  );
+}
+
+const RECARGAS: Plano[] = [
+  { cor: "sky", selo: "Avulsa", sku: "pack_100", nome: "Recarga 100", tags: [{ t: "Não expira", tipo: "ok" }, { t: "Extra" }], preco: "R$ 97,00", itens: [], mais: ["Soma no saldo da conta", "Serve quando o mês aperta"], nota: "Não substitui o plano nem libera o CRM.", botao: "Recarregar" },
+  { cor: "verde", selo: "Mais usada", destaque: true, sku: "pack_500", nome: "Recarga 500", tags: [{ t: "Não expira", tipo: "ok" }, { t: "Soma no saldo", tipo: "ouro" }], preco: "R$ 297,00", itens: [], mais: ["Extra no meio do mês", "Fica na conta quando o plano zera"], nota: "Não substitui o plano nem libera o CRM.", botao: "Recarregar" },
+  { cor: "violeta", selo: "Volume", sku: "pack_2000", nome: "Recarga 2.000", tags: [{ t: "Não expira", tipo: "ok" }, { t: "Campanha", tipo: "azul" }], preco: "R$ 497,00", itens: [], mais: ["Volume para campanha pesada", "Soma no saldo da conta"], nota: "Não substitui o plano nem libera o CRM.", botao: "Recarregar" },
+];
+const CREDITOS = ["100 créditos", "500 créditos", "2.000 créditos"];
+type Linha = [string, ...(string | boolean)[]];
+const COMPARA: { grupo: string; linhas: Linha[] }[] = [
+  { grupo: "Prospecção", linhas: [
+    ["Créditos por mês (1 crédito = 1 decisor)", "25 (teste)", "200", "800 (2 usuários: 1.000)", "2.000 a 5.000", "Sob medida"],
+    ["Listas, qualificação e ficha da empresa", true, true, true, true, true],
+    ["Site, Instagram, Google Maps e e-mail", true, true, true, true, true],
+    ["Número do decisor", true, true, true, true, true],
+    ["Telefones por empresa", "1", "até 3", "todos", "todos", "todos"],
+    ["Facebook e WhatsApp do site", false, true, true, true, true],
+    ["LinkedIn da empresa e do decisor", false, false, true, true, true],
+    ["Pesquisa aprofundada dos sócios", false, false, "decisor + 1 sócio", "decisor + 1 sócio, busca completa", "sob medida"],
+    ["Revelar número do sócio (base licenciada)", true, true, true, true, true],
+  ] },
+  { grupo: "CRM e vendas", linhas: [
+    ["CRM sem limite de leads", false, true, true, true, true],
+    ["Tela Ligar com meta do dia", false, true, true, true, true],
+    ["Follow-up, agenda e lembretes", false, true, true, true, true],
+    ["Importação e exportação", false, true, true, true, true],
+  ] },
+  { grupo: "WhatsApp", linhas: [
+    ["WhatsApp dentro do CRM", false, false, true, true, true],
+    ["Mensagem e follow-up programados", false, false, true, true, true],
+    ["Envio automático na hora marcada", false, false, true, true, true],
+    ["Etiquetas e status do CRM nas conversas", false, false, true, true, true],
+    ["Áudio, grupos, respostas rápidas e catálogo", false, false, true, true, true],
+  ] },
+  { grupo: "Cadências inteligentes", linhas: [
+    ["Prospecção 3.0: ligação, WhatsApp, e-mail, Instagram e LinkedIn", false, false, true, true, true],
+    ["Próximo follow-up liberado só se o lead não responder", false, false, true, true, true],
+    ["Para sozinha quando o lead responde no WhatsApp", false, false, true, true, true],
+    ["Cadências Atlas prontas e editor próprio", false, false, true, true, true],
+    ["Follow-ups criativos com imagem do lead", false, false, true, true, true],
+  ] },
+  { grupo: "Scripts de ligação", linhas: [
+    ["Roteiro na tela de Ligar, preenchido com o lead e a dor do nicho", false, false, true, true, true],
+    ["Scripts Atlas prontos, inclusive o Convite para análise", false, false, true, true, true],
+    ["Objeções com resposta em um clique", false, false, true, true, true],
+    ["Qual script gera mais conversa com o decisor e mais reunião", false, false, true, true, true],
+    ["Scripts próprios para criar e editar", false, false, true, true, true],
+    ["Dores do nicho na ficha da empresa", true, true, true, true, true],
+    ["Perguntas, objeções e argumentos de cada nicho, aplicados no roteiro e nas cadências", false, false, true, true, true],
+    ["Qual dor abre mais conversa com o decisor", false, false, true, true, true],
+  ] },
+  { grupo: "Automação", linhas: [
+    ["Integrações (site, Meta, webhooks)", false, false, true, true, true],
+    ["Espelho no CRM dos Escolhidos", false, false, true, true, true],
+  ] },
+  { grupo: "Time e suporte", linhas: [
+    ["Usuários", "1", "1", "1 ou 2", "3 a 20", "Sob medida"],
+    ["Painel do líder", false, false, false, true, true],
+    ["Onboarding com a equipe Atlas", false, false, true, true, true],
+    ["Atlas Academy e treinamentos de vendas", false, false, false, true, true],
+    ["Suporte", "—", "E-mail", "Prioritário", "Prioritário + onboarding", "Gerente dedicado"],
+  ] },
+];
+const COLS = ["Grátis", "Essencial", "Pro", "Equipe", "Enterprise"];
+
+const CTA: (string | null)[] = [null, "plano_essencial_v2", "plano_pro_v2", "equipe", null];
+const WHATS = "5515996979750";
+const POR_QUE: { I: LucideIcon; t: string; d: string; c: string }[] = [
+  { I: TargetIcon, t: "800 decisores por mês", d: "Lista criada, qualificada e com o número de quem decide. Sem perder horas no Google e no Instagram.", c: "#8B5CF6" },
+  { I: MessageCircleIcon, t: "WhatsApp dentro do CRM", d: "Converse com o lead sem trocar de tela: áudio, etiquetas, etapa do funil e notas sincronizadas.", c: "#25D366" },
+  { I: CalendarCheckIcon, t: "Cadências inteligentes", d: "A rota de cada lead em todos os canais. Se ele não responder, o próximo follow-up já entra na agenda; se responder, para sozinha.", c: "#F5B94A" },
+  { I: WebhookIcon, t: "Leads chegando no quadro", d: "Formulário do site e anúncios do Meta caem direto no CRM, prontos para abordar.", c: "#00A8FF" },
+];
+
+/** Enterprise, Por que o Pro, Compare os planos e Recargas: iguais à página de planos do sistema. */
+export function AtlasPlanosExtras({ anual }: { anual: boolean }) {
+  return (
+    <div className="atlas-planos-extras atlas-planos">
+      <section className="enterprise" onMouseMove={luz}>
+        <div className="enterprise-txt">
+          <span className="enterprise-selo"><GemIcon /> Enterprise · sob medida</span>
+          <h2>Sua operação é grande? A gente monta o Atlas para ela.</h2>
+          <p>Créditos e usuários sem teto, integração com o seu CRM e sistemas, API e relatórios dedicados, contrato e faturamento próprios.</p>
+          <ul>{["Créditos e usuários sob medida", "Integração com o seu CRM", "API e relatórios dedicados", "Gerente de conta dedicado"].map((t) => <li key={t}><CheckIcon /> {t}</li>)}</ul>
+        </div>
+        <div className="enterprise-cta">
+          <b>Sob consulta</b><span>Resposta em até 1 dia útil</span>
+          <a className="plano-btn enterprise-btn" href={`https://wa.me/${WHATS}?text=${encodeURIComponent("Olá! Quero conhecer o plano Enterprise do Atlas.")}`} target="_blank" rel="noreferrer">Falar com a equipe</a>
+        </div>
+      </section>
+
+      <section className="planos-sec por-que">
+        <div className="por-que-cab">
+          <span className="pt-selo"><CrownIcon /> Mais escolhido</span>
+          <h2 className="planos-h2">Por que escolher o Pro?</h2>
+          <p className="planos-intro">O plano para transformar lista em conversa e conversa em venda.</p>
+        </div>
+        <div className="por-que-grid">
+          {POR_QUE.map(({ I, t, d, c }) => (
+            <article key={t} className="por-que-item" style={{ ["--c" as string]: c }} onMouseMove={luz}>
+              <span className="por-que-ico"><I /></span><h3>{t}</h3><p>{d}</p>
+            </article>
+          ))}
+        </div>
+        <div className="por-que-cta"><a href={assinar(anual ? "plano_pro_v2_anual" : "plano_pro_v2")} className="plano-btn primario">Quero o Pro</a><span className="muted small">4x mais créditos que o Essencial · cancele quando quiser</span></div>
+      </section>
+
+      <section className="planos-sec">
+        <h2 className="planos-h2">Compare os planos</h2>
+        <div className="planos-tabela">
+          <table>
+            <thead><tr><th />{COLS.map((n, i) => (
+              <th key={n} className={i === 2 ? "destaque topo" : ""}>{i === 2 && <span className="pt-selo"><CrownIcon /> Mais escolhido</span>}{n}{i === 2 && <small>Melhor custo por lead</small>}</th>
+            ))}</tr></thead>
+            {COMPARA.map(({ grupo, linhas }) => (
+              <tbody key={grupo}>
+                <tr className="pt-grupo"><td>{grupo}</td>{COLS.map((_, i) => <td key={i} className={i === 2 ? "destaque" : ""} />)}</tr>
+                {linhas.map(([rot, ...vs]) => (
+                  <tr key={rot}><td>{rot}</td>{vs.map((v, i) => <td key={i} className={i === 2 ? "destaque" : ""}>{v === true ? <span className="sim" aria-label="Incluído"><CheckIcon /></span> : v === false ? <span className="nao" aria-label="Não incluído"><MinusIcon /></span> : v}</td>)}</tr>
+                ))}
+              </tbody>
+            ))}
+            <tfoot><tr><td />{CTA.map((sku, i) => (
+              <td key={i} className={i === 2 ? "destaque fundo" : ""}>
+                {sku ? <a href={sku === "equipe" ? "#planos" : assinar(anual ? `${sku}_anual` : sku)} className={`plano-btn${i === 2 ? " primario" : ""}`}>{i === 2 ? "Quero o Pro" : `Assinar ${COLS[i]}`}</a> : null}
+              </td>
+            ))}</tr></tfoot>
+          </table>
+        </div>
+      </section>
+      <p className="planos-rodape">Pix ou cartão (crédito ou débito) · Qualificar custa 1 crédito e só é cobrado se achar dados reais · O crédito do plano renova todo mês</p>
+
+      <section className="planos-sec">
+        <h2 className="planos-h2">Recarga de créditos</h2>
+        <p className="planos-intro">Acabou no meio do mês? A recarga não expira e soma no saldo.</p>
+        <div className="planos-grid tres">{RECARGAS.map((p, i) => <CartaoRecarga key={p.nome} p={p} sub={CREDITOS[i]} />)}</div>
+      </section>
+    </div>
+  );
+}
+
+function CartaoRecarga({ p, sub }: { p: Plano; sub: string }) {
+  const [aberto, setAberto] = useState(true);
+  return (
+    <article className={`plano cor-${p.cor}${p.destaque ? " destaque" : ""}`} onMouseMove={luz}>
+      {p.destaque && <span className="plano-selo">{p.selo}</span>}
+      <span className="plano-cat">{p.destaque ? "Recarga" : p.selo}</span>
+      <h3>{p.nome}</h3>
+      <div className="plano-tags">{p.tags.map((t) => <span key={t.t} className={`plano-tag${t.tipo ? ` ${t.tipo}` : ""}`}>{t.t}</span>)}</div>
+      <div className="plano-preco">{p.preco}</div>
+      <div className="plano-sub">{sub}</div>
+      {aberto && <><ul>{p.mais.map((i) => <Item key={i} t={i} />)}</ul>{p.nota && <div className="plano-nota">{p.nota}</div>}</>}
+      <button type="button" className="plano-ver" onClick={() => setAberto(!aberto)}>{aberto ? "Ver menos" : "Ver tudo"} <ChevronDownIcon style={{ transform: aberto ? "rotate(180deg)" : undefined }} /></button>
+      <div className="plano-espaco" />
+      <a className={`plano-btn${p.destaque ? " primario" : ""}`} href={assinar(p.sku ?? "")}>{p.botao}</a>
+    </article>
   );
 }

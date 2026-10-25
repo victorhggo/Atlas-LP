@@ -13,7 +13,7 @@ import { Good } from "../../ui/highlight";
 import { LinkButton } from "../../ui/link-button";
 import { Reveal } from "../../ui/reveal";
 import { Section } from "../../ui/section";
-import { AtlasPlanos } from "./atlas-planos";
+import { AtlasPlanos, AtlasPlanosExtras } from "./atlas-planos";
 
 const SEALS = ["Sem fidelidade", "Cancele quando quiser", "Sem taxa de setup"];
 
@@ -92,66 +92,7 @@ export default function Pricing() {
         <AtlasPlanos anual={isAnnual} />
 
         {/* Plano Enterprise em destaque abaixo dos 4 planos */}
-        <Reveal className="w-full">
-          <div className="glass-2 dark:glass-3 border-brand/35 relative grid w-full items-center gap-8 overflow-hidden rounded-3xl border p-6 shadow-2xl sm:p-10 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -top-32 -right-32 size-[28rem] bg-[radial-gradient(closest-side,var(--brand),transparent)] opacity-25"
-            />
-            <div className="relative flex flex-col gap-4">
-              <div className="flex flex-wrap items-center gap-2.5">
-                <span className="bg-brand/15 text-brand rounded-full px-3 py-1 text-xs font-bold tracking-[0.14em] uppercase">
-                  Sob medida
-                </span>
-                <span className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
-                  Para operações personalizadas
-                </span>
-              </div>
-              <h3 className="text-2xl leading-tight font-bold text-balance sm:text-4xl">
-                Plano Enterprise
-              </h3>
-              <p className="text-muted-foreground max-w-[540px] text-sm leading-relaxed sm:text-base">
-                Precisa de mais volume, fontes de dados dedicadas ao seu nicho e acompanhamento próximo? Montamos o Plano Enterprise sob medida para a sua operação.
-              </p>
-              <ul className="grid gap-2.5 pt-1 sm:grid-cols-2">
-                {[
-                  "Créditos e usuários sob medida",
-                  "Fontes de dados dedicadas ao seu nicho",
-                  "Implementação e treinamento do time",
-                  "Integração com seu CRM, API e gerente dedicado",
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-xs font-medium sm:text-sm">
-                    <span className="bg-brand size-1.5 shrink-0 rounded-full" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="border-border/25 bg-background/60 relative flex flex-col items-start justify-between gap-4 rounded-2xl border p-6 shadow-lg sm:items-center sm:text-center lg:items-end lg:text-right">
-              <div className="flex flex-col gap-1">
-                <span className="text-xs font-bold tracking-wider text-emerald-600 uppercase dark:text-emerald-400">
-                  Demonstração de 20 minutos
-                </span>
-                <p className="text-foreground text-base font-semibold sm:text-lg">
-                  Veja o Atlas rodando no cenário da sua empresa
-                </p>
-                <span className="text-muted-foreground text-xs sm:text-sm">
-                  Orçamento e escopo definidos direto com nosso especialista.
-                </span>
-              </div>
-              <LinkButton
-                href={siteConfig.links.demo}
-                size="lg"
-                variant="glow"
-                className="w-full sm:w-auto"
-                icon={<CalendarClockIcon className="mr-2 size-4" />}
-              >
-                Falar com consultor
-              </LinkButton>
-            </div>
-          </div>
-        </Reveal>
+        <AtlasPlanosExtras anual={isAnnual} />
 
         <p className="text-muted-foreground text-center text-sm sm:text-base">
           Pix ou cartão pelo Asaas: Qualificar custa 1 crédito e{" "}
