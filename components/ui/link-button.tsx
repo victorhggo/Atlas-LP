@@ -12,6 +12,7 @@ export interface LinkButtonProps {
   size?: ComponentProps<typeof Button>["size"];
   target?: string;
   rel?: string;
+  className?: string;
 }
 
 export function LinkButton({
@@ -23,13 +24,14 @@ export function LinkButton({
   size = "lg",
   target,
   rel,
+  className,
 }: LinkButtonProps) {
   const isExternal = href.startsWith("http://") || href.startsWith("https://");
   const linkTarget = target ?? (isExternal ? "_blank" : undefined);
   const linkRel = rel ?? (isExternal ? "noopener noreferrer" : undefined);
 
   return (
-    <Button variant={variant} size={size} asChild>
+    <Button variant={variant} size={size} className={className} asChild>
       <a href={href} target={linkTarget} rel={linkRel}>
         {icon}
         {children}
