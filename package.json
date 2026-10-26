@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build --webpack",
+    "start": "node scripts/serve.mjs",
     "lint": "eslint .",
     "prebuild": "node scripts/optimize-images.mjs",
     "build:dominio": "node scripts/build-dominio.mjs"

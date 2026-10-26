@@ -4,7 +4,13 @@
 import { mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { basename, extname, join } from "node:path";
 
-import sharp from "sharp";
+let sharp;
+try { sharp = (await import("sharp")).default; await sharp({ create: { width: 1, height: 1, channels: 3, background: "#000" } }).png().toBuffer(); }
+catch {
+  // hospedagens com sistema antigo (ex.: Hostinger) não rodam o sharp: usa as imagens já geradas e versionadas
+  console.log("sharp indisponível: usando public/_img já gerado");
+  process.exit(0);
+}
 
 const PUBLIC = "public";
 const OUT_DIR = join(PUBLIC, "_img");

@@ -39,5 +39,4 @@ next-env.d.ts
 /app/pro/
 /components/pro/
 # imagens geradas no build (scripts/optimize-images.mjs)
-/public/_img/
 /out-dominio-proprio/
