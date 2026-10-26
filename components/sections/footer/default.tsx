@@ -41,7 +41,6 @@ export default function FooterSection({
       links: [
         { text: "Método ATLAS", href: "#metodo" },
         { text: "WhatsApp e Cadências", href: "#cadencias" },
-        { text: "CRM & Funil", href: "#crm" },
         { text: "Calculadora", href: "#calculadora" },
         { text: "Planos & Preços", href: "#planos" },
         { text: "Dúvidas frequentes", href: "#duvidas" },

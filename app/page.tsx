@@ -1,14 +1,11 @@
 import Inteligencia from "../components/sections/inteligencia/default";
 import ParaQuem from "../components/sections/para-quem/default";
-import Qualificar from "../components/sections/qualificar/default";
 import Ligar from "../components/sections/ligar/default";
 import WhatsApp from "../components/sections/whatsapp/default";
-import CrmDemo from "../components/sections/crm-demo/default";
 import Cadencias from "../components/sections/cadencias/default";
 import Calculator from "../components/sections/calculator/default";
 import CTA from "../components/sections/cta/default";
 import FAQ from "../components/sections/faq/default";
-import Equipe from "../components/sections/equipe/default";
 import Footer from "../components/sections/footer/default";
 import Hero from "../components/sections/hero/default";
 import Metodo from "../components/sections/metodo/default";
@@ -27,22 +24,19 @@ export default function Home() {
       <div id="conteudo" />
       <Hero />
       <ParaQuem />
+      <Calculator />
       <Metodo />
       {/* Super Destaque: Agente Atlas */}
       {/* Triagem e Dado Conferido */}
       <WhatsApp />
-      <Qualificar />
       {/* Cadências Inteligentes */}
       <Inteligencia />
       <Cadencias />
       {/* Destaque: Roteiro na tela */}
       <Ligar />
       {/* Destaque: CRM e Funil */}
-      <CrmDemo />
       {/* Gestão de Equipes */}
-      <Equipe />
       {/* Calculadora de ROI */}
-      <Calculator />
       {/* Planos com Enterprise integrado (sem recargas avulsas) */}
       <Pricing />
       {/* Suporte e Comunidade */}
