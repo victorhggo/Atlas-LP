@@ -1,0 +1,84 @@
+/* ===================== bento, "Conheça o Atlas" e painel do Orbit: acabamento da rodada 3 ===================== */
+
+/* ícone de app (estilo iOS) reaproveitado nas seções */
+.app-tile { width: 40px; height: 40px; flex: none; border-radius: 11px; display: grid; place-items: center;
+  background: linear-gradient(180deg, #FFFFFF, #E9EFF8); box-shadow: inset 0 -3px 6px rgb(16 30 64 / 10%), 0 0 0 1px rgb(16 30 64 / 6%), 0 8px 16px -8px rgb(0 30 90 / 45%); }
+.app-tile svg { width: 23px; height: 23px; }
+.app-tile-atlas { background: linear-gradient(180deg, #172A4F, #0A1426); box-shadow: inset 0 1px 0 rgb(255 255 255 / 18%), 0 0 0 1px rgb(124 200 255 / 30%), 0 8px 16px -8px rgb(0 98 224 / 70%); }
+.app-tile-atlas img { width: 26px; height: 26px; }
+.app-tile-orbe { background: radial-gradient(circle at 50% 40%, #1A2550, #070B1C); box-shadow: inset 0 1px 0 rgb(255 255 255 / 15%), 0 0 0 1px rgb(150 140 255 / 35%), 0 8px 18px -8px rgb(110 90 255 / 80%); overflow: hidden; }
+.app-tile-orbe i { width: 24px; height: 24px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff 0 8%, transparent 30%), conic-gradient(from 0deg, #3DB4FF, #7C5CFF, #C084FC, #22D3EE, #3DB4FF);
+  box-shadow: 0 0 12px 2px rgb(124 92 255 / 70%); animation: orbe-gira 6s linear infinite; }
+@keyframes orbe-gira { to { rotate: 360deg; } }
+.app-par { display: flex; flex: none; } .app-par .app-tile + .app-tile { margin-left: -12px; box-shadow: 0 0 0 2px #fff, 0 8px 16px -8px rgb(0 30 90 / 45%); }
+
+/* ---------- bento: 6 colunas, sem buraco; cada cartão com a sua cor ---------- */
+@media (min-width: 820px) {
+  .bento { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; }
+  .bento > .bento-item { grid-column: span 2; }
+  .bento > .b-grande { grid-column: span 4; grid-row: span 2; }
+  .bento > .b-largo { grid-column: span 3; }
+}
+.bento-item { --c3: 59 130 246; display: flex; flex-direction: column; gap: 10px; border: 1px solid transparent; overflow: hidden;
+  background: radial-gradient(70% 60% at 0% 0%, rgb(var(--c3) / 22%), transparent 70%) padding-box, linear-gradient(180deg, #111C36, #0B1429) padding-box,
+    linear-gradient(160deg, rgb(var(--c3) / 65%), rgb(255 255 255 / 6%) 40%, rgb(255 255 255 / 4%)) border-box;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 8%), 0 30px 60px -34px rgb(0 10 40 / 80%); transition: transform .5s var(--mola), box-shadow .5s; }
+.bento-item::before { content: ""; position: absolute; top: 0; left: 10%; width: 40%; height: 1px; background: linear-gradient(90deg, transparent, rgb(var(--c3)), transparent); box-shadow: 0 0 16px 2px rgb(var(--c3) / 55%); }
+.bento-item:hover { box-shadow: inset 0 1px 0 rgb(255 255 255 / 12%), 0 34px 70px -30px rgb(var(--c3) / 45%); }
+.cor-azul { --c3: 59 130 246; } .cor-verde { --c3: 37 211 102; } .cor-ciano { --c3: 34 211 238; } .cor-violeta { --c3: 168 85 247; } .cor-ambar { --c3: 251 191 36; }
+.bento-selo { align-self: flex-start; display: inline-flex; align-items: center; gap: 0; padding: 5px 12px 5px 5px; border-radius: 999px; margin-bottom: 6px;
+  background: rgb(var(--c3) / 12%); box-shadow: inset 0 0 0 1px rgb(var(--c3) / 30%); }
+.bento-selo .app-tile { width: 28px; height: 28px; border-radius: 8px; } .bento-selo .app-tile svg { width: 16px; height: 16px; } .bento-selo .app-tile-atlas img { width: 18px; height: 18px; }
+.bento-selo .app-tile + .app-tile { margin-left: -6px; }
+.bento-selo b { margin-left: 9px; font-size: .78rem; font-weight: 800; color: rgb(var(--c3)); filter: brightness(1.35); }
+.bento-item h3 { font-size: 1.32rem; }
+.bento-item .recorte { margin-top: auto; position: relative; }
+.bento-item h3 + p { margin-bottom: 18px; }
+.bento-item .recorte img { transition: transform .8s var(--mola); transform-origin: top left; }
+.b-grande .recorte { flex: 1 1 auto; min-height: 0; }
+.b-grande .recorte img { height: 100%; object-fit: cover; object-position: top left; }
+.bento-item:hover .recorte img { transform: scale(1.035); }
+.b-grande .recorte { max-height: none; }
+:root[data-tema="claro"] .bento-item { background: radial-gradient(70% 60% at 0% 0%, rgb(var(--c3) / 14%), transparent 70%) padding-box, linear-gradient(180deg, #FFFFFF, #F6F9FE) padding-box,
+    linear-gradient(160deg, rgb(var(--c3) / 70%), rgb(16 30 64 / 8%) 40%, rgb(16 30 64 / 6%)) border-box; box-shadow: inset 0 1px 0 #fff, 0 30px 60px -36px rgb(0 40 120 / 40%); }
+:root[data-tema="claro"] .bento-selo b { filter: brightness(.75); }
+
+/* ---------- "Conheça o Atlas": apps no lugar dos ícones, órbitas em volta da esfera, balões flutuando ---------- */
+.sobre-pontos li { display: grid !important; grid-template-columns: 70px 1fr; align-items: center; gap: 8px !important; }
+.esfera-orbita { position: absolute; left: 50%; top: 50%; width: 118%; aspect-ratio: 1; border-radius: 50%; translate: -50% -50%; pointer-events: none; z-index: 1;
+  border: 1px solid rgb(0 123 255 / 16%); transform: rotateX(68deg) rotateZ(0deg); animation: esfera-orbita 16s linear infinite; }
+.esfera-orbita.o2 { width: 96%; border-color: rgb(124 92 255 / 18%); transform: rotateX(62deg) rotateY(18deg); animation-duration: 11s; animation-direction: reverse; }
+.esfera-orbita i { position: absolute; top: -5px; left: 50%; width: 10px; height: 10px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff, #3DB4FF 55%, #007BFF); box-shadow: 0 0 14px 3px rgb(61 180 255 / 70%); }
+.esfera-orbita.o2 i { background: radial-gradient(circle at 35% 35%, #fff, #A78BFA 55%, #7C3AED); box-shadow: 0 0 14px 3px rgb(167 139 250 / 70%); }
+@keyframes esfera-orbita { to { transform: rotateX(68deg) rotateZ(360deg); } }
+.esfera-orbita.o2 { animation-name: esfera-orbita-2; } @keyframes esfera-orbita-2 { to { transform: rotateX(62deg) rotateY(18deg) rotateZ(360deg); } }
+.desfeita .esfera-orbita { opacity: .35; transition: opacity .6s; }
+.esfera-bolha { animation: bolha-boia 5.5s ease-in-out infinite; }
+.esfera-bolha.b2 { animation-delay: -1.8s; } .esfera-bolha.b3 { animation-delay: -3.6s; }
+@keyframes bolha-boia { 50% { translate: 0 -10px; } }
+
+/* ---------- painel do Orbit: aurora que respira e perguntas que acendem uma de cada vez ---------- */
+.painel-noite { position: relative; isolation: isolate; }
+.orbit-aurora { position: absolute; inset: 0; z-index: -1; overflow: hidden; border-radius: inherit; pointer-events: none; }
+.orbit-aurora i { position: absolute; width: 70%; aspect-ratio: 1; border-radius: 50%; opacity: .5; will-change: transform; animation: aurora 18s ease-in-out infinite alternate; }
+.orbit-aurora i:nth-child(1) { left: -10%; top: -25%; background: radial-gradient(closest-side, #2563EB, transparent); }
+.orbit-aurora i:nth-child(2) { right: -15%; top: 5%; background: radial-gradient(closest-side, #7C3AED, transparent); animation-duration: 22s; animation-delay: -6s; }
+.orbit-aurora i:nth-child(3) { left: 25%; bottom: -40%; background: radial-gradient(closest-side, #06B6D4, transparent); opacity: .35; animation-duration: 26s; animation-delay: -12s; }
+@keyframes aurora { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(8%, 10%) scale(1.15); } 100% { transform: translate(-6%, 4%) scale(.95); } }
+.orbit-perguntas li { position: relative; padding-left: 34px !important; animation: pergunta-acende 9s ease-in-out infinite; }
+.orbit-perguntas li:nth-child(2) { animation-delay: 3s; } .orbit-perguntas li:nth-child(3) { animation-delay: 6s; }
+.orbit-perguntas li::before { content: ""; position: absolute; left: 12px; top: 50%; width: 14px; height: 14px; margin-top: -7px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff 0 10%, transparent 35%), conic-gradient(#3DB4FF, #7C5CFF, #C084FC, #22D3EE, #3DB4FF); box-shadow: 0 0 10px 1px rgb(124 92 255 / 70%); animation: orbe-gira 5s linear infinite; }
+.orbit-perguntas li { isolation: isolate; }
+.orbit-perguntas li::after { content: ""; position: absolute; inset: -1px; z-index: -1; border-radius: inherit; opacity: 0; pointer-events: none;
+  background: rgb(80 150 255 / 16%); box-shadow: inset 0 0 0 1px rgb(124 196 255 / 70%), 0 0 26px -4px rgb(80 150 255 / 70%); animation: pergunta-acende 9s ease-in-out infinite; animation-delay: inherit; }
+.orbit-perguntas li { animation: none; }
+.orbit-perguntas li:nth-child(1)::after { animation-delay: 0s; } .orbit-perguntas li:nth-child(2)::after { animation-delay: 3s; } .orbit-perguntas li:nth-child(3)::after { animation-delay: 6s; }
+@keyframes pergunta-acende { 0%, 40%, 100% { opacity: 0; } 10%, 28% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .orbit-aurora i, .orbit-perguntas li::after, .orbit-perguntas li::before, .esfera-orbita, .esfera-bolha, .app-tile-orbe i { animation: none; }
+}
+/* o funil grande acompanha a altura dos vizinhos (a imagem preenche, não estica a linha) */
+.b-grande .recorte { position: relative; flex: 1 1 auto; min-height: 380px; }
+.b-grande .recorte img { position: absolute; inset: 0; width: 100%; height: 100%; }

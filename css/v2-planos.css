@@ -1,0 +1,119 @@
+/* ===================== planos: cartões com cor própria, luz no topo, número em destaque, apps reais e borda viva no Pro ===================== */
+@property --giro { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+
+.planos-grade { gap: 18px; align-items: stretch; }
+.plano-gratis { --c1: #CBD5E1; --c2: #64748B; --c3: 148 163 184; }
+.plano-start  { --c1: #67E8F9; --c2: #0891B2; --c3: 34 211 238; }
+.plano-pro    { --c1: #7CC4FF; --c2: #2563EB; --c3: 59 130 246; }
+.plano-scale  { --c1: #D8B4FE; --c2: #9333EA; --c3: 168 85 247; }
+.plano-enterprise { --c1: #FDE68A; --c2: #D97706; --c3: 251 191 36; }
+
+.plano {
+  --mx: 50%; --my: 0%;
+  gap: 16px; padding: 30px 26px 26px; border-radius: 26px; overflow: hidden;
+  border: 1px solid transparent;
+  background:
+    radial-gradient(360px circle at var(--mx) var(--my), rgb(var(--c3) / 14%), transparent 60%) padding-box,
+    radial-gradient(90% 55% at 50% 0%, rgb(var(--c3) / 26%), transparent 70%) padding-box,
+    linear-gradient(180deg, #111C36, #0A1226) padding-box,
+    linear-gradient(180deg, rgb(var(--c3) / 70%), rgb(255 255 255 / 8%) 38%, rgb(255 255 255 / 4%)) border-box;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 10%), 0 30px 60px -30px rgb(0 10 40 / 80%);
+  color: #E6EDF8;
+  transition: transform .5s var(--mola), box-shadow .5s;
+}
+.plano::after { display: none; }
+/* linha de luz no topo */
+.plano::before { content: ""; position: absolute; top: 0; left: 18%; right: 18%; height: 1px; background: linear-gradient(90deg, transparent, rgb(var(--c3)), transparent); box-shadow: 0 0 18px 2px rgb(var(--c3) / 60%); }
+.plano:hover { box-shadow: inset 0 1px 0 rgb(255 255 255 / 14%), 0 40px 70px -30px rgb(var(--c3) / 45%); }
+
+.plano-cabeca { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.plano h3 { font-family: "Clash Display", "Manrope", sans-serif; font-weight: 600; font-size: 2rem; letter-spacing: -0.01em; line-height: 1;
+  background: linear-gradient(180deg, #fff 30%, var(--c1)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.plano-kicker { margin: 0; padding: 5px 11px; border-radius: 999px; font-size: .74rem; font-weight: 800; letter-spacing: .01em; color: var(--c1);
+  background: rgb(var(--c3) / 12%); box-shadow: inset 0 0 0 1px rgb(var(--c3) / 30%); }
+.plano-para { color: #A9B6CC; font-size: .94rem; min-height: 3em; margin: 0; }
+
+.plano-numero { margin: 2px 0 0; display: grid; gap: 2px; }
+.plano-numero b { font-family: "Clash Display", "Manrope", sans-serif; font-weight: 600; font-size: clamp(2rem, 2.6vw, 2.6rem); line-height: 1; letter-spacing: -0.02em; color: #fff; text-shadow: 0 0 28px rgb(var(--c3) / 55%); }
+.plano-scale .plano-numero b { font-size: clamp(1.6rem, 2vw, 2rem); }
+.plano-numero span { font-size: .84rem; font-weight: 600; color: var(--c1); }
+
+/* apps reais que o plano liga */
+.plano-apps { min-height: 36px; display: flex; align-items: center; }
+.plano-apps-fila { display: flex; }
+.plano-app { width: 36px; height: 36px; margin-right: -5px; border-radius: 10px; display: grid; place-items: center;
+  background: linear-gradient(180deg, #FFFFFF, #E9EFF8); box-shadow: 0 0 0 2px #0E1830, inset 0 -3px 6px rgb(16 30 64 / 10%), 0 6px 12px -6px rgb(0 0 0 / 60%);
+  transition: transform .35s var(--mola); }
+.plano-app svg { width: 19px; height: 19px; }
+.plano:hover .plano-app { margin-right: 4px; }
+.plano-app:hover { transform: translateY(-4px) scale(1.1); z-index: 1; }
+.plano-apps-fila .plano-app { transition: transform .35s var(--mola), margin .45s var(--mola); }
+
+.plano ul { gap: 11px; padding-top: 18px; border-top: 1px solid rgb(255 255 255 / 8%); color: #C3CEE0; font-size: .9rem; }
+.plano li { display: flex; gap: 10px; align-items: flex-start; }
+.plano li b { color: #fff; font-weight: 700; }
+.plano li .ok { flex: none; width: 18px; height: 18px; margin-top: 1px; border-radius: 50%; padding: 3px; background: rgb(var(--c3) / 16%); box-shadow: inset 0 0 0 1px rgb(var(--c3) / 35%); }
+.plano li .ok path { fill: none; stroke: var(--c1); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+.cta-plano { margin-top: 6px; padding: 14px 16px; border-radius: 14px; font-weight: 700; color: #fff; text-align: center;
+  background: rgb(255 255 255 / 5%); box-shadow: inset 0 0 0 1px rgb(var(--c3) / 35%), inset 0 1px 0 rgb(255 255 255 / 8%); transition: background-color .25s, box-shadow .25s, transform .25s var(--mola); }
+.cta-plano:hover { background: rgb(var(--c3) / 16%); box-shadow: inset 0 0 0 1px rgb(var(--c3) / 70%), 0 10px 26px -12px rgb(var(--c3) / 70%); transform: translateY(-1px); }
+
+/* Pro: borda que gira, halo e botão cheio */
+.plano-destaque { overflow: visible; border: 0; padding: 31px 27px 27px;
+  background:
+    radial-gradient(360px circle at var(--mx) var(--my), rgb(var(--c3) / 18%), transparent 60%),
+    radial-gradient(100% 60% at 50% 0%, rgb(90 140 255 / 38%), transparent 70%),
+    linear-gradient(180deg, #13224A, #0B1430);
+  box-shadow: 0 40px 90px -30px rgb(40 100 255 / 65%), 0 0 0 1px rgb(124 196 255 / 25%); }
+.plano-destaque::after { display: block; content: ""; position: absolute; inset: -1.5px; z-index: -1; border-radius: 27px; padding: 1.5px; opacity: 1;
+  background: conic-gradient(from var(--giro), #7CC4FF, #6D5BFF, #C084FC, #22D3EE, #7CC4FF);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: plano-giro 6s linear infinite; }
+.plano-destaque > :not(.plano-selo-mais) { position: relative; }
+@keyframes plano-giro { to { --giro: 360deg; } }
+.plano-destaque .plano-selo-mais { top: -14px; right: 22px; padding: 6px 13px; font-size: .74rem; letter-spacing: .02em;
+  background: linear-gradient(90deg, #3B82F6, #8B5CF6); box-shadow: 0 8px 22px -8px rgb(109 91 255 / 80%), inset 0 1px 0 rgb(255 255 255 / 35%); }
+.plano-destaque h3 { background-image: linear-gradient(90deg, #fff, #BFDBFE 45%, #C4B5FD); }
+.plano-destaque .cta-plano { color: #fff; background: linear-gradient(180deg, #4F8CFF, #2B5CE6); box-shadow: inset 0 1px 0 rgb(255 255 255 / 35%), 0 14px 30px -12px rgb(60 110 255 / 80%); }
+.plano-destaque .cta-plano:hover { background: linear-gradient(180deg, #6A9EFF, #3468F0); }
+
+/* Enterprise: faixa escura com brilho dourado */
+.plano-enterprise { padding: 28px 30px; }
+@media (min-width: 1100px) {
+  .plano-enterprise { grid-template-columns: 260px 1fr auto; column-gap: 36px; }
+  .plano-enterprise .plano-cabeca { grid-row: 1 / 3; flex-direction: column; align-items: flex-start; }
+  .plano-enterprise .plano-para { grid-column: 2; grid-row: 1; }
+  .plano-enterprise ul { grid-column: 2; grid-row: 2; display: flex; flex-wrap: wrap; gap: 10px 28px; border-top: 0; padding-top: 0; }
+  .plano-enterprise .cta-plano { grid-column: 3; grid-row: 1 / 3; }
+}
+
+/* tema claro: cartões claros com a mesma cor de cada plano */
+:root[data-tema="claro"] .plano {
+  color: #0B1322;
+  background:
+    radial-gradient(360px circle at var(--mx) var(--my), rgb(var(--c3) / 12%), transparent 60%) padding-box,
+    radial-gradient(90% 55% at 50% 0%, rgb(var(--c3) / 18%), transparent 70%) padding-box,
+    linear-gradient(180deg, #FFFFFF, #F5F8FD) padding-box,
+    linear-gradient(180deg, rgb(var(--c3) / 80%), rgb(16 30 64 / 10%) 40%, rgb(16 30 64 / 6%)) border-box;
+  box-shadow: inset 0 1px 0 #fff, 0 30px 60px -32px rgb(0 40 120 / 45%);
+}
+:root[data-tema="claro"] .plano h3 { background-image: linear-gradient(180deg, #0B1322 40%, var(--c2)); }
+:root[data-tema="claro"] .plano-kicker, :root[data-tema="claro"] .plano-numero span { color: var(--c2); }
+:root[data-tema="claro"] .plano-para { color: #4A5A74; }
+:root[data-tema="claro"] .plano-numero b { color: #0B1322; text-shadow: none; }
+:root[data-tema="claro"] .plano ul { color: #33435C; border-top-color: rgb(16 30 64 / 8%); }
+:root[data-tema="claro"] .plano li b { color: #0B1322; }
+:root[data-tema="claro"] .plano li .ok path { stroke: var(--c2); }
+:root[data-tema="claro"] .plano-app { box-shadow: 0 0 0 2px #fff, inset 0 -3px 6px rgb(16 30 64 / 8%), 0 6px 12px -6px rgb(16 30 64 / 35%); }
+:root[data-tema="claro"] .cta-plano { color: #0B1322; background: #fff; }
+:root[data-tema="claro"] .plano-destaque { background:
+    radial-gradient(360px circle at var(--mx) var(--my), rgb(var(--c3) / 14%), transparent 60%),
+    radial-gradient(100% 60% at 50% 0%, rgb(90 140 255 / 22%), transparent 70%), linear-gradient(180deg, #FFFFFF, #F1F5FF);
+  box-shadow: 0 40px 90px -34px rgb(40 100 255 / 50%); }
+:root[data-tema="claro"] .plano-destaque h3 { background-image: linear-gradient(90deg, #1D4ED8, #7C3AED); }
+:root[data-tema="claro"] .plano-destaque .cta-plano { color: #fff; }
+@media (prefers-reduced-motion: reduce) { .plano-destaque::after { animation: none; } }
+/* a borda do Pro gira só com o mouse em cima (girar sempre redesenha a tela a cada quadro) */
+.plano-destaque::after { animation-play-state: paused; }
+.plano-destaque:hover::after { animation-play-state: running; }

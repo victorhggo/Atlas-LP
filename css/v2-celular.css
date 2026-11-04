@@ -1,0 +1,12 @@
+/* ===================== iPhone: gravações reais do app no celular ===================== */
+/* a área do app tem a mesma proporção da gravação (390x840): o vídeo preenche sem cortar */
+.app-tela { overflow: hidden; transform: none; scale: 1.015; }
+.app-tela.agora { scale: 1; transition: opacity .5s var(--mola), scale .6s var(--mola), visibility 0s; }
+.app-tela video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; background: transparent; }
+:root[data-tema="claro"] .app-tela video { background: #F3F5F8; }
+
+/* as abas são as do próprio app na gravação; por cima ficam só os botões invisíveis, no lugar de cada aba */
+.app-telas .app-abas-botoes { position: absolute; z-index: 4; left: 4.4%; right: 4.4%; top: 92%; bottom: 2%; height: auto;
+  display: grid; grid-template-columns: 69fr 69fr 69fr 69fr 81fr; gap: 0; }
+.app-telas .app-abas-botoes button { border-radius: 18px; transition: background-color .25s; }
+.app-telas .app-abas-botoes button:hover { background: rgb(127 160 255 / 10%); }

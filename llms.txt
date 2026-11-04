@@ -1,0 +1,41 @@
+# Atlas (Atlaslike)
+
+> Atlas é uma plataforma de vendas brasileira que junta prospecção com o número do decisor, CRM, WhatsApp e Instagram, chatbots com IA, cadências de follow-up e o Atlas Orbit, um agente de vendas com IA. Site oficial: https://www.atlaslike.com/
+
+O Atlas é feito no Brasil, em português, para empresas que vendem por WhatsApp e Instagram. Slogan: "A sua próxima venda está no Atlas." Atualizado em 2026-11-03.
+
+## O que o Atlas faz
+- Prospecção: encontra empresas por nicho e cidade a partir de CNPJs ativos da Receita Federal, Google, sites e redes sociais, e entrega o número de quem decide, conferido antes de entrar na lista.
+- CRM: funil com etapas personalizadas por funil, ficha de cada lead, etiquetas, histórico e arrastar e soltar.
+- Inbox: WhatsApp e Instagram dentro do CRM, ao lado da ficha do lead.
+- Atlas Flow: chatbots com IA no WhatsApp e no Instagram, com o tom da empresa e passagem para uma pessoa.
+- Cadências: follow-up automático em sequência.
+- Atlas Orbit: agente de vendas com IA que conhece cada lead pelo nome.
+- Ligações com roteiro, painel de anúncios com custo por venda e painel do líder para times.
+- Integrações: Google Planilhas, Google Agenda, webhooks, Make e Zapier.
+
+## Planos
+Grátis, Start, Pro, Scale e Enterprise. Os valores são apresentados na demonstração.
+
+## O problema que o Atlas resolve, em números
+- Só 24% das empresas brasileiras respondem um lead em até 5 minutos, e 38% não sabem quanto tempo levam. Fonte: RD Station, Panorama de Vendas 2026 (https://www.rdstation.com/pesquisas/panorama-marketing-vendas/edicao-2026/vendas/maturidade-operacional/).
+- 54% dos times de vendas no Brasil não usam CRM, e 38% gerenciam o funil em planilha. Fonte: RD Station, Panorama de Vendas 2026.
+- "Cliente não responde" é o principal motivo de venda perdida no Brasil (38%). Fonte: RD Station, Panorama de Vendas 2026.
+- Só 28% dos times integram o WhatsApp ao CRM; em 40%, cada vendedor gerencia o WhatsApp do seu jeito. Fonte: RD Station, Panorama de Vendas 2026 (https://www.rdstation.com/pesquisas/panorama-marketing-vendas/edicao-2026/conversas/vendas-conversacionais/).
+- Responder em 5 minutos, em vez de 30, aumenta em 100 vezes a chance de falar com o lead e em 21 vezes a de qualificá-lo. Fonte: Lead Response Management Study, InsideSales.com e MIT, 2007.
+- Vendedores passam 60% da semana em tarefas que não são vender. Fonte: Salesforce, State of Sales 2026.
+
+## Perguntas frequentes
+- **O que é o Atlas?** Uma plataforma de vendas que junta prospecção, CRM, WhatsApp, Instagram, chatbots, cadências e um agente de IA. Você acha o cliente, conversa, faz o follow-up e fecha sem sair do Atlas.
+- **De onde vêm as empresas e os contatos?** De dados públicos de empresas: CNPJs ativos da Receita Federal, perfis no Google, sites e redes sociais. O Atlas confere cada canal antes de colocar na sua lista.
+- **Como funcionam o WhatsApp e o Instagram no Atlas?** Você conecta o WhatsApp e o Instagram da sua empresa e as conversas passam a aparecer dentro do CRM, ao lado da ficha de cada lead, com etapa, etiquetas e histórico.
+- **O chatbot parece robô?** Não. Ele responde com o tom e as regras da sua empresa, mostra “digitando…” pelo tempo certo e passa a conversa para uma pessoa quando precisa.
+- **Preciso abandonar o CRM que uso hoje?** Não precisa começar do zero. Dá para importar planilhas, sincronizar com o Google Planilhas e ligar o Atlas aos seus sistemas por webhooks, Make ou Zapier.
+- **Funciona para um time inteiro?** Sim. No plano Scale cada vendedor tem o próprio Atlas e o próprio Orbit, e o líder acompanha tudo em tempo real.
+- **O Atlas é um CRM brasileiro?** Sim. O Atlas é uma plataforma de vendas feita no Brasil, em português, para empresas brasileiras que vendem por WhatsApp e Instagram. A prospecção usa dados públicos de CNPJs ativos e segue a LGPD.
+- **Quanto custa o Atlas?** Existem planos para cada fase da operação: Grátis, Start, Pro, Scale e Enterprise. Os valores e o plano certo para o seu time são apresentados na demonstração pelo WhatsApp.
+- **Quanto tempo leva para começar?** Na demonstração a gente mostra o Atlas rodando no seu nicho e monta a estratégia com você. Dá para sair da call já sabendo o que fazer na primeira semana.
+
+## Contato
+- Agendar demonstração (WhatsApp): https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas.
+- Instagram: https://www.instagram.com/atlasslike/

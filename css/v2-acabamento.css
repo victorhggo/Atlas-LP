@@ -1,0 +1,264 @@
+/* ===================== acabamento: escala, profundidade, botões, integrações, esfera, celular, planos, rodapé ===================== */
+/* a letra e os espaços crescem com a tela: no monitor grande o site não parece a versão de celular */
+html { font-size: clamp(16px, 0.42vw + 10px, 19.5px); }
+:root { --larg: min(1680px, 92vw); }
+.menu-pilula { width: min(100%, 1400px); padding: 9px 9px 9px 22px; }
+.topo h1 { font-size: clamp(2.4rem, 4.5vw, 5.4rem); max-width: 19ch; }
+.topo-sub { max-width: 62ch; }
+.topo-palco { max-width: min(1560px, 94vw); }
+
+/* textura mais presente: malha de pontos maior nas laterais */
+body::before { background-size: 24px 24px; background-image: radial-gradient(color-mix(in srgb, var(--acento) 70%, transparent) 1.3px, transparent 1.7px); opacity: .85;
+  -webkit-mask-image: linear-gradient(90deg, #000 0, rgb(0 0 0 / 70%) 14%, transparent 32%, transparent 68%, rgb(0 0 0 / 70%) 86%, #000 100%);
+  mask-image: linear-gradient(90deg, #000 0, rgb(0 0 0 / 70%) 14%, transparent 32%, transparent 68%, rgb(0 0 0 / 70%) 86%, #000 100%); }
+:root[data-tema="claro"] body::before { opacity: .6; }
+
+/* profundidade: borda em degradê, brilho interno no topo e sombra em camadas */
+:root { --borda-luz: linear-gradient(160deg, rgb(255 255 255 / 22%), rgb(255 255 255 / 4%) 38%, rgb(255 255 255 / 2%) 62%, rgb(61 180 255 / 32%)); --sup-a: #15223B; --sup-b: #0F1A2F; }
+:root[data-tema="claro"] { --borda-luz: linear-gradient(160deg, rgb(255 255 255 / 100%), rgb(16 30 64 / 8%) 45%, rgb(0 123 255 / 26%)); --sup-a: #FFFFFF; --sup-b: #F6F9FF; }
+.bento-item, .plano, .times-grade li, .lgpd-grade li, .duvidas details, .passos-lista li.agora, .tela-moldura {
+  border: 1px solid transparent;
+  background: linear-gradient(180deg, var(--sup-a), var(--sup-b)) padding-box, var(--borda-luz) border-box;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 7%), 0 1px 2px rgb(0 0 0 / 12%), 0 24px 60px -28px rgb(0 10 40 / 55%);
+}
+:root[data-tema="claro"] :is(.bento-item, .plano, .times-grade li, .lgpd-grade li, .duvidas details, .passos-lista li.agora, .tela-moldura) {
+  box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgb(16 30 64 / 6%), 0 24px 54px -30px rgb(16 30 64 / 30%);
+}
+
+/* ---------- botões: brilho interno, borda fina e luz que segue o mouse ---------- */
+.cta-grande, .cta-menu, .cta-plano { position: relative; isolation: isolate; overflow: hidden; }
+.cta-grande, .cta-menu {
+  background: linear-gradient(180deg, #2B8CFF, #0062E0); border: 1px solid rgb(255 255 255 / 22%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 45%), inset 0 -3px 8px rgb(0 20 70 / 25%), 0 1px 2px rgb(0 20 60 / 30%), 0 12px 28px -12px rgb(0 98 224 / 70%);
+}
+.cta-grande::before, .cta-menu::before, .cta-plano::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(120px circle at var(--bx, 50%) var(--by, 50%), rgb(255 255 255 / 38%), transparent 70%); }
+.cta-grande:hover::before, .cta-menu:hover::before, .cta-plano:hover::before { opacity: 1; }
+.cta-grande:hover, .cta-menu:hover { background: linear-gradient(180deg, #3D97FF, #0A6DE6); transform: translateY(-1px); }
+.cta-claro { background: linear-gradient(180deg, #FFFFFF, #E9F1FF); color: #0B1322; border: 1px solid rgb(255 255 255 / 70%);
+  box-shadow: inset 0 1px 0 #fff, inset 0 -3px 8px rgb(0 40 120 / 10%), 0 14px 30px -14px rgb(0 15 50 / 55%); }
+.cta-claro:hover { background: linear-gradient(180deg, #FFFFFF, #F4F8FF); }
+.cta-claro::before { background: radial-gradient(120px circle at var(--bx, 50%) var(--by, 50%), rgb(0 123 255 / 18%), transparent 70%); }
+/* pílula com uma luz correndo pela borda */
+@property --ang { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.botao-borda { position: relative; display: inline-flex; align-items: center; padding: 14px 22px; border-radius: 999px; font-weight: 700; text-decoration: none; color: var(--texto);
+  background: linear-gradient(180deg, var(--sup-a), var(--sup-b)) padding-box, conic-gradient(from var(--ang), transparent 0 64%, #3DB4FF 76%, #FFFFFF 82%, #007BFF 88%, transparent 96%) border-box;
+  border: 1.5px solid transparent; animation: gira-borda 4s linear infinite; box-shadow: 0 10px 26px -14px rgb(0 60 160 / 50%); transition: transform .25s var(--mola); }
+.botao-borda::after { content: ""; width: 14px; height: 14px; margin-left: 10px; background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 3v9M4.5 8.5 8 12l3.5-3.5' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+.botao-borda:hover { transform: translateY(-1px); }
+@keyframes gira-borda { to { --ang: 360deg; } }
+@media (prefers-reduced-motion: reduce) { .botao-borda { animation: none; } }
+
+/* ---------- menu ---------- */
+.menu-pilula { background: linear-gradient(180deg, color-mix(in srgb, var(--sup-a) 82%, transparent), color-mix(in srgb, var(--sup-b) 82%, transparent)) padding-box, var(--borda-luz) border-box; border: 1px solid transparent;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 6%), 0 18px 44px -20px rgb(0 10 40 / 55%); }
+.menu-links { gap: 6px; }
+.menu-links a { padding: 8px 14px; border-radius: 999px; transition: color .2s, background-color .2s; }
+.menu-links a:hover { background: var(--acento-suave); color: var(--texto); }
+.menu-indicador { height: 36px; margin-top: -18px; }
+
+/* ---------- integrações: o Atlas no centro e os apps em órbita ---------- */
+.integracoes { display: grid; gap: 56px; align-items: center; }
+.integracoes h2 span, .sobre-atlas h2 span { color: var(--acento-tinta); }
+.integracoes-texto { display: grid; gap: 20px; justify-items: start; }
+.integracoes-texto p { color: var(--texto-2); font-size: 1.08rem; max-width: 46ch; }
+.hub { --tam: min(660px, 90vw); position: relative; width: var(--tam); aspect-ratio: 1; margin: 0 auto; }
+.hub-anel { position: absolute; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--acento) 32%, transparent); }
+.hub-anel-1 { inset: 18%; box-shadow: 0 0 0 1px color-mix(in srgb, var(--acento) 6%, transparent), inset 0 0 80px color-mix(in srgb, var(--acento) 10%, transparent); }
+.hub-anel-2 { inset: 3%; border-style: dashed; }
+.hub-centro { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: grid; justify-items: center; gap: 10px; z-index: 2; }
+.hub-centro b { font-size: 1rem; letter-spacing: -0.02em; }
+.hub-orbita { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; animation: orbita-hub 70s linear infinite; }
+.hub-orbita-2 { animation-duration: 100s; animation-direction: reverse; }
+.app { position: absolute; left: 50%; top: 50%; width: 0; height: 0; --a: calc(360deg / var(--n) * var(--i) + var(--desloca, 0deg)); transform: rotate(var(--a)) translateY(calc(-1 * var(--raio))); }
+.app[data-anel="1"] { --raio: calc(var(--tam) * .32); }
+.app[data-anel="2"] { --raio: calc(var(--tam) * .47); --desloca: 36deg; }
+/* cada app fica de pé enquanto gira: desfaz a rotação da posição e a da órbita */
+.app-giro { position: absolute; left: -40px; top: -40px; width: 80px; display: grid; justify-items: center; gap: 6px; transform: rotate(calc(-1 * var(--a))); }
+.app-giro > * { animation: orbita-hub 70s linear infinite reverse; }
+.app[data-anel="2"] .app-giro > * { animation-duration: 100s; animation-direction: normal; }
+@keyframes orbita-hub { to { transform: rotate(360deg); } }
+.app-nome { font-size: .74rem; font-weight: 700; color: var(--texto-2); white-space: nowrap; }
+/* ícone de app no estilo Apple: quadrado arredondado, vidro no topo e borda com luz */
+.app-icone { position: relative; width: 76px; height: 76px; border-radius: 22px; display: grid; place-items: center; isolation: isolate;
+  background: linear-gradient(180deg, #FFFFFF, #EEF3FB) padding-box, linear-gradient(160deg, #FFFFFF, rgb(170 200 255 / 60%) 50%, rgb(0 123 255 / 60%)) border-box; border: 1.5px solid transparent;
+  box-shadow: inset 0 1px 0 #fff, inset 0 -6px 12px rgb(16 30 64 / 8%), 0 1px 2px rgb(16 30 64 / 10%), 0 16px 32px -14px rgb(0 40 120 / 45%), 0 0 0 6px color-mix(in srgb, var(--acento) 7%, transparent); transition: transform .35s var(--mola), box-shadow .35s; }
+.app-icone::after { content: ""; position: absolute; inset: 2px 2px 54% 2px; border-radius: 20px 20px 50% 50% / 20px 20px 16px 16px; background: linear-gradient(180deg, rgb(255 255 255 / 85%), rgb(255 255 255 / 0)); z-index: 1; pointer-events: none; }
+.app-icone svg { width: 40px; height: 40px; position: relative; z-index: 0; }
+.app:hover .app-icone { transform: translateY(-4px) scale(1.07); box-shadow: inset 0 1px 0 #fff, 0 22px 40px -16px rgb(0 60 160 / 60%), 0 0 0 8px color-mix(in srgb, var(--acento) 16%, transparent); }
+.app-atlas { width: 106px; height: 106px; border-radius: 30px; background: linear-gradient(180deg, #13213C, #0A1426) padding-box, linear-gradient(160deg, #7CC8FF, #1A3A70 50%, #007BFF) border-box;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 25%), 0 24px 50px -18px rgb(0 98 224 / 70%), 0 0 0 10px color-mix(in srgb, var(--acento) 10%, transparent), 0 0 90px 12px color-mix(in srgb, var(--acento) 24%, transparent); }
+.app-atlas::after { opacity: .22; }
+.app-atlas img { width: 60px; height: 60px; position: relative; z-index: 2; }
+@media (min-width: 980px) { .integracoes { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+@media (max-width: 600px) {
+  .app-icone { width: 52px; height: 52px; border-radius: 15px; } .app-icone::after { border-radius: 14px 14px 50% 50% / 14px 14px 10px 10px; }
+  .app-icone svg { width: 28px; height: 28px; } .app-giro { left: -26px; top: -26px; width: 52px; } .app-nome { display: none; }
+  .app-atlas { width: 78px; height: 78px; border-radius: 22px; } .app-atlas img { width: 44px; height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) { .hub-orbita, .app-giro > * { animation: none; } }
+
+/* ---------- conheça o Atlas: a esfera numa seção branca ---------- */
+.sobre-atlas { max-width: none; padding: var(--secao) clamp(10px, 1.4vw, 22px) 0; }
+.painel-branco { position: relative; overflow: hidden; isolation: isolate; border-radius: var(--r-lg); padding: clamp(48px, 7vw, 110px) clamp(24px, 5vw, 96px);
+  background: radial-gradient(55% 70% at 76% 50%, #E4EFFF, transparent 70%), linear-gradient(180deg, #FFFFFF, #F4F8FE); color: #0B1322; display: grid; gap: 48px; align-items: center;
+  box-shadow: inset 0 1px 0 #fff, 0 0 0 1px rgb(16 30 64 / 7%), 0 40px 100px -50px rgb(0 20 70 / 55%); }
+.painel-branco::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: radial-gradient(rgb(0 98 214 / 20%) 1px, transparent 1.3px); background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(90deg, #000, transparent 45%); mask-image: linear-gradient(90deg, #000, transparent 45%); opacity: .8; }
+.painel-branco h2 { color: #0B1322; font-size: clamp(1.9rem, 3.4vw, 3.1rem); max-width: 18ch; }
+.painel-branco h2 span { color: #0062D6; }
+.sobre-texto { display: grid; gap: 22px; justify-items: start; }
+.sobre-texto > p { color: #46546B; font-size: 1.08rem; max-width: 52ch; }
+.sobre-pontos { display: grid; gap: 14px; }
+.sobre-pontos li { display: flex; gap: 14px; align-items: flex-start; color: #46546B; max-width: 50ch; }
+.sobre-pontos b { color: #0B1322; }
+.sobre-pontos .ico { width: 38px; height: 38px; flex: none; padding: 9px; border-radius: 12px; color: #0062D6; background: linear-gradient(180deg, #fff, #EAF2FF); box-shadow: inset 0 1px 0 #fff, 0 0 0 1px rgb(0 98 214 / 14%), 0 8px 18px -10px rgb(0 60 160 / 45%); }
+.esfera-palco { position: relative; aspect-ratio: 1; width: min(580px, 86vw); margin: 0 auto; display: grid; place-items: center; cursor: crosshair; }
+.esfera { width: 70%; aspect-ratio: 1; border-radius: 50%; position: relative; z-index: 1; will-change: transform, filter, opacity; }
+.esfera canvas { width: 100% !important; height: 100% !important; display: block; }
+.esfera-particulas { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.esfera-dica { position: absolute; bottom: 1%; left: 50%; transform: translateX(-50%); font-size: .8rem; font-weight: 700; color: #5F6C83; padding: 6px 12px; border-radius: 99px; background: #fff; box-shadow: 0 0 0 1px rgb(16 30 64 / 8%); transition: opacity .3s; }
+.desfeita .esfera-dica { opacity: 0; }
+.esfera-bolha { position: absolute; z-index: 3; padding: 10px 14px; border-radius: 16px 16px 16px 6px; background: #fff; color: #0B1322; font-weight: 700; font-size: .86rem; white-space: nowrap;
+  box-shadow: inset 0 1px 0 #fff, 0 0 0 1px rgb(16 30 64 / 8%), 0 18px 36px -18px rgb(0 40 120 / 45%); transition: transform .6s var(--mola), opacity .4s; }
+.esfera-bolha.b1 { left: -4%; top: 14%; } .esfera-bolha.b2 { right: -8%; top: 46%; } .esfera-bolha.b3 { left: 0; bottom: 12%; }
+.desfeita .esfera-bolha.b1 { transform: translate(-30px, -20px); opacity: .25; } .desfeita .esfera-bolha.b2 { transform: translate(30px, 0); opacity: .25; } .desfeita .esfera-bolha.b3 { transform: translate(-24px, 24px); opacity: .25; }
+@media (min-width: 980px) { .painel-branco { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); } }
+@media (max-width: 720px) { .esfera-bolha { display: none; } }
+
+/* ---------- passo a passo: palco preso pelo navegador, telas reais do Atlas no celular ---------- */
+.passos { display: block; }
+.passos-fixo { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 1024px) {
+  .js .passos { height: 260vh; }
+  .js .passos-fixo { position: sticky; top: max(90px, 9vh); min-height: calc(100vh - 120px); grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); column-gap: 64px; }
+}
+.passos-palco { position: relative; display: grid; place-items: center; isolation: isolate; perspective: 1400px; }
+.celular { width: clamp(260px, 21vw, 360px); margin: 0 auto; will-change: transform; transform-style: preserve-3d; }
+.celular-moldura { position: relative; aspect-ratio: 390 / 844; border-radius: 52px; padding: 12px; background: linear-gradient(160deg, #3A4766, #0E1628 40%, #1C2740);
+  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 10%), inset 0 0 0 7px #05080F, 0 50px 90px -40px rgb(0 40 120 / 60%), 0 20px 40px -20px rgb(0 0 0 / 45%); }
+.celular-ilha { position: absolute; z-index: 3; top: 22px; left: 50%; width: 30%; height: 26px; margin-left: -15%; border-radius: 99px; background: #05080F; }
+.cel-tela { position: absolute; inset: 12px; width: calc(100% - 24px); height: calc(100% - 24px); object-fit: cover; object-position: top; border-radius: 41px; opacity: 0; transition: opacity .6s var(--mola), transform .8s var(--mola); transform: scale(1.03); }
+.cel-tela.agora { opacity: 1; transform: none; }
+.passos-lista li { cursor: pointer; }
+
+/* ---------- planos: céu azul e cartões que se abrem em leque ---------- */
+.planos-ceu { position: relative; overflow: hidden; isolation: isolate; margin-top: 44px; border-radius: var(--r-lg); padding: clamp(48px, 6vw, 96px) clamp(14px, 3vw, 48px);
+  background: linear-gradient(180deg, #4E8FE8 0%, #7DB2F2 38%, #BFDAFA 78%, #E6F1FF 100%); box-shadow: inset 0 1px 0 rgb(255 255 255 / 35%), 0 40px 90px -50px rgb(0 40 120 / 60%); }
+:root:not([data-tema="claro"]) .planos-ceu { background: linear-gradient(180deg, #0A2A66 0%, #12408F 40%, #1E5BB8 78%, #2C6FD0 100%); }
+.nuvem { position: absolute; z-index: -1; border-radius: 50%; background: radial-gradient(closest-side, rgb(255 255 255 / 90%), rgb(255 255 255 / 0)); filter: blur(8px); opacity: .7; animation: nuvem 26s ease-in-out infinite alternate; }
+:root:not([data-tema="claro"]) .nuvem { opacity: .16; }
+.nuvem.n1 { width: 520px; height: 220px; left: -120px; top: 12%; } .nuvem.n2 { width: 640px; height: 260px; right: -160px; top: 4%; animation-delay: -8s; }
+.nuvem.n3 { width: 700px; height: 280px; left: 20%; bottom: -120px; animation-delay: -14s; } .nuvem.n4 { width: 420px; height: 180px; right: 10%; bottom: 20%; animation-delay: -4s; }
+@keyframes nuvem { to { transform: translateX(60px); } }
+@media (prefers-reduced-motion: reduce) { .nuvem { animation: none; } }
+.planos-ceu .planos-grade { margin-top: 0; }
+.plano { transform-origin: 50% 100%; }
+.plano-selo { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; color: #fff; background: linear-gradient(160deg, var(--c1), var(--c2));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 40%), 0 10px 22px -10px var(--c2); }
+.plano-selo .ico { width: 22px; height: 22px; }
+.plano-gratis { --c1: #94A3B8; --c2: #475569; } .plano-start { --c1: #38D0E8; --c2: #0E8FB8; } .plano-pro { --c1: #4DA3FF; --c2: #0050C8; } .plano-scale { --c1: #A78BFA; --c2: #6D28D9; } .plano-enterprise { --c1: #F5C451; --c2: #B7791F; }
+.plano ul { gap: 11px; }
+.plano li { display: flex; gap: 10px; align-items: flex-start; padding-left: 0; }
+.plano li::before { display: none; }
+.plano li .ico { width: 18px; height: 18px; flex: none; margin-top: 2px; color: var(--c2); }
+:root:not([data-tema="claro"]) .plano li .ico { color: var(--c1); }
+.plano-destaque { box-shadow: 0 0 0 2px var(--acento), inset 0 1px 0 rgb(255 255 255 / 10%), 0 30px 70px -30px rgb(0 60 180 / 70%); overflow: visible; }
+.plano-selo-mais { position: absolute; top: -13px; right: 20px; padding: 5px 12px; border-radius: 99px; font-size: .74rem; font-weight: 800; color: #fff; background: linear-gradient(180deg, #2B8CFF, #0062E0); box-shadow: 0 8px 18px -8px rgb(0 98 224 / 70%); }
+
+/* ---------- rodapé: cartão escuro com textura ---------- */
+.rodape { background: transparent; padding: var(--secao) clamp(10px, 1.4vw, 22px) clamp(10px, 1.4vw, 22px); color: #EEF3FC; }
+.rodape-cartao { position: relative; overflow: hidden; isolation: isolate; border-radius: var(--r-lg); padding: clamp(40px, 5vw, 80px) clamp(24px, 5vw, 96px) 28px;
+  background: radial-gradient(80% 120% at 100% 100%, rgb(0 98 214 / 35%), transparent 60%), radial-gradient(60% 90% at 0% 0%, rgb(61 180 255 / 12%), transparent 60%), linear-gradient(135deg, #070D1B, #0B1730 60%, #0E2148);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 6%), 0 0 0 1px rgb(160 190 240 / 10%); }
+.rodape-cartao::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .08;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.rodape-topo { display: grid; gap: 48px; }
+.rodape-marca { display: grid; gap: 14px; justify-items: start; align-content: start; }
+.rodape-marca .marca { font-size: 1.4rem; }
+.rodape-marca p { color: #A9B6CC; font-size: 1.02rem; max-width: 36ch; }
+.rodape-redes { display: flex; gap: 10px; }
+.rodape-redes a { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: rgb(255 255 255 / 6%); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 10%); transition: background-color .2s, transform .25s var(--mola); }
+.rodape-redes a:hover { background: rgb(255 255 255 / 12%); transform: translateY(-2px); }
+.rodape-redes svg { width: 20px; height: 20px; }
+.rodape-cta { margin-top: 10px; }
+.rodape-colunas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.rodape-colunas h3 { font-size: .95rem; font-weight: 800; color: #fff; margin-bottom: 14px; letter-spacing: -0.01em; }
+.rodape-colunas div { display: grid; gap: 11px; align-content: start; }
+.rodape-colunas a { color: #A9B6CC; text-decoration: none; font-weight: 600; font-size: .95rem; transition: color .2s; }
+.rodape-colunas a:hover { color: #fff; }
+.rodape .rodape-base { margin-top: 48px; padding-top: 22px; border-top: 1px solid rgb(160 190 240 / 12%); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: .85rem; color: #7C8BA4; max-width: none; }
+.rodape-selo { display: inline-flex; gap: 8px; align-items: center; }
+.rodape-selo .ico { width: 16px; height: 16px; color: #7CC8FF; }
+@media (min-width: 980px) { .rodape-topo { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+@media (max-width: 600px) { .rodape-colunas { grid-template-columns: 1fr 1fr; } }
+.ico { display: inline-block; }
+
+/* ---------- iPhone de verdade: moldura de titânio, vidro, Dynamic Island e o app do Atlas dentro ---------- */
+.iphone { --w: clamp(290px, 21vw, 380px); position: relative; width: var(--w); aspect-ratio: 433 / 882; margin: 0 auto; border-radius: calc(var(--w) * .165);
+  padding: calc(var(--w) * .022);
+  background: linear-gradient(135deg, #9AA2AE 0%, #4A525F 18%, #D6DBE2 42%, #6B7380 58%, #2E343E 78%, #A3ABB7 100%);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 40%), inset 0 0 0 2px rgb(0 0 0 / 35%), 0 2px 0 rgb(255 255 255 / 30%),
+    0 60px 100px -40px rgb(0 30 90 / 55%), 0 30px 50px -30px rgb(0 0 0 / 45%), 0 0 0 1px rgb(0 0 0 / 30%);
+  transform-style: preserve-3d; will-change: transform; }
+.iphone::before { content: ""; position: absolute; inset: 1px; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(100deg, rgb(255 255 255 / 0) 30%, rgb(255 255 255 / 45%) 46%, rgb(255 255 255 / 0) 54%); mix-blend-mode: overlay; }
+.iphone-botao { position: absolute; width: 4px; border-radius: 3px; background: linear-gradient(90deg, #5A626E, #C7CDD5 50%, #5A626E); box-shadow: 0 0 0 1px rgb(0 0 0 / 25%); }
+.b-acao { left: -3px; top: 17%; height: 4.5%; } .b-vol1 { left: -3px; top: 25%; height: 8%; } .b-vol2 { left: -3px; top: 35%; height: 8%; } .b-power { right: -3px; top: 27%; height: 12%; }
+.iphone-borda { width: 100%; height: 100%; border-radius: calc(var(--w) * .145); padding: calc(var(--w) * .026); background: #030406; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 6%); }
+.iphone-tela { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: calc(var(--w) * .12); background: #F3F5F8; isolation: isolate; }
+:root:not([data-tema="claro"]) .iphone-tela { background: #0B1322; }
+.ilha { position: absolute; z-index: 6; top: calc(var(--w) * .028); left: 50%; width: 31%; height: calc(var(--w) * .085); transform: translateX(-50%); border-radius: 99px; background: #000;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 4%); }
+.ilha::after { content: ""; position: absolute; right: 16%; top: 50%; width: 9px; height: 9px; margin-top: -4.5px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #2B3A66, #05070D 70%); }
+.ios-status { position: absolute; z-index: 5; inset: 0 0 auto; height: calc(var(--w) * .135); display: flex; align-items: center; justify-content: space-between; padding: 0 9% 0 12%;
+  font-size: calc(var(--w) * .043); color: #0B1322; background: color-mix(in srgb, #F3F5F8 92%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+:root:not([data-tema="claro"]) .ios-status { color: #fff; background: color-mix(in srgb, #0B1322 90%, transparent); }
+.ios-status b { font-weight: 700; letter-spacing: -0.01em; }
+.ios-icones { display: flex; align-items: center; gap: 5px; }
+.ios-icones svg { height: calc(var(--w) * .03); width: auto; fill: currentColor; }
+.ios-bateria { width: calc(var(--w) * .066); height: calc(var(--w) * .031); border-radius: 4px; border: 1.5px solid currentColor; padding: 1.5px; opacity: .9; position: relative; }
+.ios-bateria i { display: block; width: 80%; height: 100%; border-radius: 2px; background: currentColor; }
+.app-telas { position: absolute; inset: calc(var(--w) * .135) 0 0; }
+.app-tela { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; opacity: 0; visibility: hidden; transform: translateX(var(--entra, 18%)) scale(.98);
+  transition: opacity .45s var(--mola), transform .55s var(--mola), visibility 0s .55s; padding-bottom: calc(var(--w) * .26); }
+.app-tela::-webkit-scrollbar { display: none; }
+.app-tela.agora { opacity: 1; visibility: visible; transform: none; transition: opacity .45s var(--mola), transform .55s var(--mola), visibility 0s; }
+.app-tela img { width: 100%; height: auto; display: block; }
+.app-abas { position: absolute; z-index: 4; inset: auto 0 0; }
+.abas-img { display: block; width: 100%; height: auto; position: absolute; bottom: 0; left: 0; opacity: 0; transition: opacity .3s; }
+.abas-img.agora { opacity: 1; position: relative; }
+:root:not([data-tema="claro"]) .abas-img.so-claro, :root[data-tema="claro"] .abas-img.so-escuro { display: none !important; }
+.app-abas-botoes { position: absolute; left: 3%; right: 3%; bottom: 8%; height: 46%; display: grid; grid-template-columns: repeat(5, 1fr); }
+.app-abas-botoes button { background: transparent; border: 0; cursor: pointer; border-radius: 16px; }
+.app-abas-botoes button:focus-visible { outline: 2px solid var(--acento); outline-offset: -4px; }
+.iphone-reflexo { position: absolute; z-index: 7; inset: 0; pointer-events: none; border-radius: inherit;
+  background: linear-gradient(118deg, rgb(255 255 255 / 16%) 0%, rgb(255 255 255 / 4%) 26%, rgb(255 255 255 / 0) 42%); }
+.iphone-dica { margin-top: 18px; text-align: center; font-size: .86rem; font-weight: 700; color: var(--texto-3); }
+
+/* integrações: margem da seção e os apps nascendo do centro (classe, sem brigar com a rotação) */
+.integracoes { max-width: var(--larg); margin: 0 auto; padding: var(--secao) var(--margem) 0; }
+.efeitos .hub .app-icone:not(.app-atlas) { transform: scale(0); opacity: 0; transition: transform .8s cubic-bezier(.34, 1.56, .64, 1), opacity .4s, box-shadow .35s; transition-delay: calc(var(--i) * 70ms + var(--atraso-anel, 0ms)); }
+.efeitos .hub .app[data-anel="2"] { --atraso-anel: 260ms; }
+.efeitos .hub.aceso .app-icone:not(.app-atlas) { transform: none; opacity: 1; }
+.efeitos .hub.aceso .app:hover .app-icone { transform: translateY(-4px) scale(1.07); transition-delay: 0ms; }
+.integracoes h2 { font-size: clamp(1.9rem, 3.4vw, 3.1rem); font-weight: 800; max-width: 16ch; }
+.esfera-video { position: absolute; inset: -3%; width: 106%; height: 106%; object-fit: cover; transition: opacity .7s cubic-bezier(.22,1,.36,1); }
+.esfera-agitado { opacity: 0; }
+.esfera.agitada .esfera-agitado { opacity: 1; }
+.esfera.agitada .esfera-calmo { opacity: 0; }
+.esfera-video { -webkit-mask-image: radial-gradient(closest-side, #000 84%, transparent 99%); mask-image: radial-gradient(closest-side, #000 84%, transparent 99%); }
+
+/* ---------- escala contida: maior que o notebook, sem parecer zoom ---------- */
+html { font-size: clamp(15.5px, 0.18vw + 13.4px, 17px); }
+:root { --secao: clamp(72px, 10vh, 120px); --larg: min(1560px, 92vw); }
+.topo h1 { font-size: clamp(2.3rem, 4vw, 4.6rem); }
+.topo { padding-top: calc(var(--menu-h) + clamp(32px, 6vh, 64px)); }
+.menu-pilula { width: min(100%, 1320px); }
+/* o celular nunca passa da altura da tela (com folga para o menu e a dica) */
+.iphone { --w: min(clamp(270px, 19vw, 350px), calc((100vh - 230px) * 433 / 882)); }
+@media (min-width: 1024px) { .js .passos-fixo { top: max(84px, 8vh); min-height: calc(100vh - 100px); } }
+.hub { --tam: min(600px, 88vw, calc(100vh - 160px)); }
+.esfera-palco { width: min(520px, 80vw, calc(100vh - 220px)); }
+.painel-branco { padding: clamp(40px, 5.5vw, 88px) clamp(22px, 4.5vw, 80px); }

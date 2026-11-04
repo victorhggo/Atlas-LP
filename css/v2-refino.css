@@ -1,0 +1,174 @@
+/* ===================== refino: marca, menu, fundo, ícones de app, WhatsApp legível e a palavra gigante do rodapé ===================== */
+@font-face { font-family: "Clash Display"; font-style: normal; font-weight: 600; font-display: swap; src: url(../fontes/clash-display-600.woff2) format("woff2"); }
+@font-face { font-family: "Clash Display"; font-style: normal; font-weight: 700; font-display: swap; src: url(../fontes/clash-display-700.woff2) format("woff2"); }
+
+/* ---------- marca ---------- */
+.marca { font-family: "Clash Display", "Manrope", sans-serif; font-weight: 600; font-size: 1.3rem; letter-spacing: .005em; gap: 10px; }
+.marca img { filter: drop-shadow(0 4px 10px rgb(0 123 255 / 45%)); transition: transform .5s var(--mola); }
+.marca:hover img { transform: rotate(-8deg) scale(1.06); }
+
+/* ---------- menu: três colunas, links no centro de verdade, efeito no mouse ---------- */
+.menu-pilula { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; padding: 8px 8px 8px 20px; }
+.menu-links { margin: 0; justify-self: center; gap: 2px; padding: 4px; border-radius: 999px; background: color-mix(in srgb, var(--texto) 4%, transparent); box-shadow: inset 0 0 0 1px var(--linha); }
+.menu-links a { position: relative; padding: 9px 18px; font-size: .9rem; font-weight: 600; color: var(--texto-2); border-radius: 999px; transition: color .25s, background-color .25s, box-shadow .25s; }
+.menu-links a::after { content: ""; position: absolute; left: 50%; bottom: 4px; width: 0; height: 2px; border-radius: 2px; background: linear-gradient(90deg, transparent, var(--acento-tinta), transparent); transform: translateX(-50%); transition: width .35s var(--mola); }
+.menu-links a:hover { color: var(--texto); background: linear-gradient(180deg, color-mix(in srgb, var(--texto) 9%, transparent), color-mix(in srgb, var(--texto) 3%, transparent)); box-shadow: inset 0 1px 0 rgb(255 255 255 / 10%), 0 6px 16px -10px rgb(0 60 160 / 60%); }
+.menu-links a:hover::after { width: 46%; }
+.menu-links a.ativo { color: var(--texto); }
+.menu-indicador { height: calc(100% - 8px); top: 4px; margin-top: 0; background: linear-gradient(180deg, color-mix(in srgb, var(--acento) 26%, transparent), color-mix(in srgb, var(--acento) 12%, transparent)); box-shadow: inset 0 1px 0 rgb(255 255 255 / 14%), 0 0 0 1px color-mix(in srgb, var(--acento) 30%, transparent); }
+.menu-acoes { justify-self: end; margin: 0; display: flex; align-items: center; gap: 8px; }
+.menu-pilula > .marca { justify-self: start; }
+.tema-botao { width: 42px; height: 42px; border: 0; background: color-mix(in srgb, var(--texto) 5%, transparent); box-shadow: inset 0 0 0 1px var(--linha); }
+.tema-botao:hover { background: color-mix(in srgb, var(--texto) 10%, transparent); transform: rotate(-12deg); }
+.tema-botao { transition: transform .4s var(--mola), background-color .2s, color .2s; }
+.cta-menu { padding: 12px 20px; }
+@media (max-width: 860px) { .menu-pilula { grid-template-columns: 1fr auto; } }
+
+/* ---------- fundo: texturas finas de alta resolução (sem imagens, sem anéis) ---------- */
+.anel, .secao-com-anel > .anel { display: none !important; }
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none; opacity: 1;
+  /* malha fina de 1px a cada 32px + micropontos a cada 8px: textura que aparece de perto, vetorial */
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--texto) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--texto) 5%, transparent) 1px, transparent 1px),
+    radial-gradient(color-mix(in srgb, var(--acento) 34%, transparent) .7px, transparent .9px);
+  background-size: 32px 32px, 32px 32px, 8px 8px;
+  -webkit-mask-image: radial-gradient(130% 90% at 50% 0%, #000 0%, rgb(0 0 0 / 55%) 45%, rgb(0 0 0 / 22%) 80%), linear-gradient(90deg, #000, transparent 18%, transparent 82%, #000);
+  -webkit-mask-composite: source-over;
+  mask-image: radial-gradient(130% 90% at 50% 0%, #000 0%, rgb(0 0 0 / 55%) 45%, rgb(0 0 0 / 22%) 80%), linear-gradient(90deg, #000, transparent 18%, transparent 82%, #000);
+  mask-composite: add;
+}
+:root[data-tema="claro"] body::before { opacity: .9; }
+.granulado { opacity: .045; }
+
+/* ---------- WhatsApp legível nos botões azuis: o símbolo num disco branco ---------- */
+.cta-grande > svg:first-child, .cta-claro > svg:first-child { width: 24px !important; height: 24px !important; padding: 3px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgb(0 20 60 / 30%), inset 0 -1px 0 rgb(0 0 0 / 8%); flex: none; }
+.cta-claro > svg:first-child { box-shadow: 0 0 0 1px rgb(16 30 64 / 10%), 0 1px 2px rgb(0 20 60 / 20%); }
+
+/* ---------- ícones de marca como ícones de app (estilo Apple), maiores ---------- */
+.marcas-mini { gap: 10px; padding: 0; background: none; box-shadow: none; }
+.marcas-mini svg, .marcas-bento svg, .rodape-redes a, .rota-ico {
+  width: 46px; height: 46px; padding: 10px; border-radius: 13px;
+  background: linear-gradient(180deg, rgb(255 255 255 / 85%), rgb(255 255 255 / 0) 52%) padding-box, linear-gradient(180deg, #FFFFFF, #ECF2FB) padding-box, linear-gradient(160deg, #FFFFFF, rgb(170 200 255 / 60%) 55%, rgb(0 123 255 / 55%)) border-box;
+  border: 1.5px solid transparent;
+  box-shadow: inset 0 -5px 10px rgb(16 30 64 / 7%), 0 1px 2px rgb(16 30 64 / 12%), 0 12px 24px -12px rgb(0 40 120 / 50%);
+  transition: transform .35s var(--mola), box-shadow .35s;
+}
+.marcas-mini svg:hover, .marcas-bento svg:hover, .rodape-redes a:hover { transform: translateY(-3px) scale(1.06); box-shadow: inset 0 -5px 10px rgb(16 30 64 / 7%), 0 18px 30px -14px rgb(0 60 160 / 60%), 0 0 0 6px color-mix(in srgb, var(--acento) 12%, transparent); }
+.marcas-bento { gap: 12px; margin-top: 16px; }
+.marcas-bento svg { width: 52px; height: 52px; padding: 11px; border-radius: 15px; }
+.rodape-redes { gap: 12px; }
+.rodape-redes a { display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border-radius: 14px; }
+.rodape-redes svg { width: 26px; height: 26px; }
+.rota li { padding: 7px 14px 7px 7px; }
+.rota-ico { width: 34px; height: 34px; padding: 7px; border-radius: 10px; }
+.rota-ico svg { width: 18px; height: 18px; }
+
+/* ---------- a palavra gigante no fim do site, com parallax ---------- */
+.rodape-cartao { padding-bottom: 0; }
+.rodape-gigante { position: relative; margin: 28px calc(-1 * clamp(24px, 5vw, 96px)) 0; height: clamp(90px, 15vw, 260px); overflow: hidden; pointer-events: none; user-select: none; }
+.rodape-gigante span { position: absolute; left: 50%; top: 0; transform: translateX(-50%); white-space: nowrap; font-family: "Clash Display", "Manrope", sans-serif; font-weight: 600;
+  font-size: clamp(5rem, 21vw, 25rem); line-height: .82; letter-spacing: -0.02em;
+  background: linear-gradient(180deg, rgb(160 200 255 / 55%) 0%, rgb(120 170 255 / 22%) 55%, rgb(120 170 255 / 0) 92%); -webkit-background-clip: text; background-clip: text; color: transparent; will-change: transform; }
+.rodape .rodape-base { margin-top: 36px; }
+
+/* ---------- auditoria ---------- */
+/* abas do iPhone: área de toque sempre do tamanho certo (antes dependia da imagem carregar) */
+.app-abas { aspect-ratio: 780 / 176; }
+.abas-img.agora { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.app-abas-botoes { top: 18%; bottom: 6%; height: auto; }
+/* links do rodapé com alvo de toque confortável */
+.rodape-colunas a { display: inline-flex; align-items: center; min-height: 40px; }
+.rodape-colunas div { gap: 0; }
+/* plano: ícone ao lado do nome, não empilhado em cima */
+.plano-cabeca { display: flex; align-items: center; gap: 12px; }
+.plano-cabeca h3 { margin: 0; }
+.plano-selo { width: 40px; height: 40px; border-radius: 12px; }
+/* integrações: entrada sem quique */
+.efeitos .hub .app-icone:not(.app-atlas) { transition-timing-function: cubic-bezier(.16, 1, .3, 1), ease, ease; }
+
+/* ---------- rodada 2 ---------- */
+/* WhatsApp nos botões: o logo verde original, maior, com uma camada branca por baixo */
+.cta-grande > svg.wa-app, .cta-claro > svg.wa-app { width: 30px !important; height: 30px !important; padding: 0; margin-left: -8px; border-radius: 50%; background: none;
+  box-shadow: 0 0 0 2.5px #fff, 1.5px 3px 0 2px rgb(255 255 255 / 55%), 0 6px 14px -4px rgb(0 30 80 / 45%); }
+.cta-claro > svg.wa-app { box-shadow: 0 0 0 2.5px #fff, 1.5px 3px 0 2px rgb(16 30 64 / 12%), 0 6px 14px -4px rgb(0 60 30 / 35%); }
+.cta-grande:has(.wa-app) { gap: 12px; padding-left: 22px; }
+.cta-grande:hover > svg.wa-app { transform: rotate(-8deg) scale(1.06); }
+.cta-grande > svg.wa-app { transition: transform .4s var(--mola); }
+
+/* fundo escuro: só a malha, mais espaçada e bem discreta (os pontos ficam no claro) */
+:root[data-tema="escuro"] body::before {
+  background-image: linear-gradient(to right, rgb(150 190 255 / 4.5%) 1px, transparent 1px), linear-gradient(to bottom, rgb(150 190 255 / 4.5%) 1px, transparent 1px);
+  background-size: 56px 56px, 56px 56px;
+  -webkit-mask-image: radial-gradient(90% 60% at 50% 0%, #000 0%, rgb(0 0 0 / 35%) 55%, transparent 90%);
+  mask-image: radial-gradient(90% 60% at 50% 0%, #000 0%, rgb(0 0 0 / 35%) 55%, transparent 90%);
+}
+
+/* rodapé: o selo da LGPD respira */
+.rodape-cartao { padding-bottom: clamp(22px, 3vw, 34px); }
+.rodape .rodape-base { margin-top: 28px; align-items: center; }
+.rodape-selo { padding: 6px 12px 6px 10px; border-radius: 999px; color: #A9C6F0; background: rgb(124 200 255 / 8%); box-shadow: inset 0 0 0 1px rgb(124 200 255 / 18%); }
+
+/* Be like Atlas: gradiente com profundidade, feixe de luz, logo gigante ao fundo */
+.painel-final { gap: 26px; background:
+  radial-gradient(60% 80% at 12% 0%, rgb(110 200 255 / 45%), transparent 60%),
+  radial-gradient(55% 70% at 95% 105%, rgb(70 40 220 / 55%), transparent 65%),
+  radial-gradient(40% 50% at 50% 50%, rgb(0 140 255 / 30%), transparent 70%),
+  linear-gradient(135deg, #0A6CF0 0%, #0050C8 50%, #1B2FB8 100%); }
+.painel-final > * { position: relative; z-index: 1; }
+.painel-final > .final-brilho, .painel-final > .final-feixe, .painel-final > .final-marca { position: absolute; z-index: 0; pointer-events: none; margin: 0; max-width: none; }
+.final-brilho { inset: -40% -10% auto; height: 120%; background: conic-gradient(from 200deg at 50% 60%, transparent 0deg, rgb(160 220 255 / 30%) 40deg, transparent 90deg, transparent 270deg, rgb(140 120 255 / 25%) 320deg, transparent 360deg); filter: blur(40px); animation: final-gira 18s linear infinite; }
+.final-feixe { left: 50%; top: -20%; width: 46%; height: 140%; transform: translateX(-50%) rotate(18deg); background: linear-gradient(90deg, transparent, rgb(255 255 255 / 10%) 45%, rgb(255 255 255 / 16%) 50%, rgb(255 255 255 / 10%) 55%, transparent); filter: blur(12px); }
+.final-marca { right: -4%; bottom: -14%; width: clamp(220px, 30vw, 440px); height: auto; opacity: .16; filter: saturate(.4) brightness(2.2) blur(.5px); mix-blend-mode: soft-light; }
+.be-like-frase span { background: linear-gradient(180deg, #FFFFFF 10%, #A8DCFF 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+@keyframes final-gira { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .final-brilho { animation: none; } }
+.final-acoes { display: flex; flex-direction: column; align-items: center; gap: 22px; margin-top: 8px; }
+.final-acoes .siga { margin: 0; }
+.final-acoes .siga a { padding: 10px 18px; background: rgb(255 255 255 / 8%); backdrop-filter: blur(6px); }
+@media (min-width: 720px) { .final-acoes { flex-direction: row; gap: 18px; } }
+/* a entrada é do GSAP: sem transição de transform brigando */
+.final-acoes .cta-grande { transition: box-shadow .25s var(--mola), background-color .2s; }
+/* palavra gigante: "Atlas" ocupa a largura do cartão */
+.rodape-gigante { height: clamp(110px, 25vw, 400px); }
+.rodape-gigante span { font-size: clamp(7rem, 33vw, 36rem); letter-spacing: -0.03em; }
+/* hub: ícone e nome giram juntos (antes cada um girava no próprio centro e o nome escorregava para cima do ícone) */
+.app-giro > * { animation: none !important; }
+.app-giro { animation: giro-contra 70s linear infinite reverse; }
+.app[data-anel="2"] .app-giro { animation-duration: 100s; animation-direction: normal; }
+@keyframes giro-contra { to { rotate: 360deg; } }
+@media (prefers-reduced-motion: reduce) { .app-giro { animation: none; } }
+
+/* ---------- rodada 3 ---------- */
+/* WhatsApp nos botões: ícone de app do iOS (squircle verde, logo original), sem círculo nem camada deslocada */
+.cta-grande > svg.wa-app, .cta-claro > svg.wa-app { width: 32px !important; height: 32px !important; margin-left: -9px; border-radius: 9px; background: none;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 35%), 0 4px 10px -3px rgb(0 40 20 / 45%); transition: transform .55s cubic-bezier(.34, 1.4, .5, 1); }
+.cta-claro > svg.wa-app { box-shadow: 0 0 0 1px rgb(16 30 64 / 8%), 0 4px 10px -3px rgb(0 80 30 / 35%); }
+.cta-grande:hover > svg.wa-app { transform: translateY(-2px) scale(1.08); }
+.cta-grande:active > svg.wa-app { transform: scale(.94); transition-duration: .15s; }
+
+/* logo do menu: em vez de girar, a marca acende e um brilho atravessa */
+.marca img { transition: transform .6s var(--mola), filter .6s; }
+.marca:hover img { transform: translateY(-1px); filter: drop-shadow(0 0 14px rgb(80 170 255 / 85%)) drop-shadow(0 4px 10px rgb(0 123 255 / 45%)) brightness(1.15); }
+.marca { position: relative; }
+.marca::after { content: ""; position: absolute; inset: -4px -6px; border-radius: 12px; pointer-events: none; opacity: 0;
+  background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / 35%) 50%, transparent 65%) no-repeat; background-size: 250% 100%; background-position: 130% 0;
+  -webkit-mask: linear-gradient(#000 0 0); mix-blend-mode: overlay; }
+.marca:hover::after { opacity: 1; background-position: -30% 0; transition: background-position .9s cubic-bezier(.2, .7, .2, 1), opacity .2s; }
+
+/* menu: vidro com borda de luz, brilho no topo e sombra profunda */
+.menu-pilula { position: relative; border: 1px solid transparent; isolation: isolate;
+  background: linear-gradient(180deg, rgb(22 34 62 / 78%), rgb(10 18 38 / 78%)) padding-box,
+    linear-gradient(180deg, rgb(150 200 255 / 38%), rgb(150 200 255 / 6%) 45%, rgb(80 150 255 / 22%)) border-box;
+  -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 10%), 0 18px 40px -18px rgb(0 10 40 / 80%), 0 0 0 1px rgb(0 0 0 / 20%); }
+.menu-pilula::before { content: ""; position: absolute; top: -1px; left: 22%; right: 22%; height: 1px; z-index: 1; pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgb(140 200 255 / 90%), transparent); box-shadow: 0 0 14px 1px rgb(80 160 255 / 55%); }
+:root[data-tema="claro"] .menu-pilula { background: linear-gradient(180deg, rgb(255 255 255 / 88%), rgb(244 248 255 / 82%)) padding-box,
+    linear-gradient(180deg, #fff, rgb(16 30 64 / 10%) 50%, rgb(0 123 255 / 25%)) border-box;
+  box-shadow: inset 0 1px 0 #fff, 0 18px 40px -20px rgb(0 40 120 / 35%); }
+.cta-menu { padding: 12px 22px; background: linear-gradient(180deg, #3D97FF, #0062E0); box-shadow: inset 0 1px 0 rgb(255 255 255 / 45%), inset 0 -3px 8px rgb(0 20 70 / 25%), 0 0 0 1px rgb(0 98 224 / 60%), 0 8px 22px -8px rgb(0 123 255 / 75%); }
+.cta-menu:hover { box-shadow: inset 0 1px 0 rgb(255 255 255 / 55%), 0 0 0 1px rgb(120 190 255 / 70%), 0 10px 28px -8px rgb(0 123 255 / 95%), 0 0 24px -4px rgb(80 160 255 / 70%); }
+/* ícone do WhatsApp: sombra que segue o formato do ícone (a sombra de caixa desenhava um quadrado claro em volta) */
+.cta-grande > svg.wa-app, .cta-claro > svg.wa-app { box-shadow: none !important; border-radius: 0; filter: drop-shadow(0 3px 6px rgb(0 40 20 / 35%)); }

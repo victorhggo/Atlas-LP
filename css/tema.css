@@ -1,0 +1,59 @@
+/* Tokens dos dois temas (cores do Atlas) e a varredura da troca de tema. */
+@property --tema-t { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+
+:root {
+  color-scheme: dark;
+  --fundo: #0B1322;
+  --fundo-2: #0E182B;
+  --superficie: #121D33;
+  --superficie-2: #17243F;
+  --linha: rgb(160 190 240 / 11%);
+  --linha-forte: rgb(160 190 240 / 20%);
+  --texto: #EEF3FC;
+  --texto-2: #A9B6CC;
+  --texto-3: #7C8BA4;
+  --acento: #007BFF;
+  --acento-botao: #0066DB; /* branco sobre ele passa de 4,5:1 */
+  --acento-tinta: #3DB4FF;
+  --acento-suave: rgb(0 123 255 / 16%);
+  --acento-texto: #FFFFFF;
+  --sombra: 0 1px 0 rgb(255 255 255 / 4%) inset, 0 30px 70px -30px rgb(0 0 0 / 70%);
+  --sombra-tela: 0 0 0 1px rgb(160 190 240 / 10%), 0 40px 100px -30px rgb(0 10 30 / 85%);
+}
+:root[data-tema="claro"] {
+  color-scheme: light;
+  --fundo: #F3F5F8;
+  --fundo-2: #FFFFFF;
+  --superficie: #FFFFFF;
+  --superficie-2: #F7F9FC;
+  --linha: rgb(15 30 60 / 9%);
+  --linha-forte: rgb(15 30 60 / 16%);
+  --texto: #0B1322;
+  --texto-2: #46546B;
+  --texto-3: #5F6C83;
+  --acento: #007BFF;
+  --acento-botao: #0066DB;
+  --acento-tinta: #0064D1;
+  --acento-suave: rgb(0 123 255 / 10%);
+  --acento-texto: #FFFFFF;
+  --sombra: 0 1px 2px rgb(15 30 60 / 6%), 0 24px 50px -28px rgb(15 30 60 / 28%);
+  --sombra-tela: 0 0 0 1px rgb(15 30 60 / 8%), 0 40px 90px -36px rgb(15 30 60 / 38%);
+}
+
+/* troca sem View Transitions: cores deslizam */
+html.tema-trans, html.tema-trans *, html.tema-trans *::before, html.tema-trans *::after {
+  transition: background-color .45s ease, color .45s ease, border-color .45s ease, fill .45s ease !important;
+}
+/* varredura diagonal com borda macia; o tema que sai recua */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+html.tema-varrendo::view-transition-new(root) {
+  -webkit-mask-image: linear-gradient(225deg, #000 calc(var(--tema-t) - 22%), transparent var(--tema-t));
+  mask-image: linear-gradient(225deg, #000 calc(var(--tema-t) - 22%), transparent var(--tema-t));
+  animation: tema-varre .8s cubic-bezier(.65, 0, .35, 1) both;
+}
+html.tema-varrendo::view-transition-old(root) { animation: tema-recua .8s cubic-bezier(.65, 0, .35, 1) both; transform-origin: 50% 50%; }
+@keyframes tema-varre { from { --tema-t: 0%; } to { --tema-t: 125%; } }
+@keyframes tema-recua { to { transform: scale(1.012); filter: brightness(.82) saturate(.9); } }
+@media (prefers-reduced-motion: reduce) {
+  html.tema-varrendo::view-transition-new(root), html.tema-varrendo::view-transition-old(root) { animation: none; -webkit-mask-image: none; mask-image: none; }
+}

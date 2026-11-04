@@ -1,0 +1,16 @@
+# Atlaslike: cabeçalhos para a Netlify. A Hostinger ignora este arquivo.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+/*.html
+  Cache-Control: no-cache
+/css/*
+  Cache-Control: public, max-age=86400
+/js/*
+  Cache-Control: public, max-age=86400
+/img/*
+  Cache-Control: public, max-age=2592000
+/fontes/*
+  Cache-Control: public, max-age=2592000
+/video/*
+  Cache-Control: public, max-age=2592000
