@@ -26,10 +26,10 @@ ini_r = idx.index('  <!-- ===== 12. Rodapé ===== -->'); fim_r = idx.index('</bo
 rodape = para_sub(idx[ini_r:fim_r])
 # a ilha volta ao topo da própria página
 rodape = rodape.replace('<a class="ilha-marca" href="/" aria-label="Voltar ao início">', '<a class="ilha-marca" href="#topo" aria-label="Voltar ao topo">')
-fecho = para_sub(idx[idx.index('    <!-- ===== 11. Fecho ===== -->'):idx.index('  </main>')])
+fecho = para_sub(idx[idx.index('    <!-- ===== 11. Fecho ===== -->'):idx.index('    <!-- ===== 11b. Redes ===== -->')])
 
 ORG = {"@type": "Organization", "@id": BASE + "/#org", "name": "Atlas", "alternateName": "AtlasLike", "url": BASE + "/",
-       "logo": BASE + "/img/atlas-app-512.webp", "sameAs": ["https://www.instagram.com/atlasslike/", "https://www.atlaslike.com/"],
+       "logo": BASE + "/img/atlas-app-512.webp", "sameAs": ["https://www.youtube.com/@atlasslike", "https://www.instagram.com/atlasslike/", "https://www.linkedin.com/company/atlaslike", "https://x.com/atlasslike", "https://www.tiktok.com/@atlaslike", "https://www.atlaslike.com/"],
        "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "telephone": "+55-15-99697-9750", "availableLanguage": "pt-BR", "areaServed": "BR"}}
 APP = {"@type": "SoftwareApplication", "@id": BASE + "/#app", "name": "Atlas", "applicationCategory": "BusinessApplication",
        "operatingSystem": "Web", "inLanguage": "pt-BR", "url": "https://www.atlaslike.com/",

@@ -1,4 +1,4 @@
-// Atlas: rodada 2, parte 2B (números, tecnologias, integrações, planos, time e fecho).
+// Atlas: rodada 2, parte 2B (números, tecnologias, integrações, planos, fecho e redes).
 // Só liga estados e interações; o conteúdo já está todo no HTML e aparece sem script.
 // Entradas uma vez só, ao entrar na tela. Nada roda em laço fora da tela.
 // Movimento reduzido: sem entradas, sem inclinação, sem parallax.
