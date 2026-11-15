@@ -194,15 +194,20 @@ if (rot && !RM) {
   }, 2600);
 }
 
-/* ---------- hero: "Cai no Atlas." cai letra a letra, logo depois da primeira linha ---------- */
+/* ---------- hero: "Cliente não cai do céu." cai do alto letra a letra; "Cai no Atlas." surge do desfoque ---------- */
+// letras agrupadas por palavra (a quebra de linha continua entre palavras, nunca no meio delas)
+const emLetras = (txt, cls, base, passo) => {
+  let k = 0;
+  return txt.split(" ").map((p) => `<span class="palavra">${[...p].map((c) => `<span class="ch ${cls}" style="animation-delay:${base + k++ * passo}ms">${c === "\u00a0" ? "&nbsp;" : c}</span>`).join("")}</span>`).join(" ");
+};
+const ceu = $("[data-ceu]");
 const cai = $("[data-cai]");
-if (cai) {
-  if (!RM) {
-    const txt = cai.textContent;
-    cai.innerHTML = `<span aria-hidden="true">${[...txt].map((c, k) => `<span class="ch ch-cai" style="animation-delay:${1800 + k * 60}ms">${c === " " ? "&nbsp;" : c}</span>`).join("")}</span><span class="sr">${txt}</span>`;
-  }
-  cai.classList.add("pronto");
+if (!RM) {
+  if (ceu) { const t = ceu.textContent; ceu.innerHTML = `<span aria-hidden="true">${emLetras(t, "ch-ceu", 150, 38)}</span><span class="sr">${t}</span>`; }
+  if (cai) { const t = cai.textContent; cai.innerHTML = `<span aria-hidden="true">${emLetras(t, "ch-cai", 1700, 45)}</span><span class="sr">${t}</span>`; }
 }
+ceu?.classList.add("pronto");
+cai?.classList.add("pronto");
 
 /* ---------- hero: Atlas Orbit (quadro parado agora, WebGL depois do primeiro desenho) ---------- */
 const cenaOrbit = $("[data-orbit]");

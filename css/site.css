@@ -395,12 +395,16 @@ a, button, label, input { -webkit-tap-highlight-color: transparent; touch-action
 .rot .ch-in { animation: letra-entra 320ms var(--ease) both; }
 .rot .ch-out { animation: letra-sai 260ms var(--ease-saida) both; }
 @keyframes letra-entra { from { opacity: 0; transform: translateY(.22em); filter: blur(3px); } }
-.js [data-cai]:not(.pronto) { opacity: 0; }
-.rot .ch-cai { animation: letra-cai 700ms cubic-bezier(.2, .9, .3, 1.2) both; }
-@keyframes letra-cai {
-  0% { opacity: 0; transform: translateY(-.85em) rotate(-8deg); filter: blur(4px); }
-  60% { opacity: 1; filter: blur(0); }
+.js :is([data-ceu], [data-cai]):not(.pronto) { opacity: 0; }
+.palavra { display: inline-block; white-space: nowrap; }
+.ch-ceu { display: inline-block; animation: letra-ceu 900ms cubic-bezier(.22, 1.1, .36, 1) both; }
+@keyframes letra-ceu {
+  0% { opacity: 0; transform: translateY(-2.4em) rotate(-10deg); filter: blur(6px); }
+  55% { opacity: 1; filter: blur(0); }
+  78% { transform: translateY(.06em) rotate(1deg); }
 }
+.rot .ch-cai { animation: letra-cine 1100ms cubic-bezier(.19, 1, .22, 1) both; }
+@keyframes letra-cine { from { opacity: 0; filter: blur(16px); transform: scale(1.18) translateY(.08em); letter-spacing: .04em; } }
 @keyframes letra-sai { to { opacity: 0; transform: translateY(-.22em); filter: blur(3px); } }
 
 .hero-sub { max-width: 36ch; margin-top: 22px; color: #2A3953; font-size: clamp(17px, 1rem + .35vw, 20px); line-height: 1.5; }
