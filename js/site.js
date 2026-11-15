@@ -203,8 +203,20 @@ const emLetras = (txt, cls, base, passo) => {
 const ceu = $("[data-ceu]");
 const cai = $("[data-cai]");
 if (!RM) {
-  if (ceu) { const t = ceu.textContent; ceu.innerHTML = `<span aria-hidden="true">${emLetras(t, "ch-ceu", 150, 38)}</span><span class="sr">${t}</span>`; }
-  if (cai) { const t = cai.textContent; cai.innerHTML = `<span aria-hidden="true">${emLetras(t, "ch-cai", 1700, 45)}</span><span class="sr">${t}</span>`; }
+  if (ceu) {
+    // "Cliente não cai do" surge do desfoque; só "céu." cai do alto (presa ao "do" para não quebrar a linha entre as duas)
+    const t = ceu.textContent, i = t.lastIndexOf("céu");
+    const antes = t.slice(0, i).replace(/\u00a0$/, "").split(" ");
+    const ultima = antes.pop();
+    let k = 0;
+    const letra = (c, cls, d) => `<span class="ch ${cls}" style="animation-delay:${d}ms">${c}</span>`;
+    const palavras = antes.map((p) => `<span class="palavra">${[...p].map((c) => letra(c, "ch-cine", 120 + k++ * 40)).join("")}</span>`);
+    const fimDo = [...ultima].map((c) => letra(c, "ch-cine", 120 + k++ * 40)).join("");
+    const queda = 120 + k * 40 + 250;
+    const doCeu = [...t.slice(i)].map((c, j) => letra(c, "ch-ceu", queda + j * 90)).join("");
+    ceu.innerHTML = `<span aria-hidden="true">${palavras.join(" ")} <span class="palavra">${fimDo}&nbsp;${doCeu}</span></span><span class="sr">${t}</span>`;
+  }
+  if (cai) { const t = cai.textContent; cai.innerHTML = `<span aria-hidden="true">${emLetras(t, "ch-cine", 2600, 45)}</span><span class="sr">${t}</span>`; }
 }
 ceu?.classList.add("pronto");
 cai?.classList.add("pronto");
