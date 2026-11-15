@@ -51,14 +51,14 @@
             <button class="nav-gatilho" type="button" aria-expanded="false" aria-controls="drop-produto">Produto<svg class="seta-baixo" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5l3-3"/></svg></button>
             <div class="drop drop-largo" id="drop-produto" hidden>
               <ul class="drop-grade">
-                <li><a class="drop-link" href="#areas"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-user-search"/></svg><span><b>Prospectar</b><small>Quem decide, com telefone, a partir do CNPJ</small></span></a></li>
-                <li><a class="drop-link" href="#areas"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-kanban"/></svg><span><b>CRM</b><small>O funil com as etapas do seu jeito</small></span></a></li>
-                <li><a class="drop-link" href="#areas"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-messages-square"/></svg><span><b>Inbox</b><small>WhatsApp, Instagram e e-mail na mesma tela</small></span></a></li>
-                <li><a class="drop-link" href="#areas"><svg class="ico" aria-hidden="true"><use href="#i-orbit"/></svg><span><b>Atlas Orbit</b><small>A IA que conhece cada lead pelo nome</small></span></a></li>
-                <li><a class="drop-link" href="#areas"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-bot"/></svg><span><b>Flow</b><small>Bots e agentes que respondem por você</small></span></a></li>
-                <li><a class="drop-link" href="#areas"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-route"/></svg><span><b>Cadências</b><small>O follow-up que ninguém esquece</small></span></a></li>
-                <li><a class="drop-link" href="#areas"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-phone-call"/></svg><span><b>Ligar</b><small>Ligação com roteiro, dentro do lead</small></span></a></li>
-                <li><a class="drop-link" href="#areas"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-bar-chart-3"/></svg><span><b>Dashboard</b><small>Quanto custou cada venda</small></span></a></li>
+                <li><a class="drop-link" href="#area-prospectar"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-user-search"/></svg><span><b>Prospectar</b><small>Quem decide, com telefone, a partir do CNPJ</small></span></a></li>
+                <li><a class="drop-link" href="#area-crm"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-kanban"/></svg><span><b>CRM</b><small>O funil com as etapas do seu jeito</small></span></a></li>
+                <li><a class="drop-link" href="#area-inbox"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-messages-square"/></svg><span><b>Inbox</b><small>WhatsApp, Instagram e e-mail na mesma tela</small></span></a></li>
+                <li><a class="drop-link" href="#area-orbit"><svg class="ico" aria-hidden="true"><use href="#i-orbit"/></svg><span><b>Atlas Orbit</b><small>A IA que conhece cada lead pelo nome</small></span></a></li>
+                <li><a class="drop-link" href="#area-flow"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-bot"/></svg><span><b>Flow</b><small>Bots e agentes que respondem por você</small></span></a></li>
+                <li><a class="drop-link" href="#area-cadencias"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-route"/></svg><span><b>Cadências</b><small>O follow-up que ninguém esquece</small></span></a></li>
+                <li><a class="drop-link" href="#area-ligar"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-phone-call"/></svg><span><b>Ligar</b><small>Ligação com roteiro, dentro do lead</small></span></a></li>
+                <li><a class="drop-link" href="#area-dashboard"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-bar-chart-3"/></svg><span><b>Dashboard</b><small>Quanto custou cada venda</small></span></a></li>
               </ul>
               <div class="drop-oferta">
                 <p class="oferta-num"><b>25</b><span>decisores grátis</span></p>
@@ -114,14 +114,14 @@
         <div class="gv-grupo">
           <button class="gv-gatilho" type="button" aria-expanded="false" aria-controls="gv-produto">Produto<svg class="seta-baixo" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5l3-3"/></svg></button>
           <ul class="gv-lista" id="gv-produto" hidden>
-            <li><a href="#areas" data-fecha-menu>Prospectar</a></li>
-            <li><a href="#areas" data-fecha-menu>CRM</a></li>
-            <li><a href="#areas" data-fecha-menu>Inbox</a></li>
-            <li><a href="#areas" data-fecha-menu>Atlas Orbit</a></li>
-            <li><a href="#areas" data-fecha-menu>Flow</a></li>
-            <li><a href="#areas" data-fecha-menu>Cadências</a></li>
-            <li><a href="#areas" data-fecha-menu>Ligar</a></li>
-            <li><a href="#areas" data-fecha-menu>Dashboard</a></li>
+            <li><a href="#area-prospectar" data-fecha-menu>Prospectar</a></li>
+            <li><a href="#area-crm" data-fecha-menu>CRM</a></li>
+            <li><a href="#area-inbox" data-fecha-menu>Inbox</a></li>
+            <li><a href="#area-orbit" data-fecha-menu>Atlas Orbit</a></li>
+            <li><a href="#area-flow" data-fecha-menu>Flow</a></li>
+            <li><a href="#area-cadencias" data-fecha-menu>Cadências</a></li>
+            <li><a href="#area-ligar" data-fecha-menu>Ligar</a></li>
+            <li><a href="#area-dashboard" data-fecha-menu>Dashboard</a></li>
           </ul>
         </div>
         <div class="gv-grupo">
@@ -173,39 +173,337 @@
       <button class="hero-pausa" type="button" data-pausa aria-pressed="false"><span class="sr">Pausar animação</span><svg viewBox="0 0 16 16" aria-hidden="true"><path class="i-pausa" d="M5.5 3.5v9M10.5 3.5v9"/><path class="i-play" d="M5 3.2v9.6L12.5 8Z"/></svg></button>
     </section>
 
-    <!-- FASE B: #como-funciona | 2. Vídeo "Como o Atlas funciona" (player próprio, 0 bytes até o clique, "Assistir com som", etapas clicáveis). Arquivos prontos em video/como-funciona-*. -->
-    <section class="secao pendente" id="como-funciona" aria-labelledby="t-como-funciona">
-      <div class="moldura"><h2 id="t-como-funciona">Como o Atlas funciona</h2><p>Seção da próxima fase.</p></div>
+    <!-- ===== 2. Vídeo "Como o Atlas funciona" ===== -->
+    <section class="secao como" id="como-funciona" aria-labelledby="t-como-funciona">
+      <div class="moldura">
+        <div class="como-cab">
+          <h2 class="titulo-secao" id="t-como-funciona">Da busca à reunião, em menos de dois minutos.</h2>
+          <p class="como-sub">Uma lista de clínicas vira horário marcado na agenda. Aperte o play e acompanhe cada passo que o Atlas dá sozinho.</p>
+        </div>
+        <div class="player" data-player>
+          <picture class="player-poster">
+            <source srcset="video/como-funciona-poster.avif" type="image/avif">
+            <img src="video/como-funciona-poster.webp" width="1280" height="720" alt="Abertura do vídeo: o que acontece entre achar um cliente e fechar com ele?" loading="lazy" decoding="async">
+          </picture>
+          <video class="player-video" playsinline preload="none" width="1280" height="720" aria-label="Como o Atlas funciona, vídeo de 1 minuto e 38 segundos"
+            data-webm="video/como-funciona-1080.webm" data-mp4="video/como-funciona-1080.mp4" data-mp4-p="video/como-funciona-720.mp4"></video>
+          <button class="player-play" type="button" data-play>
+            <span class="pp">
+              <span class="pp-bola" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.6v12.8L18.4 12Z"/></svg></span>
+              <span class="pp-txt"><b>Assistir com som</b><small>1min38</small></span>
+            </span>
+          </button>
+        </div>
+        <ol class="etapas" aria-label="Pular para uma etapa do vídeo">
+          <li><button type="button" data-t="0">Busca<small>0:00</small></button></li>
+          <li><button type="button" data-t="16">Pesquisa<small>0:16</small></button></li>
+          <li><button type="button" data-t="27">Filtro<small>0:27</small></button></li>
+          <li><button type="button" data-t="34">CRM<small>0:34</small></button></li>
+          <li><button type="button" data-t="39">Ritmo<small>0:39</small></button></li>
+          <li><button type="button" data-t="51">Conversa<small>0:51</small></button></li>
+          <li><button type="button" data-t="65">Reunião<small>1:05</small></button></li>
+        </ol>
+        <p class="porta">Quer ver com o seu nicho no lugar das clínicas? <a href="https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas." target="_blank" rel="noopener">Agende uma demonstração</a></p>
+      </div>
     </section>
 
-    <!-- FASE B: #areas | 3. Áreas do Atlas trabalhando por você (Prospectar, CRM, Inbox, Orbit, Agentes, Cadências, Ligar, Dashboard). Os links do menu Produto apontam para cá. -->
-    <section class="secao pendente" id="areas" aria-labelledby="t-areas">
-      <div class="moldura"><h2 id="t-areas">Áreas trabalhando por você</h2><p>Seção da próxima fase.</p></div>
+    <!-- ===== 3. Áreas trabalhando por você ===== -->
+    <section class="secao areas" id="areas" aria-labelledby="t-areas">
+      <div class="moldura areas-grade">
+        <div class="areas-texto">
+          <h2 class="titulo-secao" id="t-areas">8 áreas trabalhando enquanto você vende.</h2>
+          <p class="areas-sub">Cada uma cuida de um trecho do caminho até a reunião. Aqui fica o resultado de cada uma. O como, você vê por dentro.</p>
+          <ul class="areas-lista" data-areas>
+            <li class="area" id="area-prospectar" data-area="prospectar">
+              <h3><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-user-search"/></svg>Prospectar</h3>
+              <p>O número de quem decide, conferido antes de entrar na sua lista.</p>
+              <picture class="area-mini"><source srcset="img/areas/prospectar.avif" type="image/avif"><img src="img/areas/prospectar.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            </li>
+            <li class="area" id="area-crm" data-area="crm">
+              <h3><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-kanban"/></svg>CRM</h3>
+              <p>Cada lead na etapa certa, com o histórico de todos os contatos.</p>
+              <picture class="area-mini"><source srcset="img/areas/crm.avif" type="image/avif"><img src="img/areas/crm.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            </li>
+            <li class="area" id="area-inbox" data-area="inbox">
+              <h3><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-messages-square"/></svg>Inbox</h3>
+              <p>WhatsApp, Instagram e e-mail respondidos ao lado da ficha do lead.</p>
+              <picture class="area-mini"><source srcset="img/areas/inbox.avif" type="image/avif"><img src="img/areas/inbox.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            </li>
+            <li class="area" id="area-orbit" data-area="orbit">
+              <h3><svg class="ico" aria-hidden="true"><use href="#i-orbit"/></svg>Atlas Orbit</h3>
+              <p>Pergunte quem ligar agora e receba a resposta com o nome do lead.</p>
+              <picture class="area-mini"><source srcset="img/areas/orbit.avif" type="image/avif"><img src="img/areas/orbit.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            </li>
+            <li class="area" id="area-flow" data-area="flow">
+              <h3><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-bot"/></svg>Flow</h3>
+              <p>Bots e agentes de IA que atendem no tom da sua empresa e mudam a etapa no CRM sozinhos.</p>
+              <picture class="area-mini"><source srcset="img/areas/flow.avif" type="image/avif"><img src="img/areas/flow.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            </li>
+            <li class="area" id="area-cadencias" data-area="cadencias">
+              <h3><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-route"/></svg>Cadências</h3>
+              <p>Se o lead não responde, o próximo passo entra na agenda. Se responde, a rota para.</p>
+              <picture class="area-mini"><source srcset="img/areas/cadencias.avif" type="image/avif"><img src="img/areas/cadencias.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            </li>
+            <li class="area" id="area-ligar" data-area="ligar">
+              <h3><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-phone-call"/></svg>Ligar</h3>
+              <p>A fila do dia e o roteiro na tela, com o nome do sócio já preenchido.</p>
+              <picture class="area-mini"><source srcset="img/areas/ligar.avif" type="image/avif"><img src="img/areas/ligar.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            </li>
+            <li class="area" id="area-dashboard" data-area="dashboard">
+              <h3><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-bar-chart-3"/></svg>Dashboard</h3>
+              <p>Quanto custou cada lead, cada reunião e cada venda.</p>
+              <picture class="area-mini"><source srcset="img/areas/dashboard.avif" type="image/avif"><img src="img/areas/dashboard.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            </li>
+          </ul>
+          <div class="areas-ctas">
+            <a class="btn btn-navy btn-g" href="https://www.atlaslike.com/criar-conta">Criar conta grátis · 25 decisores<svg class="seta" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
+            <a class="btn btn-claro btn-g" href="https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas." target="_blank" rel="noopener">Agendar demonstração</a>
+          </div>
+        </div>
+        <figure class="areas-palco" aria-hidden="true" data-areas-palco>
+          <div class="areas-janela">
+            <picture data-tela="prospectar" class="ativa"><source srcset="img/areas/prospectar.avif" type="image/avif"><img src="img/areas/prospectar.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            <picture data-tela="crm"><source srcset="img/areas/crm.avif" type="image/avif"><img src="img/areas/crm.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            <picture data-tela="inbox"><source srcset="img/areas/inbox.avif" type="image/avif"><img src="img/areas/inbox.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            <picture data-tela="orbit"><source srcset="img/areas/orbit.avif" type="image/avif"><img src="img/areas/orbit.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            <picture data-tela="flow"><source srcset="img/areas/flow.avif" type="image/avif"><img src="img/areas/flow.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            <picture data-tela="cadencias"><source srcset="img/areas/cadencias.avif" type="image/avif"><img src="img/areas/cadencias.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            <picture data-tela="ligar"><source srcset="img/areas/ligar.avif" type="image/avif"><img src="img/areas/ligar.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+            <picture data-tela="dashboard"><source srcset="img/areas/dashboard.avif" type="image/avif"><img src="img/areas/dashboard.webp" width="480" height="600" alt="" loading="lazy" decoding="async"></picture>
+          </div>
+          <figcaption>Um recorte da tela real. O resto, ao vivo na demonstração.</figcaption>
+        </figure>
+      </div>
     </section>
 
-    <!-- FASE B: #jornada | 4. Jornada (3 perguntas de autodiagnóstico, faixa sticky com arco). -->
-    <section class="secao pendente" id="jornada" aria-labelledby="t-jornada">
-      <div class="moldura"><h2 id="t-jornada">Jornada</h2><p>Seção da próxima fase.</p></div>
+    <!-- ===== 4. Jornada: três perguntas ===== -->
+    <section class="jornada" id="jornada" aria-labelledby="t-jornada" data-jornada>
+      <div class="jornada-palco">
+        <div class="jornada-arco" aria-hidden="true">
+          <i class="arco-linha"></i><i class="arco-linha arco-fora"></i>
+          <div class="arco-giro">
+            <span class="arco-num" style="--f:0">1</span>
+            <span class="arco-num" style="--f:1">2</span>
+            <span class="arco-num" style="--f:2">3</span>
+          </div>
+        </div>
+        <div class="jornada-conteudo">
+          <h2 class="jornada-titulo" id="t-jornada">Antes da demonstração, três perguntas.</h2>
+          <p class="jornada-nota">Responda de cabeça. Ninguém está anotando.</p>
+          <ol class="perguntas">
+            <li class="pergunta"><h3>Quantos decisores você encontrou esta semana?</h3><p>Conte só quem assina o contrato. Recepção e e-mail de contato ficam de fora.</p></li>
+            <li class="pergunta"><h3>Quantos deles ouviram de você mais de uma vez?</h3><p>Quem cuida do segundo, do terceiro e do quarto contato quando o dia aperta?</p></li>
+            <li class="pergunta"><h3>E quantas conversas viraram reunião na agenda?</h3><p>Se a conta travou em alguma das três, é ali que o Atlas entra.</p></li>
+          </ol>
+          <div class="jornada-fim">
+            <p>Leve as suas respostas para a demonstração. A gente mostra, no seu nicho, o que muda em cada uma.</p>
+            <div class="jornada-ctas">
+              <a class="btn btn-navy btn-g" href="https://www.atlaslike.com/criar-conta">Criar conta grátis · 25 decisores<svg class="seta" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
+              <a class="btn btn-claro btn-g" href="https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas." target="_blank" rel="noopener">Agendar demonstração</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- FASE B: #lampejos | 5. Lampejos do sistema (clipes de 8 a 15 s com zoom rápido). -->
-    <section class="secao pendente" id="lampejos" aria-labelledby="t-lampejos">
-      <div class="moldura"><h2 id="t-lampejos">Lampejos do sistema</h2><p>Seção da próxima fase.</p></div>
+    <!-- ===== 5. Lampejos do sistema ===== -->
+    <section class="secao lampejos" id="lampejos" aria-labelledby="t-lampejos">
+      <div class="moldura">
+        <div class="lampejos-cab">
+          <h2 class="titulo-secao" id="t-lampejos">Lampejos do sistema.</h2>
+          <div class="lampejos-lado">
+            <p>Quatro telas reais do Atlas, cortadas de propósito. A tela inteira fica para quando você entrar.</p>
+            <button class="pausa-txt" type="button" data-pausa-videos aria-pressed="false">Pausar os vídeos</button>
+          </div>
+        </div>
+        <div class="lampejos-trilho" data-lampejos>
+          <figure class="lampejo l-1">
+            <div class="lampejo-janela"><video class="lampejo-video" muted loop playsinline preload="none" loading="lazy" width="1280" height="800" poster="video/lampejos/prospeccao.webp" data-src="video/lampejos/prospeccao" style="--ox:62%;--oy:30%"></video></div>
+            <figcaption><b>Prospectar</b> Uma lista de clínicas, qualificada uma a uma.</figcaption>
+          </figure>
+          <figure class="lampejo l-2">
+            <div class="lampejo-janela"><video class="lampejo-video" muted loop playsinline preload="none" loading="lazy" width="1280" height="800" poster="video/lampejos/inbox.webp" data-src="video/lampejos/inbox" style="--ox:55%;--oy:45%"></video></div>
+            <figcaption><b>Inbox</b> A conversa que termina com horário marcado.</figcaption>
+          </figure>
+          <figure class="lampejo l-3">
+            <div class="lampejo-janela"><video class="lampejo-video" muted loop playsinline preload="none" loading="lazy" width="1280" height="800" poster="video/lampejos/orbit.webp" data-src="video/lampejos/orbit" style="--ox:50%;--oy:40%"></video></div>
+            <figcaption><b>Atlas Orbit</b> Uma pergunta sobre o funil, feita em voz alta.</figcaption>
+          </figure>
+          <figure class="lampejo l-4">
+            <div class="lampejo-janela"><video class="lampejo-video" muted loop playsinline preload="none" loading="lazy" width="1280" height="800" poster="video/lampejos/cadencias.webp" data-src="video/lampejos/cadencias" style="--ox:58%;--oy:35%"></video></div>
+            <figcaption><b>Cadências</b> O roteiro da próxima ligação, pronto na tela.</figcaption>
+          </figure>
+        </div>
+        <p class="porta">O resto a gente mostra com você no controle. <a href="https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas." target="_blank" rel="noopener">Agendar demonstração</a></p>
+      </div>
     </section>
 
-    <!-- FASE C: #atlaslike | 6. AtlasLike, o outbound feito por nós (mapa mental). O menu AtlasLike aponta para cá. -->
-    <section class="secao pendente" id="atlaslike" aria-labelledby="t-atlaslike">
-      <div class="moldura"><h2 id="t-atlaslike"><span class="al" translate="no">Atlas<span>Like</span></span></h2><p>Seção da próxima fase.</p></div>
+    <!-- ===== 6. AtlasLike: o outbound feito por nós ===== -->
+    <section class="secao atlaslike" id="atlaslike" aria-labelledby="t-atlaslike">
+      <div class="moldura al-grade">
+        <div class="al-texto">
+          <h2 class="titulo-secao" id="t-atlaslike"><span class="al" translate="no">Atlas<span>Like</span></span>, o outbound feito por nós.</h2>
+          <p class="al-sub">O time do Atlas assume a sua prospecção, da lista à reunião marcada. Você aparece para a conversa de venda.</p>
+          <p class="al-nota">Sob medida: créditos, canais e volume desenhados a partir da sua meta de reuniões.</p>
+          <div class="al-ctas">
+            <a class="btn btn-claro btn-g" href="/atlaslike/"><span>Aplicar para o <span class="al" translate="no">Atlas<span>Like</span></span></span><svg class="seta" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
+            <a class="btn btn-vidro btn-g" href="https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas." target="_blank" rel="noopener">Agendar uma conversa</a>
+          </div>
+        </div>
+        <div class="al-mapa" data-mapa>
+          <svg class="al-svg" viewBox="0 0 900 600" aria-hidden="true" focusable="false">
+            <ellipse class="al-anel" cx="450" cy="300" rx="330" ry="215" pathLength="1000"/>
+            <g class="al-raios">
+              <line style="--i:0" x1="450" y1="300" x2="164" y2="192" pathLength="100"/>
+              <line style="--i:1" x1="450" y1="300" x2="450" y2="85" pathLength="100"/>
+              <line style="--i:2" x1="450" y1="300" x2="736" y2="192" pathLength="100"/>
+              <line style="--i:3" x1="450" y1="300" x2="736" y2="408" pathLength="100"/>
+              <line style="--i:4" x1="450" y1="300" x2="450" y2="515" pathLength="100"/>
+              <line style="--i:5" x1="450" y1="300" x2="164" y2="408" pathLength="100"/>
+            </g>
+            <path id="al-rota" class="al-rota" d="M164 192 A330 215 0 0 1 450 85 A330 215 0 0 1 736 192 A330 215 0 0 1 736 408 A330 215 0 0 1 450 515 A330 215 0 0 1 164 408 A330 215 0 0 1 164 192" fill="none"/>
+            <g class="al-cometas">
+              <circle r="3.4"><animateMotion dur="9s" begin="0s" repeatCount="indefinite"><mpath href="#al-rota"/></animateMotion></circle>
+              <circle r="2.4" opacity=".6"><animateMotion dur="9s" begin="-4.5s" repeatCount="indefinite"><mpath href="#al-rota"/></animateMotion></circle>
+            </g>
+          </svg>
+          <div class="al-hub" aria-hidden="true"><span class="app-icone al-hub-icone"><img src="img/logo-atlas-64.webp" width="26" height="26" alt="" loading="lazy"></span><span class="al" translate="no">Atlas<span>Like</span></span></div>
+          <ol class="al-nos">
+            <li style="--x:18.2%;--y:32%;--i:0"><b>Diagnóstico</b><span>ICP, persona, oferta e quem não abordar</span></li>
+            <li style="--x:50%;--y:14.2%;--i:1"><b>Listas verificadas</b><span>Telefone e e-mail de cada decisor, checados</span></li>
+            <li style="--x:81.8%;--y:32%;--i:2"><b>Mensagens</b><span>Ângulos por persona, com testes A/B</span></li>
+            <li style="--x:81.8%;--y:68%;--i:3"><b>Cadência</b><span>WhatsApp, LinkedIn, e-mail, Instagram e ligação</span></li>
+            <li style="--x:50%;--y:85.8%;--i:4"><b>Respostas</b><span>Nosso time conduz cada conversa</span></li>
+            <li style="--x:18.2%;--y:68%;--i:5"><b>Reunião marcada</b><span>Direto na sua agenda, com relatório toda semana ou quinzena</span></li>
+          </ol>
+        </div>
+      </div>
     </section>
 
-    <!-- FASE C: #numeros | 7. Números com fonte linkada. -->
-    <section class="secao pendente" id="numeros" aria-labelledby="t-numeros">
-      <div class="moldura"><h2 id="t-numeros">Números</h2><p>Seção da próxima fase.</p></div>
+    <!-- ===== 7. Números com fonte ===== -->
+    <section class="secao numeros" id="numeros" aria-labelledby="t-numeros">
+      <div class="moldura">
+        <div class="numeros-cab">
+          <h2 class="titulo-secao" id="t-numeros">Onde as vendas se perdem.</h2>
+          <p>Quatro números de pesquisas recentes sobre vender. A fonte de cada um está logo abaixo dele.</p>
+        </div>
+        <ul class="numeros-lista" data-numeros>
+          <li class="numero">
+            <p class="num-valor"><span data-contar="38">38</span>%</p>
+            <p class="num-txt">das vendas perdidas no Brasil acabam porque o cliente parou de responder. É o motivo número um.</p>
+            <a class="fonte" href="https://www.rdstation.com/pesquisas/panorama-marketing-vendas/edicao-2026/vendas/maturidade-operacional/" target="_blank" rel="noopener">RD Station, Panorama de Vendas 2026<svg aria-hidden="true"><use href="img/icones.svg#i-arrow-up-right"/></svg></a>
+          </li>
+          <li class="numero">
+            <p class="num-valor"><span data-contar="28">28</span>%</p>
+            <p class="num-txt">dos times brasileiros ligam o WhatsApp ao CRM. Em 40%, cada vendedor conversa do seu jeito.</p>
+            <a class="fonte" href="https://www.rdstation.com/pesquisas/panorama-marketing-vendas/edicao-2026/conversas/vendas-conversacionais/" target="_blank" rel="noopener">RD Station, Panorama 2026<svg aria-hidden="true"><use href="img/icones.svg#i-arrow-up-right"/></svg></a>
+          </li>
+          <li class="numero">
+            <p class="num-valor"><span data-contar="19">19</span></p>
+            <p class="num-txt">ligações, em média, para conseguir uma conversa. Os melhores vendedores precisam de 8.</p>
+            <a class="fonte" href="https://www.gong.io/resources/labs/the-hidden-power-of-cold-calling-insights-from-300m-calls/" target="_blank" rel="noopener">Gong Labs, 2024<svg aria-hidden="true"><use href="img/icones.svg#i-arrow-up-right"/></svg></a>
+          </li>
+          <li class="numero">
+            <p class="num-valor"><span data-contar="4.4" data-casas="1">4,4</span>x</p>
+            <p class="num-txt">mais reuniões marcadas quando a cadência liga a cada e-mail enviado.</p>
+            <a class="fonte" href="https://www.salesloft.com/resources/blog/cadence-email-call-study" target="_blank" rel="noopener">Salesloft, 2026<svg aria-hidden="true"><use href="img/icones.svg#i-arrow-up-right"/></svg></a>
+          </li>
+        </ul>
+        <p class="numeros-conferido">Conferido em novembro de 2026.</p>
+      </div>
     </section>
 
-    <!-- FASE C: #tecnologias | 8. Tecnologias e integrações. -->
-    <section class="secao pendente" id="tecnologias" aria-labelledby="t-tecnologias">
-      <div class="moldura"><h2 id="t-tecnologias">Tecnologias e integrações</h2><p>Seção da próxima fase.</p></div>
+    <!-- ===== 8. Tecnologias e integrações ===== -->
+    <section class="secao tecnologias" id="tecnologias" aria-labelledby="t-tecnologias">
+      <div class="moldura">
+        <div class="tec-topo">
+          <div class="tec-texto">
+            <h2 class="titulo-secao" id="t-tecnologias">O que roda por dentro do Atlas.</h2>
+            <p class="tec-sub">Os modelos de IA e as plataformas que sustentam o sistema, e as ferramentas que ele já conecta.</p>
+            <ul class="tec-lista">
+              <li><span class="tec-logos"><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-anthropic"/></svg></span><span><b>Claude, da Anthropic</b>O modelo que responde no Atlas Orbit.</span></li>
+              <li><span class="tec-logos"><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-openai"/></svg><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-googlegemini"/></svg></span><span><b>OpenAI e Google Gemini</b>Os agentes do Flow rodam com Claude, GPT ou Gemini, usando a sua própria chave.</span></li>
+              <li><span class="tec-logos"><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-whatsapp"/></svg><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-instagram"/></svg></span><span><b>WhatsApp e Instagram</b>As conversas dos dois canais chegam na Inbox, ao lado do lead.</span></li>
+              <li><span class="tec-logos"><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-supabase"/></svg><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-vercel"/></svg></span><span><b>Supabase e Vercel</b>O banco de dados e a infraestrutura onde o Atlas roda.</span></li>
+            </ul>
+          </div>
+          <div class="tec-orbita" aria-hidden="true" data-orbita>
+            <svg class="orb-svg" viewBox="0 0 560 420">
+              <ellipse class="orb-anel" cx="280" cy="210" rx="250" ry="150"/>
+              <ellipse class="orb-anel orb-anel-2" cx="280" cy="210" rx="170" ry="96"/>
+              <ellipse class="orb-cometa" cx="280" cy="210" rx="250" ry="150" pathLength="1000"/>
+              <ellipse class="orb-cometa orb-cometa-2" cx="280" cy="210" rx="170" ry="96" pathLength="1000"/>
+            </svg>
+            <span class="app-icone orb-centro"><img src="img/logo-atlas-64.webp" width="28" height="28" alt="" loading="lazy"></span>
+            <span class="orb-selo" style="--x:50%;--y:14.3%"><svg class="marca-svg"><use href="img/tec.svg#m-anthropic"/></svg></span>
+            <span class="orb-selo" style="--x:84.9%;--y:27.7%"><svg class="marca-svg"><use href="img/tec.svg#m-openai"/></svg></span>
+            <span class="orb-selo" style="--x:93.5%;--y:57.9%"><svg class="marca-svg"><use href="img/tec.svg#m-googlegemini"/></svg></span>
+            <span class="orb-selo" style="--x:69.4%;--y:82.2%"><svg class="marca-svg"><use href="img/tec.svg#m-whatsapp"/></svg></span>
+            <span class="orb-selo" style="--x:30.6%;--y:82.2%"><svg class="marca-svg"><use href="img/tec.svg#m-instagram"/></svg></span>
+            <span class="orb-selo" style="--x:6.5%;--y:57.9%"><svg class="marca-svg"><use href="img/tec.svg#m-supabase"/></svg></span>
+            <span class="orb-selo" style="--x:15.1%;--y:27.7%"><svg class="marca-svg"><use href="img/tec.svg#m-vercel"/></svg></span>
+          </div>
+        </div>
+
+        <div class="integra">
+          <h3 class="integra-titulo"><b>28 integrações</b> no hub do Atlas, além do WhatsApp e do Instagram na Inbox.</h3>
+          <ul class="integra-grupos">
+            <li class="grupo">
+              <h4>Google</h4>
+              <p>Agenda nos dois sentidos, e-mail ao lado do lead, planilha que vira lead e o custo de cada campanha.</p>
+              <ul class="marcas">
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-googlecalendar"/></svg>Google Agenda</li>
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-gmail"/></svg>Gmail</li>
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-googlesheets"/></svg>Google Planilhas</li>
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-googleads"/></svg>Google Ads</li>
+              </ul>
+            </li>
+            <li class="grupo">
+              <h4>Meta</h4>
+              <p>O lead do formulário cai no funil e na etapa certos, com a campanha de origem.</p>
+              <ul class="marcas">
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-meta"/></svg>Meta Ads</li>
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-whatsapp"/></svg>WhatsApp</li>
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-instagram"/></svg>Instagram</li>
+              </ul>
+            </li>
+            <li class="grupo">
+              <h4>Vindo de outro CRM</h4>
+              <p>Traga funis, etapas, tags e campos. Quem já veio é reconhecido pelo e-mail e pelo telefone.</p>
+              <ul class="marcas">
+                <li>Kommo</li>
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-hubspot"/></svg>HubSpot</li>
+                <li>RD Station CRM</li>
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-salesforce"/></svg>Salesforce</li>
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-notion"/></svg>Notion</li>
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-clickup"/></svg>ClickUp</li>
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-trello"/></svg>Trello</li>
+              </ul>
+            </li>
+            <li class="grupo">
+              <h4>Telefonia</h4>
+              <p>Ligue com um clique pela operadora que você já contrata. A ligação entra no histórico do lead.</p>
+              <ul class="marcas">
+                <li>SipVoIP</li><li>3C Plus</li><li>API4COM</li>
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-twilio"/></svg>Twilio</li>
+                <li>Zenvia</li>
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-asterisk"/></svg>Asterisk</li>
+                <li>3CX</li><li>Telnyx</li><li>Issabel</li>
+              </ul>
+            </li>
+            <li class="grupo">
+              <h4>Automação</h4>
+              <p>Avise outras ferramentas quando uma reunião é agendada ou uma empresa é qualificada.</p>
+              <ul class="marcas">
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-zapier"/></svg>Zapier</li>
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-make"/></svg>Make</li>
+                <li><svg class="marca-svg" aria-hidden="true"><use href="img/tec.svg#m-n8n"/></svg>n8n</li>
+                <li>Webhook</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- FASE D: #planos | 9. Planos pela liberdade, sem preço (Grátis, Start, Pro, Scale, Creator, AtlasLike). -->
@@ -236,10 +534,10 @@
           <div>
             <h2>Produto</h2>
             <ul>
-              <li><a href="#areas">Prospectar</a></li>
-              <li><a href="#areas">CRM e Inbox</a></li>
-              <li><a href="#areas">Atlas Orbit</a></li>
-              <li><a href="#areas">Flow e Cadências</a></li>
+              <li><a href="#area-prospectar">Prospectar</a></li>
+              <li><a href="#area-crm">CRM e Inbox</a></li>
+              <li><a href="#area-orbit">Atlas Orbit</a></li>
+              <li><a href="#area-flow">Flow e Cadências</a></li>
               <li><a href="#planos">Planos</a></li>
             </ul>
           </div>
@@ -272,7 +570,7 @@
       </div>
       <div class="rodape-nome" aria-hidden="true"></div>
       <div class="rodape-base">
-        <p>© 2026 Atlas. CNPJ 54.117.976/0001-78. Dados tratados conforme a LGPD.</p>
+        <p>© 2026 Atlas. Dados tratados conforme a LGPD.</p>
         <ul class="rodape-legal">
           <li><a href="https://www.atlaslike.com/privacidade">Privacidade e cookies</a></li>
           <li><button type="button" class="link-botao" data-abrir-cookies>Preferências de cookies</button></li>
@@ -297,14 +595,14 @@
   <!-- ===== Cookies (LGPD) ===== -->
   <section class="cookies" id="cookies" aria-labelledby="cookies-titulo" hidden>
     <h2 class="cookies-titulo" id="cookies-titulo">Cookies, do seu jeito</h2>
-    <p class="cookies-txt">Os essenciais guardam suas escolhas, como esta. Com o seu aceite, usamos também cookies de medição para entender o uso do site e melhorar a sua experiência. <a href="https://www.atlaslike.com/privacidade">Política de privacidade</a></p>
+    <p class="cookies-txt">Usamos cookies essenciais para o site funcionar e lembrar esta escolha. Os de medição, que mostram como o site é usado, só entram se você aceitar. <a href="https://www.atlaslike.com/privacidade">Política de privacidade</a></p>
     <div class="cookies-config" id="cookies-config" hidden>
       <div class="ck-linha">
-        <span><b>Essenciais</b><small>Fazem o site funcionar e lembram esta escolha.</small></span>
+        <span><b>Essenciais</b><small>Mantêm o site funcionando e guardam a sua escolha sobre cookies. Por isso ficam sempre ativos.</small></span>
         <span class="ck-fixo">Sempre ativos</span>
       </div>
       <label class="ck-linha" for="ck-medicao">
-        <span><b>Medição</b><small>Mostram como o site é usado. Só com o seu aceite.</small></span>
+        <span><b>Medição</b><small>Mostram como o site é usado para a gente melhorar a sua experiência. Ficam desligados até você aceitar.</small></span>
         <input type="checkbox" role="switch" class="ck-switch" id="ck-medicao">
       </label>
     </div>

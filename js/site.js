@@ -1,4 +1,4 @@
-// Atlas: comportamento do site (fase A).
+// Atlas: comportamento do site (fase A). As seções 2 a 8 ficam em js/secoes.js (fase B).
 // Barra com menus, menu do celular, palavra que troca no hero, Orbit (carregado
 // depois do primeiro desenho), ilha flutuante e consentimento de cookies (LGPD).
 
@@ -117,6 +117,8 @@ if (botaoPausa) {
     botaoPausa.setAttribute("aria-pressed", String(pausado));
     $(".sr", botaoPausa).textContent = pausado ? "Retomar animação" : "Pausar animação";
     orbes.forEach((o) => o.pausar(pausado));
+    document.documentElement.classList.toggle("mov-pausado", pausado);
+    document.dispatchEvent(new CustomEvent("atlas:pausa", { detail: pausado }));
   });
 }
 if (rot && !RM) {
@@ -250,4 +252,11 @@ if (banner) {
     if (document.readyState === "complete") exibir();
     else addEventListener("load", exibir, { once: true });
   }
+}
+
+/* ---------- seções 2 a 8 (fase B): carregadas depois do primeiro desenho ---------- */
+{
+  const secoes = () => quandoOcioso(() => import("./secoes.js"), 800);
+  if (document.readyState === "complete") secoes();
+  else addEventListener("load", secoes, { once: true });
 }
