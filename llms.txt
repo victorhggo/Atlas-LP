@@ -1,40 +1,46 @@
-# Atlas (AtlasLike)
+# Atlas (e o serviço AtlasLike)
 
-> Atlas é uma plataforma de vendas brasileira que junta prospecção com o número do decisor, CRM, WhatsApp e Instagram, chatbots com IA, cadências de follow-up e o Atlas Orbit, um agente de vendas com IA. Site: https://lp.atlaslike.com/ · Sistema (entrar e criar conta): https://www.atlaslike.com/
+> Atlas é uma plataforma de vendas brasileira que acha quem decide na empresa certa e leva a conversa até a reunião: prospecção com o telefone do decisor, CRM, Inbox com WhatsApp, Instagram e Gmail, cadências multicanal, agentes de IA e o Atlas Orbit. AtlasLike é o serviço em que o time do Atlas faz o outbound do cliente. Site: https://lp.atlaslike.com/ · Sistema (entrar e criar conta): https://www.atlaslike.com/
 
-O Atlas é feito no Brasil, em português, para empresas que vendem por WhatsApp e Instagram. Slogan: "A sua próxima venda está no Atlas." Atualizado em 2026-11-15. Conta grátis com 25 créditos para testar (25 decisores), sem cartão: https://www.atlaslike.com/criar-conta
+Feito no Brasil, em português. Atualizado em 2026-11-15. Conta grátis com 25 créditos para testar, ou 25 decisores, sem cartão: https://www.atlaslike.com/criar-conta
 
-## O que o Atlas faz
-- Prospecção: encontra empresas por nicho e cidade a partir de CNPJs ativos da Receita Federal, Google, sites e redes sociais, e entrega o número de quem decide, conferido antes de entrar na lista.
-- CRM: funil com etapas personalizadas por funil, ficha de cada lead, etiquetas, histórico e arrastar e soltar.
-- Inbox: WhatsApp e Instagram dentro do CRM, ao lado da ficha do lead.
-- Atlas Flow: chatbots com IA no WhatsApp e no Instagram, com o tom da empresa e passagem para uma pessoa.
-- Cadências: follow-up automático em sequência.
-- Atlas Orbit: agente de vendas com IA que conhece cada lead pelo nome.
-- Ligações com roteiro, painel de anúncios com custo por venda e painel do líder para times.
-- Integrações: Google Planilhas, Google Agenda, webhooks, Make e Zapier.
+## As 8 áreas do Atlas
+- Prospectar: o número de quem decide, conferido antes de entrar na lista. Cada crédito qualifica uma empresa e traz quem decide, e só é cobrado quando o Atlas encontra dados reais. Também busca perfis do Instagram e decisores do LinkedIn.
+- CRM: cada lead na etapa certa, com etapas por funil, etiquetas, fonte e o histórico de todos os contatos.
+- Inbox: WhatsApp, Direct do Instagram e Gmail respondidos ao lado da ficha do lead.
+- Atlas Orbit: agente de vendas com IA. Responde por voz, texto ou print quem ligar agora, o que responder e como está o funil.
+- Flow: bots e agentes de IA que atendem no tom da empresa e mudam a etapa no CRM. Os agentes rodam com Claude, GPT ou Gemini usando a chave do próprio cliente.
+- Cadências: ligação, WhatsApp, e-mail, Instagram e LinkedIn numa rota só. Se o lead não responde, o próximo passo entra na agenda; se responde, a cadência para.
+- Ligar: a fila do dia e o roteiro na tela, pela operadora que a empresa já contrata.
+- Dashboard: quanto custou cada lead, cada reunião e cada venda, cruzando Meta Ads e Google Ads com o CRM.
 
-## Planos
-Grátis, Start, Pro, Scale e Enterprise. Os valores são apresentados na demonstração.
+## Integrações
+28 integrações no hub do Atlas, além do WhatsApp e do Instagram na Inbox: anúncios (Meta Ads, Google Ads), captação (formulário no site, Google Planilhas, importar arquivo), migração de outro CRM (Kommo, HubSpot, RD Station CRM, Salesforce, Notion, ClickUp, Trello), Gmail, Google Agenda, telefonia (SipVoIP, 3C Plus, API4COM, Twilio, Zenvia, Asterisk, 3CX, Telnyx, Issabel), quadro do Trello e automação (Zapier, Make, n8n, webhook).
 
-## O problema que o Atlas resolve, em números
-- Só 24% das empresas brasileiras respondem um lead em até 5 minutos, e 38% não sabem quanto tempo levam. Fonte: RD Station, Panorama de Vendas 2026 (https://www.rdstation.com/pesquisas/panorama-marketing-vendas/edicao-2026/vendas/maturidade-operacional/).
-- 54% dos times de vendas no Brasil não usam CRM, e 38% gerenciam o funil em planilha. Fonte: RD Station, Panorama de Vendas 2026.
-- "Cliente não responde" é o principal motivo de venda perdida no Brasil (38%). Fonte: RD Station, Panorama de Vendas 2026.
-- Só 28% dos times integram o WhatsApp ao CRM; em 40%, cada vendedor gerencia o WhatsApp do seu jeito. Fonte: RD Station, Panorama de Vendas 2026 (https://www.rdstation.com/pesquisas/panorama-marketing-vendas/edicao-2026/conversas/vendas-conversacionais/).
-- Responder em 5 minutos, em vez de 30, aumenta em 100 vezes a chance de falar com o lead e em 21 vezes a de qualificá-lo. Fonte: Lead Response Management Study, InsideSales.com e MIT, 2007.
-- Vendedores passam 60% da semana em tarefas que não são vender. Fonte: Salesforce, State of Sales 2026.
+## Planos (sem valores nesta página; os valores aparecem na demonstração ou dentro da conta)
+- Grátis: 25 créditos para testar (25 decisores), listas na ordem de quem ligar primeiro, site, Instagram, Google e e-mail da empresa e o telefone do decisor. Sem cartão.
+- Start: 200 créditos por mês, até 3 telefones por empresa, CRM sem limite de leads, Gmail e Google Agenda, tela Ligar com meta do dia.
+- Pro: tudo do Start, mais 1.000 créditos por mês, Atlas Orbit, WhatsApp no CRM, Direct do Instagram, cadências multicanal, chatbot com IA e leads do Meta Ads e do Google Ads no funil.
+- Scale: o Pro para cada vendedor, de 3 a 20 usuários, com painel do líder, um Atlas Orbit por pessoa, dashboard por vendedor e Atlas Academy.
+- Creator: para social media e social seller, com até 300 perfis do Instagram por mês, Direct na Inbox e CRM. O Atlas Media (calendário editorial, artes e legendas com IA, métricas do perfil) ainda está em breve.
+- AtlasLike: o outbound feito pelo time do Atlas, sob medida.
 
-## Perguntas frequentes
-- **O que é o Atlas?** Uma plataforma de vendas que junta prospecção, CRM, WhatsApp, Instagram, chatbots, cadências e um agente de IA. Você acha o cliente, conversa, faz o follow-up e fecha sem sair do Atlas.
-- **De onde vêm as empresas e os contatos?** De dados públicos de empresas: CNPJs ativos da Receita Federal, perfis no Google, sites e redes sociais. O Atlas confere cada canal antes de colocar na sua lista.
-- **Como funcionam o WhatsApp e o Instagram no Atlas?** Você conecta o WhatsApp e o Instagram da sua empresa e as conversas passam a aparecer dentro do CRM, ao lado da ficha de cada lead, com etapa, etiquetas e histórico.
-- **O chatbot parece robô?** Não. Ele responde com o tom e as regras da sua empresa, mostra “digitando…” pelo tempo certo e passa a conversa para uma pessoa quando precisa.
-- **Preciso abandonar o CRM que uso hoje?** Não precisa começar do zero. Dá para importar planilhas, sincronizar com o Google Planilhas e ligar o Atlas aos seus sistemas por webhooks, Make ou Zapier.
-- **Funciona para um time inteiro?** Sim. No plano Scale cada vendedor tem o próprio Atlas e o próprio Orbit, e o líder acompanha tudo em tempo real.
-- **O Atlas é um CRM brasileiro?** Sim. O Atlas é uma plataforma de vendas feita no Brasil, em português, para empresas brasileiras que vendem por WhatsApp e Instagram. A prospecção usa dados públicos de CNPJs ativos e segue a LGPD.
-- **Quanto custa o Atlas?** Existem planos para cada fase da operação: Grátis, Start, Pro, Scale e Enterprise. Os valores e o plano certo para o seu time são apresentados na demonstração pelo WhatsApp.
-- **Quanto tempo leva para começar?** Na demonstração a gente mostra o Atlas rodando no seu nicho e monta a estratégia com você. Dá para sair da call já sabendo o que fazer na primeira semana.
+## AtlasLike, o outbound feito por nós
+O time do Atlas assume a prospecção do cliente, da lista à reunião marcada: diagnóstico de ICP, persona e oferta com lista de exclusão; listas montadas e verificadas; mensagens por persona com testes A/B; cadência em WhatsApp, LinkedIn, e-mail, Instagram e ligação; o próprio time responde cada contato; reunião na agenda do cliente e relatórios semanais ou quinzenais. Inclui tudo do Scale, domínios e caixas de envio dedicadas, integração com o CRM do cliente e gerente de conta dedicado. Créditos, canais e volume são definidos a partir da meta de reuniões. Página: https://lp.atlaslike.com/atlaslike/
+
+## Comparações (só fatos públicos, com fonte)
+- Atlas vs Speedio: https://lp.atlaslike.com/comparar/speedio/
+- Atlas vs Econodata: https://lp.atlaslike.com/comparar/econodata/
+- Atlas vs Apollo: https://lp.atlaslike.com/comparar/apollo/
+
+## Números citados no site (com fonte)
+- 38% das vendas perdidas no Brasil acabam porque o cliente parou de responder. RD Station, Panorama de Vendas 2026: https://www.rdstation.com/pesquisas/panorama-marketing-vendas/edicao-2026/vendas/maturidade-operacional/
+- 28% dos times brasileiros ligam o WhatsApp ao CRM; em 40%, cada vendedor conversa do seu jeito. RD Station, Panorama 2026: https://www.rdstation.com/pesquisas/panorama-marketing-vendas/edicao-2026/conversas/vendas-conversacionais/
+- 19 ligações, em média, para conseguir uma conversa; os melhores vendedores precisam de 8. Gong Labs, 2024: https://www.gong.io/resources/labs/the-hidden-power-of-cold-calling-insights-from-300m-calls/
+- 4,4 vezes mais reuniões quando a cadência liga a cada e-mail enviado. Salesloft, 2026: https://www.salesloft.com/resources/blog/cadence-email-call-study
+
+## Quem faz
+Adriano Aquino (https://www.linkedin.com/in/theadrianoaquino/) e Victor Cassi (https://www.linkedin.com/in/vksi/).
 
 ## Contato
 - Agendar demonstração (WhatsApp): https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas.

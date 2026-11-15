@@ -24,10 +24,10 @@
   <meta name="twitter:description" content="O Atlas acha quem decide e leva a conversa até a reunião. Teste com 25 decisores grátis.">
   <meta name="twitter:image" content="https://lp.atlaslike.com/img/og-atlaslike.jpg">
   <link rel="alternate" type="text/plain" href="https://lp.atlaslike.com/llms.txt" title="LLMs.txt">
-  <!-- JSON-LD base (fase A). FASE D/E: completar com FAQ, ofertas e páginas novas quando as seções existirem. -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://lp.atlaslike.com/#org","name":"Atlas","alternateName":"AtlasLike","url":"https://lp.atlaslike.com/","logo":"https://lp.atlaslike.com/img/logo-atlas-256.webp","sameAs":["https://www.instagram.com/atlasslike/","https://www.atlaslike.com/"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+55-15-99697-9750","availableLanguage":"pt-BR","areaServed":"BR"}},{"@type":"WebSite","@id":"https://lp.atlaslike.com/#site","url":"https://lp.atlaslike.com/","name":"Atlas","inLanguage":"pt-BR","publisher":{"@id":"https://lp.atlaslike.com/#org"}},{"@type":"SoftwareApplication","@id":"https://lp.atlaslike.com/#app","name":"Atlas","applicationCategory":"BusinessApplication","applicationSubCategory":"Plataforma de vendas B2B","operatingSystem":"Web","inLanguage":"pt-BR","url":"https://www.atlaslike.com/","image":"https://lp.atlaslike.com/img/og-atlaslike.jpg","description":"Plataforma de vendas brasileira que encontra o decisor de empresas a partir de CNPJs ativos e junta CRM, WhatsApp, Instagram, cadências, agentes de IA e o Atlas Orbit.","offers":{"@type":"Offer","price":"0","priceCurrency":"BRL","description":"Plano Grátis com 25 créditos para testar (25 decisores), sem cartão."},"publisher":{"@id":"https://lp.atlaslike.com/#org"}}]}</script>
-  <link rel="preload" href="fontes/clash-display-600.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <!-- JSON-LD: sem FAQ (não há perguntas visíveis na página) e sem CNPJ. -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://lp.atlaslike.com/#org","name":"Atlas","alternateName":"AtlasLike","url":"https://lp.atlaslike.com/","logo":"https://lp.atlaslike.com/img/logo-atlas-256.webp","sameAs":["https://www.instagram.com/atlasslike/","https://www.atlaslike.com/"],"contactPoint":{"@type":"ContactPoint","contactType":"sales","telephone":"+55-15-99697-9750","availableLanguage":"pt-BR","areaServed":"BR"}},{"@type":"WebSite","@id":"https://lp.atlaslike.com/#site","url":"https://lp.atlaslike.com/","name":"Atlas","inLanguage":"pt-BR","publisher":{"@id":"https://lp.atlaslike.com/#org"}},{"@type":"SoftwareApplication","@id":"https://lp.atlaslike.com/#app","name":"Atlas","applicationCategory":"BusinessApplication","applicationSubCategory":"Plataforma de vendas B2B","operatingSystem":"Web","inLanguage":"pt-BR","url":"https://www.atlaslike.com/","image":"https://lp.atlaslike.com/img/og-atlaslike.jpg","description":"Plataforma de vendas brasileira que encontra o decisor de empresas a partir do CNPJ e junta CRM, Inbox com WhatsApp, Instagram e Gmail, cadências multicanal, agentes de IA do Flow e o Atlas Orbit, com 28 integrações no hub.","offers":{"@type":"Offer","price":"0","priceCurrency":"BRL","description":"Plano Grátis com 25 créditos para testar (25 decisores), sem cartão."},"publisher":{"@id":"https://lp.atlaslike.com/#org"},"featureList":["Prospecção com o telefone de quem decide","CRM sem limite de leads","Inbox com WhatsApp, Direct do Instagram e Gmail","Cadências por ligação, WhatsApp, e-mail, Instagram e LinkedIn","Atlas Orbit, agente de vendas com IA","Flow: chatbots e agentes de IA","Tela Ligar com roteiro","Dashboard de vendas e de tráfego pago","28 integrações"]},{"@type":"Service","@id":"https://lp.atlaslike.com/atlaslike/#servico","name":"AtlasLike","serviceType":"Outbound B2B feito pelo time do Atlas","description":"O time do Atlas assume o outbound do cliente, da lista à reunião marcada, sob medida para a meta de reuniões.","provider":{"@id":"https://lp.atlaslike.com/#org"},"areaServed":{"@type":"Country","name":"Brasil"},"url":"https://lp.atlaslike.com/atlaslike/"}]}</script>
+  <link rel="preload" href="fontes/inter-tight-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/site.css">
@@ -506,19 +506,166 @@
       </div>
     </section>
 
-    <!-- FASE D: #planos | 9. Planos pela liberdade, sem preço (Grátis, Start, Pro, Scale, Creator, AtlasLike). -->
-    <section class="secao pendente" id="planos" aria-labelledby="t-planos">
-      <div class="moldura"><h2 id="t-planos">Planos</h2><p>Seção da próxima fase.</p></div>
+    <!-- ===== 9. Planos pela liberdade (sem preço) ===== -->
+    <section class="secao planos" id="planos" aria-labelledby="t-planos" data-sem-ilha>
+      <div class="moldura">
+        <div class="planos-cab">
+          <h2 class="titulo-secao" id="t-planos">Escolha até onde o Atlas vai por você.</h2>
+          <p>Cada plano destrava mais um trecho do caminho até a reunião. Comece no grátis, com 25 decisores, e suba quando a lista pedir. Os valores, a gente mostra na demonstração ou dentro da conta.</p>
+        </div>
+        <div class="planos-corpo" data-planos>
+          <div class="planos-abas" role="tablist" aria-label="Planos do Atlas">
+            <button class="plano-aba" type="button" role="tab" id="aba-gratis" aria-controls="plano-gratis" aria-selected="true"><b>Grátis</b><small>Para conhecer</small></button>
+            <button class="plano-aba" type="button" role="tab" id="aba-start" aria-controls="plano-start" aria-selected="false" tabindex="-1"><b>Start</b><small>Para prospectar todo dia</small></button>
+            <button class="plano-aba" type="button" role="tab" id="aba-pro" aria-controls="plano-pro" aria-selected="false" tabindex="-1"><b>Pro</b><small>Prospectar, conversar e fechar</small></button>
+            <button class="plano-aba" type="button" role="tab" id="aba-scale" aria-controls="plano-scale" aria-selected="false" tabindex="-1"><b>Scale</b><small>Para times de 3 a 20</small></button>
+            <button class="plano-aba" type="button" role="tab" id="aba-creator" aria-controls="plano-creator" aria-selected="false" tabindex="-1"><b>Creator</b><small>Para quem vende pelo Instagram</small></button>
+            <button class="plano-aba" type="button" role="tab" id="aba-atlaslike" aria-controls="plano-atlaslike" aria-selected="false" tabindex="-1"><b><span class="al" translate="no">Atlas<span>Like</span></span></b><small>Outbound feito por nós</small></button>
+          </div>
+
+          <div class="planos-paineis">
+            <article class="plano ativo" id="plano-gratis" role="tabpanel" aria-labelledby="aba-gratis" tabindex="0">
+              <h3 class="plano-nome">Grátis</h3>
+              <p class="plano-para">Teste a qualificação com dados reais. Não precisa de cartão.</p>
+              <p class="plano-oferta"><b>25</b><span>decisores grátis, um por crédito</span></p>
+              <ul class="plano-itens">
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-list-ordered"/></svg>Listas na ordem de quem ligar primeiro</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-globe"/></svg>Site, Instagram, Google e e-mail de cada empresa</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-phone"/></svg>O telefone de quem decide, não o da recepção</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-coins"/></svg>O crédito só sai quando o Atlas encontra dados reais</li>
+              </ul>
+              <div class="plano-ctas">
+                <a class="btn btn-navy btn-g" href="https://www.atlaslike.com/criar-conta">Criar conta grátis<svg class="seta" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
+              </div>
+            </article>
+
+            <article class="plano" id="plano-start" role="tabpanel" aria-labelledby="aba-start" tabindex="0">
+              <h3 class="plano-nome">Start</h3>
+              <p class="plano-para">Lista, ligação, CRM, e-mail e agenda para quem prospecta sozinho todos os dias.</p>
+              <ul class="plano-itens">
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-coins"/></svg>200 créditos por mês, ou 200 decisores</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-user-search"/></svg>Até 50 perfis do Instagram e 50 decisores do LinkedIn por mês</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-phone"/></svg>Até 3 telefones por empresa, com o do decisor</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-kanban"/></svg>CRM completo, sem limite de leads</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-mail"/></svg>O seu Gmail e o Google Agenda junto dos leads</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-phone-call"/></svg>Tela Ligar com a fila e a meta do dia</li>
+              </ul>
+              <div class="plano-ctas">
+                <a class="btn btn-navy btn-g" href="https://www.atlaslike.com/criar-conta">Criar conta grátis<svg class="seta" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
+                <a class="btn btn-claro btn-g" href="https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas." target="_blank" rel="noopener">Agendar demonstração</a>
+              </div>
+            </article>
+
+            <article class="plano" id="plano-pro" role="tabpanel" aria-labelledby="aba-pro" tabindex="0">
+              <h3 class="plano-nome">Pro</h3>
+              <p class="plano-para">Prospecte, converse e feche no mesmo lugar, com o Atlas Orbit do seu lado. Tudo do Start, mais:</p>
+              <ul class="plano-itens">
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-coins"/></svg>1.000 créditos por mês e até 300 perfis do Instagram e decisores do LinkedIn</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-orbit"/></svg>Atlas Orbit: pergunte por voz, texto ou print quem ligar agora</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-messages-square"/></svg>WhatsApp dentro do CRM e o Direct do Instagram na Inbox</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-route"/></svg>Cadências por ligação, WhatsApp, e-mail, Instagram e LinkedIn, que param quando o lead responde</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-bot"/></svg>Chatbot com IA que atende no tom da sua empresa</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-megaphone"/></svg>Leads do Meta Ads e do Google Ads no funil e na etapa certos</li>
+              </ul>
+              <div class="plano-ctas">
+                <a class="btn btn-navy btn-g" href="https://www.atlaslike.com/criar-conta">Criar conta grátis<svg class="seta" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
+                <a class="btn btn-claro btn-g" href="https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas." target="_blank" rel="noopener">Agendar demonstração</a>
+              </div>
+            </article>
+
+            <article class="plano" id="plano-scale" role="tabpanel" aria-labelledby="aba-scale" tabindex="0">
+              <h3 class="plano-nome">Scale</h3>
+              <p class="plano-para">O Pro para cada vendedor, com o líder vendo tudo em tempo real. Tudo do Pro, para cada um:</p>
+              <ul class="plano-itens">
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-users"/></svg>De 3 a 20 usuários, cada vendedor com os próprios leads</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-coins"/></svg>De 2.500 a 8.000 créditos por mês, que o líder distribui</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-gauge"/></svg>Painel do líder: quem está online, ligações e reuniões por vendedor</li>
+                <li><svg class="ico" aria-hidden="true"><use href="#i-orbit"/></svg>Um Atlas Orbit para cada pessoa, com a memória de cada um</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-bar-chart-3"/></svg>Dashboard por funil e por vendedor</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-graduation-cap"/></svg>Atlas Academy e treinamentos ao vivo</li>
+              </ul>
+              <div class="plano-ctas">
+                <a class="btn btn-navy btn-g" href="https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas." target="_blank" rel="noopener">Agendar demonstração</a>
+                <a class="btn btn-claro btn-g" href="https://www.atlaslike.com/criar-conta">Criar conta grátis</a>
+              </div>
+            </article>
+
+            <article class="plano" id="plano-creator" role="tabpanel" aria-labelledby="aba-creator" tabindex="0">
+              <h3 class="plano-nome">Creator</h3>
+              <p class="plano-para">Para social media e social seller: clientes achados no Instagram e levados até o fechamento.</p>
+              <ul class="plano-itens">
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-user-search"/></svg>Até 300 perfis do Instagram por mês, por nicho, cidade e seguidores</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-coins"/></svg>200 créditos por mês para qualificar empresas</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-messages-square"/></svg>Direct do Instagram na Inbox, ao lado da ficha do lead</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-kanban"/></svg>CRM completo para levar quem respondeu até fechar</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-mail"/></svg>O seu Gmail e 50 decisores do LinkedIn por mês</li>
+              </ul>
+              <p class="plano-breve"><span class="selo-breve">Em breve</span>Atlas Media no plano: calendário editorial, artes e legendas com IA, métricas do perfil e resposta automática por palavra-chave.</p>
+              <div class="plano-ctas">
+                <a class="btn btn-navy btn-g" href="https://www.atlaslike.com/criar-conta">Criar conta grátis<svg class="seta" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
+                <a class="btn btn-claro btn-g" href="https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas." target="_blank" rel="noopener">Agendar demonstração</a>
+              </div>
+            </article>
+
+            <article class="plano plano-al" id="plano-atlaslike" role="tabpanel" aria-labelledby="aba-atlaslike" tabindex="0">
+              <h3 class="plano-nome"><span class="al" translate="no">Atlas<span>Like</span></span></h3>
+              <p class="plano-para">A gente assume o seu outbound, da lista à reunião marcada. Tudo do Scale, com o time do Atlas operando:</p>
+              <ul class="plano-itens">
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-target"/></svg>Diagnóstico de ICP, persona e oferta, com a lista de quem não abordar</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-list-ordered"/></svg>Listas montadas e verificadas pelo nosso time</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-route"/></svg>Cadência em WhatsApp, LinkedIn, e-mail, Instagram e ligação</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-messages-square"/></svg>Nosso time responde e conduz cada conversa</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-calendar-days"/></svg>Reunião na sua agenda e relatório toda semana ou quinzena</li>
+                <li><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-layers"/></svg>Créditos, canais e volume sob medida para a sua meta</li>
+              </ul>
+              <div class="plano-ctas">
+                <a class="btn btn-claro btn-g" href="/atlaslike/#aplicar"><span>Aplicar para o <span class="al" translate="no">Atlas<span>Like</span></span></span><svg class="seta" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
+                <a class="btn btn-vidro btn-g" href="https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas." target="_blank" rel="noopener">Agendar</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- FASE D: #quem-faz | 10. Quem faz: Adriano primeiro, depois Victor (fotos em img/time/). -->
-    <section class="secao pendente" id="quem-faz" aria-labelledby="t-quem-faz">
-      <div class="moldura"><h2 id="t-quem-faz">Quem faz</h2><p>Seção da próxima fase.</p></div>
+    <!-- ===== 10. Quem faz ===== -->
+    <section class="secao quem" id="quem-faz" aria-labelledby="t-quem-faz">
+      <div class="moldura quem-grade">
+        <div class="quem-texto">
+          <h2 class="titulo-secao" id="t-quem-faz">O Adriano e eu.</h2>
+          <p>Oi, aqui é o Victor. O Atlas é feito por nós dois. Se quiser saber com quem vai conversar na demonstração, os nossos perfis estão aqui.</p>
+          <p class="quem-nota">Pode chamar no LinkedIn também.</p>
+        </div>
+        <ul class="quem-fotos">
+          <li class="pessoa">
+            <a class="pessoa-link" href="https://www.linkedin.com/in/theadrianoaquino/" target="_blank" rel="noopener">
+              <span class="pessoa-moldura"><picture><source type="image/avif" srcset="img/time/adriano-240.avif 240w, img/time/adriano-480.avif 480w" sizes="(max-width: 560px) 44vw, 300px"><img src="img/time/adriano-480.webp" srcset="img/time/adriano-240.webp 240w, img/time/adriano-480.webp 480w" sizes="(max-width: 560px) 44vw, 300px" width="480" height="600" alt="Adriano Aquino" loading="lazy" decoding="async"></picture></span>
+              <span class="pessoa-nome">Adriano Aquino</span>
+              <span class="pessoa-in">Ver no LinkedIn<svg aria-hidden="true"><use href="img/icones.svg#i-arrow-up-right"/></svg></span>
+            </a>
+          </li>
+          <li class="pessoa">
+            <a class="pessoa-link" href="https://www.linkedin.com/in/vksi/" target="_blank" rel="noopener">
+              <span class="pessoa-moldura"><picture><source type="image/avif" srcset="img/time/victor-240.avif 240w, img/time/victor-480.avif 480w" sizes="(max-width: 560px) 44vw, 300px"><img src="img/time/victor-480.webp" srcset="img/time/victor-240.webp 240w, img/time/victor-480.webp 480w" sizes="(max-width: 560px) 44vw, 300px" width="480" height="600" alt="Victor Cassi" loading="lazy" decoding="async"></picture></span>
+              <span class="pessoa-nome">Victor Cassi</span>
+              <span class="pessoa-in">Ver no LinkedIn<svg aria-hidden="true"><use href="img/icones.svg#i-arrow-up-right"/></svg></span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <!-- FASE D: #fecho | 11. CTA final (25 decisores grátis + agendar, tecla navy). Mantém data-sem-ilha. -->
-    <section class="secao pendente" id="fecho" aria-labelledby="t-fecho" data-sem-ilha>
-      <div class="moldura"><h2 id="t-fecho">25 decisores grátis</h2><p>Seção da próxima fase.</p></div>
+    <!-- ===== 11. Fecho ===== -->
+    <section class="secao fecho" id="fecho" aria-labelledby="t-fecho" data-sem-ilha>
+      <div class="moldura fecho-in">
+        <h2 class="titulo-secao" id="t-fecho">Comece pela sua própria lista.</h2>
+        <a class="fecho-tecla" href="https://www.atlaslike.com/criar-conta">
+          <span class="fecho-num" aria-hidden="true">25</span>
+          <span class="fecho-rot"><b>decisores grátis</b><small>Criar conta grátis<svg class="seta" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></small></span>
+        </a>
+        <p class="fecho-sub">Cada crédito traz quem decide numa empresa. Não precisa de cartão.</p>
+        <p class="fecho-ou">Prefere ver antes? <a href="https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas." target="_blank" rel="noopener">Agendar demonstração</a></p>
+      </div>
     </section>
   </main>
 

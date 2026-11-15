@@ -157,15 +157,100 @@ if (canvasHero) {
   else addEventListener("load", () => quandoOcioso(iniciar), { once: true });
 }
 
+/* ---------- 9. planos: abas (setas, Home e End; #plano-x abre o plano) ---------- */
+const planos = $("[data-planos]");
+if (planos) {
+  const abas = $$('[role="tab"]', planos);
+  const escolher = (aba, foco = false) => {
+    abas.forEach((a) => {
+      const sim = a === aba;
+      a.setAttribute("aria-selected", String(sim));
+      a.tabIndex = sim ? 0 : -1;
+      document.getElementById(a.getAttribute("aria-controls"))?.classList.toggle("ativo", sim);
+    });
+    if (foco) aba.focus({ preventScroll: true });
+    const lista = aba.parentElement; // no celular as abas rolam na horizontal
+    if (lista.scrollWidth > lista.clientWidth) {
+      const centro = aba.getBoundingClientRect().left - lista.getBoundingClientRect().left + lista.scrollLeft - (lista.clientWidth - aba.offsetWidth) / 2;
+      lista.scrollTo({ left: Math.max(0, centro), behavior: RM ? "auto" : "smooth" });
+    }
+  };
+  abas.forEach((a) => a.addEventListener("click", () => {
+    escolher(a);
+    try { history.replaceState(null, "", "#" + a.getAttribute("aria-controls")); } catch { /* sem histórico: segue sem link */ }
+  }));
+  $('[role="tablist"]', planos).addEventListener("keydown", (e) => {
+    const i = abas.indexOf(document.activeElement);
+    if (i < 0) return;
+    const mapa = { ArrowRight: i + 1, ArrowDown: i + 1, ArrowLeft: i - 1, ArrowUp: i - 1, Home: 0, End: abas.length - 1 };
+    if (!(e.key in mapa)) return;
+    e.preventDefault();
+    escolher(abas[(mapa[e.key] + abas.length) % abas.length], true);
+  });
+  const pedido = abas.find((a) => a.getAttribute("aria-controls") === location.hash.slice(1));
+  if (pedido) escolher(pedido);
+}
+
 /* ---------- ilha flutuante ---------- */
+// A ilha nunca cobre texto: depois que a rolagem para, ela confere o que está embaixo.
+// Livre: pílula no centro. Texto no centro: fica compacta no canto. Texto no canto também: sai da frente.
 const ilha = $("[data-ilha]");
 if (ilha && hero) {
   const semIlha = new Set();
   let orbeIlha = null;
+  let modo = "pilula", largura = 0, tChecar = 0, tTroca = 0;
+  const zona = (m) => {
+    const alto = 54, base = innerHeight - (innerWidth <= 400 ? 12 : 16);
+    const w = m === "pilula" ? (largura || ilha.offsetWidth) : 104;
+    const l = m === "pilula" ? innerWidth / 2 - w / 2 : innerWidth - 16 - w;
+    return { l: l - 8, r: l + w + 8, t: base - alto - 8, b: base + 4 };
+  };
+  const cruza = (q, z) => q.width > 0 && q.right > z.l && q.left < z.r && q.bottom > z.t && q.top < z.b;
+  const cobreTexto = (z) => {
+    const vistos = new Set();
+    for (let ix = 0; ix <= 8; ix++) for (let iy = 0; iy <= 2; iy++) {
+      const x = Math.min(innerWidth - 1, Math.max(0, z.l + ((z.r - z.l) * ix) / 8));
+      const y = Math.min(innerHeight - 1, z.t + ((z.b - z.t) * iy) / 2);
+      for (const el of document.elementsFromPoint(x, y).slice(0, 5)) {
+        if (vistos.has(el) || ilha.contains(el) || el.closest(".cookies, .jornada-arco")) continue;
+        vistos.add(el);
+        if (el.matches("a, button")) { if (cruza(el.getBoundingClientRect(), z)) return true; continue; }
+        for (const n of el.childNodes) {
+          if (n.nodeType !== 3 || !n.data.trim()) continue;
+          const r = document.createRange(); r.selectNodeContents(n);
+          for (const q of r.getClientRects()) if (cruza(q, z)) return true;
+        }
+      }
+    }
+    return false;
+  };
+  const aplicarModo = (novo) => {
+    if (novo === modo) return;
+    clearTimeout(tTroca);
+    ilha.classList.add("trocando");
+    tTroca = setTimeout(() => {
+      modo = novo;
+      ilha.classList.toggle("canto", modo === "canto");
+      ilha.classList.toggle("fora", modo === "fora");
+      ilha.inert = !ilha.classList.contains("on") || modo === "fora";
+      requestAnimationFrame(() => ilha.classList.remove("trocando"));
+    }, RM ? 0 : 170);
+  };
+  const checar = () => {
+    if (!ilha.classList.contains("on")) return;
+    if (modo === "pilula") largura = ilha.offsetWidth;
+    if (!cobreTexto(zona("pilula"))) aplicarModo("pilula");
+    else aplicarModo(cobreTexto(zona("canto")) ? "fora" : "canto");
+  };
+  const agendarChecagem = () => { clearTimeout(tChecar); tChecar = setTimeout(checar, 140); };
+  addEventListener("scroll", agendarChecagem, { passive: true });
+  addEventListener("resize", agendarChecagem, { passive: true });
   const atualizar = () => {
     const on = !heroVisivel && semIlha.size === 0;
+    const mudou = on !== ilha.classList.contains("on");
     ilha.classList.toggle("on", on);
-    ilha.inert = !on;
+    ilha.inert = !on || modo === "fora";
+    if (on && mudou) agendarChecagem();
     if (on && !orbeIlha) {
       orbeIlha = "carregando";
       carregarOrbe().then(({ criarOrbe }) => {

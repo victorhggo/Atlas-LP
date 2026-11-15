@@ -208,3 +208,72 @@ if (orbita) {
   orbita.classList.add("fora");
   ver(orbita, (e) => orbita.classList.toggle("fora", !e.isIntersecting || document.hidden));
 }
+
+/* ---------- página AtlasLike: árvore com realce (linhas ortogonais medidas) ---------- */
+const arvore = $("[data-arvore]");
+if (arvore) {
+  const svg = $(".arvore-svg", arvore);
+  const hub = $(".arvore-hub", arvore);
+  const nos = $$(".arvore-no", arvore);
+  let ativo = null;
+  const realcar = (i) => {
+    ativo = i;
+    arvore.classList.toggle("focado", i != null);
+    nos.forEach((n, k) => n.classList.toggle("on", k === i));
+    $$("path", svg).forEach((p, k) => p.classList.toggle("on", k === i));
+  };
+  const desenhar = () => {
+    if (getComputedStyle(svg).display === "none") return;
+    const b = arvore.getBoundingClientRect();
+    const h = hub.getBoundingClientRect();
+    const v = h.right - b.left, y0 = h.top + h.height / 2 - b.top;
+    const caixas = nos.map((n) => n.getBoundingClientRect());
+    const esquerda = Math.min(...caixas.map((r) => r.left)) - b.left;
+    const f = v + (esquerda - v) * 0.5;
+    svg.setAttribute("viewBox", `0 0 ${b.width.toFixed(1)} ${b.height.toFixed(1)}`);
+    svg.innerHTML = caixas.map((r) => {
+      const y = r.top + r.height / 2 - b.top, x1 = r.left - b.left, d = y - y0;
+      if (Math.abs(d) < 1) return `<path d="M${v},${y0} H${x1}"/>`;
+      const s = Math.sign(d), q = Math.min(12, Math.abs(d) / 2);
+      return `<path d="M${v},${y0} H${f - q} Q${f},${y0} ${f},${y0 + s * q} V${y - s * q} Q${f},${y} ${f + q},${y} H${x1}"/>`;
+    }).join("");
+    if (ativo != null) realcar(ativo);
+  };
+  nos.forEach((n, i) => {
+    n.addEventListener("pointerenter", () => realcar(i));
+    n.addEventListener("pointerleave", () => realcar(null));
+  });
+  new ResizeObserver(desenhar).observe(arvore);
+}
+
+/* ---------- página AtlasLike: linha do tempo (o traço enche com CSS; aqui só as bolinhas) ---------- */
+const linha = $("[data-linha]");
+if (linha) {
+  const etapas = $$(".etapa", linha);
+  const trilho = $(".linha-trilho i", linha);
+  const nativo = CSS.supports("animation-timeline: view()") && !RM;
+  const pintar = () => {
+    const corte = innerHeight * 0.6;
+    let vivas = 0;
+    etapas.forEach((e) => {
+      const viva = RM || e.getBoundingClientRect().top < corte;
+      e.classList.toggle("viva", viva);
+      if (viva) vivas++;
+    });
+    if (!nativo && trilho) trilho.style.transform = `scaleY(${RM ? 1 : vivas / etapas.length})`;
+  };
+  let pendente = false;
+  const aoRolar = () => {
+    if (pendente) return;
+    pendente = true;
+    requestAnimationFrame(() => { pendente = false; pintar(); });
+  };
+  let ouvindo = false;
+  ver(linha, (e) => {
+    if (e.isIntersecting && !ouvindo) { addEventListener("scroll", aoRolar, { passive: true }); ouvindo = true; }
+    else if (!e.isIntersecting && ouvindo) { removeEventListener("scroll", aoRolar); ouvindo = false; }
+    pintar();
+  }, { rootMargin: "20% 0px" });
+  if (!nativo && trilho) trilho.style.transition = "transform 420ms cubic-bezier(.22,1,.36,1)";
+  pintar();
+}
