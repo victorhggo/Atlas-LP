@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+<!-- Rodada 2, parte 2A: ícones desenhados para o site (traço 1.8, pontas redondas, grade 24).
+     Etapas do vídeo, controles do player e as três perguntas da jornada. -->
+<defs>
+  <!-- etapas do vídeo "Como funciona" -->
+  <symbol id="e-busca" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 1.2-.3 2.4-.8 3.5"/><circle cx="12" cy="10" r="2.4"/><circle cx="17.6" cy="17.6" r="2.6"/><path d="m19.5 19.5 1.8 1.8"/></symbol>
+  <symbol id="e-pesquisa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.3 3.6 5.1 3.6 8.5s-1.2 6.2-3.6 8.5c-2.4-2.3-3.6-5.1-3.6-8.5S9.6 5.8 12 3.5Z"/></symbol>
+  <symbol id="e-filtro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16l-6.2 7.4V18l-3.6 2v-7.6Z"/></symbol>
+  <symbol id="e-crm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="3"/><path d="M9.2 4v16M14.8 4v16"/><path d="M5.8 8h1.4M11.3 8h1.4M11.3 11.5h1.4M16.8 8h1.4"/></symbol>
+  <symbol id="e-ritmo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2-5 3.4 10L14 9l1.6 3H21"/></symbol>
+  <symbol id="e-conversa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5c0 4.1-3.6 7.3-8 7.3-1.1 0-2.2-.2-3.2-.6L4 19.6l1.4-3.8A7 7 0 0 1 4 11.5c0-4.1 3.6-7.3 8-7.3s8 3.2 8 7.3Z"/><path d="M8.6 11.6h.01M12 11.6h.01M15.4 11.6h.01" stroke-width="2.4"/></symbol>
+  <symbol id="e-reuniao" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 9.6h17M8 3v4M16 3v4"/><path d="m9 14.6 2.2 2.1 4-4.1"/></symbol>
+
+  <!-- controles do player -->
+  <symbol id="p-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.2c0-.8.9-1.3 1.6-.9l10 6.2c.6.4.6 1.3 0 1.7l-10 6.2c-.7.4-1.6-.1-1.6-.9Z"/></symbol>
+  <symbol id="p-pausa" viewBox="0 0 24 24"><rect fill="currentColor" x="6.2" y="4.8" width="4" height="14.4" rx="1.3"/><rect fill="currentColor" x="13.8" y="4.8" width="4" height="14.4" rx="1.3"/></symbol>
+  <symbol id="p-som" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4Z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18.2 6.4a8 8 0 0 1 0 11.2"/></symbol>
+  <symbol id="p-mudo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.2L12 5.5v13l-4.8-4H4Z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/></symbol>
+  <symbol id="p-cheia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V5.5A1.5 1.5 0 0 1 5.5 4H9M15 4h3.5A1.5 1.5 0 0 1 20 5.5V9M20 15v3.5a1.5 1.5 0 0 1-1.5 1.5H15M9 20H5.5A1.5 1.5 0 0 1 4 18.5V15"/></symbol>
+  <symbol id="p-sair" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4v3.5A1.5 1.5 0 0 1 7.5 9H4M20 9h-3.5A1.5 1.5 0 0 1 15 7.5V4M15 20v-3.5a1.5 1.5 0 0 1 1.5-1.5H20M4 15h3.5A1.5 1.5 0 0 1 9 16.5V20"/></symbol>
+  <symbol id="p-volta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3L4.5 9"/><path d="M4.5 4.5V9H9"/></symbol>
+
+  <!-- jornada: as três perguntas -->
+  <symbol id="j-decisor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="3.6"/><path d="M3.5 20c.6-3.6 3.2-5.6 6.5-5.6 1.1 0 2.1.2 3 .6"/><circle cx="17.4" cy="16.6" r="2.7"/><path d="m19.4 18.6 1.8 1.8"/></symbol>
+  <symbol id="j-retorno" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a8 8 0 0 1 14.3-4.6L20 8.5"/><path d="M20 4v4.5h-4.5"/><path d="M20 13a8 8 0 0 1-14.3 4.6L4 15.5"/><path d="M4 20v-4.5h4.5"/></symbol>
+  <symbol id="j-agenda" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 9.6h17M8 3v4M16 3v4"/><circle cx="12" cy="15" r="2.2"/></symbol>
+</defs>
+</svg>
