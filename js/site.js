@@ -199,7 +199,7 @@ const cai = $("[data-cai]");
 if (cai) {
   if (!RM) {
     const txt = cai.textContent;
-    cai.innerHTML = `<span aria-hidden="true">${[...txt].map((c, k) => `<span class="ch ch-cai" style="animation-delay:${750 + k * 55}ms">${c === " " ? "&nbsp;" : c}</span>`).join("")}</span><span class="sr">${txt}</span>`;
+    cai.innerHTML = `<span aria-hidden="true">${[...txt].map((c, k) => `<span class="ch ch-cai" style="animation-delay:${1800 + k * 60}ms">${c === " " ? "&nbsp;" : c}</span>`).join("")}</span><span class="sr">${txt}</span>`;
   }
   cai.classList.add("pronto");
 }
