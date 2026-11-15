@@ -1,0 +1,98 @@
+/* Atlas: tokens do site (tema claro só).
+   Base: Atlas/web/app/globals.css (tema claro) + receita "design da tela de onboarding" (vidro claro, tecla navy).
+   Tudo que é cor, raio, sombra e movimento sai daqui. */
+
+@font-face { font-family: "Manrope"; src: url("../fontes/manrope-latin.woff2") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Clash Display"; src: url("../fontes/clash-display-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Clash Display"; src: url("../fontes/clash-display-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+
+:root {
+  color-scheme: light;
+
+  /* fundo: branco suave azulado, nunca branco puro */
+  --fundo: #EEF2F7;
+  --fundo-2: #F3F6FA;
+  --fundo-fundo: #E3EAF3;      /* um degrau abaixo (poço do hero, áreas afundadas) */
+  --superficie: #FFFFFF;
+  --superficie-vidro: rgb(255 255 255 / 72%);
+
+  /* tinta */
+  --tinta: #0B1730;            /* títulos */
+  --texto: #0D1930;            /* texto corrido */
+  --apoio: #46546E;            /* apoio (contraste 7:1 sobre --fundo) */
+  --apoio-2: #5A6782;          /* notas pequenas (4.9:1 sobre --fundo) */
+  --icone: #26354F;
+
+  /* navy do Atlas (tecla) */
+  --navy-300: #5B6F98;
+  --navy-500: #34456A;
+  --navy-700: #1E2B47;
+  --navy-900: #141E34;
+  --navy-anel: #0B1323;
+  --tecla: linear-gradient(180deg, #34456A, #1E2B47 52%, #141E34);
+
+  /* azul do Atlas Orbit (esfera, "Like") */
+  --orbit-500: #2F67D6;
+  --orbit-600: #2A5EC8;            /* "Like" em texto pequeno (4.8:1 sobre o rodapé) */
+  --orbit-400: #4F84E6;
+  --orbit-200: #A9C4F2;
+  --orbit-50: #F4F8FF;
+
+  /* gelo (seleção, escolhido) */
+  --gelo: #EEF4FF;
+  --gelo-borda: #A9C4F2;
+  --gelo-texto: #173A7A;
+
+  /* linhas e luz */
+  --linha: rgb(18 40 84 / 9%);
+  --linha-forte: rgb(18 40 84 / 16%);
+  --reflexo: inset 0 1px 0 rgb(255 255 255 / 95%);
+
+  /* sombras em camadas (neutras azuladas) */
+  --sombra-1: 0 1px 2px rgb(20 40 80 / 6%), 0 2px 6px rgb(20 40 80 / 5%);
+  --sombra-2: 0 1px 2px rgb(20 40 80 / 6%), 0 8px 20px -6px rgb(20 40 80 / 14%), 0 24px 48px -24px rgb(20 40 80 / 22%);
+  --sombra-3: 0 2px 4px rgb(20 40 80 / 6%), 0 18px 40px -12px rgb(20 40 80 / 24%), 0 40px 80px -34px rgb(20 40 80 / 40%);
+  --sombra-tecla: 0 0 0 1px var(--navy-anel), inset 0 1px 0 rgb(255 255 255 / 20%), inset 0 -3px 0 rgb(0 0 0 / 22%), 0 10px 18px -10px rgb(10 20 40 / 60%);
+  --sombra-tecla-baixa: 0 0 0 1px var(--navy-anel), inset 0 2px 6px rgb(0 0 0 / 45%), 0 4px 8px -6px rgb(10 20 40 / 50%);
+  --sombra-tecla-clara: 0 0 0 1px rgb(18 40 84 / 12%), inset 0 1px 0 #fff, inset 0 -2px 0 rgb(18 40 84 / 8%), 0 8px 16px -10px rgb(20 40 80 / 35%);
+
+  /* raios */
+  --r-xs: 8px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 18px;
+  --r-xl: 24px;
+  --r-pilula: 999px;
+
+  /* tipo */
+  --fonte: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fonte-titulo: "Clash Display", "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --t-12: .75rem;
+  --t-14: .875rem;
+  --t-16: 1rem;
+  --t-18: 1.125rem;
+  --t-h1: clamp(2.5rem, 1.3rem + 5.6vw, 5.75rem);
+  --t-h2: clamp(1.9rem, 1.3rem + 2.6vw, 3.25rem);
+
+  /* espaço e moldura */
+  --margem: clamp(16px, 4vw, 40px);
+  --largura: 1240px;
+  --barra-h: 64px;
+
+  /* movimento */
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --ease-mola: cubic-bezier(.34, 1.56, .64, 1);
+  --ease-saida: cubic-bezier(.4, 0, 1, 1);
+  --d-rapida: 160ms;
+  --d-media: 260ms;
+  --d-lenta: 420ms;
+
+  /* camadas */
+  --z-barra: 50;
+  --z-ilha: 60;
+  --z-cookies: 70;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --d-rapida: 0ms; --d-media: 0ms; --d-lenta: 0ms; }
+}

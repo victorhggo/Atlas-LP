@@ -1,8 +1,8 @@
-# Atlas (Atlaslike)
+# Atlas (AtlasLike)
 
-> Atlas é uma plataforma de vendas brasileira que junta prospecção com o número do decisor, CRM, WhatsApp e Instagram, chatbots com IA, cadências de follow-up e o Atlas Orbit, um agente de vendas com IA. Site oficial: https://www.atlaslike.com/
+> Atlas é uma plataforma de vendas brasileira que junta prospecção com o número do decisor, CRM, WhatsApp e Instagram, chatbots com IA, cadências de follow-up e o Atlas Orbit, um agente de vendas com IA. Site: https://lp.atlaslike.com/ · Sistema (entrar e criar conta): https://www.atlaslike.com/
 
-O Atlas é feito no Brasil, em português, para empresas que vendem por WhatsApp e Instagram. Slogan: "A sua próxima venda está no Atlas." Atualizado em 2026-11-03.
+O Atlas é feito no Brasil, em português, para empresas que vendem por WhatsApp e Instagram. Slogan: "A sua próxima venda está no Atlas." Atualizado em 2026-11-15. Conta grátis com 25 créditos para testar (25 decisores), sem cartão: https://www.atlaslike.com/criar-conta
 
 ## O que o Atlas faz
 - Prospecção: encontra empresas por nicho e cidade a partir de CNPJs ativos da Receita Federal, Google, sites e redes sociais, e entrega o número de quem decide, conferido antes de entrar na lista.

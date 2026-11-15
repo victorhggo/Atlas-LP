@@ -15,4 +15,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://www.atlaslike.com/sitemap.xml
+Sitemap: https://lp.atlaslike.com/sitemap.xml
