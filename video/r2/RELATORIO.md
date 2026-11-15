@@ -108,3 +108,48 @@ O WhatsApp é fictício e servido só na aba de gravação (`preparo.mjs`). Nada
 Ferramentas na pasta `C:\Users\VK\Desktop\LP Atlaslike`, com commits locais d6673b1, 552a5b1 e c91bdb3, sem push:
 1. `node estudio/gravar-site-r2.mjs [nome...]` grava e gera o mestre 60 qps em `estudio/bruto/r2-mestre`;
 2. `python estudio/exportar-r2.py "C:/Users/VK/Desktop/Site Atlas/video/r2" [nome...]` gera os quatro arquivos de cada clipe.
+
+## Rodada realista (2026-11-15, noite)
+
+Regra do Victor: a conta tem de parecer a de um cliente real e movimentado. Sem tela vazia, nada escrito "demo", conexões conectadas, IA respondendo.
+
+Refeitos: **orbit, flow, cadencias, ligar, dashboard e tour** (mesmos nomes, mesmos formatos e limites). prospectar, crm e inbox ficaram como estavam.
+
+| Clipe | Duração | WebM | MP4 | MP4 720 | Capa | Captura da página (mediana nas partes com movimento) |
+|---|---|---|---|---|---|---|
+| orbit | 24,4 s | 1957 KB | 2689 KB | 1942 KB | 37 KB | ~24 qps |
+| flow | 24,3 s | 3211 KB | 3284 KB | 2456 KB | 30 KB | ~24 qps |
+| cadencias | 30,5 s | 4157 KB | 3571 KB | 2618 KB | 38 KB | ~29 qps |
+| ligar | 15,6 s | 2235 KB | 1986 KB | 1472 KB | 38 KB | ~40 qps |
+| dashboard | 15,6 s | 1849 KB | 1937 KB | 1448 KB | 39 KB | ~30 qps |
+| tour | 60,6 s | 7473 KB | 7637 KB | 5687 KB | 32 KB | ~24 qps |
+
+Todos os arquivos saem a 60 qps, sem áudio, dentro de 1,5 MB a cada 10 s (1280) e 1,1 MB a cada 10 s (720); capas até 40 KB.
+
+### Como a conta ficou com cara de real
+Tudo é simulado **só na aba de gravação** (`estudio/simulacao-demo.mjs`). Nada foi gravado no banco.
+- As leituras (GET) que davam tela vazia recebem dados fictícios coerentes (clínicas odontológicas de SP).
+- A pergunta ao Orbit é respondida ali mesmo.
+- O módulo só busca no servidor com GET; o código recusa encaminhar qualquer outro método.
+- Toda escrita continua barrada pela guarda. A única barrada nas gravações foi `POST /api/presenca`; a pergunta do Orbit (`POST /api/assistente`) foi respondida localmente.
+
+O que cada tela mostra agora:
+- **Flow**: "Rodando agora" com 4 bots ligados. 3 agentes de IA com métricas (SDR de clínicas, Reativação, Agendamento) e chave Claude. Bots ativos com números. Editor do bot de prospecção "Ligado", organizado da esquerda para a direita, com "150 enviadas · 21% responderam" nos blocos, sem o aviso dos blocos laterais.
+- **Cadências**: 5 toques hoje, 8 leads em rota, 3 responderam e 2 reuniões. Mensagens "Saindo sozinhas", sem aviso de follow-ups atrasados. Uma cadência "Da equipe".
+- **Ligar**: 13/20 ligações, 0 atrasados, retornos de hoje com horário (Odonto Vila Rica às 14h). Cartão de telefonia com "Linha API4COM conectada · ramal 2041": esse texto é fixo no app, então foi trocado na tela.
+- **Dashboard / Tráfego pago**: Meta Ads e Google Ads "Conectado". R$ 6.555 investidos, 203 leads, CPL R$ 32, CPA R$ 1.093, ROAS 5,1x. 4 campanhas e gráfico por dia.
+- **Orbit**: atalhos calmos (2 leads responderam, 2 reuniões hoje, 4 retornos atrasados). A pergunta "Quais leads eu devo ligar hoje?" é enviada, aparece "Pensando…" e chega a resposta com 4 leads e o motivo de cada um. A tela do /atlas mostra a resposta inteira de uma vez, sem palavra por palavra: é assim que o app faz.
+- **CRM e menu (no tour)**: retornos dos cartões passados para os próximos dias, sem "Atrasado" vermelho. Contagem de atrasados por funil reduzida (2, 1, 0). Badge do CRM zerado, para o balão vermelho "retornos atrasados" não aparecer ao passar o mouse.
+
+### Capa do vídeo "Como funciona"
+`video/como-funciona-capa.webp` (30 KB) e `.avif` (11 KB), em 1280x720, saem do quadro final "ATLAS · Be like Atlas." (96,5 s de `Atlas - Como Funciona.mp4`):
+- quadro inteiro, sem zoom, então nada fica cortado;
+- sem legenda queimada (todos os quadros com produto têm legenda).
+
+### Pontos de atenção
+- **Captura mais lenta que na rodada anterior** (24-40 qps contra 38-65). O notebook estava com 0,5 GB de RAM livre e CPU em 60-88% por outros programas (Chrome, antivírus). Câmera e cursor seguem lisos a 60 qps; o conteúdo da página anda a ~24-30 qps nas partes com movimento.
+- **Clipes mais longos.** Pelo mesmo motivo, e pelas tomadas novas (resposta do Orbit, Rodando agora, Tráfego conectado), orbit, flow e cadencias ficaram com 24-31 s e o tour com 61 s (antes 13-14 s e 37 s). Regravar com a máquina livre deve trazer de volta os tempos e o qps.
+- **Pontos vermelhos pequenos.** No tour, os contadores de atraso por funil (2 e 1) ainda aparecem com o ícone vermelho pequeno.
+- **Dados fictícios só na gravação.** Se alguém abrir a conta de verdade, verá a conta como ela está no banco.
+
+Como refazer: commits locais 20f258f e 9007bde em LP Atlaslike, sem push. `node estudio/gravar-site-r2.mjs orbit flow cadencias ligar dashboard tour` e depois `python estudio/exportar-r2.py "C:/Users/VK/Desktop/Site Atlas/video/r2" <nomes>`.
