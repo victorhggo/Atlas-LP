@@ -34,7 +34,7 @@ O time do Atlas assume a prospecção do cliente, da lista à reunião marcada: 
 - Atlas vs Apollo: https://lp.atlaslike.com/comparar/apollo/
 
 ## Números citados no site (com fonte)
-- 38% das vendas perdidas no Brasil acabam porque o cliente parou de responder. RD Station, Panorama de Vendas 2026: https://www.rdstation.com/pesquisas/panorama-marketing-vendas/edicao-2026/vendas/maturidade-operacional/
+- 38% das empresas brasileiras citam o cliente que parou de responder como motivo de perda de vendas, o motivo mais citado. RD Station, Panorama de Vendas 2026: https://www.rdstation.com/pesquisas/panorama-marketing-vendas/edicao-2026/vendas/maturidade-operacional/
 - 28% dos times brasileiros ligam o WhatsApp ao CRM; em 40%, cada vendedor conversa do seu jeito. RD Station, Panorama 2026: https://www.rdstation.com/pesquisas/panorama-marketing-vendas/edicao-2026/conversas/vendas-conversacionais/
 - 19 ligações, em média, para conseguir uma conversa; os melhores vendedores precisam de 8. Gong Labs, 2024: https://www.gong.io/resources/labs/the-hidden-power-of-cold-calling-insights-from-300m-calls/
 - 4,4 vezes mais reuniões quando a cadência liga a cada e-mail enviado. Salesloft, 2026: https://www.salesloft.com/resources/blog/cadence-email-call-study
