@@ -29,7 +29,7 @@ rodape = rodape.replace('<a class="ilha-marca" href="/" aria-label="Voltar ao in
 fecho = para_sub(idx[idx.index('    <!-- ===== 11. Fecho ===== -->'):idx.index('  </main>')])
 
 ORG = {"@type": "Organization", "@id": BASE + "/#org", "name": "Atlas", "alternateName": "AtlasLike", "url": BASE + "/",
-       "logo": BASE + "/img/logo-atlas-256.webp", "sameAs": ["https://www.instagram.com/atlasslike/", "https://www.atlaslike.com/"],
+       "logo": BASE + "/img/atlas-app-512.webp", "sameAs": ["https://www.instagram.com/atlasslike/", "https://www.atlaslike.com/"],
        "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "telephone": "+55-15-99697-9750", "availableLanguage": "pt-BR", "areaServed": "BR"}}
 APP = {"@type": "SoftwareApplication", "@id": BASE + "/#app", "name": "Atlas", "applicationCategory": "BusinessApplication",
        "operatingSystem": "Web", "inLanguage": "pt-BR", "url": "https://www.atlaslike.com/",
@@ -62,16 +62,17 @@ def pagina(caminho, titulo, desc, og_titulo, ld_extra, corpo, migalha, com_fecho
   <meta property="og:url" content="{url}">
   <meta property="og:title" content="{og_titulo}">
   <meta property="og:description" content="{desc}">
-  <meta property="og:image" content="{BASE}/img/og-atlaslike.jpg">
+  <meta property="og:image" content="{BASE}/img/og-atlas.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Atlas, plataforma de vendas brasileira">
+  <meta property="og:image:alt" content="O ícone do Atlas e a esfera do Atlas Orbit: seu próximo cliente, agendado.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{og_titulo}">
   <meta name="twitter:description" content="{desc}">
-  <meta name="twitter:image" content="{BASE}/img/og-atlaslike.jpg">
+  <meta name="twitter:image" content="{BASE}/img/og-atlas.jpg">
   <script type="application/ld+json">{ld}</script>
   <link rel="preload" href="/fontes/inter-tight-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/tokens.css">
@@ -170,7 +171,7 @@ def comparar(chave, c):
           <p class="pg-nota">Conferido em novembro de 2026, nas páginas oficiais de cada empresa.</p>
         </div>
         <div class="vs-placa" aria-hidden="true">
-          <div class="vs-lado"><span class="app-icone"><img src="/img/logo-atlas-64.webp" width="32" height="32" alt=""></span><b>Atlas</b><small>Da lista à reunião</small></div>
+          <div class="vs-lado"><span class="app-icone app-atlas"><img src="/img/atlas-app-128.webp" width="64" height="64" alt=""></span><b>Atlas</b><small>Da lista à reunião</small></div>
           <span class="vs-x">vs</span>
           <div class="vs-lado"><span class="vs-inicial">{c['inicial']}</span><b>{nome}</b><small>{c['cat']}</small></div>
         </div>
@@ -267,7 +268,7 @@ def atlaslike():
         </div>
         <div class="arvore" data-arvore>
           <svg class="arvore-svg" aria-hidden="true" focusable="false"></svg>
-          <div class="arvore-hub" aria-hidden="true"><span class="app-icone"><img src="/img/logo-atlas-64.webp" width="30" height="30" alt="" loading="lazy"></span>{AL}</div>
+          <div class="arvore-hub" aria-hidden="true"><span class="app-icone app-atlas"><img src="/img/atlas-app-128.webp" width="64" height="64" alt="" loading="lazy"></span>{AL}</div>
           <ul class="arvore-nos">
 {nos_html}
           </ul>

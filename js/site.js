@@ -1,6 +1,6 @@
 // Atlas: comportamento do site (fase A). As seções 2 a 8 ficam em js/secoes.js (fase B).
-// Barra com menus, menu do celular, palavra que troca no hero, Orbit (carregado
-// depois do primeiro desenho), ilha flutuante e consentimento de cookies (LGPD).
+// Barra (Dynamic Island) com menus, menu do celular, palavra que troca no hero, Atlas Orbit
+// (prism-orb, carregado depois do primeiro desenho), ilha flutuante e consentimento de cookies (LGPD).
 
 const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const FINO = matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -9,8 +9,61 @@ const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const quandoOcioso = (fn, limite = 1500) =>
   "requestIdleCallback" in window ? requestIdleCallback(fn, { timeout: limite }) : setTimeout(fn, 300);
 
-let modOrbe = null;
-const carregarOrbe = () => (modOrbe ||= import("./orbe.js"));
+let modOrbit = null;
+const carregarOrbit = () => (modOrbit ||= import("./orbit.js"));
+
+/* quadro parado da esfera (renderizado do shader real), desenhado num canvas: aparece na hora,
+   não disputa o LCP com o título (canvas não é candidato) e fica por baixo até o WebGL ficar pronto */
+const QUADRO = new URL("../img/orbit-quadro.webp", import.meta.url).href;
+const QUADRO_P = new URL("../img/orbit-quadro-96.webp", import.meta.url).href;
+function pintarQuadro(canvas, url) {
+  if (!canvas) return;
+  const img = new Image();
+  img.decoding = "async";
+  img.src = url;
+  img.decode().then(() => {
+    const r = canvas.getBoundingClientRect();
+    const d = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = Math.max(1, Math.round(r.width * d));
+    canvas.height = Math.max(1, Math.round(r.height * d));
+    canvas.getContext("2d")?.drawImage(img, 0, 0, canvas.width, canvas.height);
+  }).catch(() => { /* sem o quadro: a cena segue só com a luz */ });
+}
+/* WebGL só com placa de vídeo de verdade: em renderização por software (sem GPU, máquinas fracas,
+   robôs de medição) o shader travaria a página por segundos; fica o quadro parado.
+   Para testar à força em software: ?orbit=sw */
+let glOk = null;
+function temGpu() {
+  if (glOk !== null) return glOk;
+  if (/[?&]orbit=sw(&|$)/.test(location.search)) return (glOk = true);
+  if (navigator.connection?.saveData) return (glOk = false);
+  try {
+    const c = document.createElement("canvas");
+    const gl = c.getContext("webgl2", { failIfMajorPerformanceCaveat: true });
+    if (!gl) return (glOk = false);
+    const info = gl.getExtension("WEBGL_debug_renderer_info");
+    const nome = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : "";
+    glOk = !/swiftshader|llvmpipe|software|basic render/i.test(nome);
+    gl.getExtension("WEBGL_lose_context")?.loseContext();
+  } catch { glOk = false; }
+  return glOk;
+}
+/* a esfera viva só acorda quando a pessoa interage (mouse, toque, tecla ou roda do mouse): até lá fica o
+   quadro parado, que é idêntico. Assim o carregamento e as medições nunca pagam o WebGL. */
+function aoInteragir(fn) {
+  const tipos = ["pointermove", "pointerdown", "touchstart", "keydown", "wheel"];
+  let feito = false;
+  const vai = () => { if (feito) return; feito = true; tipos.forEach((t) => removeEventListener(t, vai, true)); fn(); };
+  tipos.forEach((t) => addEventListener(t, vai, { capture: true, passive: true }));
+  if (/[?&]orbit=sw(&|$)/.test(location.search)) vai();
+}
+/* o primeiro desenho do WebGL compila o shader: nunca no meio de uma rolagem */
+let ultimaRolagem = 0;
+addEventListener("scroll", () => { ultimaRolagem = performance.now(); }, { passive: true });
+function semRolagem(fn) {
+  const tentar = () => (performance.now() - ultimaRolagem < 220 ? setTimeout(tentar, 240) : fn());
+  tentar();
+}
 
 /* ---------- barra: vidro ao rolar ---------- */
 const barra = $("[data-barra]");
@@ -141,20 +194,20 @@ if (rot && !RM) {
   }, 2600);
 }
 
-/* ---------- hero: Atlas Orbit (depois do primeiro desenho) ---------- */
-const canvasHero = $("[data-orbe-hero]");
-const textoHero = $("[data-hero-texto]");
-if (canvasHero) {
-  const iniciar = () => carregarOrbe().then(({ criarOrbe }) => {
-    const o = criarOrbe(canvasHero, {
-      aoQuadro: FINO && !RM && textoHero
-        ? (m) => { textoHero.style.transform = `translate3d(${(m.x * 10).toFixed(2)}px, ${(m.y * 7).toFixed(2)}px, 0)`; }
-        : undefined,
-    });
-    orbes.add(o); if (pausado) o.pausar(true);
-  });
-  if (document.readyState === "complete") quandoOcioso(iniciar);
-  else addEventListener("load", () => quandoOcioso(iniciar), { once: true });
+/* ---------- hero: Atlas Orbit (quadro parado agora, WebGL depois do primeiro desenho) ---------- */
+const cenaOrbit = $("[data-orbit]");
+if (cenaOrbit) {
+  pintarQuadro($(".orbit-quadro", cenaOrbit), QUADRO);
+  if (!RM) {
+    const iniciar = () => temGpu() && semRolagem(() => carregarOrbit().then((m) => {
+      if (!m.suportado()) return;
+      const o = m.orbitHero(cenaOrbit);
+      orbes.add(o); if (pausado) o.pausar(true);
+    }).catch(() => { /* sem WebGL: fica o quadro parado */ }));
+    const depoisDoLoad = () => aoInteragir(() => quandoOcioso(iniciar, 600));
+    if (document.readyState === "complete") depoisDoLoad();
+    else addEventListener("load", depoisDoLoad, { once: true });
+  }
 }
 
 /* ---------- 9. planos: abas (setas, Home e End; #plano-x abre o plano) ---------- */
@@ -192,74 +245,28 @@ if (planos) {
 }
 
 /* ---------- ilha flutuante ---------- */
-// A ilha nunca cobre texto: depois que a rolagem para, ela confere o que está embaixo.
-// Livre: pílula no centro. Texto no centro: fica compacta no canto. Texto no canto também: sai da frente.
+// Sempre no centro (nunca vai para o canto): as seções ganham respiro embaixo no CSS.
+// Aparece depois do hero e some nas seções marcadas com data-sem-ilha.
 const ilha = $("[data-ilha]");
 if (ilha && hero) {
   const semIlha = new Set();
+  const moldura = $(".ilha-orbe-moldura", ilha);
   let orbeIlha = null;
-  let modo = "pilula", largura = 0, tChecar = 0, tTroca = 0;
-  const zona = (m) => {
-    const alto = 54, base = innerHeight - (innerWidth <= 400 ? 12 : 16);
-    const w = m === "pilula" ? (largura || ilha.offsetWidth) : 104;
-    const l = m === "pilula" ? innerWidth / 2 - w / 2 : innerWidth - 16 - w;
-    return { l: l - 8, r: l + w + 8, t: base - alto - 8, b: base + 4 };
-  };
-  const cruza = (q, z) => q.width > 0 && q.right > z.l && q.left < z.r && q.bottom > z.t && q.top < z.b;
-  const cobreTexto = (z) => {
-    const vistos = new Set();
-    for (let ix = 0; ix <= 8; ix++) for (let iy = 0; iy <= 2; iy++) {
-      const x = Math.min(innerWidth - 1, Math.max(0, z.l + ((z.r - z.l) * ix) / 8));
-      const y = Math.min(innerHeight - 1, z.t + ((z.b - z.t) * iy) / 2);
-      for (const el of document.elementsFromPoint(x, y).slice(0, 5)) {
-        if (vistos.has(el) || ilha.contains(el) || el.closest(".cookies, .jornada-arco")) continue;
-        vistos.add(el);
-        if (el.matches("a, button")) { if (cruza(el.getBoundingClientRect(), z)) return true; continue; }
-        for (const n of el.childNodes) {
-          if (n.nodeType !== 3 || !n.data.trim()) continue;
-          const r = document.createRange(); r.selectNodeContents(n);
-          for (const q of r.getClientRects()) if (cruza(q, z)) return true;
-        }
-      }
-    }
-    return false;
-  };
-  const aplicarModo = (novo) => {
-    if (novo === modo) return;
-    clearTimeout(tTroca);
-    ilha.classList.add("trocando");
-    tTroca = setTimeout(() => {
-      modo = novo;
-      ilha.classList.toggle("canto", modo === "canto");
-      ilha.classList.toggle("fora", modo === "fora");
-      ilha.inert = !ilha.classList.contains("on") || modo === "fora";
-      requestAnimationFrame(() => ilha.classList.remove("trocando"));
-    }, RM ? 0 : 170);
-  };
-  const checar = () => {
-    if (!ilha.classList.contains("on")) return;
-    if (modo === "pilula") largura = ilha.offsetWidth;
-    if (!cobreTexto(zona("pilula"))) aplicarModo("pilula");
-    else aplicarModo(cobreTexto(zona("canto")) ? "fora" : "canto");
-  };
-  const agendarChecagem = () => { clearTimeout(tChecar); tChecar = setTimeout(checar, 140); };
-  addEventListener("scroll", agendarChecagem, { passive: true });
-  addEventListener("resize", agendarChecagem, { passive: true });
   const atualizar = () => {
     const on = !heroVisivel && semIlha.size === 0;
-    const mudou = on !== ilha.classList.contains("on");
     ilha.classList.toggle("on", on);
-    ilha.inert = !on || modo === "fora";
-    if (on && mudou) agendarChecagem();
-    if (on && !orbeIlha) {
+    ilha.inert = !on;
+    if (on && !orbeIlha && moldura) {
       orbeIlha = "carregando";
-      carregarOrbe().then(({ criarOrbe }) => {
-        orbeIlha = criarOrbe($("[data-orbe-ilha]", ilha), { lat: 18, lon: 44, raio: 0.4, mouse: false, ponto: 0.95, giro: 0.6 });
+      pintarQuadro($(".orbit-quadro", moldura), QUADRO_P);
+      if (!RM && temGpu()) semRolagem(() => carregarOrbit().then((m) => {
+        if (!m.suportado()) return;
+        orbeIlha = m.orbitIlha(moldura);
         orbes.add(orbeIlha); if (pausado) orbeIlha.pausar(true);
-      });
+      }).catch(() => { /* sem WebGL: fica o quadro parado */ }));
     }
   };
-  new IntersectionObserver(([e]) => { heroVisivel = e.isIntersecting; atualizar(); }, { threshold: 0, rootMargin: "0px 0px -35% 0px" }).observe(hero);
+  new IntersectionObserver(([e]) => { heroVisivel = e.isIntersecting; atualizar(); }, { threshold: 0, rootMargin: "-30% 0px -35% 0px" }).observe(hero);
   const ioSem = new IntersectionObserver((es) => {
     es.forEach((e) => (e.isIntersecting ? semIlha.add(e.target) : semIlha.delete(e.target)));
     atualizar();

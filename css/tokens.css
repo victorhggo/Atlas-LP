@@ -80,7 +80,7 @@
   /* espaço e moldura */
   --margem: clamp(16px, 4vw, 40px);
   --largura: 1240px;
-  --barra-h: 64px;
+  --barra-h: 84px;          /* zona da ilha superior (12px + 60px + folga) */
   --ilha-zona: 132px;          /* altura reservada embaixo para a ilha flutuante (legenda incluída) */
 
   /* movimento */
