@@ -194,6 +194,16 @@ if (rot && !RM) {
   }, 2600);
 }
 
+/* ---------- hero: "Cai no Atlas." cai letra a letra, logo depois da primeira linha ---------- */
+const cai = $("[data-cai]");
+if (cai) {
+  if (!RM) {
+    const txt = cai.textContent;
+    cai.innerHTML = `<span aria-hidden="true">${[...txt].map((c, k) => `<span class="ch ch-cai" style="animation-delay:${750 + k * 55}ms">${c === " " ? "&nbsp;" : c}</span>`).join("")}</span><span class="sr">${txt}</span>`;
+  }
+  cai.classList.add("pronto");
+}
+
 /* ---------- hero: Atlas Orbit (quadro parado agora, WebGL depois do primeiro desenho) ---------- */
 const cenaOrbit = $("[data-orbit]");
 if (cenaOrbit) {

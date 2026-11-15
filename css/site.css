@@ -395,6 +395,12 @@ a, button, label, input { -webkit-tap-highlight-color: transparent; touch-action
 .rot .ch-in { animation: letra-entra 320ms var(--ease) both; }
 .rot .ch-out { animation: letra-sai 260ms var(--ease-saida) both; }
 @keyframes letra-entra { from { opacity: 0; transform: translateY(.22em); filter: blur(3px); } }
+.js [data-cai]:not(.pronto) { opacity: 0; }
+.rot .ch-cai { animation: letra-cai 700ms cubic-bezier(.2, .9, .3, 1.2) both; }
+@keyframes letra-cai {
+  0% { opacity: 0; transform: translateY(-.85em) rotate(-8deg); filter: blur(4px); }
+  60% { opacity: 1; filter: blur(0); }
+}
 @keyframes letra-sai { to { opacity: 0; transform: translateY(-.22em); filter: blur(3px); } }
 
 .hero-sub { max-width: 36ch; margin-top: 22px; color: #2A3953; font-size: clamp(17px, 1rem + .35vw, 20px); line-height: 1.5; }
