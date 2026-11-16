@@ -3,7 +3,7 @@
 
 /* ---------- base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--barra-h) + 16px); scrollbar-color: #B9C5D8 var(--fundo); }
+html { overflow-x: clip; -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--barra-h) + 16px); scrollbar-color: #B9C5D8 var(--fundo); }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 body {
   margin: 0; min-width: 320px; overflow-x: clip;
@@ -284,6 +284,11 @@ a, button, label, input { -webkit-tap-highlight-color: transparent; touch-action
 @media (max-width: 440px) {
   .barra-in > .marca .marca-nome { display: none; }
   .barra-acoes .criar { padding: 0 14px; }
+}
+@media (max-width: 359px) {
+  .barra-in { gap: 6px; padding: 0 4px 0 6px; }
+  .barra-acoes .criar { padding: 0 10px; font-size: 13px; }
+  .barra-acoes .criar::before, .barra-acoes .criar > :is(img, svg, span:first-child:not(:only-child)) { display: none; }
 }
 
 /* menu do celular (dialog modal): a ilha se abre em painel */
@@ -928,7 +933,17 @@ label.ck-linha { cursor: pointer; }
 @media (max-width: 520px) {
   .cookies { left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); width: auto; padding: 18px; }
   .cookies-acoes .btn-navy, .cookies-acoes .btn-claro { flex: 1 1 auto; }
+  /* celular: aviso compacto, sem cobrir metade da tela */
+  .cookies { padding: 14px 14px 12px; }
+  .cookies-titulo { font-size: 15px; }
+  .cookies-txt { font-size: 13px; line-height: 1.45; }
+  .cookies-txt a { display: inline-block; padding: 6px 0; margin: -6px 0; }
+  .cookies-acoes { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 12px; }
+  .cookies-acoes .btn { min-height: 44px; padding-inline: 8px; font-size: 13.5px; }
+  .cookies-acoes [data-ck="configurar"] { order: 3; grid-column: 1 / -1; justify-self: center; min-height: 36px; margin: 0; }
+  .cookies-acoes [data-ck="salvar"] { grid-column: 1 / -1; }
 }
+@media (pointer: coarse) { .vsl-bt { width: 44px; height: 44px; } }
 
 /* ==========================================================================
    Fase C: planos, fecho, páginas de comparação e do AtlasLike
