@@ -34,10 +34,12 @@
   <link rel="stylesheet" href="css/site.css?v=202611152315">
   <link rel="stylesheet" href="css/r2b.css?v=202611152315">
   <link rel="stylesheet" href="css/r2a.css?v=202611152315">
+  <link rel="stylesheet" href="css/calc.css?v=202611191200">
   <script>document.documentElement.classList.add("js")</script>
   <script type="module" src="js/site.js?v=202611152315"></script>
   <script type="module" src="js/r2b.js?v=202611152315"></script>
   <script type="module" src="js/r2a.js?v=202611152315"></script>
+  <script type="module" src="js/calc.js?v=202611191200"></script>
 </head>
 <body>
   <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -428,6 +430,68 @@
       </div>
     </section>
 
+    <!-- ===== 7b. Calculadora de custo ===== -->
+    <section class="secao calc" id="calculadora" aria-labelledby="t-calc">
+      <div class="moldura">
+        <div class="numeros-cab">
+          <h2 class="titulo-secao" id="t-calc">Quanto a prospecção manual te custa.</h2>
+          <p>Coloque os números da sua operação. A conta é feita aqui na página e nada do que você mexer sai dela.</p>
+        </div>
+        <div class="calc-grade" data-calc>
+          <form class="calc-cartao" data-calc-form aria-label="Sua operação hoje">
+            <div class="calc-campo">
+              <div class="calc-rotulo"><label for="calc-pessoas">Pessoas prospectando</label><output for="calc-pessoas" data-calc-saida="pessoas">2</output></div>
+              <input class="calc-faixa" id="calc-pessoas" name="pessoas" type="range" min="1" max="20" step="1" value="2">
+              <p class="calc-ajuda">Vendedores, SDRs ou você mesmo.</p>
+            </div>
+            <div class="calc-campo">
+              <div class="calc-rotulo"><label for="calc-horas">Horas por dia montando lista</label><output for="calc-horas" data-calc-saida="horas">2 h</output></div>
+              <input class="calc-faixa" id="calc-horas" name="horas" type="range" min="0.5" max="6" step="0.5" value="2">
+              <p class="calc-ajuda">Google, Instagram, site e a caça ao número de quem decide.</p>
+            </div>
+            <div class="calc-campo">
+              <div class="calc-rotulo"><label for="calc-custo">Custo mensal de cada pessoa</label><output for="calc-custo" data-calc-saida="custo">R$ 4.500</output></div>
+              <input class="calc-faixa" id="calc-custo" name="custo" type="range" min="1500" max="20000" step="250" value="4500">
+              <p class="calc-ajuda">Salário com encargos.</p>
+            </div>
+            <div class="calc-campo">
+              <div class="calc-rotulo"><label for="calc-ticket">Valor de uma venda</label><output for="calc-ticket" data-calc-saida="ticket">R$ 3.000</output></div>
+              <input class="calc-faixa" id="calc-ticket" name="ticket" type="range" min="500" max="50000" step="500" value="3000">
+              <p class="calc-ajuda">Quanto entra quando um cliente fecha.</p>
+            </div>
+            <div class="calc-campo">
+              <div class="calc-rotulo"><label for="calc-fecha">Reuniões que viram venda</label><output for="calc-fecha" data-calc-saida="fecha">2 de 10</output></div>
+              <input class="calc-faixa" id="calc-fecha" name="fecha" type="range" min="1" max="6" step="1" value="2">
+              <p class="calc-ajuda">De cada 10 reuniões, quantas fecham.</p>
+            </div>
+          </form>
+          <div class="calc-extrato" aria-live="polite" aria-atomic="false">
+            <h3 class="calc-extrato-titulo">O extrato do seu mês sem o Atlas</h3>
+            <dl class="calc-linhas">
+              <div class="calc-linha"><dt>Horas montando lista à mão<span data-calc="dias">11 dias de trabalho inteiros</span></dt><dd data-calc="horasMes">88 h</dd></div>
+              <div class="calc-linha"><dt>Pagos por essas horas</dt><dd data-calc="custoHoras">R$ 2.250</dd></div>
+              <div class="calc-linha"><dt>Conversas com quem decide que não acontecem</dt><dd data-calc="conversas">50</dd></div>
+              <div class="calc-linha"><dt>Reuniões que ficam fora da agenda</dt><dd data-calc="reunioes">16</dd></div>
+              <div class="calc-linha"><dt>Vendas que ficam na mesa</dt><dd data-calc="vendas">R$ 9.600</dd></div>
+            </dl>
+            <div class="calc-total">
+              <p class="calc-total-rotulo">Custo da prospecção manual</p>
+              <p class="calc-total-valor"><span data-calc="total">R$ 11.850</span><small>por mês</small></p>
+              <p class="calc-total-ano"><span data-calc="ano">R$ 142 mil</span> em 12 meses.</p>
+            </div>
+            <div class="calc-atlas">
+              <p>Com o Atlas, a lista com o telefone de quem decide sai em minutos. Você recupera <b data-calc="devolvidas">79 h</b> por mês para ligar e marcar reunião.</p>
+              <div class="calc-ctas">
+                <a class="btn btn-navy btn-g" href="https://www.atlaslike.com/criar-conta">Criar conta grátis · 25 decisores<svg class="seta" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
+                <a class="btn btn-claro btn-g" href="https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas." target="_blank" rel="noopener">Agendar demonstração</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="calc-nota">Estimativa com médias de mercado, não é promessa de resultado: 22 dias úteis no mês, 12 ligações por hora, 19 ligações para conseguir uma conversa (<a href="https://www.gong.io/resources/labs/the-hidden-power-of-cold-calling-insights-from-300m-calls/" target="_blank" rel="noopener">Gong Labs, 2024</a>), 1 reunião a cada 3 conversas e o Atlas devolvendo 90% do tempo gasto montando lista.</p>
+      </div>
+    </section>
+
     <!-- ===== 8. Tecnologias e integrações ===== -->
     <section class="secao tecnologias r2-tec" id="tecnologias" aria-labelledby="t-tecnologias">
       <div class="moldura">
@@ -671,6 +735,7 @@
               <li><a href="#area-crm">CRM e Inbox</a></li>
               <li><a href="#area-orbit">Atlas Orbit</a></li>
               <li><a href="#area-flow">Flow e Cadências</a></li>
+              <li><a href="#calculadora">Calculadora de custo</a></li>
               <li><a href="#planos">Planos</a></li>
             </ul>
           </div>

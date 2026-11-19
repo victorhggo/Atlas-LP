@@ -1,0 +1,77 @@
+/* Atlas: calculadora de custo da prospecção manual (seção #calculadora).
+   Mesma receita do site: cartão branco, tecla navy, gelo para o que o Atlas devolve. */
+
+.calc-grade { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(20px, 3vw, 36px); align-items: stretch; }
+
+.calc-cartao, .calc-extrato {
+  border-radius: 30px; background: var(--superficie);
+  box-shadow: 0 0 0 1px rgb(18 40 84 / 6%), 0 2px 4px rgb(20 40 80 / 5%), 0 26px 60px -30px rgb(20 40 80 / 34%);
+}
+
+/* controles */
+.calc-cartao { display: grid; align-content: space-evenly; gap: 30px; min-width: 0; padding: clamp(24px, 3.4vw, 44px); }
+.calc-rotulo { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.calc-rotulo label { color: var(--tinta); font-size: 16.5px; font-weight: 700; }
+.calc-rotulo output { flex: none; color: var(--tinta); font-family: var(--fonte-titulo); font-weight: 600; font-size: 20px; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.calc-ajuda { margin-top: 8px; color: var(--apoio); font-size: 14.5px; line-height: 1.45; }
+
+.calc-faixa {
+  --p: 50%;
+  display: block; width: 100%; height: 30px; margin: 10px 0 0; background: none; cursor: pointer;
+  -webkit-appearance: none; appearance: none; touch-action: pan-y;
+}
+.calc-faixa::-webkit-slider-runnable-track { height: 6px; border-radius: 6px; background: linear-gradient(90deg, var(--navy-500) var(--p), rgb(18 40 84 / 11%) var(--p)); }
+.calc-faixa::-moz-range-track { height: 6px; border-radius: 6px; background: rgb(18 40 84 / 11%); }
+.calc-faixa::-moz-range-progress { height: 6px; border-radius: 6px; background: var(--navy-500); }
+.calc-faixa::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 26px; height: 26px; margin-top: -10px; border-radius: 50%; border: 0;
+  background: var(--tecla); box-shadow: var(--sombra-tecla); transition: transform 300ms var(--ease-mola);
+}
+.calc-faixa::-moz-range-thumb { width: 26px; height: 26px; border-radius: 50%; border: 0; background: var(--tecla); box-shadow: var(--sombra-tecla); transition: transform 300ms var(--ease-mola); }
+.calc-faixa:hover::-webkit-slider-thumb { transform: scale(1.08); }
+.calc-faixa:hover::-moz-range-thumb { transform: scale(1.08); }
+.calc-faixa:active::-webkit-slider-thumb { transform: scale(.94); box-shadow: var(--sombra-tecla-baixa); }
+.calc-faixa:active::-moz-range-thumb { transform: scale(.94); box-shadow: var(--sombra-tecla-baixa); }
+.calc-faixa:focus { outline: none; }
+.calc-faixa:focus-visible::-webkit-slider-thumb { box-shadow: var(--sombra-tecla), 0 0 0 4px var(--fundo), 0 0 0 6px var(--orbit-500); }
+.calc-faixa:focus-visible::-moz-range-thumb { box-shadow: var(--sombra-tecla), 0 0 0 4px var(--fundo), 0 0 0 6px var(--orbit-500); }
+
+/* extrato */
+.calc-extrato { display: flex; flex-direction: column; min-width: 0; padding: clamp(24px, 3.4vw, 44px); }
+.calc-extrato-titulo { color: var(--apoio); font-size: 14.5px; font-weight: 700; }
+.calc-linhas { margin: 14px 0 0; }
+.calc-linha { display: flex; align-items: baseline; gap: 14px; padding: 15px 0; border-bottom: 1px dashed var(--linha-forte); }
+.calc-linha dt { flex: 1; min-width: 0; color: var(--texto); font-size: 16px; line-height: 1.4; }
+.calc-linha dt span { display: block; margin-top: 2px; color: var(--apoio-2); font-size: 13.5px; }
+.calc-linha dd { flex: none; margin: 0; color: var(--tinta); font-family: var(--fonte-titulo); font-weight: 600; font-size: 21px; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+
+.calc-total { padding: 22px 0 22px; }
+.calc-total-rotulo { color: var(--tinta); font-size: 16px; font-weight: 700; }
+.calc-total-valor { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 6px; color: var(--tinta); font-family: var(--fonte-titulo); font-weight: 600; font-size: clamp(44px, 1.8rem + 2.6vw, 76px); line-height: 1; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+.calc-total-valor small { color: var(--apoio); font-family: var(--fonte); font-size: 16px; font-weight: 650; letter-spacing: 0; }
+.calc-total-ano { margin-top: 10px; color: var(--apoio); font-size: 15.5px; }
+.calc-total-ano span { color: var(--tinta); font-weight: 750; font-variant-numeric: tabular-nums; }
+
+.calc-atlas { margin-top: auto; padding: 22px; border-radius: 20px; background: var(--gelo); box-shadow: inset 0 0 0 1px var(--gelo-borda); }
+.calc-atlas > p { color: var(--gelo-texto); font-size: 16px; line-height: 1.5; }
+.calc-atlas b { color: var(--tinta); font-weight: 800; font-variant-numeric: tabular-nums; }
+.calc-ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+
+.calc-nota { margin-top: clamp(22px, 3vw, 32px); max-width: 110ch; color: var(--apoio-2); font-size: 13.5px; line-height: 1.6; }
+.calc-nota a { color: var(--apoio); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--linha-forte); }
+.calc-nota a:hover { color: var(--tinta); }
+
+/* o número que muda dá um passo curto (o único momento animado da seção) */
+@media (prefers-reduced-motion: no-preference) {
+  .calc [data-calc].calc-mudou { animation: calc-passo 420ms var(--ease); }
+  @keyframes calc-passo { from { opacity: .35; filter: blur(3px); } }
+}
+
+@media (max-width: 900px) {
+  .calc-grade { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  .calc-cartao, .calc-extrato { border-radius: 24px; }
+  .calc-linha dd { font-size: 18px; }
+  .calc-ctas .btn { width: 100%; justify-content: center; }
+}
