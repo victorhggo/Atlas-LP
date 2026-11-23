@@ -22,7 +22,7 @@
   }
   function atributos(dias) {
     var h = location.hostname, a = "; path=/; max-age=" + dias * 86400 + "; samesite=lax";
-    if (/(^|\.)atlaslike\.com$/.test(h)) a += "; domain=.atlaslike.com";
+    if (h === "atlaslike.com" || /\.atlaslike\.com$/.test(h)) a += "; domain=.atlaslike.com";
     if (location.protocol === "https:") a += "; secure";
     return a;
   }
@@ -45,7 +45,8 @@
     try { document.cookie = COOKIE + "=" + encodeURIComponent(JSON.stringify(o)) + atributos(DIAS); } catch (e) { /* cookies bloqueados */ }
   }
 
-  capturar();
+  function seguro() { try { capturar(); } catch (e) { /* cookies ou storage bloqueados: sem origem, sem erro */ } }
+  seguro();
   // aceitou depois de chegar pelo anúncio: regrava para incluir o fbclid
-  document.addEventListener("atlas:consentimento", function (e) { if (e.detail && e.detail.medicao) capturar(); });
+  try { document.addEventListener("atlas:consentimento", function (e) { if (e.detail && e.detail.medicao) seguro(); }); } catch (e) { /* ignora */ }
 })();

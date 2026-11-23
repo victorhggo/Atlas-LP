@@ -15,6 +15,9 @@ for (const p of paginas) {
   const blocos = [...h.matchAll(/<script type="text\/plain" data-consentimento="medicao">([\s\S]*?)<\/script>/g)];
   const comPixel = blocos.filter((b) => b[1].includes("fbq('init','1810036790207944')") && b[1].includes("fbq('track','PageView')") && b[1].includes("connect.facebook.net/en_US/fbevents.js"));
   ok(comPixel.length === 1, `${p}: um bloco do Pixel com consentimento de medição`);
+  const bl = comPixel[0] ? comPixel[0][1] : "";
+  ok(/fbq\('set','autoConfig',false,'1810036790207944'\)/.test(bl) && bl.indexOf("autoConfig") < bl.indexOf("fbq('init'"), `${p}: autoConfig desligado antes do init`);
+  ok(/fbq\.disablePushState\s*=\s*true/.test(bl) && bl.indexOf("disablePushState") < bl.indexOf("fbq('init'"), `${p}: disablePushState ligado antes do init`);
   const fora = h.replace(/<script type="text\/plain" data-consentimento="medicao">[\s\S]*?<\/script>/g, "").replace(/<!--[\s\S]*?-->/g, "");
   ok(!/fbq\s*\(|fbevents|connect\.facebook\.net/.test(fora), `${p}: nenhum fbq/fbevents fora do bloco`);
   ok(/<script src="\/?js\/origem\.js(\?[^"]*)?" defer><\/script>/.test(h), `${p}: carrega js/origem.js`);
@@ -59,6 +62,21 @@ r = rodar(lp + "?fbclid=Q", { ls: JSON.stringify({ v: 1, medicao: true, em: "x" 
 ok(r.ler().fc === "Q", "consentimento só no localStorage (medicao true) também vale");
 r = rodar("http://localhost:5500/?utm_source=x");
 ok(!/domain=/.test(r.jar.__ultimo) && !/secure/.test(r.jar.__ultimo), "localhost: sem domain e sem secure");
+
+r = rodar(lp + "?fbclid=ZZZ", { cookies: { "atlas-origem": antigo } });
+ok(r.ler().us === "google" && r.ler().fc === undefined, "so fbclid sem consentimento nao apaga a origem anterior");
+r = rodar("https://evilatlaslike.com/?utm_source=x");
+ok(!/domain=/.test(r.jar.__ultimo), "host parecido com atlaslike.com nao recebe domain");
+r = rodar("https://atlaslike.com/?utm_source=x");
+ok(/domain=\.atlaslike\.com/.test(r.jar.__ultimo), "dominio raiz atlaslike.com recebe domain=.atlaslike.com");
+{
+  let lancou = false;
+  const doc = { get cookie() { throw new Error("SecurityError"); }, set cookie(v) { throw new Error("SecurityError"); }, addEventListener() {} };
+  try { vm.runInNewContext(codigo, { document: doc, location: new URL(lp + "?utm_source=x"), localStorage: { getItem() { throw new Error("x"); } }, URLSearchParams, Date, JSON, encodeURIComponent, decodeURIComponent, String, Object }); } catch { lancou = true; }
+  ok(!lancou, "document.cookie que lanca erro nao derruba o origem.js");
+}
+const sj = readFileSync(join(raiz, "js/site.js"), "utf8");
+ok(/gravarCookieEscolha\(!!v\.medicao\)/.test(sj), "site.js: escolha antiga do localStorage vira cookie compartilhado");
 
 console.log(falhas ? `\n${falhas} falha(s)` : "\ntudo certo");
 process.exit(falhas ? 1 : 0);

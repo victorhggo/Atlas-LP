@@ -317,7 +317,7 @@ const lerCookieEscolha = () => {
   return m && (m[1] === "todos" || m[1] === "essenciais") ? m[1] : null;
 };
 const gravarCookieEscolha = (medicao) => {
-  const compartilhado = /(^|\.)atlaslike\.com$/.test(location.hostname);
+  const compartilhado = (location.hostname === "atlaslike.com" || location.hostname.endsWith(".atlaslike.com"));
   try {
     document.cookie = CHAVE + "=" + (medicao ? "todos" : "essenciais") + "; path=/; max-age=31536000; samesite=lax"
       + (compartilhado ? "; domain=.atlaslike.com" : "") + (location.protocol === "https:" ? "; secure" : "");
@@ -326,7 +326,12 @@ const gravarCookieEscolha = (medicao) => {
 const lerEscolha = () => {
   const ck = lerCookieEscolha();
   if (ck) return { v: 1, medicao: ck === "todos", em: new Date().toISOString() };
-  try { const v = JSON.parse(localStorage.getItem(CHAVE) || "null"); return v && v.v === 1 ? v : null; } catch { return null; }
+  try {
+    const v = JSON.parse(localStorage.getItem(CHAVE) || "null");
+    if (!(v && v.v === 1)) return null;
+    gravarCookieEscolha(!!v.medicao); // escolha antiga só no localStorage: passa para o cookie compartilhado
+    return v;
+  } catch { return null; }
 };
 function aplicarConsentimento(c) {
   window.atlasConsentimento = c;
