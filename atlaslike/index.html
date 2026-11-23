@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/site.css">
   <script>document.documentElement.classList.add("js")</script>
+  <script src="/js/origem.js" defer></script>
   <script type="module" src="/js/site.js"></script>
 </head>
 <body class="interna">
@@ -359,8 +360,13 @@
     </div>
   </section>
 
-  <!-- Medição: entra aqui como <script type="text/plain" data-consentimento="medicao" data-src="..."></script>.
-       O js/site.js só ativa esses scripts depois do aceite. Hoje o site não tem nenhuma tag de medição. -->
+  <!-- Medição: tags entram como <script type="text/plain" data-consentimento="medicao"> e o js/site.js só as ativa
+       depois do aceite. Pixel da Meta (1810036790207944): só roda com "Aceitar todos" ou a medição ligada. -->
+  <script type="text/plain" data-consentimento="medicao">
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1810036790207944');
+    fbq('track','PageView');
+  </script>
 
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="i-orbit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><ellipse cx="12" cy="12" rx="10" ry="4.6" transform="rotate(-22 12 12)"/></symbol>

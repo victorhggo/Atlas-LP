@@ -310,7 +310,22 @@ if (ilha && hero) {
 // Categorias iguais às de www.atlaslike.com/privacidade: essenciais (sempre ativos) e medição (só com aceite).
 const CHAVE = "atlas-cookies";
 const banner = $("#cookies");
+// A escolha vale para lp.atlaslike.com, www.atlaslike.com e o quiz: além do localStorage daqui, vai num cookie
+// em .atlaslike.com ("todos" ou "essenciais"). O cookie é lido primeiro, então uma escolha feita no www vale aqui.
+const lerCookieEscolha = () => {
+  const m = document.cookie.match(/(?:^|; )atlas-cookies=([^;]*)/);
+  return m && (m[1] === "todos" || m[1] === "essenciais") ? m[1] : null;
+};
+const gravarCookieEscolha = (medicao) => {
+  const compartilhado = /(^|\.)atlaslike\.com$/.test(location.hostname);
+  try {
+    document.cookie = CHAVE + "=" + (medicao ? "todos" : "essenciais") + "; path=/; max-age=31536000; samesite=lax"
+      + (compartilhado ? "; domain=.atlaslike.com" : "") + (location.protocol === "https:" ? "; secure" : "");
+  } catch { /* cookies bloqueados: vale o localStorage */ }
+};
 const lerEscolha = () => {
+  const ck = lerCookieEscolha();
+  if (ck) return { v: 1, medicao: ck === "todos", em: new Date().toISOString() };
   try { const v = JSON.parse(localStorage.getItem(CHAVE) || "null"); return v && v.v === 1 ? v : null; } catch { return null; }
 };
 function aplicarConsentimento(c) {
@@ -348,6 +363,7 @@ if (banner) {
     const antes = lerEscolha();
     const c = { v: 1, medicao, em: new Date().toISOString() };
     try { localStorage.setItem(CHAVE, JSON.stringify(c)); } catch { /* navegação privada: vale só nesta visita */ }
+    gravarCookieEscolha(medicao);
     banner.hidden = true;
     document.documentElement.classList.remove("ck-aberto");
     if (antes && antes.medicao && !medicao) { location.reload(); return; } // tira a medição já carregada

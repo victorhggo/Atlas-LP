@@ -78,6 +78,7 @@ def pagina(caminho, titulo, desc, og_titulo, ld_extra, corpo, migalha, com_fecho
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/site.css">
   <script>document.documentElement.classList.add("js")</script>
+  <script src="/js/origem.js" defer></script>
   <script type="module" src="/js/site.js"></script>
 </head>
 <body class="interna">
