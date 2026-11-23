@@ -26,7 +26,9 @@
     if (location.protocol === "https:") a += "; secure";
     return a;
   }
-  function limpo(v, max) { return String(v).replace(/[\u0000-\u001f]/g, "").slice(0, max); }
+  // mesmos limites do Atlas (web/lib/medicao-cliente.ts): UTMs com acentos e espaços, sem controle, 120; fbclid só [\w-], 300; lp 160
+  function limpo(v, max) { return String(v).replace(/[\u0000-\u001f\u007f]/g, "").trim().slice(0, max); }
+  function limpoId(v, max) { return String(v).replace(/[^\w-]/g, "").slice(0, max); }
 
   function capturar() {
     var q;
@@ -35,12 +37,13 @@
     var o = {}, anuncio = false;
     Object.keys(MAPA).forEach(function (k) {
       var v = q.get(k);
-      if (v) { o[MAPA[k]] = limpo(v, 200); anuncio = true; }
+      v = v ? limpo(v, 120) : "";
+      if (v) { o[MAPA[k]] = v; anuncio = true; }
     });
-    var fbclid = q.get("fbclid");
-    if (fbclid && todos) { o.fc = limpo(fbclid, 500); anuncio = true; }
+    var fbclid = limpoId(q.get("fbclid") || "", 300);
+    if (fbclid && todos) { o.fc = fbclid; anuncio = true; }
     if (!anuncio) return; // sem parâmetro de anúncio: mantém o primeiro toque que já existe
-    o.lp = limpo(location.hostname + location.pathname, 200);
+    o.lp = limpo(location.hostname + (location.pathname || "/"), 160);
     o.em = new Date().toISOString();
     try { document.cookie = COOKIE + "=" + encodeURIComponent(JSON.stringify(o)) + atributos(DIAS); } catch (e) { /* cookies bloqueados */ }
   }

@@ -21,6 +21,8 @@ for (const p of paginas) {
   const fora = h.replace(/<script type="text\/plain" data-consentimento="medicao">[\s\S]*?<\/script>/g, "").replace(/<!--[\s\S]*?-->/g, "");
   ok(!/fbq\s*\(|fbevents|connect\.facebook\.net/.test(fora), `${p}: nenhum fbq/fbevents fora do bloco`);
   ok(/<script src="\/?js\/origem\.js(\?[^"]*)?" defer><\/script>/.test(h), `${p}: carrega js/origem.js`);
+  const aviso = (h.match(/<p class="cookies-txt">([\s\S]*?)<\/p>/) || [])[1] || "";
+  ok(/resultado dos nossos anúncios com o Pixel da Meta/.test(aviso) && !/—/.test(aviso), `${p}: aviso de cookies fala do Pixel da Meta nos anúncios`);
 }
 
 // ---- js/origem.js ----
@@ -77,6 +79,13 @@ ok(/domain=\.atlaslike\.com/.test(r.jar.__ultimo), "dominio raiz atlaslike.com r
 }
 const sj = readFileSync(join(raiz, "js/site.js"), "utf8");
 ok(/gravarCookieEscolha\(!!v\.medicao\)/.test(sj), "site.js: escolha antiga do localStorage vira cookie compartilhado");
+
+// mesmos limites do Atlas (web/lib/medicao-cliente.ts): UTMs com acentos e espaços (120), fbclid só [\w-] (300), lp 160
+r = rodar(lp + "?utm_campaign=" + encodeURIComponent("Black Friday São Paulo") + "&utm_source=" + encodeURIComponent(" meta\u0001 ") + "&utm_term=" + "x".repeat(200) + "&fbclid=" + "a".repeat(400) + "!", { cookies: { "atlas-cookies": "todos" } });
+o = r.ler();
+ok(o.uc === "Black Friday São Paulo" && o.us === "meta" && o.uk.length === 120 && o.fc === "a".repeat(300), "UTMs e fbclid com os mesmos limites do Atlas");
+r = rodar("https://lp.atlaslike.com/" + "p".repeat(300) + "?utm_source=x");
+ok(r.ler().lp.length === 160, "lp cortado em 160 como no Atlas");
 
 console.log(falhas ? `\n${falhas} falha(s)` : "\ntudo certo");
 process.exit(falhas ? 1 : 0);
