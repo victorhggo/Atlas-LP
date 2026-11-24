@@ -23,7 +23,7 @@ function pagina(id) {
   const total = a.grupos.reduce((n, g) => n + g.itens.length, 0);
   const planoTxt = a.planos
     ? `<p class="av5-breve">${O} ${esc(a.nome)} vem nos planos <b>${esc(a.planos)}</b>.</p>`
-    : `<p class="av5-breve"><b>Em breve.</b> ${O} ${esc(a.nome)} chega junto com a integração do Instagram.</p>`;
+    : "";
   return `
   <div class="av5-wrap">
     <header class="av5-hero">
