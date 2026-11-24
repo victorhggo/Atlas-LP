@@ -409,3 +409,15 @@
 .planos-demo { margin: 22px 0 26px; text-align: center; font-size: 15px; color: var(--texto-2, #4a5568); }
 .planos-demo a { font-weight: 600; color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .planos-demo a:hover { color: var(--texto, #0b1222); }
+
+/* órbita das tecnologias no celular: ícones menores para caberem sem se encostar */
+@media (max-width: 900px) {
+  .r2-orb-app { --app: 46px; }
+  .r2-orb-app > svg { width: 24px; height: 24px; }
+  .r2-orbita .orb-centro { --app: 62px; width: 62px; height: 62px; }
+}
+@media (max-width: 420px) {
+  .r2-orb-app { --app: 40px; }
+  .r2-orb-app > svg { width: 21px; height: 21px; }
+  .r2-orbita .orb-centro { --app: 54px; width: 54px; height: 54px; }
+}

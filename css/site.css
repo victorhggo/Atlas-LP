@@ -783,7 +783,8 @@ a, button, label, input { -webkit-tap-highlight-color: transparent; touch-action
 .orb-selo .marca-svg { width: 24px; height: 24px; }
 @media (max-width: 900px) {
   .tec-topo { grid-template-columns: 1fr; }
-  .tec-orbita { display: none; }
+  /* no celular a órbita aparece menor, com os ícones (Instagram, WhatsApp, Gmail, LinkedIn e IAs) visíveis */
+  .tec-orbita { width: 100%; max-width: 460px; margin: 8px auto 0; }
 }
 
 .integra { margin-top: clamp(56px, 7vw, 96px); }
