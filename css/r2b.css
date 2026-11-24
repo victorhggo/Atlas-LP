@@ -119,7 +119,7 @@
 /* ---------- 16. planos: cada plano é uma tela de início que vai enchendo de apps ---------- */
 .r2-pl { position: relative; }
 .r2-pl-ctrl { display: none; }
-.r2-pl-trilho { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.r2-pl-trilho { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
 .r2-pl-trilho:focus-visible { outline-offset: 6px; border-radius: 30px; }
 .r2-plano {
   position: relative; isolation: isolate; display: flex; flex-direction: column; min-width: 0;
@@ -129,7 +129,14 @@
 }
 .r2-pl-nome { font-family: var(--fonte-titulo); font-weight: 600; font-size: clamp(26px, 1.2rem + .7vw, 32px); line-height: 1; letter-spacing: -.03em; color: var(--tinta); }
 .r2-pl-para { margin-top: 8px; min-height: 2.8em; color: var(--apoio); font-size: 14.5px; line-height: 1.4; }
-.r2-pl-chave { display: grid; gap: 4px; margin-top: 18px; }
+.r2-pl-preco { display: grid; gap: 4px; margin-top: 18px; padding-bottom: 16px; border-bottom: 1px solid var(--linha); }
+.r2-pl-valor { font-family: var(--fonte-titulo); font-weight: 600; font-size: clamp(28px, 1.3rem + .8vw, 36px); line-height: 1; letter-spacing: -.035em; color: var(--tinta); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.r2-pl-valor small { margin-left: 2px; font-family: var(--fonte); font-size: 14px; font-weight: 650; letter-spacing: 0; color: var(--apoio); }
+.r2-pl-ciclo { min-height: 2.8em; color: var(--apoio-2); font-size: 12.5px; line-height: 1.4; }
+.r2-pl-agentes { margin: -2px 0 10px; color: var(--texto); font-size: 13px; line-height: 1.4; }
+.r2-pl-agentes b { font-weight: 700; color: var(--tinta); }
+.r2-pa-ag > img { position: relative; z-index: 0; width: 86%; height: 86%; object-fit: contain; }
+.r2-pl-chave { display: grid; gap: 4px; margin-top: 16px; }
 .r2-pl-chave b { font-family: var(--fonte-titulo); font-weight: 600; font-size: clamp(36px, 1.6rem + 1.1vw, 46px); line-height: .95; letter-spacing: -.04em; color: var(--tinta); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .r2-pl-chave span { min-height: 2.6em; color: var(--texto); font-size: 13.5px; font-weight: 650; line-height: 1.3; }
 /* a "tela de início": a grade é a mesma em todos; a quantidade de apps é o que muda */

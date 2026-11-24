@@ -32,15 +32,17 @@
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <link rel="stylesheet" href="css/tokens.css?v=202611152315">
   <link rel="stylesheet" href="css/site.css?v=202611152315">
-  <link rel="stylesheet" href="css/r2b.css?v=202611152315">
+  <link rel="stylesheet" href="css/r2b.css?v=202611232200">
   <link rel="stylesheet" href="css/r2a.css?v=202611152315">
   <link rel="stylesheet" href="css/calc.css?v=202611191530">
+  <link rel="stylesheet" href="css/agentes.css?v=202611232200">
   <script>document.documentElement.classList.add("js")</script>
   <script src="js/origem.js?v=202611231200" defer></script>
   <script type="module" src="js/site.js?v=202611152315"></script>
   <script type="module" src="js/r2b.js?v=202611152315"></script>
   <script type="module" src="js/r2a.js?v=202611152315"></script>
   <script type="module" src="js/calc.js?v=202611191200"></script>
+  <script type="module" src="js/agentes.js?v=202611232200"></script>
 </head>
 <body>
   <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -97,6 +99,7 @@
               </ul>
             </div>
           </li>
+          <li class="nav-item"><a class="nav-link" href="#agentes">Agentes</a></li>
           <li class="nav-item"><a class="nav-link" href="#planos">Planos</a></li>
         </ul>
       </nav>
@@ -147,6 +150,7 @@
             <li><a href="/comparar/apollo/">Atlas vs Apollo</a></li>
           </ul>
         </div>
+        <a class="gv-link" href="#agentes" data-fecha-menu>Agentes de IA</a>
         <a class="gv-link" href="#planos" data-fecha-menu>Planos</a>
         <a class="gv-link" href="https://www.atlaslike.com/entrar">Entrar</a>
       </nav>
@@ -550,14 +554,55 @@
       </div>
     </section>
 
-    <!-- ===== 9. Planos pela liberdade (sem preço) ===== -->
-    <!-- Cada plano é uma tela de início que vai enchendo de apps (referência: a página do Apple One, que mostra cada plano pelos apps que ele inclui).
-         Passar o mouse num app acende o mesmo app nos outros planos. Sem preço em lugar nenhum. -->
+    <!-- ===== 8b. Time de agentes de IA (conteúdo em js/agentes.js, vindo de web/lib/agentes-def.ts) ===== -->
+    <section class="secao agentes" id="agentes" aria-labelledby="t-agentes">
+      <div class="moldura">
+        <div class="planos-cab">
+          <h2 class="titulo-secao" id="t-agentes">Seu time de agentes de IA.</h2>
+          <p>Seis agentes, cada um com uma parte da venda: da lista ao pós-venda. Toque em um para ver quando ele começa e o que entrega.</p>
+        </div>
+        <ul class="ag-grade" aria-label="Agentes do Atlas">
+          <li class="ag-item" style="--k:0"><button type="button" class="ag-cartao" data-agente="lis" aria-haspopup="dialog"><span class="ag-mascote"><img src="img/agentes/lis.webp" width="248" height="286" alt="" loading="lazy" decoding="async"></span><b class="ag-nome">Lis</b><small class="ag-papel">Listas e qualificação</small><span class="r2-oculto">, ver o que ela faz</span></button></li>
+          <li class="ag-item" style="--k:1"><button type="button" class="ag-cartao" data-agente="zac" aria-haspopup="dialog"><span class="ag-mascote"><img src="img/agentes/zac.webp" width="248" height="286" alt="" loading="lazy" decoding="async"></span><b class="ag-nome">Zac</b><small class="ag-papel">WhatsApp e agenda</small><span class="r2-oculto">, ver o que ele faz</span></button></li>
+          <li class="ag-item" style="--k:2"><button type="button" class="ag-cartao" data-agente="gab" aria-haspopup="dialog"><span class="ag-mascote"><img src="img/agentes/gab.webp" width="248" height="286" alt="" loading="lazy" decoding="async"></span><b class="ag-nome">Gab</b><small class="ag-papel">Instagram</small><span class="ag-breve">Em breve</span><span class="r2-oculto">, ver o que ela faz</span></button></li>
+          <li class="ag-item" style="--k:3"><button type="button" class="ag-cartao" data-agente="polo" aria-haspopup="dialog"><span class="ag-mascote"><img src="img/agentes/polo.webp" width="248" height="286" alt="" loading="lazy" decoding="async"></span><b class="ag-nome">Polo</b><small class="ag-papel">Follow-up e proposta</small><span class="r2-oculto">, ver o que ele faz</span></button></li>
+          <li class="ag-item" style="--k:4"><button type="button" class="ag-cartao" data-agente="indy" aria-haspopup="dialog"><span class="ag-mascote"><img src="img/agentes/indy.webp" width="248" height="286" alt="" loading="lazy" decoding="async"></span><b class="ag-nome">Indy</b><small class="ag-papel">Pós-venda e indicação</small><span class="r2-oculto">, ver o que ela faz</span></button></li>
+          <li class="ag-item" style="--k:5"><button type="button" class="ag-cartao" data-agente="orbit" aria-haspopup="dialog"><span class="ag-mascote"><img src="img/agentes/orbit.webp" width="248" height="286" alt="" loading="lazy" decoding="async"></span><b class="ag-nome">Orbit</b><small class="ag-papel">Chefe do time</small><span class="r2-oculto">, ver o que ele faz</span></button></li>
+        </ul>
+        <p class="ag-nota"><svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-shield-check"/></svg><span>Nada sai sem a sua aprovação. Você revisa cada mensagem e envia pelo WhatsApp com um toque.</span></p>
+      </div>
+      <dialog class="ag-dialogo" id="ag-dialogo" aria-labelledby="ag-d-nome">
+        <div class="ag-d-corpo">
+          <button type="button" class="ag-d-fechar" data-ag-fechar aria-label="Fechar"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+          <div class="ag-d-topo">
+            <img class="ag-d-img" src="img/agentes/lis.webp" width="248" height="286" alt="">
+            <div>
+              <h3 class="ag-d-nome" id="ag-d-nome">Lis</h3>
+              <p class="ag-d-papel"></p>
+              <p class="ag-d-frase"></p>
+            </div>
+          </div>
+          <dl class="ag-d-fatos">
+            <div><dt>Quando começa</dt><dd class="ag-d-comeca"></dd></div>
+            <div><dt>O que você recebe</dt><dd class="ag-d-entrega"></dd></div>
+          </dl>
+          <div class="ag-d-grupos"></div>
+          <div class="ag-d-pe">
+            <p class="ag-d-plano"></p>
+            <a class="btn btn-navy btn-p sem-app" href="#planos" data-ag-planos>Ver planos</a>
+          </div>
+        </div>
+      </dialog>
+    </section>
+
+    <!-- ===== 9. Planos ===== -->
+    <!-- Cada plano é uma tela de início que vai enchendo de apps (referência: a página do Apple One).
+         Passar o mouse num app acende o mesmo app nos outros planos. Preços e créditos de web/lib/planos-def.ts (valor por mês no trimestral; anual como "a partir de"). -->
     <section class="secao planos r2-planos" id="planos" aria-labelledby="t-planos" data-sem-ilha>
       <div class="moldura">
         <div class="planos-cab">
           <h2 class="titulo-secao" id="t-planos">Escolha até onde o Atlas vai por você.</h2>
-          <p>Cada plano acende mais apps no caminho até a reunião. Comece no grátis, com 25 decisores, e suba quando a lista pedir. Os valores, a gente mostra na demonstração ou dentro da conta.</p>
+          <p>Cada plano acende mais apps e mais agentes no caminho até a reunião. Comece no grátis, com 25 decisores e sem cartão, e suba quando a lista pedir.</p>
         </div>
 
         <div class="r2-pl" data-r2-planos>
@@ -566,80 +611,81 @@
             <button type="button" class="r2-pl-seta" data-dir="1" aria-controls="r2-pl-trilho" aria-label="Próximo plano"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"/></svg></button>
           </div>
           <ul class="r2-pl-trilho" id="r2-pl-trilho" tabindex="0" aria-label="Planos do Atlas" data-r2-entra>
-            <li class="r2-plano" id="plano-gratis">
-              <h3 class="r2-pl-nome">Grátis</h3>
-              <p class="r2-pl-para">Para conhecer, com dados reais e sem cartão.</p>
-              <p class="r2-pl-chave"><b>25</b><span>decisores grátis</span></p>
-              <ul class="r2-pl-apps" aria-label="O que o Grátis inclui">
-                <li data-app="lista" style="--k:0"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-list-ordered"/></svg></span><span>Lista na ordem</span></li>
-                <li data-app="decisor" style="--k:1"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-phone"/></svg></span><span>Telefone do decisor</span></li>
-                <li data-app="ficha" style="--k:2"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-globe"/></svg></span><span>Site e redes</span></li>
-              </ul>
-              <p class="r2-pl-nota">O crédito só sai quando o Atlas encontra dados reais.</p>
-              <a class="btn btn-navy btn-p" href="https://www.atlaslike.com/criar-conta">Criar conta grátis</a>
-            </li>
             <li class="r2-plano" id="plano-start">
               <h3 class="r2-pl-nome">Start</h3>
               <p class="r2-pl-para">Para quem prospecta sozinho, todo dia.</p>
-              <p class="r2-pl-chave"><b>200</b><span>créditos por mês</span></p>
+              <p class="r2-pl-preco"><span class="r2-pl-valor">R$ 97<small>/mês</small></span><span class="r2-pl-ciclo">no trimestral. No anual, a partir de R$ 77/mês.</span></p>
+              <p class="r2-pl-chave"><b>200</b><span>créditos por mês (200 decisores)</span></p>
               <ul class="r2-pl-apps" aria-label="O que o Start inclui">
-                <li data-app="crm" style="--k:0"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/apps.svg#crm"/></svg></span><span>CRM sem limite</span></li>
-                <li data-app="ligar" style="--k:1"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-phone-call"/></svg></span><span>Tela Ligar</span></li>
-                <li data-app="gmail" style="--k:2"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#gmail"/></svg></span><span>Gmail</span></li>
-                <li data-app="agenda" style="--k:3"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#googlecalendar"/></svg></span><span>Google Agenda</span></li>
-                <li data-app="instagram" style="--k:4"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#instagram"/></svg></span><span>50 perfis</span></li>
-                <li data-app="linkedin" style="--k:5"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#linkedin"/></svg></span><span>50 decisores</span></li>
+                <li data-app="crm" style="--k:0"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#crm"/></svg></span><span>CRM e listas</span></li>
+                <li data-app="decisor" style="--k:1"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-phone"/></svg></span><span>Decisor e sócio</span></li>
+                <li data-app="ligar" style="--k:2"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-phone-call"/></svg></span><span>Tela Ligar</span></li>
+                <li data-app="instagram" style="--k:3"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#instagram"/></svg></span><span>50 perfis</span></li>
+                <li data-app="linkedin" style="--k:4"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#linkedin"/></svg></span><span>50 decisores</span></li>
+                <li data-app="hoje" style="--k:5"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-list-ordered"/></svg></span><span>Checklist do dia</span></li>
               </ul>
-              <p class="r2-pl-nota">Até 3 telefones por empresa, com o do decisor.</p>
+              <p class="r2-pl-nota">Importação de planilha e o número de quem decide.</p>
               <a class="btn btn-claro btn-p" href="https://www.atlaslike.com/criar-conta">Criar conta grátis</a>
             </li>
             <li class="r2-plano" id="plano-pro">
               <h3 class="r2-pl-nome">Pro</h3>
               <p class="r2-pl-para">Prospectar, conversar e fechar no mesmo lugar.</p>
-              <p class="r2-pl-chave"><b>1.000</b><span>créditos por mês</span></p>
-              <ul class="r2-pl-apps" aria-label="O que o Pro acrescenta">
-                <li data-app="orbit" style="--k:0"><span class="app-icone r2-pa r2-pa-orbe" aria-hidden="true"><img src="img/orbit-quadro-96.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><span>Atlas Orbit</span></li>
-                <li data-app="whatsapp" style="--k:1"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#whatsapp"/></svg></span><span>WhatsApp no CRM</span></li>
-                <li data-app="direct" style="--k:2"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#instagram"/></svg></span><span>Direct na Inbox</span></li>
+              <p class="r2-pl-preco"><span class="r2-pl-valor">R$ 297<small>/mês</small></span><span class="r2-pl-ciclo">no trimestral. No anual, a partir de R$ 237/mês.</span></p>
+              <p class="r2-pl-chave"><b>1.000</b><span>créditos por mês (1.000 decisores)</span></p>
+              <ul class="r2-pl-apps" aria-label="O que o Pro inclui">
+                <li data-app="zac" style="--k:0"><span class="app-icone r2-pa r2-pa-ag" aria-hidden="true"><img src="img/agentes/zac.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><span>Zac</span></li>
+                <li data-app="orbit" style="--k:1"><span class="app-icone r2-pa r2-pa-ag" aria-hidden="true"><img src="img/agentes/orbit.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><span>Orbit</span></li>
+                <li data-app="whatsapp" style="--k:2"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#whatsapp"/></svg></span><span>WhatsApp no CRM</span></li>
                 <li data-app="cadencias" style="--k:3"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-route"/></svg></span><span>Cadências</span></li>
-                <li data-app="chatbot" style="--k:4"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-bot"/></svg></span><span>Chatbot com IA</span></li>
-                <li data-app="meta" style="--k:5"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#meta"/></svg></span><span>Meta Ads</span></li>
-                <li data-app="googleads" style="--k:6"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#googleads"/></svg></span><span>Google Ads</span></li>
-                <li data-app="planilhas" style="--k:7"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#googlesheets"/></svg></span><span>Planilhas</span></li>
-                <li data-app="automacao" style="--k:8"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#zapier"/></svg></span><span>Zapier e Make</span></li>
+                <li data-app="scripts" style="--k:4"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-file-text"/></svg></span><span>Scripts de ligação</span></li>
+                <li data-app="meta" style="--k:5"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#meta"/></svg></span><span>Site, Meta e webhooks</span></li>
+                <li data-app="instagram" style="--k:6"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#instagram"/></svg></span><span>300 perfis</span></li>
+                <li data-app="linkedin" style="--k:7"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#linkedin"/></svg></span><span>300 decisores</span></li>
+                <li data-app="transferir" style="--k:8"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-arrow-left-right"/></svg></span><span>Passar leads</span></li>
               </ul>
-              <p class="r2-pl-nota">Tudo do Start, mais o que está acima.</p>
+              <p class="r2-pl-agentes"><b>Agentes:</b> Zac e Orbit</p>
+              <p class="r2-pl-nota">Tudo do Start, com refil de créditos toda semana.</p>
+              <a class="btn btn-claro btn-p" href="https://www.atlaslike.com/criar-conta">Criar conta grátis</a>
+            </li>
+            <li class="r2-plano" id="plano-business">
+              <h3 class="r2-pl-nome">Business</h3>
+              <p class="r2-pl-para">Quatro agentes de IA trabalhando no automático.</p>
+              <p class="r2-pl-preco"><span class="r2-pl-valor">R$ 997<small>/mês</small></span><span class="r2-pl-ciclo">no trimestral. No anual, a partir de R$ 897/mês.</span></p>
+              <p class="r2-pl-chave"><b>2.000</b><span>créditos por mês, compartilhados</span></p>
+              <ul class="r2-pl-apps" aria-label="O que o Business inclui">
+                <li data-app="lis" style="--k:0"><span class="app-icone r2-pa r2-pa-ag" aria-hidden="true"><img src="img/agentes/lis.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><span>Lis</span></li>
+                <li data-app="zac" style="--k:1"><span class="app-icone r2-pa r2-pa-ag" aria-hidden="true"><img src="img/agentes/zac.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><span>Zac</span></li>
+                <li data-app="polo" style="--k:2"><span class="app-icone r2-pa r2-pa-ag" aria-hidden="true"><img src="img/agentes/polo.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><span>Polo</span></li>
+                <li data-app="orbit" style="--k:3"><span class="app-icone r2-pa r2-pa-ag" aria-hidden="true"><img src="img/agentes/orbit.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><span>Orbit</span></li>
+                <li data-app="usuarios" style="--k:4"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-users"/></svg></span><span>2 usuários</span></li>
+                <li data-app="academy" style="--k:5"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-graduation-cap"/></svg></span><span>4 mentorias por mês</span></li>
+                <li data-app="instagram" style="--k:6"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#instagram"/></svg></span><span>600 perfis</span></li>
+                <li data-app="linkedin" style="--k:7"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#linkedin"/></svg></span><span>600 decisores</span></li>
+                <li data-app="onboarding" style="--k:8"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-rocket"/></svg></span><span>Onboarding ao vivo</span></li>
+              </ul>
+              <p class="r2-pl-agentes"><b>Agentes:</b> Lis, Zac, Polo e Orbit</p>
+              <p class="r2-pl-nota">Tudo do Pro, com suporte prioritário.</p>
               <a class="btn btn-claro btn-p" href="https://www.atlaslike.com/criar-conta">Criar conta grátis</a>
             </li>
             <li class="r2-plano" id="plano-scale">
               <h3 class="r2-pl-nome">Scale</h3>
-              <p class="r2-pl-para">O Pro para cada vendedor, com o líder vendo tudo.</p>
-              <p class="r2-pl-chave"><b>3 a 20</b><span>usuários</span></p>
-              <ul class="r2-pl-apps" aria-label="O que o Scale acrescenta">
-                <li data-app="lider" style="--k:0"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-gauge"/></svg></span><span>Painel do líder</span></li>
-                <li data-app="orbit" style="--k:1"><span class="app-icone r2-pa r2-pa-orbe" aria-hidden="true"><img src="img/orbit-quadro-96.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><span>Orbit por pessoa</span></li>
-                <li data-app="dashboard" style="--k:2"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-bar-chart-3"/></svg></span><span>Dashboard por vendedor</span></li>
-                <li data-app="transferir" style="--k:3"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-arrow-left-right"/></svg></span><span>Passar leads</span></li>
-                <li data-app="creditos" style="--k:4"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-coins"/></svg></span><span>2.500 a 8.000 créditos</span></li>
-                <li data-app="academy" style="--k:5"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-graduation-cap"/></svg></span><span>Atlas Academy</span></li>
+              <p class="r2-pl-para">O time de agentes para cada vendedor, com o líder vendo tudo.</p>
+              <p class="r2-pl-preco"><span class="r2-pl-valor">R$ 3.000<small>/mês</small></span><span class="r2-pl-ciclo">no trimestral, com 3 usuários. No anual, a partir de R$ 2.500/mês.</span></p>
+              <p class="r2-pl-chave"><b>5.000</b><span>créditos por mês, a partir de 3 usuários</span></p>
+              <ul class="r2-pl-apps" aria-label="O que o Scale inclui">
+                <li data-app="lis" style="--k:0"><span class="app-icone r2-pa r2-pa-ag" aria-hidden="true"><img src="img/agentes/lis.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><span>Lis</span></li>
+                <li data-app="zac" style="--k:1"><span class="app-icone r2-pa r2-pa-ag" aria-hidden="true"><img src="img/agentes/zac.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><span>Zac</span></li>
+                <li data-app="polo" style="--k:2"><span class="app-icone r2-pa r2-pa-ag" aria-hidden="true"><img src="img/agentes/polo.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><span>Polo</span></li>
+                <li data-app="indy" style="--k:3"><span class="app-icone r2-pa r2-pa-ag" aria-hidden="true"><img src="img/agentes/indy.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><span>Indy</span></li>
+                <li data-app="orbit" style="--k:4"><span class="app-icone r2-pa r2-pa-ag" aria-hidden="true"><img src="img/agentes/orbit.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><span>Orbit</span></li>
+                <li data-app="lider" style="--k:5"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-gauge"/></svg></span><span>Painel do líder</span></li>
+                <li data-app="usuarios" style="--k:6"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-users"/></svg></span><span>3 a 20 usuários</span></li>
+                <li data-app="distribuir" style="--k:7"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-workflow"/></svg></span><span>Distribuição de leads</span></li>
+                <li data-app="gerente" style="--k:8"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-headset"/></svg></span><span>Gerente de conta</span></li>
               </ul>
-              <p class="r2-pl-nota">Tudo do Pro, para cada pessoa do time.</p>
+              <p class="r2-pl-agentes"><b>Agentes:</b> Lis, Zac, Polo, Indy e Orbit</p>
+              <p class="r2-pl-nota">Tudo do Business, com mentoria individual todo mês.</p>
               <a class="btn btn-claro btn-p" href="https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas." target="_blank" rel="noopener">Agendar demonstração</a>
-            </li>
-            <li class="r2-plano" id="plano-creator">
-              <h3 class="r2-pl-nome">Creator</h3>
-              <p class="r2-pl-para">Para quem acha clientes no Instagram.</p>
-              <p class="r2-pl-chave"><b>300</b><span>perfis do Instagram por mês</span></p>
-              <ul class="r2-pl-apps" aria-label="O que o Creator inclui">
-                <li data-app="instagram" style="--k:0"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#instagram"/></svg></span><span>Busca por nicho</span></li>
-                <li data-app="direct" style="--k:1"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-messages-square"/></svg></span><span>Direct na Inbox</span></li>
-                <li data-app="crm" style="--k:2"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/apps.svg#crm"/></svg></span><span>CRM completo</span></li>
-                <li data-app="gmail" style="--k:3"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#gmail"/></svg></span><span>Gmail</span></li>
-                <li data-app="linkedin" style="--k:4"><span class="app-icone r2-pa" aria-hidden="true"><svg><use href="img/apps.svg#linkedin"/></svg></span><span>50 decisores</span></li>
-                <li data-app="media" class="r2-pa-breve" style="--k:5"><span class="app-icone r2-pa" aria-hidden="true"><svg class="ico"><use href="img/icones.svg#i-layers"/></svg></span><span>Atlas Media, em breve</span></li>
-              </ul>
-              <p class="r2-pl-nota">200 créditos por mês para qualificar empresas.</p>
-              <a class="btn btn-claro btn-p" href="https://www.atlaslike.com/criar-conta">Criar conta grátis</a>
             </li>
           </ul>
           <p class="r2-pl-status r2-oculto" role="status" aria-live="polite"></p>
@@ -737,6 +783,7 @@
               <li><a href="#area-orbit">Atlas Orbit</a></li>
               <li><a href="#area-flow">Flow e Cadências</a></li>
               <li><a href="#calculadora">Calculadora de custo</a></li>
+              <li><a href="#agentes">Agentes de IA</a></li>
               <li><a href="#planos">Planos</a></li>
             </ul>
           </div>

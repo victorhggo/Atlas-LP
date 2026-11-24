@@ -17,12 +17,22 @@ Feito no Brasil, em português. Atualizado em 2026-11-15. Conta grátis com 25 c
 ## Integrações
 28 integrações no hub do Atlas, além do WhatsApp e do Instagram na Inbox: anúncios (Meta Ads, Google Ads), captação (formulário no site, Google Planilhas, importar arquivo), migração de outro CRM (Kommo, HubSpot, RD Station CRM, Salesforce, Notion, ClickUp, Trello), Gmail, Google Agenda, telefonia (SipVoIP, 3C Plus, API4COM, Twilio, Zenvia, Asterisk, 3CX, Telnyx, Issabel), quadro do Trello e automação (Zapier, Make, n8n, webhook).
 
-## Planos (sem valores nesta página; os valores aparecem na demonstração ou dentro da conta)
+## Planos (valor por mês no trimestral; semestral e anual saem mais baratos)
 - Grátis: 25 créditos para testar (25 decisores), listas na ordem de quem ligar primeiro, site, Instagram, Google e e-mail da empresa e o telefone do decisor. Sem cartão.
-- Start: 200 créditos por mês, até 3 telefones por empresa, CRM sem limite de leads, Gmail e Google Agenda, tela Ligar com meta do dia.
-- Pro: tudo do Start, mais 1.000 créditos por mês, Atlas Orbit, WhatsApp no CRM, Direct do Instagram, cadências multicanal, chatbot com IA e leads do Meta Ads e do Google Ads no funil.
-- Scale: o Pro para cada vendedor, de 3 a 20 usuários, com painel do líder, um Atlas Orbit por pessoa, dashboard por vendedor e Atlas Academy.
-- Creator: para social media e social seller, com até 300 perfis do Instagram por mês, Direct na Inbox e CRM. O Atlas Media (calendário editorial, artes e legendas com IA, métricas do perfil) ainda está em breve.
+- Start: R$ 97 por mês no trimestral (a partir de R$ 77 no anual). 200 créditos por mês, até 50 perfis do Instagram e 50 decisores do LinkedIn, CRM, listas e importação de planilha, número do decisor e revelar sócio, tela Ligar e checklist do dia.
+- Pro: R$ 297 por mês no trimestral (a partir de R$ 237 no anual). 1.000 créditos por mês com refil semanal, até 300 perfis do Instagram e 300 decisores do LinkedIn, agentes Zac e Orbit, WhatsApp no CRM, follow-up programado, cadências multicanal, scripts de ligação, integrações (site, Meta e webhooks) e transferência de leads.
+- Business: R$ 997 por mês no trimestral (a partir de R$ 897 no anual). 4 agentes de IA no automático (Lis, Zac, Polo e Orbit), 2.000 créditos por mês compartilhados, 2 usuários, até 600 perfis do Instagram e 600 decisores do LinkedIn, 4 mentorias em grupo por mês, onboarding ao vivo e suporte prioritário. Tudo do Pro.
+- Scale: a partir de R$ 3.000 por mês no trimestral com 3 usuários (a partir de R$ 2.500 no anual), de 3 a 20 usuários. Agentes Lis, Zac, Polo, Indy e Orbit para cada vendedor, a partir de 5.000 créditos por mês, painel do líder, distribuição automática de leads, gerente de conta e mentorias.
+
+## Time de agentes de IA
+- Lis: listas e qualificação (Business e Scale).
+- Zac: WhatsApp, atendimento e agenda (Pro, Business e Scale).
+- Gab: Instagram. Em breve, junto com a integração do Instagram.
+- Polo: follow-up, reativação e proposta (Business e Scale).
+- Indy: pós-venda e indicação (Scale).
+- Orbit: chefe do time (Pro, Business e Scale).
+Nada sai sem a aprovação da pessoa; o envio pelo WhatsApp é com um toque.
+
 - AtlasLike: o outbound feito pelo time do Atlas, sob medida.
 
 ## AtlasLike, o outbound feito por nós
