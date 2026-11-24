@@ -1,367 +1,164 @@
-// Atlas: janela de cada agente da seção #agentes. Conteúdo copiado de web/lib/agentes-def.ts (AGENTES e AGENTES_INFO).
-const AG = {
- "lis": {
-  "nome": "Lis",
-  "papel": "Listas e qualificação",
-  "frase": "Eu encontro quem vai comprar de você.",
-  "comeca": "Quando você pede uma lista ou chega o dia da lista da semana.",
-  "entrega": "Leads qualificados no CRM, com nota, decisor e contato.",
-  "planos": "Business e Scale",
-  "grupos": [
-   {
-    "titulo": "O que ela faz",
-    "itens": [
-     [
-      "Lista sob encomenda",
-      "Você pede em texto, como \"clínicas odontológicas em Campinas com mais de 2 funcionários\", e ela monta os filtros sozinha."
-     ],
-     [
-      "Qualificação em lote",
-      "Confere site, Google, Instagram, sócios e telefone de cada empresa e descarta o que não bate: empresa fechada, ramo errado, telefone de contador."
-     ],
-     [
-      "Nota de encaixe de 0 a 100",
-      "Compara cada empresa com o seu cliente ideal e mostra o motivo da nota."
-     ],
-     [
-      "Decisor encontrado",
-      "Sócio, LinkedIn e o melhor telefone ou WhatsApp de quem decide."
-     ],
-     [
-      "Entrega no CRM",
-      "Coloca os leads na etapa certa, com etiqueta de origem, e passa os melhores para o Zac."
-     ],
-     [
-      "Lista recorrente",
-      "\"Toda segunda, 50 empresas novas\", sem repetir quem já está na sua base."
-     ],
-     [
-      "Parecidos com seus melhores clientes",
-      "Você informa 5 clientes que já fecharam e ela encontra empresas semelhantes."
-     ],
-     [
-      "Alerta de empresa nova",
-      "Avisa quando abre uma empresa no seu nicho."
-     ]
-    ]
-   }
-  ]
- },
- "zac": {
-  "nome": "Zac",
-  "papel": "WhatsApp, atendimento e agenda",
-  "frase": "Eu começo a conversa e coloco a reunião na sua agenda.",
-  "comeca": "Quando a Lis entrega um lead novo no CRM.",
-  "entrega": "A primeira mensagem de cada lead pronta para você enviar com um toque.",
-  "planos": "Pro, Business e Scale",
-  "grupos": [
-   {
-    "titulo": "O que ele faz",
-    "itens": [
-     [
-      "Primeira mensagem personalizada",
-      "Para cada lead, usando o que a Lis descobriu: ramo, Instagram, algo do site."
-     ],
-     [
-      "Cadência multicanal",
-      "WhatsApp, e-mail e LinkedIn, com intervalos e limite diário seguros contra banimento."
-     ],
-     [
-      "Atende quem chega",
-      "Respostas, formulário do site, leads da Meta e webhooks, a qualquer hora."
-     ],
-     [
-      "Triagem",
-      "Pergunta necessidade, prazo, quem decide e faixa de orçamento, e atualiza a nota do lead."
-     ],
-     [
-      "Responde objeções",
-      "\"Está caro\", \"me manda por e-mail\", \"já tenho fornecedor\", a partir da memória da sua empresa."
-     ],
-     [
-      "Agenda a reunião",
-      "Oferece horários livres, marca, confirma, lembra 24 h e 1 h antes e remarca se o lead faltar."
-     ],
-     [
-      "Passa para você",
-      "Lead quente chega com um resumo de 3 linhas e o próximo passo sugerido."
-     ],
-     [
-      "Briefing da reunião",
-      "Antes de cada reunião: quem é a empresa, o que o lead falou e o que oferecer."
-     ],
-     [
-      "Coach de vendas",
-      "Lê as conversas do vendedor, mostra onde o lead esfriou e sugere a resposta melhor."
-     ]
-    ]
-   }
-  ]
- },
- "gab": {
-  "nome": "Gab",
-  "papel": "Instagram",
-  "frase": "Eu transformo seguidores em clientes.",
-  "comeca": "Quando chega mensagem direta ou comentário.",
-  "entrega": "Leads do Instagram no CRM e conteúdo pronto para postar.",
-  "planos": null,
-  "grupos": [
-   {
-    "titulo": "Vendas pelo Instagram",
-    "itens": [
-     [
-      "Directs e comentários",
-      "Responde a qualquer hora, qualifica e manda o lead para o CRM. Quem pede reunião segue para o Zac."
-     ],
-     [
-      "Resposta por palavra",
-      "Quem comenta \"eu quero\" no post recebe a oferta por mensagem direta."
-     ],
-     [
-      "Prospecção no Instagram",
-      "Encontra perfis do seu nicho, interage e faz a primeira abordagem com ritmo seguro."
-     ],
-     [
-      "Alerta de engajamento",
-      "Avisa quando um lead do funil curte ou comenta, para o Polo puxar a conversa."
-     ]
-    ]
-   },
-   {
-    "titulo": "Conteúdo",
-    "itens": [
-     [
-      "Calendário de posts",
-      "Ideias e legendas a partir do seu nicho e da memória da empresa."
-     ],
-     [
-      "Roteiros de Reels e stories",
-      "Prontos para você gravar."
-     ],
-     [
-      "Prova social",
-      "Transforma depoimentos e avaliações da Indy em posts."
-     ],
-     [
-      "Relatório",
-      "Quantos leads e vendas vieram do Instagram no mês."
-     ]
-    ]
-   }
-  ]
- },
- "polo": {
-  "nome": "Polo",
-  "papel": "Follow-up, reativação e proposta",
-  "frase": "Ninguém some. Nem de ontem, nem de seis meses atrás.",
-  "comeca": "Quando um lead fica parado 14 dias ou mais.",
-  "entrega": "A mensagem de retomada de cada lead parado, pronta para você enviar.",
-  "planos": "Business e Scale",
-  "grupos": [
-   {
-    "titulo": "Follow-up",
-    "itens": [
-     [
-      "Vigia o funil",
-      "Encontra toda negociação sem resposta há X dias, com prazo próprio para cada etapa."
-     ],
-     [
-      "Follow-up com contexto",
-      "Retoma o assunto da última conversa, nunca um \"e aí, conseguiu ver?\". Alterna texto, áudio e conteúdo útil."
-     ],
-     [
-      "Para sozinho",
-      "Quando a pessoa responde, devolve a conversa ao Zac ou a você."
-     ],
-     [
-      "Pós-reunião",
-      "No mesmo dia, envia o resumo e o próximo passo combinado."
-     ],
-     [
-      "Proposta",
-      "Monta a proposta com os dados do lead e da oferta e envia por link."
-     ],
-     [
-      "Aviso de proposta aberta",
-      "Quando o lead abre e não responde, manda a mensagem certa na hora."
-     ]
-    ]
-   },
-   {
-    "titulo": "Reativação da base",
-    "itens": [
-     [
-      "Raio-X da base",
-      "Leads parados há 30, 60 e 90 dias, negócios perdidos por motivo e contatos nunca trabalhados."
-     ],
-     [
-      "Campanha com motivo",
-      "Uma razão nova para voltar a falar com cada grupo: novidade, condição especial, conteúdo."
-     ],
-     [
-      "Volta ao motivo da perda",
-      "\"Na época estava caro; agora temos um plano menor.\""
-     ],
-     [
-      "Envio em ondas pequenas",
-      "Para proteger o seu número e medir o que funciona."
-     ],
-     [
-      "Placar da reativação",
-      "\"R$ X voltaram da base parada este mês.\""
-     ]
-    ]
-   }
-  ]
- },
- "indy": {
-  "nome": "Indy",
-  "papel": "Pós-venda e indicações",
-  "frase": "Eu transformo seus clientes em vendedores da sua empresa.",
-  "comeca": "Quando uma venda é marcada como ganha.",
-  "entrega": "Indicações novas, avaliações, depoimentos e renovações.",
-  "planos": "Scale",
-  "grupos": [
-   {
-    "titulo": "O que ela faz",
-    "itens": [
-     [
-      "Boas-vindas",
-      "Assim que a venda é marcada como ganha, com os próximos passos."
-     ],
-     [
-      "Pesquisa de satisfação",
-      "De 7 a 15 dias depois: de 0 a 10, o quanto indicaria a sua empresa."
-     ],
-     [
-      "Separa as respostas",
-      "Fãs recebem pedido de avaliação e indicação; neutros, a pergunta \"o que faltou?\"; insatisfeitos geram aviso a você na hora."
-     ],
-     [
-      "Pede indicação na hora certa",
-      "O indicado entra no CRM com a etiqueta de quem indicou, e o Zac faz o contato."
-     ],
-     [
-      "Programa de indicação",
-      "Link próprio por cliente, recompensa e placar de quem mais indica."
-     ],
-     [
-      "Avaliações e depoimentos",
-      "Avaliações no Google e depoimentos com foto para o site e o Instagram."
-     ],
-     [
-      "Renovação e mais vendas",
-      "Avisa antes de vencer e oferece o próximo produto."
-     ],
-     [
-      "Datas que aproximam",
-      "Aniversário do cliente e um ano de parceria."
-     ]
-    ]
-   }
-  ]
- },
- "orbit": {
-  "nome": "Orbit",
-  "papel": "Chefe do time",
-  "frase": "Eu coordeno o time e te digo o que importa hoje.",
-  "comeca": "Está sempre ligado.",
-  "entrega": "Visão do dia, CRM organizado e o time coordenado.",
-  "planos": "Pro, Business e Scale",
-  "grupos": [
-   {
-    "titulo": "O que ele faz",
-    "itens": [
-     [
-      "Painel \"Meu time\"",
-      "O que cada agente está fazendo agora, a fila de aprovações e os créditos usados."
-     ],
-     [
-      "Bom dia do Orbit",
-      "Às 8 h, no WhatsApp: reuniões, leads quentes e aprovações pendentes do dia."
-     ],
-     [
-      "Relatório semanal",
-      "Funil, metas, resultado de cada agente e o principal gargalo, com sugestão de ajuste."
-     ],
-     [
-      "Distribui o trabalho",
-      "Decide qual agente cuida de cada lead e evita que dois falem com a mesma pessoa."
-     ],
-     [
-      "CRM limpo",
-      "Tira duplicados, corrige etapa e nicho errados e completa dados faltando."
-     ],
-     [
-      "Comando por conversa",
-      "Você fala com ele por texto, voz ou print: \"pede pra Lis 30 restaurantes em BH\"."
-     ],
-     [
-      "Alertas",
-      "Número de WhatsApp em risco, créditos acabando, lead quente parado há horas."
-     ]
-    ]
-   }
-  ]
- }
-};
+// Atlas: abertura do time e página de cada agente em janela (#agentes).
+// Conteúdo copiado de web/lib/agentes-v5.ts (AGENTES_V5) e web/lib/agentes-def.ts (AGENTES e AGENTES_INFO), sem preços.
+const AG = {"lis":{"nome":"Lis","papel":"Listas e qualificação","frase":"Eu encontro quem vai comprar de você.","cor":"#3fd3ec","comeca":"Quando você pede uma lista ou chega o dia da lista da semana.","entrega":"Leads qualificados no CRM, com nota, decisor e contato.","planos":"Business e Scale","exemplo":[{"de":"lead","txt":"Quero 30 clínicas odontológicas em Campinas com mais de 2 funcionários."},{"de":"agente","txt":"Encontrei 41 empresas. Conferi site, Google e Instagram e descartei 11: 4 fechadas, 5 de outro ramo e 2 só com telefone de contador."},{"de":"sistema","txt":"30 leads no CRM · nota média 82 · 26 com WhatsApp do decisor"}],"grupos":[{"titulo":"O que ela faz","itens":[{"t":"Lista sob encomenda","d":"Você pede em texto, como \"clínicas odontológicas em Campinas com mais de 2 funcionários\", e ela monta os filtros sozinha."},{"t":"Qualificação em lote","d":"Confere site, Google, Instagram, sócios e telefone de cada empresa e descarta o que não bate: empresa fechada, ramo errado, telefone de contador."},{"t":"Nota de encaixe de 0 a 100","d":"Compara cada empresa com o seu cliente ideal e mostra o motivo da nota."},{"t":"Decisor encontrado","d":"Sócio, LinkedIn e o melhor telefone ou WhatsApp de quem decide."},{"t":"Entrega no CRM","d":"Coloca os leads na etapa certa, com etiqueta de origem, e passa os melhores para o Zac."},{"t":"Lista recorrente","d":"\"Toda segunda, 50 empresas novas\", sem repetir quem já está na sua base."},{"t":"Parecidos com seus melhores clientes","d":"Você informa 5 clientes que já fecharam e ela encontra empresas semelhantes."},{"t":"Alerta de empresa nova","d":"Avisa quando abre uma empresa no seu nicho."}]}],"titulo":"sua especialista em listas","sub":"A Lis monta a lista do seu cliente ideal, confere cada empresa no site, no Google e no Instagram e entrega no CRM só quem vale a pena abordar.","destaques":[{"frase":"Monta a lista a partir de uma frase.","mock":{"tipo":"cartao","titulo":"Novo pedido","linhas":["Clínicas odontológicas","Campinas · 2+ funcionários"],"acao":"Buscar empresas"}},{"frase":"Confere cada empresa antes de entregar.","mock":{"tipo":"lista","titulo":"Conferência","linhas":[{"a":"Sorriso Prime","b":"Conferida","st":"ok"},{"a":"OdontoVida","b":"Conferindo","st":"andamento"},{"a":"Clínica Bem Estar","b":"Na fila","st":"fila"}]}},{"frase":"Acha o decisor e o melhor telefone.","mock":{"tipo":"cartao","titulo":"Decisor","linhas":["Marina Alves · sócia","WhatsApp confirmado"],"acao":"Ver ficha"}},{"frase":"Entrega pronta no seu CRM.","mock":{"tipo":"numeros","itens":[{"n":"30","l":"leads"},{"n":"82","l":"nota média"}]}}],"secoes":[{"titulo":"A lista do seu cliente ideal, sem filtro manual","texto":"Você descreve quem quer atender e a Lis transforma isso em filtros: nicho, cidade, porte e tempo de empresa. Toda semana ela pode entregar empresas novas, sem repetir quem já está na sua base.","mock":{"tipo":"lista","titulo":"Lista da semana","linhas":[{"a":"Sorriso Prime · Cambuí","b":"Nota 91","st":"ok"},{"a":"Dental Center · Taquaral","b":"Nota 86","st":"ok"},{"a":"OdontoVida · Centro","b":"Nota 78","st":"ok"},{"a":"Clínica Riso · Barão","b":"Conferindo","st":"andamento"}]}},{"titulo":"Só chega quem vale a pena abordar","texto":"Cada empresa é conferida no site, no Google, no Instagram e na Receita. Empresa fechada, de outro ramo ou com telefone de contador sai da lista antes de chegar até você.","mock":{"tipo":"numeros","itens":[{"n":"41","l":"encontradas"},{"n":"11","l":"descartadas"},{"n":"30","l":"entregues"}]}},{"titulo":"O decisor, não a recepção","texto":"A Lis encontra o sócio, o LinkedIn e o telefone ou WhatsApp de quem decide, e dá uma nota de 0 a 100 explicando por que a empresa combina com você.","mock":{"tipo":"cartao","titulo":"Sorriso Prime · nota 91","linhas":["Decisora: Marina Alves, sócia","WhatsApp e LinkedIn encontrados","Abriu a 2ª unidade em 2026"],"acao":"Enviar para o Zac"}}],"sem":["Horas filtrando empresas na mão.","Ligação que cai na recepção.","Lista com empresa fechada e de outro ramo.","A mesma empresa abordada duas vezes."],"com":["Lista pronta a partir de uma frase.","Telefone e WhatsApp de quem decide.","Só empresas conferidas e ativas.","Lista nova toda semana, sem repetir."],"estrela":{"titulo":"Listas recorrentes: toda semana, clientes novos esperando por você","texto":"Você define uma vez o seu cliente ideal, o dia e a quantidade. A partir daí, a Lis entrega uma lista nova, conferida e pronta para abordar, sem você pedir de novo.","pontos":["Escolha o dia e quantas empresas quer por semana","Nunca repete empresa que já está na sua base","Avisa quando abre uma empresa nova no seu nicho","O Zac já começa a abordar assim que a lista chega"],"mock":{"tipo":"lista","titulo":"Segunda, 24/11 · 50 empresas novas","linhas":[{"a":"Sorriso Prime · Cambuí","b":"Nota 91","st":"ok"},{"a":"Dental Center · Taquaral","b":"Nota 86","st":"ok"},{"a":"Clínica Riso · Barão","b":"Nota 84","st":"ok"},{"a":"+ 47 empresas","b":"Prontas","st":"ok"}]}}},"zac":{"nome":"Zac","papel":"WhatsApp: abordagem, atendimento e agenda","frase":"Eu começo a conversa e coloco a reunião na sua agenda.","cor":"#ff6b5e","comeca":"Quando a Lis entrega um lead novo no CRM.","entrega":"A primeira mensagem de cada lead pronta para você enviar com um toque.","planos":"Pro, Business e Scale","exemplo":[{"de":"agente","txt":"Oi, Marina! Vi que a clínica abriu a segunda unidade em Campinas. Hoje vocês conseguem responder todo mundo que chama no WhatsApp?"},{"de":"lead","txt":"Não muito, perdemos bastante paciente por demora."},{"de":"agente","txt":"Entendi. Posso te mostrar em 20 minutos como resolver isso. Fica melhor terça às 10h ou quarta às 15h?"},{"de":"lead","txt":"Quarta às 15h."},{"de":"sistema","txt":"Reunião marcada · quarta, 15h · lembrete enviado"}],"grupos":[{"titulo":"O que ele faz","itens":[{"t":"Primeira mensagem personalizada","d":"Para cada lead, usando o que a Lis descobriu: ramo, Instagram, algo do site."},{"t":"Cadência multicanal","d":"WhatsApp, e-mail e LinkedIn, com intervalos e limite diário seguros contra banimento."},{"t":"Atende quem chega","d":"Respostas, formulário do site, leads da Meta e webhooks, a qualquer hora."},{"t":"Triagem","d":"Pergunta necessidade, prazo, quem decide e faixa de orçamento, e atualiza a nota do lead."},{"t":"Responde objeções","d":"\"Está caro\", \"me manda por e-mail\", \"já tenho fornecedor\", a partir da memória da sua empresa."},{"t":"Agenda a reunião","d":"Oferece horários livres, marca, confirma, lembra 24 h e 1 h antes e remarca se o lead faltar."},{"t":"Passa para você","d":"Lead quente chega com um resumo de 3 linhas e o próximo passo sugerido."},{"t":"Briefing da reunião","d":"Antes de cada reunião: quem é a empresa, o que o lead falou e o que oferecer."},{"t":"Coach de vendas","d":"Lê as conversas do vendedor, mostra onde o lead esfriou e sugere a resposta melhor."}]}],"titulo":"seu especialista em WhatsApp","sub":"O Zac começa a conversa com cada lead, atende quem chega, responde objeções e coloca a reunião na sua agenda. Tudo pelo WhatsApp, todos os dias.","destaques":[{"frase":"Aborda cada lead com uma mensagem própria.","mock":{"tipo":"chat","msgs":[{"de":"agente","txt":"Oi, Marina! Vi que vocês abriram a 2ª unidade."}]}},{"frase":"Responde na hora, com o tom certo.","mock":{"tipo":"chat","msgs":[{"de":"lead","txt":"Quanto custa?"},{"de":"agente","txt":"Depende do volume. Posso te mostrar em 20 min?"}]}},{"frase":"Marca a reunião na sua agenda.","mock":{"tipo":"cartao","titulo":"Reunião marcada","linhas":["Quarta, 15h","Lembrete enviado"],"acao":"Ver agenda"}},{"frase":"Passa o lead quente com resumo.","mock":{"tipo":"cartao","titulo":"Lead quente","linhas":["Quer começar em dezembro","Decide com o sócio"],"acao":"Abrir conversa"}}],"secoes":[{"titulo":"Primeira mensagem que parece escrita por você","texto":"O Zac usa o que a Lis descobriu sobre cada empresa para começar a conversa. Roda cadências no WhatsApp, no e-mail e no LinkedIn com intervalos seguros para proteger o seu número.","mock":{"tipo":"chat","msgs":[{"de":"agente","txt":"Oi, Marina! Vi que a clínica abriu a segunda unidade. Hoje vocês conseguem responder todo mundo que chama no WhatsApp?"},{"de":"lead","txt":"Não muito, perdemos paciente por demora."}]}},{"titulo":"Atende quem chega, a qualquer hora","texto":"Respostas, formulário do site e leads da Meta caem no Zac. Ele faz as perguntas de qualificação, responde objeções com a memória da sua empresa e atualiza a nota do lead.","mock":{"tipo":"chat","msgs":[{"de":"lead","txt":"Está caro pra gente agora."},{"de":"agente","txt":"Entendo. Muitos clientes começam pelo plano menor e sobem depois. Quer ver como ficaria pra vocês?"}]}},{"titulo":"Da conversa à reunião marcada","texto":"Quando o lead topa, o Zac oferece horários livres, marca, confirma e lembra 24 h e 1 h antes. Antes da reunião, você recebe um resumo de quem é a empresa e o que oferecer.","mock":{"tipo":"cartao","titulo":"Briefing da reunião","linhas":["Clínica Sorriso Prime · quarta, 15h","Dor: perde paciente por demora","Sugestão: plano com 2 números"],"acao":"Abrir briefing"}}],"sem":["Mensagem fora do horário fica sem resposta.","A mesma mensagem para todo mundo.","Lead esfria esperando retorno.","Reunião marcada que ninguém lembra."],"com":["Resposta na hora, mesmo fora do horário.","Abordagem diferente para cada lead.","Objeção respondida com o seu argumento.","Reunião confirmada e lembrada sozinha."],"estrela":{"titulo":"Nenhum lead esperando resposta, nem de madrugada","texto":"O Zac responde em segundos, a qualquer hora, e leva a conversa até a reunião marcada na sua agenda. Você só entra quando o lead já está pronto para conversar.","pontos":["Responde em segundos, 24 horas por dia","Oferece só os horários livres da sua agenda","Confirma e lembra 24 h e 1 h antes","Remarca sozinho se o lead faltar"],"mock":{"tipo":"chat","msgs":[{"de":"lead","txt":"Oi, ainda dá pra agendar? São 23h, desculpa."},{"de":"agente","txt":"Claro! Tenho amanhã às 10h ou às 16h. Qual fica melhor?"},{"de":"lead","txt":"10h."},{"de":"sistema","txt":"Reunião marcada · amanhã, 10h"}]}}},"gab":{"nome":"Gab","papel":"Instagram","frase":"Eu transformo seguidores em clientes.","cor":"#ffb347","comeca":"Quando chega mensagem direta ou comentário.","entrega":"Leads do Instagram no CRM e conteúdo pronto para postar.","planos":null,"exemplo":[{"de":"lead","txt":"Comentou no post: eu quero!"},{"de":"agente","txt":"Oi, Bruna! Te mandei aqui na direct os detalhes da oferta. Você atende pessoa física ou empresa?"},{"de":"lead","txt":"Empresa, tenho uma loja de roupas."},{"de":"sistema","txt":"Lead criado no CRM · origem: Instagram · etiqueta: varejo"}],"grupos":[{"titulo":"Vendas pelo Instagram","itens":[{"t":"Directs e comentários","d":"Responde a qualquer hora, qualifica e manda o lead para o CRM. Quem pede reunião segue para o Zac."},{"t":"Resposta por palavra","d":"Quem comenta \"eu quero\" no post recebe a oferta por mensagem direta."},{"t":"Prospecção no Instagram","d":"Encontra perfis do seu nicho, interage e faz a primeira abordagem com ritmo seguro."},{"t":"Alerta de engajamento","d":"Avisa quando um lead do funil curte ou comenta, para o Polo puxar a conversa."}]},{"titulo":"Conteúdo","itens":[{"t":"Calendário de posts","d":"Ideias e legendas a partir do seu nicho e da memória da empresa."},{"t":"Roteiros de Reels e stories","d":"Prontos para você gravar."},{"t":"Prova social","d":"Transforma depoimentos e avaliações da Indy em posts."},{"t":"Relatório","d":"Quantos leads e vendas vieram do Instagram no mês."}]}],"titulo":"sua especialista em Instagram","sub":"A Gab cuida do seu Instagram como canal de vendas: responde directs e comentários, transforma seguidor em lead e ajuda a planejar o conteúdo.","destaques":[{"frase":"Responde directs e comentários na hora.","mock":{"tipo":"chat","msgs":[{"de":"lead","txt":"Eu quero!"},{"de":"agente","txt":"Te mandei os detalhes na direct."}]}},{"frase":"Transforma seguidor em lead no CRM.","mock":{"tipo":"cartao","titulo":"Lead criado","linhas":["Bruna Costa · loja de roupas","Origem: Instagram"],"acao":"Ver no CRM"}},{"frase":"Encontra perfis do seu nicho.","mock":{"tipo":"lista","titulo":"Perfis encontrados","linhas":[{"a":"@modabruna","b":"12 mil","st":"ok"},{"a":"@lojaestilo","b":"8 mil","st":"ok"},{"a":"@vitrinesp","b":"Na fila","st":"fila"}]}},{"frase":"Planeja posts que vendem.","mock":{"tipo":"cartao","titulo":"Calendário","linhas":["Seg · carrossel de dúvidas","Qua · depoimento de cliente"],"acao":"Ver semana"}}],"secoes":[{"titulo":"Quem comenta já recebe a resposta","texto":"Quem comenta \"eu quero\" no post recebe a oferta por direct na hora. A Gab responde as mensagens, faz as perguntas certas e manda para o Zac quem quer reunião.","mock":{"tipo":"chat","msgs":[{"de":"lead","txt":"Comentou no post: eu quero!"},{"de":"agente","txt":"Oi, Bruna! Te mandei os detalhes aqui. Você atende pessoa física ou empresa?"},{"de":"lead","txt":"Empresa, tenho uma loja."}]}},{"titulo":"Prospecção no Instagram com ritmo seguro","texto":"A Gab encontra perfis do seu nicho, interage antes de abordar e faz o primeiro contato no ritmo certo, para a sua conta não ser limitada.","mock":{"tipo":"lista","titulo":"Abordagens de hoje","linhas":[{"a":"@modabruna","b":"Respondeu","st":"ok"},{"a":"@lojaestilo","b":"Interagindo","st":"andamento"},{"a":"@vitrinesp","b":"Na fila","st":"fila"}]}},{"titulo":"Conteúdo pensado para vender","texto":"Ideias de posts, legendas e roteiros de Reels a partir do seu nicho, e os depoimentos que a Indy coleta viram prova social no feed.","mock":{"tipo":"cartao","titulo":"Semana de conteúdo","linhas":["Seg · 5 dúvidas sobre o serviço","Qua · depoimento da Paula","Sex · bastidores da entrega"],"acao":"Aprovar calendário"}}],"sem":["Direct respondida no dia seguinte.","Comentário \"eu quero\" sem retorno.","Seguidor que nunca vira cliente.","Post sem objetivo de venda."],"com":["Resposta na hora, até de madrugada.","Oferta enviada para quem comentou.","Seguidor no CRM, com etiqueta de origem.","Calendário de posts que vende."],"estrela":{"titulo":"Comentou, recebeu: cada \"eu quero\" vira conversa","texto":"Você escolhe a palavra e a Gab responde na hora por direct quem comentar no seu post. Nenhum interessado se perde nos comentários.","pontos":["Você escolhe as palavras que disparam a resposta","A oferta chega por direct em segundos","Quem responde vira lead no CRM","Funciona em todos os posts e Reels"],"mock":{"tipo":"numeros","itens":[{"n":"126","l":"comentaram"},{"n":"126","l":"receberam"},{"n":"41","l":"viraram lead"}]}}},"polo":{"nome":"Polo","papel":"Follow-up, reativação e proposta","frase":"Ninguém some. Nem de ontem, nem de seis meses atrás.","cor":"#6f9bff","comeca":"Quando um lead fica parado 14 dias ou mais.","entrega":"A mensagem de retomada de cada lead parado, pronta para você enviar.","planos":"Business e Scale","exemplo":[{"de":"sistema","txt":"Proposta aberta 3 vezes · sem resposta há 4 dias"},{"de":"agente","txt":"Oi, Ricardo! Vi que você revisou a proposta. Ficou alguma dúvida sobre o prazo de implantação que conversamos?"},{"de":"lead","txt":"Só preciso ver com meu sócio, mas devemos fechar."},{"de":"agente","txt":"Perfeito. Quer que eu marque 15 minutos com vocês dois na sexta?"}],"grupos":[{"titulo":"Follow-up","itens":[{"t":"Vigia o funil","d":"Encontra toda negociação sem resposta há X dias, com prazo próprio para cada etapa."},{"t":"Follow-up com contexto","d":"Retoma o assunto da última conversa, nunca um \"e aí, conseguiu ver?\". Alterna texto, áudio e conteúdo útil."},{"t":"Para sozinho","d":"Quando a pessoa responde, devolve a conversa ao Zac ou a você."},{"t":"Pós-reunião","d":"No mesmo dia, envia o resumo e o próximo passo combinado."},{"t":"Proposta","d":"Monta a proposta com os dados do lead e da oferta e envia por link."},{"t":"Aviso de proposta aberta","d":"Quando o lead abre e não responde, manda a mensagem certa na hora."}]},{"titulo":"Reativação da base","itens":[{"t":"Raio-X da base","d":"Leads parados há 30, 60 e 90 dias, negócios perdidos por motivo e contatos nunca trabalhados."},{"t":"Campanha com motivo","d":"Uma razão nova para voltar a falar com cada grupo: novidade, condição especial, conteúdo."},{"t":"Volta ao motivo da perda","d":"\"Na época estava caro; agora temos um plano menor.\""},{"t":"Envio em ondas pequenas","d":"Para proteger o seu número e medir o que funciona."},{"t":"Placar da reativação","d":"Quanto voltou da base parada este mês, em reais."}]}],"titulo":"seu especialista em follow-up","sub":"O Polo acompanha cada negociação até o fim, manda a proposta, cobra a resposta na hora certa e reacende a base que ninguém olha há meses.","destaques":[{"frase":"Não deixa negociação parada.","mock":{"tipo":"lista","titulo":"Paradas há 3+ dias","linhas":[{"a":"Ricardo · Transportes","b":"Retomando","st":"andamento"},{"a":"Ana · Clínica","b":"Respondeu","st":"ok"}]}},{"frase":"Retoma a conversa com contexto.","mock":{"tipo":"chat","msgs":[{"de":"agente","txt":"Ficou alguma dúvida sobre o prazo que conversamos?"}]}},{"frase":"Monta e envia a proposta.","mock":{"tipo":"cartao","titulo":"Proposta enviada","linhas":["Aberta 3 vezes","Sem resposta há 4 dias"],"acao":"Lembrar agora"}},{"frase":"Reacende a base parada.","mock":{"tipo":"numeros","itens":[{"n":"214","l":"parados"},{"n":"19","l":"voltaram"}]}}],"secoes":[{"titulo":"Follow-up que retoma de onde parou","texto":"O Polo encontra toda negociação sem resposta e retoma o assunto da última conversa, alternando texto, áudio e conteúdo útil. Quando a pessoa responde, ele para e devolve a conversa.","mock":{"tipo":"chat","msgs":[{"de":"sistema","txt":"Proposta aberta 3 vezes · sem resposta há 4 dias"},{"de":"agente","txt":"Oi, Ricardo! Ficou alguma dúvida sobre o prazo de implantação?"},{"de":"lead","txt":"Só falta ver com meu sócio."}]}},{"titulo":"Proposta pronta e acompanhada","texto":"O Polo monta a proposta com os dados do lead e da sua oferta, envia por link e avisa quando o lead abre. Se ele abrir e não responder, a mensagem certa sai na hora.","mock":{"tipo":"cartao","titulo":"Proposta · Transportes Lima","linhas":["Implantação em 15 dias","Aberta hoje às 10h12","Próximo passo: reunião com o sócio"],"acao":"Ver proposta"}},{"titulo":"A base parada vira venda de novo","texto":"Leads parados há 30, 60 ou 90 dias e negócios perdidos recebem uma campanha com um motivo novo para voltar a conversar, enviada em ondas pequenas para proteger o seu número.","mock":{"tipo":"numeros","itens":[{"n":"214","l":"leads parados"},{"n":"37","l":"responderam"},{"n":"12","l":"voltaram ao funil"}]}}],"sem":["Negociação esquecida no meio do funil.","\"E aí, conseguiu ver?\" sem contexto.","Proposta enviada e nunca cobrada.","Base antiga que ninguém olha."],"com":["Toda negociação acompanhada até o fim.","Follow-up que lembra da última conversa.","Aviso na hora em que a proposta é aberta.","Campanhas que reacendem a base."],"estrela":{"titulo":"Ele sabe a hora exata de cobrar a resposta","texto":"O Polo avisa quando o lead abre a sua proposta e manda a mensagem certa naquele momento, quando o interesse está mais alto.","pontos":["Aviso na hora em que a proposta é aberta","Mensagem que retoma o que vocês conversaram","Para sozinho quando a pessoa responde","Reacende a base parada há 30, 60 ou 90 dias"],"mock":{"tipo":"chat","msgs":[{"de":"sistema","txt":"Ricardo abriu a proposta agora"},{"de":"agente","txt":"Oi, Ricardo! Vi que você está olhando a proposta. Quer que eu tire alguma dúvida?"},{"de":"lead","txt":"Sim, sobre o prazo."}]}}},"indy":{"nome":"Indy","papel":"Pós-venda e indicação","frase":"Eu transformo seus clientes em vendedores da sua empresa.","cor":"#3ddc84","comeca":"Quando uma venda é marcada como ganha.","entrega":"Indicações novas, avaliações, depoimentos e renovações.","planos":"Scale","exemplo":[{"de":"agente","txt":"Oi, Paula! Já faz 15 dias com a gente. De 0 a 10, o quanto você indicaria nosso serviço?"},{"de":"lead","txt":"10! Está funcionando muito bem."},{"de":"agente","txt":"Que bom! Conhece alguém que também precisa? Se fechar, você ganha um mês de desconto."},{"de":"sistema","txt":"2 indicações no CRM · enviadas para o Zac"}],"grupos":[{"titulo":"O que ela faz","itens":[{"t":"Boas-vindas","d":"Assim que a venda é marcada como ganha, com os próximos passos."},{"t":"Pesquisa de satisfação","d":"De 7 a 15 dias depois: de 0 a 10, o quanto indicaria a sua empresa."},{"t":"Separa as respostas","d":"Fãs recebem pedido de avaliação e indicação; neutros, a pergunta \"o que faltou?\"; insatisfeitos geram aviso a você na hora."},{"t":"Pede indicação na hora certa","d":"O indicado entra no CRM com a etiqueta de quem indicou, e o Zac faz o contato."},{"t":"Programa de indicação","d":"Link próprio por cliente, recompensa e placar de quem mais indica."},{"t":"Avaliações e depoimentos","d":"Avaliações no Google e depoimentos com foto para o site e o Instagram."},{"t":"Renovação e mais vendas","d":"Avisa antes de vencer e oferece o próximo produto."},{"t":"Datas que aproximam","d":"Aniversário do cliente e um ano de parceria."}]}],"titulo":"sua especialista em pós-venda","sub":"Depois da venda, a Indy cuida do cliente, mede a satisfação e transforma quem gostou em indicações, avaliações e renovações.","destaques":[{"frase":"Dá as boas-vindas a cada cliente.","mock":{"tipo":"chat","msgs":[{"de":"agente","txt":"Bem-vinda, Paula! Os próximos passos são estes."}]}},{"frase":"Mede a satisfação na hora certa.","mock":{"tipo":"numeros","itens":[{"n":"9,2","l":"nota média"},{"n":"86%","l":"fãs"}]}},{"frase":"Pede indicação para quem gostou.","mock":{"tipo":"cartao","titulo":"Indicação recebida","linhas":["2 contatos de Paula","Enviados para o Zac"],"acao":"Ver indicados"}},{"frase":"Avisa antes da renovação.","mock":{"tipo":"cartao","titulo":"Renovação em 15 dias","linhas":["Clínica Sorriso Prime","Satisfação: 10"],"acao":"Enviar oferta"}}],"secoes":[{"titulo":"Cliente bem recebido desde o primeiro dia","texto":"Assim que a venda é marcada como ganha, a Indy envia as boas-vindas e os próximos passos. Entre 7 e 15 dias depois, pergunta de 0 a 10 o quanto o cliente indicaria a sua empresa.","mock":{"tipo":"chat","msgs":[{"de":"agente","txt":"Oi, Paula! Já faz 15 dias com a gente. De 0 a 10, o quanto você nos indicaria?"},{"de":"lead","txt":"10! Está funcionando muito bem."}]}},{"titulo":"Quem gostou vira indicação","texto":"Fãs recebem o pedido de indicação e de avaliação no Google. Cada indicado entra no CRM com a etiqueta de quem indicou, e o Zac faz o contato.","mock":{"tipo":"lista","titulo":"Indicações do mês","linhas":[{"a":"Carla · indicada por Paula","b":"Em conversa","st":"andamento"},{"a":"Rui · indicado por Marcos","b":"Reunião","st":"ok"},{"a":"Lia · indicada por Paula","b":"Na fila","st":"fila"}]}},{"titulo":"Ninguém insatisfeito passa despercebido","texto":"Notas baixas geram um aviso para você na hora, antes de virar reclamação. E antes de cada vencimento, a Indy avisa o cliente e oferece o próximo passo.","mock":{"tipo":"cartao","titulo":"Atenção: nota 5","linhas":["Loja Estilo · respondeu hoje","Motivo: demora na entrega","Sugestão: ligar ainda hoje"],"acao":"Abrir conversa"}}],"sem":["Cliente fecha e é esquecido.","Indicação só quando alguém lembra de pedir.","Insatisfação descoberta no cancelamento.","Renovação feita em cima da hora."],"com":["Boas-vindas e acompanhamento sozinhos.","Pedido de indicação na hora certa.","Aviso na hora de cada nota baixa.","Cliente avisado antes de vencer."],"estrela":{"titulo":"Programa de indicação que roda sozinho","texto":"Cada cliente satisfeito ganha um link próprio de indicação, uma recompensa e um placar. A Indy pede na hora certa e cada indicado chega ao CRM com a etiqueta de quem indicou.","pontos":["Link de indicação para cada cliente","Recompensa que você escolhe: desconto, brinde ou crédito","Placar de quem mais indica","O Zac aborda cada indicado"],"mock":{"tipo":"lista","titulo":"Quem mais indicou","linhas":[{"a":"Paula · Clínica Bem Estar","b":"5 indicações","st":"ok"},{"a":"Marcos · Transportes Lima","b":"3 indicações","st":"ok"},{"a":"Bruna · Loja Estilo","b":"2 indicações","st":"ok"}]}}},"orbit":{"nome":"Orbit","papel":"Chefe do time","frase":"Eu coordeno o time e te digo o que importa hoje.","cor":"#8fb3ff","comeca":"Está sempre ligado.","entrega":"Visão do dia, CRM organizado e o time coordenado.","planos":"Pro, Business e Scale","exemplo":[{"de":"agente","txt":"Bom dia! Hoje você tem 3 reuniões marcadas pelo Zac, 2 propostas abertas e 5 aprovações esperando."},{"de":"lead","txt":"Pede pra Lis mais 30 restaurantes em BH."},{"de":"agente","txt":"Pedido enviado. A Lis entrega a lista em alguns minutos."}],"grupos":[{"titulo":"O que ele faz","itens":[{"t":"Painel \"Meu time\"","d":"O que cada agente está fazendo agora, a fila de aprovações e os créditos usados."},{"t":"Bom dia do Orbit","d":"Às 8 h, no WhatsApp: reuniões, leads quentes e aprovações pendentes do dia."},{"t":"Relatório semanal","d":"Funil, metas, resultado de cada agente e o principal gargalo, com sugestão de ajuste."},{"t":"Distribui o trabalho","d":"Decide qual agente cuida de cada lead e evita que dois falem com a mesma pessoa."},{"t":"CRM limpo","d":"Tira duplicados, corrige etapa e nicho errados e completa dados faltando."},{"t":"Comando por conversa","d":"Você fala com ele por texto, voz ou print: \"pede pra Lis 30 restaurantes em BH\"."},{"t":"Alertas","d":"Número de WhatsApp em risco, créditos acabando, lead quente parado há horas."}]}],"titulo":"o chefe do seu time de IA","sub":"O Orbit coordena todos os agentes, organiza o seu dia e mantém o CRM em ordem. É com ele que você conversa para pedir qualquer coisa ao time.","destaques":[{"frase":"Te diz o que importa hoje.","mock":{"tipo":"numeros","itens":[{"n":"3","l":"reuniões"},{"n":"5","l":"aprovações"}]}},{"frase":"Recebe pedidos por texto, voz ou print.","mock":{"tipo":"chat","msgs":[{"de":"lead","txt":"Pede pra Lis 30 restaurantes em BH."}]}},{"frase":"Mostra o que cada agente fez.","mock":{"tipo":"lista","titulo":"Hoje","linhas":[{"a":"Zac","b":"12 conversas","st":"ok"},{"a":"Polo","b":"8 follow-ups","st":"ok"}]}},{"frase":"Mantém o CRM limpo.","mock":{"tipo":"cartao","titulo":"CRM organizado","linhas":["14 duplicados removidos","6 etapas corrigidas"],"acao":"Ver ajustes"}}],"secoes":[{"titulo":"Bom dia com o que importa","texto":"Todo dia às 8h, o Orbit manda no seu WhatsApp as reuniões do dia, os leads quentes e as aprovações que esperam por você. Toda semana, um relatório com o funil e o principal gargalo.","mock":{"tipo":"chat","msgs":[{"de":"agente","txt":"Bom dia! Hoje você tem 3 reuniões marcadas pelo Zac, 2 propostas abertas e 5 aprovações esperando."}]}},{"titulo":"Um pedido, o time inteiro trabalha","texto":"Você fala com o Orbit por texto, voz ou print e ele distribui o trabalho: decide qual agente cuida de cada lead e evita que dois falem com a mesma pessoa.","mock":{"tipo":"chat","msgs":[{"de":"lead","txt":"Pede pra Lis mais 30 restaurantes em BH e pro Zac abordar amanhã."},{"de":"agente","txt":"Feito. A Lis entrega a lista em alguns minutos e o Zac começa amanhã às 9h."}]}},{"titulo":"Tudo registrado, nada fora do lugar","texto":"O Orbit mostra o que cada agente fez, tira duplicados, corrige etapas e avisa quando algo precisa de atenção: número em risco, créditos acabando ou lead quente parado.","mock":{"tipo":"lista","titulo":"Diário do time","linhas":[{"a":"Zac marcou 2 reuniões","b":"10h40","st":"ok"},{"a":"Polo retomou 8 propostas","b":"11h05","st":"ok"},{"a":"Lis conferindo 30 empresas","b":"agora","st":"andamento"}]}}],"sem":["Começar o dia sem saber por onde ir.","Cada ferramenta pedindo atenção.","CRM bagunçado e duplicado.","Problema descoberto tarde demais."],"com":["O dia organizado às 8h no WhatsApp.","Um pedido, o time inteiro trabalha.","CRM limpo sem esforço.","Alerta antes de virar problema."],"estrela":{"titulo":"Bom dia do Orbit: o seu dia pronto às 8h","texto":"Todo dia, no seu WhatsApp, o Orbit diz o que importa: reuniões, leads quentes e o que precisa da sua aprovação. Você começa o dia sabendo exatamente por onde ir.","pontos":["Resumo do dia no WhatsApp às 8h","Relatório da semana com o principal gargalo","Peça qualquer coisa ao time por texto, voz ou print","Alerta antes de virar problema"],"mock":{"tipo":"chat","msgs":[{"de":"agente","txt":"Bom dia! Hoje: 3 reuniões, 2 propostas abertas e 5 aprovações esperando. O lead mais quente é a Clínica Sorriso Prime."}]}}}};
+
+const ORDEM = ["lis", "zac", "gab", "polo", "indy", "orbit"];
+const CONTA = "https://www.atlaslike.com/criar-conta";
+const RM = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const ico = (id, cls = "ico") => `<svg class="${cls}" aria-hidden="true"><use href="img/icones.svg#${id}"/></svg>`;
+const img = (id, w, h) => `<img src="img/agentes/${id}.webp" width="${w}" height="${h}" alt="" decoding="async">`;
+const art = (id) => (id === "lis" || id === "gab" || id === "indy" ? "a" : "o");
+
+function mock(m, peq) {
+  const c = `av5-mock${peq ? " peq" : ""}`;
+  if (m.tipo === "chat") return `<div class="${c}"><div class="av5-chat">${m.msgs.map((x) => `<p class="${x.de}">${esc(x.txt)}</p>`).join("")}</div></div>`;
+  if (m.tipo === "lista") return `<div class="${c}"><b class="av5-mock-tit">${esc(m.titulo)}</b><ul class="av5-linhas">${m.linhas.map((l) => `<li><span>${esc(l.a)}</span><em class="${l.st}">${esc(l.b)}</em></li>`).join("")}</ul></div>`;
+  if (m.tipo === "cartao") return `<div class="${c}"><b class="av5-mock-tit">${esc(m.titulo)}</b><ul class="av5-itens">${m.linhas.map((l) => `<li>${esc(l)}</li>`).join("")}</ul><span class="av5-acao">${esc(m.acao)} <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"/></svg></span></div>`;
+  return `<div class="${c}"><div class="av5-nums">${m.itens.map((x) => `<div><b>${esc(x.n)}</b><span>${esc(x.l)}</span></div>`).join("")}</div></div>`;
+}
+
+function pagina(id) {
+  const a = AG[id], o = art(id), O = o.toUpperCase();
+  const total = a.grupos.reduce((n, g) => n + g.itens.length, 0);
+  const planoTxt = a.planos
+    ? `<p class="av5-breve">${O} ${esc(a.nome)} vem nos planos <b>${esc(a.planos)}</b>.</p>`
+    : `<p class="av5-breve"><b>Em breve.</b> ${O} ${esc(a.nome)} chega junto com a integração do Instagram.</p>`;
+  return `
+  <div class="av5-wrap">
+    <header class="av5-hero">
+      <div class="av5-hero-txt">
+        <span class="av5-papel">${img(id, 24, 26)}${esc(a.papel)}</span>
+        <h1 id="av5-t">Conheça ${o} ${esc(a.nome)}: <span>${esc(a.titulo)}</span></h1>
+        <p>${esc(a.sub)}</p>
+        <div class="av5-acoes">
+          <a class="btn btn-navy btn-g" href="${CONTA}">Criar conta grátis</a>
+          <a class="btn btn-claro btn-g" href="https://wa.me/5515996979750?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Atlas." target="_blank" rel="noopener">Agendar demonstração</a>
+        </div>
+        ${planoTxt}
+      </div>
+      <div class="av5-janela" role="img" aria-label="Exemplo de conversa ${o === "a" ? "da" : "do"} ${esc(a.nome)}">
+        <div class="av5-janela-topo">${img(id, 32, 36)}<span><b>${esc(a.nome)}</b><small><i></i> trabalhando agora</small></span><em>Exemplo</em></div>
+        <div class="av5-janela-chat">${(a.exemplo || []).map((m, i) => `<p class="${m.de}" style="--i:${i}">${esc(m.txt)}</p>`).join("")}</div>
+      </div>
+    </header>
+
+    <section class="av5-estrela">
+      <div class="av5-estrela-txt">
+        <h2>${esc(a.estrela.titulo)}</h2>
+        <p>${esc(a.estrela.texto)}</p>
+        <ul>${a.estrela.pontos.map((x) => `<li>${ico("i-check")}${esc(x)}</li>`).join("")}</ul>
+      </div>
+      <div class="av5-grande">${mock(a.estrela.mock)}</div>
+    </section>
+
+    <ul class="av5-destaques" id="av5-como">${a.destaques.map((d) => `<li>${mock(d.mock, true)}<p>${esc(d.frase)}</p></li>`).join("")}</ul>
+
+    ${a.secoes.map((s, i) => `<section class="av5-sec${i % 2 ? " inv" : ""}"><div class="av5-sec-txt"><h2>${esc(s.titulo)}</h2><p>${esc(s.texto)}</p></div><div class="av5-grande">${mock(s.mock)}</div></section>`).join("")}
+
+    <section class="av5-entregas">
+      <div class="av5-entregas-cab"><h2>Tudo o que ${o} ${esc(a.nome)} entrega</h2><span>${total} entregáveis</span></div>
+      ${a.grupos.map((g) => `<div>${a.grupos.length > 1 ? `<h3>${esc(g.titulo)}</h3>` : ""}<ul>${g.itens.map((it) => `<li>${ico("i-check")}<div><b>${esc(it.t)}</b><p>${esc(it.d)}</p></div></li>`).join("")}</ul></div>`).join("")}
+    </section>
+
+    <section class="av5-muda">
+      <h2>O que muda com ${o} ${esc(a.nome)} no seu time</h2>
+      <div class="av5-muda-grade">
+        <div><h3>Sem ${o} ${esc(a.nome)}</h3><ul>${a.sem.map((x) => `<li>${ico("i-x", "ico nao")}${esc(x)}</li>`).join("")}</ul></div>
+        <div><h3>Com ${o} ${esc(a.nome)}</h3><ul>${a.com.map((x) => `<li>${ico("i-check", "ico sim")}${esc(x)}</li>`).join("")}</ul></div>
+      </div>
+      <p class="av5-confia">${ico("i-shield-check")}Você aprova antes de qualquer mensagem sair e vê no diário tudo o que ${o} ${esc(a.nome)} fez.</p>
+    </section>
+
+    <nav class="av5-time" aria-label="Conheça o resto do time">
+      <h2>Conheça o resto do time</h2>
+      <ul>${ORDEM.filter((x) => x !== id).map((x) => `<li><button type="button" data-av5-agente="${x}">${img(x, 48, 54)}<b>${esc(AG[x].nome)}</b><small>${esc(AG[x].papel)}</small></button></li>`).join("")}</ul>
+    </nav>
+  </div>`;
+}
 
 const dlg = document.getElementById("ag-dialogo");
+const intro = document.getElementById("ag-intro");
 if (dlg && typeof dlg.showModal === "function") {
-  const $ = (s) => dlg.querySelector(s);
-  const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+  dlg.innerHTML = `<div class="av5-barra"><span class="av5-barra-nome"></span><button type="button" class="av5-fechar" data-av5-fechar aria-label="Fechar"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button></div><div class="av5-rola"></div>`;
+  const rola = dlg.querySelector(".av5-rola");
+  const barra = dlg.querySelector(".av5-barra-nome");
   let origem = null;
 
-  const preencher = (id) => {
+  const mostrar = (id, troca) => {
     const a = AG[id];
-    $(".ag-d-img").src = `img/agentes/${id}.webp`;
-    $(".ag-d-nome").textContent = a.nome;
-    $(".ag-d-papel").textContent = a.papel;
-    $(".ag-d-frase").textContent = a.frase;
-    $(".ag-d-comeca").textContent = a.comeca;
-    $(".ag-d-entrega").textContent = a.entrega;
-    const grupos = $(".ag-d-grupos");
-    grupos.replaceChildren();
-    a.grupos.forEach((g) => {
-      grupos.append(el("h4", null, g.titulo));
-      const ul = el("ul");
-      g.itens.forEach(([t, d]) => {
-        const li = el("li");
-        li.innerHTML = '<svg class="ico" aria-hidden="true"><use href="img/icones.svg#i-check"/></svg>';
-        const p = el("span");
-        p.append(el("b", null, t + ". "), document.createTextNode(d));
-        li.append(p);
-        ul.append(li);
-      });
-      grupos.append(ul);
-    });
-    const plano = $(".ag-d-plano");
-    plano.replaceChildren();
-    if (a.planos) plano.append("Incluído nos planos ", el("b", null, a.planos), ".");
-    else plano.append(el("b", null, "Em breve. "), "Chega junto com a integração do Instagram.");
+    dlg.style.setProperty("--ag", a.cor);
+    barra.innerHTML = `${img(id, 28, 32)}<span>${esc(a.nome)}</span>`;
+    rola.innerHTML = pagina(id);
+    rola.scrollTop = 0;
+    if (troca) rola.firstElementChild.classList.add("troca");
   };
+  const abrir = (id) => {
+    mostrar(id);
+    dlg.showModal();
+    dlg.querySelector("[data-av5-fechar]").focus({ preventScroll: true });
+  };
+
+  // abertura: os 6 caem, se alinham no centro, se juntam no escolhido, anel; ~1,6 s; clique pula
+  let pular = null;
+  const tocarIntro = (id, fim) => {
+    if (!intro || RM() || !Element.prototype.animate) { fim(); return; }
+    const outros = ORDEM.filter((x) => x !== id);
+    intro.innerHTML = `<div class="ag-intro-palco">${outros.concat(id).map((x) => `<span class="ag-intro-rosto">${img(x, 64, 72)}</span>`).join("")}<span class="ag-intro-centro"><span class="ag-intro-anel"></span>${Array.from({ length: 10 }, () => '<i class="ag-intro-p"></i>').join("")}${img(id, 64, 72)}</span></div>`;
+    intro.hidden = false;
+    const rostos = [...intro.querySelectorAll(".ag-intro-rosto")];
+    const n = rostos.length, meio = (n - 1) / 2, passo = Math.min(84, (innerWidth - 80) / n);
+    const SOLTO = [[-150, -70], [40, -40], [-60, 30], [160, -10], [100, 60], [-10, -90]];
+    const out = "cubic-bezier(.22, 1, .36, 1)";
+    const D = 1150, gap = 55;
+    const anims = rostos.map((el, i) => {
+      const [sx, sy] = SOLTO[i];
+      const fx = (i - meio) * passo;
+      return el.animate([
+        { transform: `translate(${sx}px, ${sy - 150}px) scale(.7)`, opacity: 0, easing: out },
+        { transform: `translate(${sx}px, ${sy}px) scale(1)`, opacity: 1, offset: 0.25, easing: "ease-in-out" },
+        { transform: `translate(${fx}px, 0) scale(1)`, opacity: 1, offset: 0.55, easing: "cubic-bezier(.65, 0, .35, 1)" },
+        { transform: `translate(${fx}px, -4px) scale(1)`, opacity: 1, offset: 0.68, easing: "cubic-bezier(.65, 0, .35, 1)" },
+        { transform: "translate(0, 0) scale(.55)", opacity: 0, offset: 0.9 },
+        { transform: "translate(0, 0) scale(.55)", opacity: 0 },
+      ], { duration: D, delay: i * gap, fill: "both" });
+    });
+    const t0 = D * 0.88 + (n - 1) * gap;
+    anims.push(intro.querySelector(".ag-intro-centro img").animate([{ transform: "scale(.55)", opacity: 0 }, { transform: "scale(1.18)", opacity: 1, offset: 0.45 }, { transform: "scale(1)", opacity: 1 }], { duration: 380, delay: t0 - 120, easing: out, fill: "both" }));
+    anims.push(intro.querySelector(".ag-intro-anel").animate([{ transform: "scale(.4)", opacity: 0.9 }, { transform: "scale(2.6)", opacity: 0 }], { duration: 520, delay: t0, easing: out, fill: "forwards" }));
+    intro.querySelectorAll(".ag-intro-p").forEach((p, i) => {
+      const ang = (i / 10) * Math.PI * 2, d = 58 + (i % 3) * 16;
+      anims.push(p.animate([{ transform: "translate(0,0)", opacity: 1 }, { transform: `translate(${Math.cos(ang) * d}px, ${Math.sin(ang) * d}px)`, opacity: 0 }], { duration: 480, delay: t0, easing: out, fill: "forwards" }));
+    });
+    let feito = false;
+    const acabar = () => {
+      if (feito) return; feito = true;
+      clearTimeout(tm); pular = null;
+      fim();
+      const sai = intro.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 260, easing: "ease-out", fill: "forwards" });
+      sai.onfinish = () => { anims.forEach((x) => x.cancel()); sai.cancel(); intro.hidden = true; intro.innerHTML = ""; };
+    };
+    const tm = setTimeout(acabar, t0 + 260);
+    pular = acabar;
+  };
+  intro?.addEventListener("click", () => pular && pular());
+  addEventListener("keydown", (e) => { if (e.key === "Escape" && pular) pular(); });
 
   document.querySelectorAll("[data-agente]").forEach((b) => b.addEventListener("click", () => {
     origem = b;
-    preencher(b.dataset.agente);
-    dlg.showModal();
-    dlg.scrollTop = 0;
-    $("[data-ag-fechar]").focus();
+    tocarIntro(b.dataset.agente, () => abrir(b.dataset.agente));
   }));
   dlg.addEventListener("close", () => { if (origem && document.contains(origem)) origem.focus({ preventScroll: true }); origem = null; });
-  $("[data-ag-fechar]").addEventListener("click", () => dlg.close());
-  // clique no fundo (fora da caixa) fecha
   dlg.addEventListener("click", (e) => {
-    if (e.target !== dlg) return;
-    const r = dlg.getBoundingClientRect();
-    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
-  });
-  $("[data-ag-planos]").addEventListener("click", (e) => {
-    e.preventDefault();
-    origem = null;
-    dlg.close();
-    const alvo = document.getElementById("planos");
-    alvo.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
-    history.replaceState(null, "", "#planos");
+    const t = e.target;
+    if (t.closest("[data-av5-fechar]")) { dlg.close(); return; }
+    const outro = t.closest("[data-av5-agente]");
+    if (outro) { mostrar(outro.dataset.av5Agente, true); dlg.querySelector("[data-av5-fechar]").focus({ preventScroll: true }); return; }
+    const como = t.closest("[data-av5-como]");
+    if (como) { e.preventDefault(); rola.querySelector("#av5-como")?.scrollIntoView({ behavior: RM() ? "auto" : "smooth", block: "start" }); return; }
+    if (t === dlg) {
+      const r = dlg.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+    }
   });
 }
